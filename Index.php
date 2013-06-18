@@ -8,19 +8,19 @@
 	
 		<div class="Banniere">
 			<?php
-				INCLUDE("include\Banniere.php");
+				INCLUDE("include\common\Banniere.php");
 			?>
 		</div>
 		
 		<div class="Corps">
 			<?php
-				INCLUDE("include\Corps.php");
+				INCLUDE("include\common\Corps.php");
 			?>
 		</div>
 		
 		<div class="Pied">
 			<?php
-				INCLUDE("include\Pied.php");
+				INCLUDE("include\common\Pied.php");
 			?>
 		</div>
 		
