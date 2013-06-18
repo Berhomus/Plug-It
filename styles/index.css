@@ -1,0 +1,104 @@
+.Banniere
+	{
+	position:absolute;
+	bottom:80%;
+	right:0%;
+	left:0%;
+	top:0%;
+	float:none;
+	background-color:#333333;
+	min-width: 800px;
+	}
+	
+.ul 
+	{
+	padding:0;
+	margin:0;
+	list-style-type:none;
+	}
+ 
+.li
+	{
+	margin-left:0px;
+	float:left;
+	line-height:50px;
+	}
+ 
+.ul li a 
+	{
+	display:block;
+	float:left;   
+	width:100px;
+	background-color:#333333;
+	color:white;
+	text-decoration:none;
+	text-align:center;
+	padding:10px;
+	border:0px solid;
+	border-color:#DCDCDC #696969 #696969 #DCDCDC;
+	}
+.ul li a:hover 
+	{
+	background-color:#D3D3D3;
+	border-color:#696969 #DCDCDC #DCDCDC #696969;
+	} 
+
+.Corps
+	{
+	position:absolute;
+	top:20%;
+	left:0%;
+	right:0%;
+	bottom:10%;
+	float:none;
+	background-color:#FEFEFE;
+	overflow:scroll;
+	padding:15px;
+	}
+	
+.Corps a, .Corps a:visited	
+	{
+	text-decoration:none;
+	color:#585141;
+	}
+	
+.Corps a:active, .Corps a:hover	
+	{
+	text-decoration:none;
+	color:#8f8369;
+	}
+	
+.Pied
+	{
+	position:absolute;
+	top:90%;
+	left:0%;
+	right:0%;
+	float:left;
+	background-color:#333333;
+	min-width: 800px;
+	}
+	
+.Pied a, .Pied a:visited	
+	{
+	text-decoration:none;
+	color:#585141;
+	}
+	
+.Pied a:active, .Pied a:hover	
+	{
+	text-decoration:none;
+	color:#8f8369;
+	}
+	
+	.p 
+	{
+	text-align: right;
+	clear: both;
+	margin-left:3%;
+	}
+	
+.p .span 
+	{
+	float: left;
+	}
