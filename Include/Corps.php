@@ -5,31 +5,31 @@
 	}
 	switch ($_GET['page'])
 	{
-		case 'Accueil':
+		case 'accueil':
 		INCLUDE("Accueil.php");
 		break;
 		
-		case 'Services':
+		case 'services':
 		INCLUDE("Services.php");
 		break;
 		
-		case 'Solutions':
+		case 'solutions':
 		INCLUDE("Solutions.php");
 		break;
 		
-		case 'References':
+		case 'references':
 		INCLUDE("References.php");
 		break;
 		
-		case 'Contact':
+		case 'contact':
 		INCLUDE("Contact.php");
 		break;
 		
-		case 'Support':
+		case 'support':
 		INCLUDE("Support.php");
 		break;
 		
-		case 'Mentions':
+		case 'mentions':
 		INCLUDE("Mentions.php");
 		break;
 		
