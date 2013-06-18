@@ -22,7 +22,7 @@
 		break;
 		
 		case 'contact':
-		INCLUDE("Contact.php");
+		INCLUDE("invite\contact.php");
 		break;
 		
 		case 'support':
