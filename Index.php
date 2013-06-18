@@ -2,25 +2,25 @@
 <html>
 	<head>
 		<title>Accueil</title>
-		<link type="text/css" rel="stylesheet" href="MiseEnPage.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/MiseEnPage.css"/>
 	</head>
 	<body>
 	
 		<div class="Banniere">
 			<?php
-				INCLUDE("Include\Banniere.php");
+				INCLUDE("include\Banniere.php");
 			?>
 		</div>
 		
 		<div class="Corps">
 			<?php
-				INCLUDE("Include\Corps.php");
+				INCLUDE("include\Corps.php");
 			?>
 		</div>
 		
 		<div class="Pied">
 			<?php
-				INCLUDE("Include\Pied.php");
+				INCLUDE("include\Pied.php");
 			?>
 		</div>
 		
