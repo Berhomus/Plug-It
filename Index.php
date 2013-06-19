@@ -1,5 +1,9 @@
 <?php
 	session_start();
+	
+	include("function/disconnect_f.php");
+	
+	disconnect();
 ?>
 
 <!DOCTYPE html>
