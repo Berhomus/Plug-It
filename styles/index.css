@@ -101,6 +101,19 @@ Name : Index.css => Plug-it
 	text-decoration:none;
 	color:#8f8369;
 	}
+
+/*#######PARAMETRES#######*/
+
+.separtion
+	{
+	clear: both;
+	position: absolute;
+	margin-top :10px;
+	margin-left: 250px;
+	height: 200px;
+	width : 5px;
+	background: black;
+	}
 	
 .p 
 	{

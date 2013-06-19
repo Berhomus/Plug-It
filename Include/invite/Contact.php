@@ -1,8 +1,8 @@
-<div style="float:left; clear:left;">
+<div style="float:left; clear:left; width:60%;">
 
 	<h2 class="titre">Contactez-nous</h2>
-	
-	<table border="0" cellspacing="5" cellpadding="5">
+
+	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
 		<form method="post" action="traitement.php" name="monformulaire">
 			<p>
 				<tr>
@@ -15,36 +15,50 @@
 				</tr>
 				
 				<tr>
-					<td><label for="pseudo"><b>Nom </b></label></td>
+					<td><label for="nom"><b>Nom </b></label></td>
 					<td><input type="text" name="nom" id="nom" /></td>
 				</tr>
 				
 				<tr>
-					<td><label for="pseudo"><b>Prénom </b></label></td>
+					<td><label for="prenom"><b>Prénom </b></label></td>
 					<td><input type="text" name="prenom" id="prenom" /></td>
 				</tr>
 				
 				<tr>
-					<td><label for="pass"><b>Société </b></label></td>
+					<td><label for="societe"><b>Société </b></label></td>
 					<td><input type="text" name="societe" id="societe" /></td>
 				</tr>
 				
 				<tr>
-					<td><label for="pass"><b>Courriel </b></label></td>
+					<td><label for="courriel"><b>Courriel </b></label></td>
 					<td><input type="text" name="courriel" id="courriel" /></td>
 				</tr>
 				
 				<tr>	
-					<td><label for="pass"><b>Objet </b></label></td>
+					<td><label for="objet"><b>Objet </b></label></td>
 					<td><input type="text" name="objet" id="objet" /></td>
+				</tr>
+				
+				<tr>
+					<td><label for="message"><b>Message </b></label></td>
+					<td><textarea name="message" id="message">Votre message</textarea></td>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td style="text-align:right;"><input type="submit" name="envoyer" value="Envoyer" /></td>
 				</tr>
 		</form>			
 	</table>
-
-	</br><input type="submit" name="envoyer" value="Envoyer" />			
+	
+	
+				
 	</p>
+	<hr class="separation">
 </div>
-<div style="float:right; clear:right;">
+
+
+<div style="float:left; clear:right;">
 	<h2>Notre agence</h2>
 	<br/>
 	<p><b>
