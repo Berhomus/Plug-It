@@ -1,4 +1,4 @@
-<div>
+<div style="float:left; clear:left;">
 
 	<h2 class="titre">Contactez-nous</h2>
 	
@@ -44,7 +44,7 @@
 	</br><input type="submit" name="envoyer" value="Envoyer" />			
 	</p>
 </div>
-<div>
+<div style="float:right; clear:right;">
 	<h2>Notre agence</h2>
 	<br/>
 	<p><b>
