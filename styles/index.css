@@ -104,21 +104,17 @@ Name : Index.css => Plug-it
 
 /*#######PARAMETRES#######*/
 
-.separtion
+.separation
 	{
-	clear: both;
 	position: absolute;
-	margin-top :10px;
-	margin-left: 250px;
-	height: 200px;
-	width : 5px;
+	height: 100%;
+	width : 2px;
 	background: black;
 	}
 	
 .p 
 	{
 	text-align: right;
-	clear: both;
 	margin-left:3%;
 	}
 	

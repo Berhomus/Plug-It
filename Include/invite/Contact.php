@@ -1,10 +1,11 @@
-<div style="float:left; clear:left; width:60%;">
+<div style="overflow:hidden;">
 
-	<h2 class="titre">Contactez-nous</h2>
+<div style="width:60%;float:left;">
 
+<h2 class="titre">Contactez-nous</h2>
+
+<form method="post" action="#">
 	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
-		<form method="post" action="traitement.php" name="monformulaire">
-			<p>
 				<tr>
 					<td><b>Civilité</b></td>
 					<td><select name="liste">
@@ -47,18 +48,17 @@
 				<tr>
 					<td></td>
 					<td style="text-align:right;"><input type="submit" name="envoyer" value="Envoyer" /></td>
-				</tr>
-		</form>			
-	</table>
-	
-	
-				
-	</p>
-	<hr class="separation">
+				</tr>		
+		</table>
+	</form>	
+</div>
+
+<div style="float:left;">
+<hr class="separation" />
 </div>
 
 
-<div style="float:left; clear:right;">
+<div style="float:left; margin-left:2%;">
 	<h2>Notre agence</h2>
 	<br/>
 	<p><b>
@@ -67,7 +67,8 @@
 		36 bis, rue Saint-Fuscien
 		<br/>
 		80000 Amiens
-	</p></b>
+	
+	</b></p>
 	<br/>
 	<p>
 	Tél. : 03 22 22 10 90
@@ -76,4 +77,6 @@
 	<br/>
 	contact@plug-it.com
 	</p>
+</div>
+
 </div>
