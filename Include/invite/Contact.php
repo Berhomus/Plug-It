@@ -42,7 +42,7 @@
 				
 				<tr>
 					<td><label for="message"><b>Message </b></label></td>
-					<td><textarea name="message" id="message" rows="15" cols="60" style="resize:none" required></textarea></td>
+					<td><textarea name="message" id="message" rows="15" cols="40" style="resize:none" required></textarea></td>
 				</tr>
 				
 				<tr>

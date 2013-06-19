@@ -33,7 +33,7 @@ Name : Index.css => Plug-it
 	{
 	display:block;
 	float:left;   
-	width:100px;
+	width:70px;
 	background-color:#333333;
 	color:white;
 	text-decoration:none;
@@ -47,6 +47,43 @@ Name : Index.css => Plug-it
 	background-color:#D3D3D3;
 	border-color:#696969 #DCDCDC #DCDCDC #696969;
 	} 
+
+.menu td a
+{
+	display: block;
+	height:100%;
+	width:100%;
+	text-decoration:none;
+	color: #c0c0c0;
+	font-weight:bold; 
+	text-transform:uppercase;
+}
+
+.menu td:link
+{
+	text-decoration:none;
+	color: #c0c0c0;
+}
+
+.menu td:visited
+{
+	text-decoration:none;
+	color: #c0c0c0;
+}
+
+.menu td:hover
+{
+	background-color:#D3D3D3;
+	border-color:#696969 #DCDCDC #DCDCDC #696969;
+	color:white;
+}
+
+.menu td:active
+{
+	background-color:#D3D3D3;
+	border-color:#696969 #DCDCDC #DCDCDC #696969;
+	color:white;
+}
 
 /*#########CORPS#########*/
 	
