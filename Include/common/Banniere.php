@@ -1,3 +1,4 @@
+<img src="images/logotype_plug_it.png"/>
 <ul class="ul">
 	<li class="li"><a href="Index.php">ACCUEIL</a></li>
 	<li class="li"><a href="Index.php">SERVICES</a></li>
