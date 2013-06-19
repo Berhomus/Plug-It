@@ -181,10 +181,20 @@ Name : Index.css => Plug-it
 	border:0px solid;
 	text-decoration:none;
 	text-align:center;
-	background-color:#333333;
-	border-color:#333333 #555555 #555555 #333333;
+	background-color:#f9bd1a;
+	border-color:#f9bd1a;
 	}
 	
+.bouton:hover
+	{
+	display:block;
+	color:white;
+	border:0px solid;
+	text-decoration:none;
+	text-align:center;
+	background-color:#333333;
+	border-color:#333333;
+	}
 /*###########COMMON##########*/	
 
 h2,h3
