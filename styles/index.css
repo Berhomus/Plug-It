@@ -9,9 +9,7 @@ Name : Index.css => Plug-it
 .Banniere
 	{
 	height: 137px;
-    margin: -10px;
     position: relative;
-	float:none;
 	background-color:#333333;
 	min-width: 800px;
 	}
@@ -58,10 +56,8 @@ Name : Index.css => Plug-it
 	margin-top:5%;
 	margin-left:0%;
 	width:100%;
-	float:none;
 	min-height:400px;
 	background-color:#FEFEFE;
-	padding:15px;
 	min-width: 800px;
 	}
 	
@@ -83,7 +79,6 @@ Name : Index.css => Plug-it
 	{
 	padding-top:1%;
 	position:relative;
-	margin: -10px;
 	margin-top:5%;
 	background-color:#333333;
 	min-width: 800px;
@@ -138,4 +133,6 @@ h2,h3
 body
 	{
 	font-family: Arial,Helvetica,sans-serif;
+	padding:0;
+	margin: 0;
 	}

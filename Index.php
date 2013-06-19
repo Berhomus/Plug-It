@@ -7,13 +7,12 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
-		<title>Accueil</title>
+		<title>Plug-it</title>
 		<link type="text/css" rel="stylesheet" href="styles/index.css"/>
 	</head>
 	<body>
-	
 		<div class="Banniere">
 			<?php
 				INCLUDE("include\common\banniere.php");
@@ -31,6 +30,5 @@
 				INCLUDE("include\common\pied.php");
 			?>
 		</div>
-		
 	</body>
 </html>

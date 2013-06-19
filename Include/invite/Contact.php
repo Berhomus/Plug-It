@@ -57,6 +57,8 @@
 <hr class="separation" />
 </div>
 
+	
+	
 
 <div style="float:left; margin-left:2%;">
 	<h2>Notre agence</h2>
