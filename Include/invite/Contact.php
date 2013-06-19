@@ -1,4 +1,4 @@
-
+<div>
 
 	<h2 class="titre">Contactez-nous</h2>
 	
@@ -41,5 +41,25 @@
 		</form>			
 	</table>
 
-</br><input type="submit" name="envoyer" value="Envoyer" />			
-</p>
+	</br><input type="submit" name="envoyer" value="Envoyer" />			
+	</p>
+</div>
+<div>
+	<h2>Notre agence</h2>
+	<br/>
+	<p><b>
+		Plug-It
+		<br/>
+		36 bis, rue Saint-Fuscien
+		<br/>
+		80000 Amiens
+	</p></b>
+	<br/>
+	<p>
+	Tél. : 03 22 22 10 90
+	<br/>
+	Fax : 03 22 80 76 52
+	<br/>
+	contact@plug-it.com
+	</p>
+</div>
