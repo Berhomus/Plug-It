@@ -30,7 +30,7 @@
 	float:left;   
 	width:100px;
 	background-color:#333333;
-	color:white;git
+	color:white;
 	text-decoration:none;
 	text-align:center;
 	padding:10px;
@@ -45,14 +45,12 @@
 
 .Corps
 	{
-	position:absolute;
-	top:20%;
-	left:0%;
-	right:0%;
-	bottom:10%;
+	position:relative;
+	margin-top:20%;
+	margin-left:0%;
+	width:100%;
 	float:none;
 	background-color:#FEFEFE;
-	overflow:scroll;
 	padding:15px;
 	}
 	
@@ -70,13 +68,12 @@
 	
 .Pied
 	{
-	position:absolute;
-	top:90%;
-	left:0%;
-	right:0%;
-	float:left;
+	padding-top:15px;
+	position:relative;
+	margin-top:5%;
 	background-color:#333333;
 	min-width: 800px;
+	min-height: 60px; 
 	}
 	
 .Pied a, .Pied a:visited	
@@ -91,7 +88,7 @@
 	color:#8f8369;
 	}
 	
-	.p 
+.p 
 	{
 	text-align: right;
 	clear: both;
