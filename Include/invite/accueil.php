@@ -40,7 +40,7 @@
 		
 		<tr>
 			<td>
-				
+				<p class="bouton">Lire la suite</p>
 			</td>
 			
 			<td>

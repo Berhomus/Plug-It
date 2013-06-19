@@ -136,6 +136,17 @@ Name : Index.css => Plug-it
 	width: 10%;
 	text-align: justify;
 	}
+
+.bouton
+	{
+	display:block;
+	color:white;
+	border:0px solid;
+	text-decoration:none;
+	text-align:center;
+	background-color:#333333;
+	border-color:#333333 #555555 #555555 #333333;
+	}
 	
 /*###########COMMON##########*/	
 
