@@ -6,19 +6,19 @@
 	switch ($_GET['page'])
 	{
 		case 'accueil':
-		INCLUDE("Accueil.php");
+		INCLUDE("\include\invite\accueil.php");
 		break;
 		
 		case 'services':
-		INCLUDE("Services.php");
+		INCLUDE("services.php");
 		break;
 		
 		case 'solutions':
-		INCLUDE("Solutions.php");
+		INCLUDE("solutions.php");
 		break;
 		
 		case 'references':
-		INCLUDE("References.php");
+		INCLUDE("references.php");
 		break;
 		
 		case 'contact':
@@ -30,7 +30,7 @@
 		break;
 		
 		case 'mentions':
-		INCLUDE("Mentions.php");
+		INCLUDE("mentions.php");
 		break;
 		
 		case 'admin':
