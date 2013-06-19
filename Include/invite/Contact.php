@@ -8,7 +8,7 @@
 	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
 				<tr>
 					<td><b>Civilité</b></td>
-					<td><select name="liste">
+					<td><select name="liste" required>
 						<option value="M">M.</option>
 						<option value="Mme">Mme</option>
 						</select>
@@ -17,12 +17,12 @@
 				
 				<tr>
 					<td><label for="nom"><b>Nom </b></label></td>
-					<td><input type="text" name="nom" id="nom" /></td>
+					<td><input type="text" name="nom" id="nom" required/></td>
 				</tr>
 				
 				<tr>
 					<td><label for="prenom"><b>Prénom </b></label></td>
-					<td><input type="text" name="prenom" id="prenom" /></td>
+					<td><input type="text" name="prenom" id="prenom" required/></td>
 				</tr>
 				
 				<tr>
@@ -32,7 +32,7 @@
 				
 				<tr>
 					<td><label for="courriel"><b>Courriel </b></label></td>
-					<td><input type="text" name="courriel" id="courriel" /></td>
+					<td><input type="text" name="courriel" id="courriel" required/></td>
 				</tr>
 				
 				<tr>	
@@ -42,7 +42,7 @@
 				
 				<tr>
 					<td><label for="message"><b>Message </b></label></td>
-					<td><textarea name="message" id="message">Votre message</textarea></td>
+					<td><textarea name="message" id="message" rows="15" cols="60" style="resize:none" required></textarea></td>
 				</tr>
 				
 				<tr>
