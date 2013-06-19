@@ -156,6 +156,24 @@ Name : Index.css => Plug-it
 	color:#F9BD1A;
 	}
 
+.red
+	{
+	color:red;
+	}
+
+.table_accueil
+	{
+	margin:auto;
+	width:80%;
+	min-width: 800px;
+	}
+
+.table_accueil td
+	{
+	width: 10%;
+	text-align: justify;
+	}
+	
 /*###########COMMON##########*/	
 
 h2,h3
