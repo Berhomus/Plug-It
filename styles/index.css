@@ -102,3 +102,15 @@
 	{
 	float: left;
 	}
+	
+.titre
+	{
+	font-weight: normal;
+	font-size:21px;
+	line-height:21px;
+	text-transform:uppercase;
+	}
+body
+	{
+	font-family: Arial,Helvetica,sans-serif;
+	}

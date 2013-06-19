@@ -26,7 +26,7 @@
 		break;
 		
 		case 'support':
-		INCLUDE("Support.php");
+		INCLUDE("\include\invite\support.php");
 		break;
 		
 		case 'mentions':

@@ -1,6 +1,6 @@
 
 
-	<p>CONTACTEZ-NOUS</p>
+	<h2 class="titre">Contactez-nous</h2>
 	
 	<table border="0" cellspacing="5" cellpadding="5">
 		<form method="post" action="traitement.php" name="monformulaire">
