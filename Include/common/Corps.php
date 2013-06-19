@@ -22,7 +22,7 @@
 		break;
 		
 		case 'contact':
-		INCLUDE("invite\contact.php");
+		INCLUDE("\include\invite\contact.php");
 		break;
 		
 		case 'support':
@@ -31,6 +31,10 @@
 		
 		case 'mentions':
 		INCLUDE("Mentions.php");
+		break;
+		
+		case 'admin':
+		INCLUDE("\include\admin\admin.php");
 		break;
 		
 		default :
