@@ -39,8 +39,6 @@
 					<td><label for="objet"><b>Objet </b></label></td>
 					<td><input type="text" name="objet" id="objet" /></td>
 				</tr>
-				
-				<tr>
 					<td><label for="message"><b>Message <span class="red">*</span></b></label></td>
 					<td><textarea name="message" id="message" rows="15" cols="40" style="resize:none" required></textarea></td>
 				</tr>
