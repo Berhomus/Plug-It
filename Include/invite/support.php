@@ -1,5 +1,5 @@
 <center>
-	<h2>TELECHARGER L'OUTIL DE PRISE EN MAIN A DISTANCE TEAMVIEWER CI-DESSOUS</h2>
+	<h2 class="titre">Téléchargez l’outil de prise en main à distance TeamViewer ci-dessous </h2>
 	<br/>
 	<a href="#"><img src="#"/></a>
 	<br/>
