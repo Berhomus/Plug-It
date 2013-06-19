@@ -1,9 +1,9 @@
 <img src="images/logotype_plug_it.png"/>
-<ul class="ul">
-	<li class="li"><a href="Index.php">ACCUEIL</a></li>
-	<li class="li"><a href="Index.php">SERVICES</a></li>
-	<li class="li"><a href="Index.php">SOLUTIONS</a></li>
-	<li class="li"><a href="Index.php">REFERENCES</a></li>
-	<li class="li"><a href="Index.php?page=contact">CONTACT</a></li>
-	<li class="li"><a href="Index.php?page=support">SUPPORT</a></li>
+<ul class="ul" style="font-weight:bold; text-transform:uppercase;">
+	<li class="li"><a href="Index.php">Accueil</a></li>
+	<li class="li"><a href="Index.php">Services</a></li>
+	<li class="li"><a href="Index.php">Solutions</a></li>
+	<li class="li"><a href="Index.php">Références</a></li>
+	<li class="li"><a href="Index.php?page=contact">Contact</a></li>
+	<li class="li"><a href="Index.php?page=support">Support</a></li>
 </ul>

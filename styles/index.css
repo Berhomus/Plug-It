@@ -61,17 +61,6 @@ Name : Index.css => Plug-it
 	min-width: 800px;
 	}
 	
-.Corps a, .Corps a:visited	
-	{
-	text-decoration:none;
-	color:#585141;
-	}
-	
-.Corps a:active, .Corps a:hover	
-	{
-	text-decoration:none;
-	color:#8f8369;
-	}
 	
 /*######PIED######*/
 
@@ -117,7 +106,18 @@ Name : Index.css => Plug-it
 	{
 	float: left;
 	}
+	
+.mail
+	{
+	text-decoration:none;
+	color:#555555;
+	}
 
+.mail:hover
+	{
+	text-decoration:none;
+	color:#F9BD1A;
+	}
 
 /*###########COMMON##########*/	
 
@@ -132,6 +132,8 @@ h2,h3
 	
 body
 	{
+	color:#555555;
+	font-size:10pt;
 	font-family: Arial,Helvetica,sans-serif;
 	padding:0;
 	margin: 0;
