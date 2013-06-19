@@ -19,6 +19,7 @@ Name : Index.css => Plug-it
 	padding:0;
 	margin:0;
 	list-style-type:none;
+	float: right;
 	}
  
 .li
@@ -108,8 +109,9 @@ Name : Index.css => Plug-it
 	float: left;
 	}
 	
-.titre
+h2
 	{
+	text-align: center;
 	font-weight: normal;
 	font-size:21px;
 	line-height:21px;
