@@ -7,8 +7,8 @@
 <form method="post" action="#">
 	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
 				<tr>
-					<td><b>Civilité</b></td>
-					<td><select name="liste" required>
+					<td><b>Civilité <span class="red">*</span></b></td>
+					<td><select name="liste">
 						<option value="M">M.</option>
 						<option value="Mme">Mme</option>
 						</select>
@@ -16,12 +16,12 @@
 				</tr>
 				
 				<tr>
-					<td><label for="nom"><b>Nom </b></label></td>
+					<td><label for="nom"><b>Nom <span class="red">*</span></b></label></td>
 					<td><input type="text" name="nom" id="nom" required/></td>
 				</tr>
 				
 				<tr>
-					<td><label for="prenom"><b>Prénom </b></label></td>
+					<td><label for="prenom"><b>Prénom <span class="red">*</span></b></label></td>
 					<td><input type="text" name="prenom" id="prenom" required/></td>
 				</tr>
 				
@@ -31,7 +31,7 @@
 				</tr>
 				
 				<tr>
-					<td><label for="courriel"><b>Courriel </b></label></td>
+					<td><label for="courriel"><b>Courriel <span class="red">*</span></b></label></td>
 					<td><input type="text" name="courriel" id="courriel" required/></td>
 				</tr>
 				
@@ -41,8 +41,8 @@
 				</tr>
 				
 				<tr>
-					<td><label for="message"><b>Message </b></label></td>
-					<td><textarea name="message" id="message" rows="15" cols="60" style="resize:none" required></textarea></td>
+					<td><label for="message"><b>Message <span class="red">*</span></b></label></td>
+					<td><textarea name="message" id="message" rows="15" cols="40" style="resize:none" required></textarea></td>
 				</tr>
 				
 				<tr>
