@@ -75,7 +75,7 @@
 	<br/>
 	Fax : 03 22 80 76 52
 	<br/>
-	contact@plug-it.com
+	<a class="mail" href="mailto:contact@plug-it.com">contact@plug-it.com</a>
 	</p>
 </div>
 
