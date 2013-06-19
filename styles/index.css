@@ -1,10 +1,14 @@
+/**********************************************************
+Made by : AS Amiens - Bovin Antoine/Bensaid Bohrane/Villain Benoit
+Last Update : 19/06/2013
+Name : Index.css => Plug-it
+**********************************************************/
+
 .Banniere
 	{
-	position:absolute;
-	bottom:80%;
-	right:0%;
-	left:0%;
-	top:0%;
+	height: 137px;
+    margin: -10px;
+    position: relative;
 	float:none;
 	background-color:#333333;
 	min-width: 800px;
@@ -46,12 +50,13 @@
 .Corps
 	{
 	position:relative;
-	margin-top:20%;
+	margin-top:5%;
 	margin-left:0%;
 	width:100%;
 	float:none;
 	background-color:#FEFEFE;
 	padding:15px;
+	min-width: 800px;
 	}
 	
 .Corps a, .Corps a:visited	
@@ -66,10 +71,13 @@
 	color:#8f8369;
 	}
 	
+/*######PIED######*/
+
 .Pied
 	{
-	padding-top:15px;
+	padding-top:1%;
 	position:relative;
+	margin: -10px;
 	margin-top:5%;
 	background-color:#333333;
 	min-width: 800px;
