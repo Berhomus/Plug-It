@@ -39,7 +39,7 @@
 			</td>
 		</tr>
 		
-		<tr rowspan="2">
+		<tr>
 			<td>
 				<p class="bouton">Lire la suite</p>
 			</td>
