@@ -12,5 +12,5 @@
 	
 	<br/>
 	
-	<img src="images/slide_01.jpg"/ style="border-color:#F9BD1A; margin-top:15px;" border="8" width='600px' height='250px' />
+	<img src="images/slide_01.jpg" style="border-color:#F9BD1A; margin-top:15px;" border="8" width='600px' height='250px' />
 </center>

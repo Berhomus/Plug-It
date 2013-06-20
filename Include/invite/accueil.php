@@ -40,11 +40,11 @@
 		</tr>
 		
 		<tr>
-			<td>
+			<td onclick="location.href='index.php?page=lecoute-le-conseil'" style="cursor:pointer;">
 				<p class="bouton">Lire la suite</p>
 			</td>
 				
-			<td>
+			<td onclick="location.href='index.php?page=les-solutions-dediees'" style="cursor:pointer;">
 				<p class="bouton">Lire la suite</p>
 			</td>
 			

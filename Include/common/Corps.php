@@ -37,6 +37,14 @@
 		INCLUDE("\include\admin\admin.php");
 		break;
 		
+		case 'lecoute-le-conseil':
+		INCLUDE("\include\invite\lecoute-le-conseil.php");
+		break;
+		
+		case 'les-solutions-dediees':
+		INCLUDE("\include\invite\les-solutions-dediees.php");
+		break;
+		
 		default :
 		echo 'Page Inexistante';
 		break;
