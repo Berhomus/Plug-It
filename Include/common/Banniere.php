@@ -10,21 +10,21 @@
 				else
 					echo 'class="menu_unselected"';
 			?> >Accueil</td>
-			<td onclick="location.href='Index.php?page=services'"
+			<td onclick="location.href='Index.php?page=services&mode=view'"
 			<?php
 				if(isset($_GET['page']) && $_GET['page'] == 'services')
 					echo 'class="menu_selected"';
 				else
 					echo 'class="menu_unselected"';
 			?>>Services</td>
-			<td onclick="location.href='Index.php?page=solutions'"
+			<td onclick="location.href='Index.php?page=solutions&mode=view'"
 			<?php
 				if(isset($_GET['page']) && $_GET['page'] == 'solutions')
 					echo 'class="menu_selected"';
 				else
 					echo 'class="menu_unselected"';
 			?>>Solutions</td>
-			<td onclick="location.href='Index.php?page=references'"
+			<td onclick="location.href='Index.php?page=references&mode=view'"
 			<?php
 				if(isset($_GET['page']) && $_GET['page'] == 'references')
 					echo 'class="menu_selected"';

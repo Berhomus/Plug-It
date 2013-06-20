@@ -194,6 +194,23 @@ Name : Index.css => Plug-it
 	border : 1px solid #888;
 	}
 
+/*##########SERVICES#########*/
+.blocksolution
+{
+	width:300px;
+	height: 250px;
+	background-color:#e0e0e0;
+	cursor: pointer;
+	border-radius:20px;
+}
+
+.blocksolution:hover
+{
+	width:300px;
+	height: 250px;
+	background-color:#f9bd1a;
+}
+	
 /*###########COMMON##########*/	
 
 h2,h3
