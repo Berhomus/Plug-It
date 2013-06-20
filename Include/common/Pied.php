@@ -1,4 +1,4 @@
-<p class="p"><span class="span">Plug-It &copy; 2012</span>
+<p class="p"><span class="span">Plug-It &copy; 2013</span>
 
 <?php
 	if(isset($_SESSION['id']))
