@@ -3,7 +3,7 @@
 	<a href="index.php?page=accueil"><img src="images/logotype_plug_it.png" style="float:left;margin-top:2%;margin-left:2%;"/></a>
 	<table style="float:right;margin-left:5%;margin:-1%;" height="137px" class="menu" cellspacing="0">
 		<tr>
-			<td onclick="location.href='Index.php?page=accueil'"
+			<td onclick="location.href='Index.php?page=accueil&sub=main'"
 			<?php
 				if(isset($_GET['page']) && $_GET['page'] == 'accueil')
 					echo 'class="menu_selected"';
