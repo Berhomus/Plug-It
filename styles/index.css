@@ -78,12 +78,12 @@ Name : Index.css => Plug-it
 
 .Pied
 	{
-	padding-top:1%;
+	padding-top:0.1%;
 	position:relative;
-	margin-top:5%;
+	margin-top:8%;
 	background-color:#333333;
 	min-width: 900px;
-	min-height: 60px; 
+	min-height: 40px; 
 	}
 	
 .Pied a, .Pied a:visited	
