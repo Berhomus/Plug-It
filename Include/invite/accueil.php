@@ -130,7 +130,7 @@
 		break;
 		
 		default:
-			echo '<h1>404 Page Introuvable</h1>'
+			echo '<h1>404 Page Introuvable</h1>';
 		break;
 	}
 ?>

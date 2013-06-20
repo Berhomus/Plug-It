@@ -1,9 +1,25 @@
 <?php
+
 	$error_contact = 0;
 	if(isset($_POST) && !empty($_POST))
 	{
 		if(preg_match("`[a-zA-Z1-9.-_]*@[a-zA-Z]*.[a-zA-Z]*`",$_POST['courriel']))
 		{
+			$message = "";
+			$societe = (isset($_POST['societe'])) ? $_POST['societe']:"";
+			$objet = (isset($_POST['objet'])) ? $_POST['objet']:"";
+			
+			$message = $_POST['liste'] ." ". $_POST['nom'] ." ". $_POST['prenom'] ."\n".$societe."-".$_POST['courriel']."\n".$_POST['message'];
+		
+			 /*if(mail('you@yourdomain.fr', $objet,$message))
+			 {
+				 $error_contact = 2;
+			 }
+			 else
+			 {
+				  $error_contact = 3;
+			 } */
+			
 			$error_contact = 2;
 		}
 		else
@@ -69,6 +85,9 @@
 								break;
 								case 2:
 									echo '<h2 style="color:green;">Message Envoyé !</h2>';
+								break;
+								case 3:
+									echo '<h2 style="color:red;">Message Non-Envoyé !</h2>';
 								break;
 							}	
 						}
