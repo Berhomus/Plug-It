@@ -39,13 +39,13 @@
 			</td>
 		</tr>
 		
-		<tr>
+		<tr rowspan="2">
 			<td>
 				<p class="bouton">Lire la suite</p>
 			</td>
-			
-			<td>
 				
+			<td>
+				<p class="bouton">Lire la suite</p>
 			</td>
 			
 			<td>
