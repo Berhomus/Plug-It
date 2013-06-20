@@ -125,7 +125,60 @@
 		
 		case 'mentions':
 ?>
-
+			<div style="text-align:justify; margin-left:auto; margin-right:auto; width:80%;"> 
+				<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
+				Propriétaire du site Internet
+				</h4>
+				<p>
+					<b>Plug-It</b> - 36 bis, rue Saint-Fuscien - 80000 AMIENS <br/>
+					Tél. : 03 22 22 10 90 <br/>
+					Fax : 03 22 80 76 52 <br/>
+					Courriel : <a class="mail" href="mailto:contact@plug-it.com">contact@plug-it.com</a> <br/>
+					SARL au capital de 201 000 € <br/>
+					SIRET : 421 617 366 00032 <br/>
+					TVA FR46421617366 <br/>
+					NAF : 2620Z <br/>
+				</p>
+				
+				<br/>
+				
+				<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
+				Directeur de la publication
+				</h4>
+				<p>
+					<b>Thierry Bochard</b> - Directeur
+				</p>
+				
+				<br/>
+				
+				<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
+				Conception du site Internet
+				</h4>
+				<p>
+					<b>AS Informatique</b> - Antoine Bovin, Benoit Villain, Borhane Bensaid <br/>
+					IUT Amiens
+				</p>
+				
+				<br/>
+				
+				<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
+				Hébergeur du site Internet
+				</h4>
+				<p>
+					<b>OVH</b> - 2, rue Kellermann - 59100 ROUBAIX
+				</p>
+				
+				<br/>
+				
+				<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
+				Important
+				</h4>
+				<p>
+					Toutes les informations présentes sur le site (textes, photographies, etc.) sont la propriété exclusive de Plug-It. 
+					Toute reproduction, même partielle, doit faire l'objet <br/>
+					d'une demande spécifique auprès de Plug-It.
+				</p>
+			</div>
 <?php
 		break;
 		

@@ -11,15 +11,15 @@
 		break;
 		
 		case 'services':
-		INCLUDE("services.php");
+		INCLUDE("\include\invite\services.php");
 		break;
 		
 		case 'solutions':
-		INCLUDE("solutions.php");
+		INCLUDE("\include\invite\solutions.php");
 		break;
 		
 		case 'references':
-		INCLUDE("references.php");
+		INCLUDE("\include\invite\references.php");
 		break;
 		
 		case 'contact':
@@ -29,21 +29,9 @@
 		case 'support':
 		INCLUDE("\include\invite\support.php");
 		break;
-		
-		case 'mentions':
-		INCLUDE("mentions.php");
-		break;
-		
+
 		case 'admin':
 		INCLUDE("\include\admin\admin.php");
-		break;
-		
-		case 'lecoute-le-conseil':
-		INCLUDE("\include\invite\lecoute-le-conseil.php");
-		break;
-		
-		case 'les-solutions-dediees':
-		INCLUDE("\include\invite\les-solutions-dediees.php");
 		break;
 		
 		default :

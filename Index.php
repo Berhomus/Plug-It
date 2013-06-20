@@ -9,6 +9,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
+		<link rel="icon" type="image/png" href="./images/favicon.png">
+		<link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico">
+	
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 		<title>Plug-it</title>
 		<link type="text/css" rel="stylesheet" href="styles/index.css"/>
