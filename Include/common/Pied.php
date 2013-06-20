@@ -7,4 +7,4 @@
 		echo '<a href="index.php?page=admin" style="margin-right:3%;">Administration</a>';
 ?>
 
-<a href="index.php?page=mentions" style="margin-right:3%;">MENTIONS LEGALES</a></p>
+<a href="index.php?page=accueil&sub=mentions" style="margin-right:3%;">MENTIONS LEGALES</a></p>
