@@ -2,9 +2,9 @@
 	$error_contact = 0;
 	if(isset($_POST) && !empty($_POST))
 	{
-		if(preg_match('[a-zA-Z1-9.-_]*@[a-zA-Z]*.[a-zA-Z]*',$_POST['courriel']))
+		if(preg_match("`[a-zA-Z1-9.-_]*@[a-zA-Z]*.[a-zA-Z]*`",$_POST['courriel']))
 		{
-		
+			$error_contact = 2;
 		}
 		else
 			$error_contact = 1;
@@ -62,7 +62,15 @@
 					<?php
 						if($error_contact != 0)
 						{
-							echo '<h2>Email invalide</h2>';
+							switch($error_contact)
+							{
+								case 1:
+									echo '<h2 style="color:red;">Email invalide !</h2>';
+								break;
+								case 2:
+									echo '<h2 style="color:green;">Message Envoyé !</h2>';
+								break;
+							}	
 						}
 					?>
 					</td>

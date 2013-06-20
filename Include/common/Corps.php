@@ -1,8 +1,9 @@
 <?php
 	if(!isset($_GET['page']))
 	{
-		$_GET['page'] = 'Accueil';
+		$_GET['page'] = 'accueil';
 	}
+	
 	switch ($_GET['page'])
 	{
 		case 'accueil':
