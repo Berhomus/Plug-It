@@ -19,7 +19,7 @@
 		break;
 		
 		case 'references':
-		INCLUDE("\include\invite\references.php");
+		INCLUDE("include/invite/references.php");
 		break;
 		
 		case 'contact':
