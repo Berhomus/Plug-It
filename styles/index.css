@@ -89,7 +89,17 @@ Name : Index.css => Plug-it
 .boutbout
 	{
 	cursor: pointer;
+	width:150px;
+	text-align:center;
 	}
+
+.boutbout:hover
+	{
+	background-color:#f9bd1a;
+	border-color:#696969 #DCDCDC #DCDCDC #696969;
+	color:white;
+	}
+	
 	
 .Pied a, .Pied a:visited	
 	{
