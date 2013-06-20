@@ -52,7 +52,7 @@ Name : Index.css => Plug-it
 	border-color:#696969 #DCDCDC #DCDCDC #696969;
 	color:white;
 }
-
+	/**je laisse ?**/
 .menu td:active
 {
 	background-color:#D3D3D3;

@@ -1,3 +1,16 @@
+<?php
+	$error_contact = 0;
+	if(isset($_POST) && !empty($_POST))
+	{
+		if(preg_match('[a-zA-Z1-9.-_]*@[a-zA-Z]*.[a-zA-Z]*',$_POST['courriel']))
+		{
+		
+		}
+		else
+			$error_contact = 1;
+	}
+?>
+
 <div style="overflow:hidden;">
 
 <div style="width:60%;float:left;">
@@ -8,7 +21,8 @@
 	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
 				<tr>
 					<td><b>Civilité <span class="red">*</span></b></td>
-					<td><select name="liste">
+					<td><select name="liste" required>
+						<option></option>
 						<option value="M">M.</option>
 						<option value="Mme">Mme</option>
 						</select>
@@ -44,7 +58,14 @@
 				</tr>
 				
 				<tr>
-					<td></td>
+					<td>
+					<?php
+						if($error_contact != 0)
+						{
+							echo '<h2>Email invalide</h2>';
+						}
+					?>
+					</td>
 					<td style="text-align:right;"><input type="submit" name="envoyer" value="Envoyer" /></td>
 				</tr>		
 		</table>
