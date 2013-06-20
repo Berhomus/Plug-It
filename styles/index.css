@@ -23,9 +23,15 @@ Name : Index.css => Plug-it
 	
 .menu td
 {
-	color: #c0c0c0;
 	font-weight:bold; 
 	text-transform:uppercase;
+}
+
+.menu_selected 
+{
+	background-color:#565656;
+	border-color:#696969 #DCDCDC #DCDCDC #696969;
+	color:white;
 }
 
 .menu td:link
@@ -40,9 +46,9 @@ Name : Index.css => Plug-it
 	color: #c0c0c0;
 }
 
-.menu td:hover
+.menu_unselected:hover
 {
-	background-color:#D3D3D3;
+	background-color:#3e3e3e;
 	border-color:#696969 #DCDCDC #DCDCDC #696969;
 	color:white;
 }
