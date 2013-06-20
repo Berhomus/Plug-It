@@ -74,6 +74,32 @@
 	<br/>
 	<a class="mail" href="mailto:contact@plug-it.com">contact@plug-it.com</a>
 	</p>
+	<br/>
+	
+	<!--Carte google API-->
+	
+		<html lang="fr">
+		<head>
+			<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+			
+			<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+			<script type="text/javascript">
+			function initCarte(){
+			// création de la carte
+			var oMap = new google.maps.Map( document.getElementById( 'div_carte'),{
+			'center' : new google.maps.LatLng( 46.80, 1.70),
+			'zoom' : 6,
+			'mapTypeId' : google.maps.MapTypeId.ROADMAP
+			});
+			}
+			// init lorsque la page est chargée
+			google.maps.event.addDomListener( window, 'load', initCarte);
+			</script>
+		</head>
+		<body>
+			<div id="div_carte"></div>
+		</body>
+		</html>
 </div>
 
 </div>

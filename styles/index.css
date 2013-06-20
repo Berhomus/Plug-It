@@ -195,6 +195,14 @@ Name : Index.css => Plug-it
 	background-color:#333333;
 	border-color:#333333;
 	}
+	
+	#div_carte {
+height : 250px;
+width : 250px;
+margin : auto;
+border : 1px solid #888;
+}
+
 /*###########COMMON##########*/	
 
 h2,h3
