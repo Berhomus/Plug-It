@@ -155,7 +155,7 @@
 				Conception du site Internet
 				</h4>
 				<p>
-					<b>AS Informatique</b> - Antoine Bovin, Benoit Villain, Borhane Bensaid <br/>
+					<b>AS Informatique</b> - Antoine Bovin, Benoît Villain, Borhane Bensaid <br/>
 					IUT Amiens
 				</p>
 				

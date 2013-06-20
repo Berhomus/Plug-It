@@ -86,6 +86,11 @@ Name : Index.css => Plug-it
 	min-height: 40px; 
 	}
 	
+.boutbout
+	{
+	cursor: pointer;
+	}
+	
 .Pied a, .Pied a:visited	
 	{
 	text-decoration:none;
