@@ -123,7 +123,14 @@
 <?php
 		break;
 		
+		case 'mentions':
+?>
+
+<?php
+		break;
+		
 		default:
+			echo '<h1>404 Page Introuvable</h1>'
 		break;
 	}
 ?>
