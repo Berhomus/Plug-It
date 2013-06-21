@@ -5,8 +5,8 @@
 	}
 
 	
-	mysql_connect('localhost', 'root', '');
-	mysql_select_db ('plugit');
+	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
 	
 	switch($_GET['mode'])
 	{
@@ -15,7 +15,7 @@
 			echo'<div style="margin:auto;width:70%;">
 				<h2>DÉCOUVREZ L\'ENSEMBLE DE NOS SERVICES INFORMATIQUES LES PLUS POINTUS</h2>';
 					
-					$retour = mysql_query('SELECT * FROM services ORDER BY id DESC') or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+					$retour = mysql_query('SELECT * FROM services ORDER BY date DESC') or die('Erreur SQL !<br />'.mysql_error());
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					
@@ -27,9 +27,9 @@
 								echo '<tr>';
 							
 							echo '<td>
-							<div class="blocksolution" onclick="location.href=\'Index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">
+							<div class="blockservice" onclick="location.href=\'Index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">
 								<img src="'.$donnees['image'].'" style="margin-left:5%;width:90%;"/><br/>
-								<h3 style="text-align:center;font-size:18px;">'.$donnees['titre'].'</h3>
+								<h3 style="font-size:18px;">'.$donnees['titre'].'</h3>
 							</div></td>';
 							
 							$i++;
@@ -45,7 +45,67 @@
 		break;
 			
 		case 'viewone':
-			
+			if(isset($_GET['id']))//verif existance id
+			{
+				$retour = mysql_query("SELECT count(id) as cpt FROM services WHERE id='".$_GET["id"]."'")or die('Erreur SQL !<br />'.mysql_error());
+				$donnees = mysql_fetch_array($retour);
+				
+				if($donnees['cpt'] == 1)
+				{
+					//affichage 
+					$retour = mysql_query("SELECT * FROM services WHERE id='".$_GET['id']."'") or die('Erreur SQL !<br />'.mysql_error());
+					$donnees = mysql_fetch_array($retour);
+					
+					echo '<div style="margin:auto;width:70%;">
+						<table>
+							<tr>
+								<td><img src="'.$donnees['image'].'" style="width:60%;"/></td>
+								<td><h2>'.$donnees['titre'].'</h2></td>
+							</tr>
+						</table>
+						<hr/>
+						'.$donnees['corps'].'
+						</div>';
+						
+					
+					//affichage autre liens					
+					$retour = mysql_query("SELECT * FROM services WHERE id<>'".$_GET['id']."' ORDER BY date DESC LIMIT 10")or die('Erreur SQL !<br />'.mysql_error());
+					
+					$i=1; //délimite les colonnes
+					$j=1; //délimite les lignes
+					
+					echo'<div style="margin:auto;width:70%;">
+					<table cellspacing="20">';
+					while ($donnees = mysql_fetch_array($retour))
+						{
+						
+							if($i == 0)
+								echo '<tr>';
+							
+							echo '<td>
+							<div class="blocklink" onclick="location.href=\'Index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">
+								<p style="text-align:center;position:relative;top:30%;">
+									<img src="images/fleche.png" style="vertical-align:middle;"/> <span style="font-size:13px;font-weight:bold;margin-left:5px;text-transform:uppercase;">'.$donnees['subtitre'].'</span>
+								</p>
+							</div></td>';
+							
+							$i++;
+							if($i > 4)
+							{
+								$i=0;
+								$j++;
+								echo '</tr>';
+							}
+						}
+					echo '</table>
+				</div>';
+					
+				}
+				else
+					echo '<p>Erreur</p>';
+			}
+			else
+				echo '<p>Erreur</p>';
 		break;
 			
 		default:
