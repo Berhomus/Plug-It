@@ -247,6 +247,12 @@ Name : Index.css => Plug-it
 	background-color:#f9bd1a;
 	color: white;
 }
+
+.titre
+	{
+	font-size:115%;
+	font-weight:bold;
+	}
 	
 	
 /*###########COMMON##########*/	
