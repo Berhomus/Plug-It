@@ -27,9 +27,20 @@
 								echo '<tr>';
 							
 							echo '<td>
-							<div class="blockservice" onclick="location.href=\'Index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">
+							<div class="blockservice" onclick="location.href=\'Index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">';
+							
+							if(isset($_SESSION['id']))
+							{
+								echo'
+								<span style="margin-left:10%;"><a href="index?page=admin_service&mode=modifier&id='.$donnees['id'].'">Modifier</a> - 
+								<a href="index?page=admin_service&mode=delete&id='.$donnees['id'].'">Supprimer</a></span>';
+							}
+								
+								
+							echo'	
 								<img src="'.$donnees['image'].'" style="margin-left:5%;width:90%;"/><br/>
 								<h3 style="font-size:18px;">'.$donnees['titre'].'</h3>
+								
 							</div></td>';
 							
 							$i++;

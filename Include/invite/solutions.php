@@ -27,7 +27,16 @@
 								echo '<tr>';
 							
 							echo '<td>
-							<div class="blocksolution" onclick="location.href=\'Index.php?page=solutions&mode=viewone&id='.$donnees['id'].'\'">
+							<div class="blocksolution" onclick="location.href=\'Index.php?page=solutions&mode=viewone&id='.$donnees['id'].'\'">';
+							
+							if(isset($_SESSION['id']))
+							{
+								echo'
+								<span style="margin-left:10%;"><a href="index?page=admin_solution&mode=modifier&id='.$donnees['id'].'">Modifier</a> - 
+								<a href="index?page=admin_solution&mode=delete&id='.$donnees['id'].'">Supprimer</a></span>';
+							}
+							
+							echo'
 								<img src="'.$donnees['image_sol'].'" style="margin-left:5%;width:90%;"/><br/>
 								<h3 style="text-align:center;font-size:18px;">'.$donnees['titre'].'</h3>
 								'.$donnees['description'].'
@@ -58,7 +67,7 @@
 					$donnees = mysql_fetch_array($retour);
 					
 					echo '<div style="margin:auto;width:70%;">
-							<img src="'.$donnees['image_sol'].'" />
+							<img src="'.$donnees['image_sol'].'" style="float:right;"/>
 							'.$donnees['corps'].'
 						</div>';
 						
