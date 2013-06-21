@@ -51,12 +51,11 @@
 							mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
 							
 							$retour = mysql_query('SELECT * FROM services ORDER BY date DESC') or die('Erreur SQL !<br />'.mysql_error());
-							echo '<table>';
+							echo '<table style="margin-left:auto; margin-right:auto; width:50%;">';
 							while ($donnees = mysql_fetch_array($retour))
 							{
 								echo'<tr>
-									<td><img src="images/fleche.png" /></td>		
-									<td><a href="index.php?page=services&mode=viewone&id='.$donnees['id'].'">'.$donnees['subtitre'].'</a></td>
+									<td><img style="margin-right:10px;" src="images/fleche.png" /><a class="mail" href="index.php?page=services&mode=viewone&id='.$donnees['id'].'">'.$donnees['subtitre'].'</a></td>
 								</tr>';
 							}
 							echo '</table>';
