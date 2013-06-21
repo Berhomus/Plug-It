@@ -14,28 +14,28 @@
 			echo'<div style="margin:auto;width:70%;">
 				<h2>Ils nous font confiance</h2>';
 					
-					$retour = mysql_query("SELECT * FROM references") or die('Erreur SQL !<br />'.mysql_error());
+					$retour = mysql_query("SELECT * FROM ref") or die('Erreur SQL !<br />'.mysql_error());
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					
-					echo '<table cellspacing="20">';
+					echo '<table cellspacing="20" callpadding="0">';
 					while ($donnees = mysql_fetch_array($retour))
 						{
 						
-							if($i == 0)
+							if($i == 1)
 								echo '<tr>';
 							
 							echo '<td>
 							<div class="blockref">
-								<a href="'.$donnees['lien'].'" ><img src="'.$donnees['image'].'" style="margin-left:5%;width:90%;border:2px solid #f9bd1a;"/></a><br/>
-								<h3 style="text-align:center;font-size:18px;">'.$donnees['titre'].'</h3>
+								<a href="'.$donnees['lien'].'" ><img src="'.$donnees['image'].'" style="width:100%;"/></a><br/>
+								<h4>'.$donnees['titre'].'</h4>
 								'.$donnees['sous_titre'].'
 							</div></td>';
 							
 							$i++;
 							if($i > 4)
 							{
-								$i=0;
+								$i=1;
 								$j++;
 								echo '</tr>';
 							}

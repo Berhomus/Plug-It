@@ -23,7 +23,7 @@
 					while ($donnees = mysql_fetch_array($retour))
 						{
 						
-							if($i == 0)
+							if($i == 1)
 								echo '<tr>';
 							
 							echo '<td>
@@ -35,7 +35,7 @@
 							$i++;
 							if($i > 3)
 							{
-								$i=0;
+								$i=1;
 								$j++;
 								echo '</tr>';
 							}
@@ -74,12 +74,12 @@
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					
-					echo'<div style="margin:auto;width:70%;">
-					<table cellspacing="20">';
+					echo'<div style="margin:auto;width:65%;">
+					<table cellspacing="10">';
 					while ($donnees = mysql_fetch_array($retour))
 						{
 						
-							if($i == 0)
+							if($i == 1)
 								echo '<tr>';
 							
 							echo '<td>
@@ -92,7 +92,7 @@
 							$i++;
 							if($i > 4)
 							{
-								$i=0;
+								$i=1;
 								$j++;
 								echo '</tr>';
 							}

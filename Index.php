@@ -41,7 +41,7 @@
 			}
 			// init lorsque la page est chargée
 			google.maps.event.addDomListener( window, 'load', initCarte);
-			</script>
+		</script>
 	</head>
 	<body>
 		<div class="Banniere">

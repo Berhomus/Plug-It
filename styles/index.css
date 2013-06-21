@@ -229,10 +229,8 @@ Name : Index.css => Plug-it
 /*##########REFERENCE#########*/
 .blockref
 {
-	width:300px;
+	width:200px;
 	height: 250px;
-	background-color:#e0e0e0;
-	cursor: pointer;
 }
 
 .blocklink

@@ -23,7 +23,7 @@
 					while ($donnees = mysql_fetch_array($retour))
 						{
 						
-							if($i == 0)
+							if($i == 1)
 								echo '<tr>';
 							
 							echo '<td>
@@ -36,7 +36,7 @@
 							$i++;
 							if($i > 3)
 							{
-								$i=0;
+								$i=1;
 								$j++;
 								echo '</tr>';
 							}
@@ -58,7 +58,7 @@
 					$donnees = mysql_fetch_array($retour);
 					
 					echo '<div style="margin:auto;width:70%;">
-							<img src="'.$donnees['image_sol'].'" style="border:5px solid #f9bd1a"/>
+							<img src="'.$donnees['image_sol'].'" />
 							'.$donnees['corps'].'
 						</div>';
 						
@@ -69,25 +69,25 @@
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					
-					echo'<div style="margin:auto;width:70%;">
-					<table cellspacing="20">';
+					echo'<div style="margin:auto;width:65%;">
+					<table cellspacing="10">';
 					while ($donnees = mysql_fetch_array($retour))
 						{
 						
-							if($i == 0)
+							if($i == 1)
 								echo '<tr>';
 							
 							echo '<td>
-							<div class="blocklink" onclick="location.href=\'Index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">
+							<div class="blocklink" onclick="location.href=\'Index.php?page=solutions&mode=viewone&id='.$donnees['id'].'\'">
 								<p style="text-align:center;position:relative;top:30%;">
-									<img src="images/fleche.png" style="vertical-align:middle;"/> <span style="font-size:13px;font-weight:bold;margin-left:5px;text-transform:uppercase;">'.$donnees['subtitre'].'</span>
+									<img src="images/fleche.png" style="vertical-align:middle;"/> <span style="font-size:13px;font-weight:bold;margin-left:5px;text-transform:uppercase;">'.$donnees['titre'].'</span>
 								</p>
 							</div></td>';
 							
 							$i++;
 							if($i > 4)
 							{
-								$i=0;
+								$i=1;
 								$j++;
 								echo '</tr>';
 							}
