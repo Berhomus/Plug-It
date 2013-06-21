@@ -34,6 +34,33 @@
 		INCLUDE("\include\admin\admin.php");
 		break;
 		
+		case 'admin_solutions':
+		if(isset($_SESSION['id']))
+		{
+			INCLUDE("\include\admin\admin_solutions.php");
+		}
+		else
+			echo 'erreur';
+		break;
+		
+		case 'admin_services':
+		if(isset($_SESSION['id']))
+		{
+			INCLUDE("\include\admin\admin_services.php");
+		}
+		else
+			echo 'erreur';
+		break;
+		
+		case 'admin_ref':
+		if(isset($_SESSION['id']))
+		{
+			INCLUDE("\include\admin\admin_ref.php");
+		}
+		else
+			echo 'erreur';
+		break;
+		
 		default :
 		echo 'Page Inexistante';
 		break;

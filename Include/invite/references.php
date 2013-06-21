@@ -31,8 +31,8 @@
 							if(isset($_SESSION['id']))
 							{
 								echo'
-								<span style="margin-left:10%;"><a href="index?page=admin_ref&mode=modifier&id='.$donnees['id'].'">Modifier</a> - 
-								<a href="index?page=admin_ref&mode=delete&id='.$donnees['id'].'">Supprimer</a></span>';
+								<span style="margin-left:10%;"><a href="index.php?page=admin_ref&mode=modifier&id='.$donnees['id'].'">Modifier</a> - 
+								<a href="index.php?page=admin_ref&mode=delete&id='.$donnees['id'].'">Supprimer</a></span>';
 							}
 							
 							echo'	
