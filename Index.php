@@ -11,8 +11,9 @@
 	<head>
 		<link rel="icon" type="image/png" href="./images/favicon.png">
 		<link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico">
-	
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
 		<title>Plug-it</title>
 		<link type="text/css" rel="stylesheet" href="styles/index.css"/>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>

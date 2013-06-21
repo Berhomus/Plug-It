@@ -5,6 +5,7 @@ include("function/connect_f.php");
 $error_co = connect();
 
 ?>
+	
 
 <h2>Administration</h2>
 
@@ -52,7 +53,11 @@ if(!isset($_SESSION['id']))
 else
 {
 ?>
-	<h3 style="color:green;">Vous êtes Connecté !</h2>
+	<ul style="width:20%;margin:auto;">
+		<li><a href="">Nouveau Service</a></li>
+		<li><a href="">Nouvelle Solution</a></li>
+		<li><a href="">Nouvelle R&eacutef&eacuterence</a></li>
+	</ul>
 <?php
 }
 ?>

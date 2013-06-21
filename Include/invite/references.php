@@ -26,7 +26,16 @@
 								echo '<tr>';
 							
 							echo '<td>
-							<div class="blockref">
+							<div class="blockref">';
+							
+							if(isset($_SESSION['id']))
+							{
+								echo'
+								<span style="margin-left:10%;"><a href="index?page=admin_ref&mode=modifier&id='.$donnees['id'].'">Modifier</a> - 
+								<a href="index?page=admin_ref&mode=delete&id='.$donnees['id'].'">Supprimer</a></span>';
+							}
+							
+							echo'	
 								<a href="'.$donnees['lien'].'" ><img src="'.$donnees['image'].'" style="width:100%;"/></a><br/>
 								<h4>'.$donnees['titre'].'</h4>
 								'.$donnees['sous_titre'].'
