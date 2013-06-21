@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 21 Juin 2013 à 09:19
+-- Généré le: Ven 21 Juin 2013 à 09:23
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -19,6 +19,88 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `plugit`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `mdp_md5` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `admin`
+--
+
+INSERT INTO `admin` (`id`, `login`, `mdp_md5`) VALUES
+(1, 'moi', '70b783251225354e883a5bef3c011843');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `references`
+--
+
+CREATE TABLE IF NOT EXISTS `references` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `titre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `lien` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `sous_titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+
+--
+-- Contenu de la table `references`
+--
+
+INSERT INTO `references` (`id`, `image`, `titre`, `lien`, `sous_titre`, `date`) VALUES
+(1, 'image/ref_01_rollover.jpg', 'Maison de la Culture d''Amiens', 'http://www.maisondelaculture-amiens.com/www/', 'Infogérance Cloud Computing', '2013-06-20 14:15:39'),
+(2, 'images/ref_02_rollover.jpg', 'Missions locales de Picardie', 'http://www.missions-locales-picardie.org/', 'Infogérance Cloud Computing', '2013-06-20 14:38:36'),
+(3, 'images/ref_03_rollover.jpg', 'Conseil Régional de Picardie', 'http://www.picardie.fr/', 'Assistance nouvelles technologies', '2013-06-20 14:40:51'),
+(4, 'images/ref_04_rollover.jpg', 'CHU d''Amiens', 'http://www.chu-amiens.fr/', 'Marché public', '2013-06-20 14:43:10'),
+(5, 'images/ref_05_rollover.jpg', 'CCA International', 'http://www.ccainternational.com/', 'Missions d’audit et conseil NE15838', '2013-06-20 14:44:56'),
+(6, 'ref_06_rollover.jpg', 'RICOH', 'http://www.ricoh.fr/', 'Missions d’audits techniques', '2013-06-20 14:47:39'),
+(7, 'images/ref_07_rollover.jpg', 'Spta', 'http://www.spta.fr/', 'Infogérance Cloud Computing', '2013-06-20 14:49:36'),
+(8, 'images/ref_08_rollover.jpg', 'Neuronnexion', 'http://www.neuronnexion.fr/', 'Partenaire historique', '2013-06-20 14:53:32'),
+(9, 'images/ref_09.jpg', 'Croix Rouge', 'http://www.croix-rouge.fr/', 'Infogérance', '2013-06-20 14:54:44'),
+(10, 'images/ref_10.jpg', 'Orchestre de Picardie', 'http://www.orchestredepicardie.fr/', 'Infogérance', '2013-06-20 14:55:42'),
+(11, 'images/ref_11.jpg', 'Comédie de Picardie', 'http://www.comdepic.com/', 'Infogérance', '2013-06-20 14:56:42'),
+(12, 'images/ref_12.jpg', 'La Ligue de l''Enseignement', 'http://www.fol80.net/', 'Infogérance Cloud Computing', '2013-06-20 14:57:31');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `services`
+--
+
+CREATE TABLE IF NOT EXISTS `services` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `corps` text COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `subtitre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+--
+-- Contenu de la table `services`
+--
+
+INSERT INTO `services` (`id`, `titre`, `corps`, `image`, `subtitre`, `date`) VALUES
+(2, 'Maintenance : Préventive, Curative & Evolutive', '<img src="images/fleche.png"/>\r\n<p><h2>Que vous ayez quelques ordinateurs ou un parc informatique comprenant des dizaines d’équipements IT, des routeurs,<br/> des passerelles, des serveurs, des sites distants, des agents itinérants, vous pouvez souscrire à l’une de nos<br/> solutions de maintenance informatique.</h2><br/>\r\nCombien de temps pouvez-vous tolérer un arrêt de production ?<br/> 1 heure, 4 heures, une journée ou plus ?\r\nSuivant votre besoin, nous pouvons vous proposer de l’intervention sur mesure au ticket horaire au contrat spécifique avec des garanties de temps d’intervention et<br/> des garanties de temps de rétablissement.<br/>\r\n<img src="images/fleche.png"/>\r\n<h2>Dans tous les cas, nous pouvons référencer 3 types de maintenance :</h2><br/>\r\n<b>- La maintenance informatique préventive</b> qui consiste à effectuer un nettoyage de vos ordinateurs, de mettre à jour les logiciels ou encore d''enlever les<br/> éventuels virus ou autres malwares. Pour cela, 2 interventions par an sont prévues.\r\n<b>- La maintenance informatique curative</b> qui comprend les interventions ponctuelles de dépannage. En cas de problème, vous êtes prioritaire sur le délai<br/> d''intervention.\r\n<b>- La maintenance informatique évolutive</b> qui permet d''améliorer le système par rapport à l''évolution des technologies. Cela peut être par exemple l''installation<br/> de nouveaux équipements ou la mise à jour de logiciels.<br/>\r\n<img src="images/fleche.png"/>\r\n<h2>Les avantages du contrat de maintenance informatique</h2><br/>\r\n- Vous êtes prioritaire par rapport aux clients qui n''ont pas souscrit de contrat.\r\n- Il couvre les interventions ponctuelles de dépannage.\r\n- Vous bénéficiez de tarifs préférentiels sur les interventions de maintenance informatique.</p>', 'images/services_maintenance.png', 'Maintenance', '2013-06-20 13:51:22'),
+(3, 'Infogérance : Maintenance, dépannage & sauvegarde', '<p>\r\n<img src="images/fleche.png"/><h2>Vous êtes une petite structure en profession libérale, une association, une TPE/PME, sans informaticien ou sans<br/>\r\ncompétence particulière en informatique.</h2>\r\n<br/>\r\nNous pouvons intervenir dans la gestion de votre infrastructure en vous assurant les services informatiques courant tels la maintenance, les dépannages, les<br/>\r\nsauvegardes de vos données.<br/>\r\nNotre équipe d''experts mettra son expérience au service de la gestion quotidienne de votre serveur.<br/>\r\nL''objectif principal est d''anticiper tout problème et de mettre en place les outils et procédures requises afin de pouvoir réagir immédiatement en cas d''imprévu.<br/>\r\n<br/>\r\n<img src="images/fleche.png"/><h2>Notre équipe assurera le bon fonctionnement de votre serveur en contrôlant les points suivants :</h2>\r\n- l''astreinte,<br/>\r\n- la supervision,<br/>\r\n- la sécurité,<br/>\r\n- la sauvegarde,<br/>\r\n- la redondance.<br/>\r\n<br/>\r\n<b>Ainsi, nous mettons en œuvre tout notre savoir-faire afin de respecter notre engagement de garantie de temps de rétablissement.</b>\r\n</p>\r\n', 'images/services_infogerance.png', 'Infogérance', '2013-06-21 07:25:47'),
+(4, 'Audit & conseil', '<p>\r\n<img src="images/fleche.png"/><h2>Un audit informatique est un état des lieux de votre infrastructure Informatique et Telecom. Il est réalisé afin de <br/>\r\ndéfinir des axes d''amélioration et obtenir des conseils et des préconisations pour pallier aux faiblesses constatées.</h2>\r\n<br/>\r\nSouvent il est exécuté à la demande du client pour avoir un nouveau point de vue de son système d’informations et de ses vulnérabilités.<br/>\r\nMais nous pouvons l’initier dans le cadre de la signature d’un contrat de maintenance où il est nécessaire de faire cet état des lieux pour la mise en place de <br/>\r\nPCA/PRA (Plan de Continuité d’Activité/Plan de Reprise d’Activité).<br/>\r\n<br/>\r\n<img src="images/fleche.png"/><h2>Le rapport d’audit comprend :</h2>\r\n- le schéma de l’infrastructure IT (interconnexion réseau et adressage IP),<br/>\r\n- la nomenclature et les caractéristiques des équipements informatiques (PC, serveurs, routeurs, pare-feu, commutateurs, etc.),<br/>\r\n- la nomenclature des services actifs de vos serveurs,<br/>\r\n- les logiciels installés et leur demande en ressources,<br/>\r\n- les sécurités matérielles et logiciels,<br/>\r\n- la disponibilité du réseau et des serveurs,<br/>\r\n- les protections électriques et mécaniques (baie informatique, accès badgé, sondes, etc.),<br/>\r\n- les jeux de sauvegardes,<br/>\r\n- les redondances et « Fail Over ».<br/>\r\n<br/>\r\n<b>À partir de ce diagnostic, les failles sont facilement identifiables et nos conseils deviennent pertinents. Les conseils d’amélioration ou de<br/>\r\nmodification sont menés suivant les critères de production et de sécurité du client.</b>\r\n</p>\r\n', 'images/services_audit.png', 'Audit & conseil', '2013-06-21 07:31:51'),
+(5, 'Architecture réseau & ingénierie IT', '<p>\r\n<img src="images/fleche.png"/><h2>Notre équipe technique est composée d’experts informatiques (niveau II) qualifiés dans les services suivants </h2>\r\n<br/>\r\n- Serveurs Microsoft (SBS, Standard, entreprise et DataCenter)<br/>\r\n- Virtualisation (VMWare, HyperV)<br/>\r\n- Routage et commutation niveau III (HP, SMC, D-LINK)<br/>\r\n- Boitiers de sécurité (SonicWALL, CISCO, Fortinet)<br/>\r\n- Interconnexions WAN/LAN et réseaux sans fil (ZyXEL, ARUBA)<br/>\r\n- Téléphonie IP (keyyo)<br/>\r\n- Appliances spécifiques (IronPort, MailFontain)<br/>\r\n- Administration et consoles logiciels (AdminKit Kaspersky, NTR)<br/>\r\n<br/>\r\n<b>À partir de ces différentes compétences, nos ingénieurs sont à même de concevoir et implémenter une solution informatique/téléphonique au sein \r\nde votre structure.</b>\r\n<br/>\r\n<img src="images/fleche.png"/><h2>Les points essentiels se décomposent en groupes :</h2>\r\n- Définition des besoins du client.<br/>\r\n- Proposition d’architecture IT.<br/>\r\n- Proposition de matériel Informatique/Telecom.<br/>\r\n- Proposition des sécurités matérielles et logiciels.<br/>\r\n- Mise en service de la solution avec recette de fonctionnement.<br/>\r\n- Transfert de compétences.<br/>\r\n- Proposition d’infogérance ou de maintenance classique.<br/>\r\n<br/>\r\n</p>\r\n', 'images/services_architecture.png', 'Ingénierie IT', '2013-06-21 07:57:20'),
+(6, 'Virtualisation : utilisation optimale des ressources', '<p>\r\n<img src="images/fleche.png"/><h2>La virtualisation consiste à faire fonctionner un ou plusieurs systèmes d''exploitation, sur un ou plusieurs serveurs <br/> \r\nau lieu d''en installer un seul par machine.</h2>\r\n<br/>\r\nImaginez qu’au lieu de gérer plusieurs serveurs, vous n’ayez plus qu’un seul qui rassemble tous vos services.\r\n<br/>\r\n<img src="images/fleche.png"/><h2>Les intérêts sont :</h2>\r\n- utilisation optimale des ressources d''un parc de machines (répartition des machines virtuelles sur les machines physiques en fonction des charges respectives),<br/>\r\n- installation, déploiement et migration facile des machines virtuelles d''une machine physique à une autre, notamment dans le contexte d''une mise en production à <br/>\r\npartir d''un environnement de qualification ou de pré-production, livraison facilitée,<br/>\r\n- économie sur le matériel par mutualisation (consommation électrique, entretien physique, surveillance, support, compatibilité matérielle, etc.),<br/>\r\n- installation, tests, développements, cassage et possibilité de recommencer sans casser le système d''exploitation hôte,<br/>\r\n- sécurisation et/ou isolation d''un réseau (cassage des systèmes d''exploitation virtuels, mais pas des systèmes d''exploitation hôtes qui sont invisibles pour <br/>\r\nl''attaquant, tests d''architectures applicatives et réseau),<br/>\r\n- isolation des différents utilisateurs simultanés d''une même machine (utilisation de type site central),<br/>\r\n- allocation dynamique de la puissance de calcul en fonction des besoins de chaque application à un instant donné,<br/>\r\n- diminution des risques liés au dimensionnement des serveurs lors de la définition de l''architecture d''une application, l''ajout de puissance (nouveau serveur etc)<br/>\r\n étant alors transparente.<br/>\r\n<br/>\r\n</p>', 'images/services_virtualisation.png', 'Virtualisation', '2013-06-21 08:10:15'),
+(7, 'Mise à la norme Européenne des PCA', '<p>\r\n<img src="images/fleche.png"/><h2>C’est à la suite d’une mission dans un groupe de plus de 4 500 salariés que nous proposons nos services à préparer <br/> \r\nla norme Européenne EN15838 pour les grands comptes.</h2>\r\n<br/>\r\n<b>\r\nCette mission consistait à travailler en collaboration avec l’agence AFNOR sur la section NF Services IT pour l’obtention de la norme Européenne<br/>\r\n NF Services NP-7. L’étude du taux de disponibilité des services IT se traduit par la pondération du taux de disponibilité de chaque service IT qui la <br/>\r\n compose.\r\n</b>\r\n<br/>\r\nDans un premier temps, nous inventorions les différents services en qualifiant les matériels, les contrats et sécurités associés.<br/>\r\nPuis dans un second volet, nous rapporterons les interactions entre les services IT et les fournisseurs, l’augmentation de la sécurité via les tiers « DataCenter »,<br/>\r\n les Plans de Continuité d’Activités mis en œuvre, la conservation des données, les processus, les modes opératoires appliqués à la production et le chiffrage de la <br/>\r\n disponibilité via l’indicateur NF NP-7.<br/>\r\nC’est un processus relativement complexe mais efficace pour une grande structure.<br/>\r\n<br/>\r\n<img src="images/fleche.png"/><h2>N''hésitez pas à nous contacter pour toute étude !</h2>\r\n</p>\r\n', 'images/services_norme.png', 'Mise à la norme', '2013-06-21 08:15:01');
 
 -- --------------------------------------------------------
 
