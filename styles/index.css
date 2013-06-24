@@ -112,6 +112,40 @@ Name : Index.css => Plug-it
 	text-decoration:none;
 	color:#8f8369;
 	}
+/*##########ADMIN#########*/
+
+.menuverti
+	{
+	display:block;
+	width:200px;
+	background-color:#333333;
+	color:white;
+	text-decoration:none;
+	text-align:center;
+	padding:5px;
+	border:2px solid;
+	cursor: pointer;
+	border-color:#DCDCDC #696969 #696969 #DCDCDC;
+	}
+.menuverti:hover
+	{
+	 background-color:#f9bd1a;
+	 color:black;
+	 border-color:#696969 #DCDCDC #DCDCDC #696969;
+	}
+	
+.bt
+	{
+	text-decoration:none;
+	font-weight:bold;
+	color:#555555;
+	}
+
+.bt:hover
+	{
+	text-decoration:none;
+	color:red;
+	}
 
 /*#######PARAMETRES#######*/
 

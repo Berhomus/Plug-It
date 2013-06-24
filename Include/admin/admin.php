@@ -8,7 +8,7 @@ $error_co = connect();
 	
 
 <h2>Administration</h2>
-
+<br/>
 <?php
 if(!isset($_SESSION['id']))
 {
@@ -53,11 +53,13 @@ if(!isset($_SESSION['id']))
 else
 {
 ?>
+<center>
 	<ul style="width:20%;margin:auto;">
-		<li><a href="Index.php?page=admin_services">Nouveau Service</a></li>
-		<li><a href="Index.php?page=admin_solutions">Nouvelle Solution</a></li>
-		<li><a href="Index.php?page=admin_ref">Nouvelle R&eacutef&eacuterence</a></li>
+		<li class="menuverti" onclick="location.href='Index.php?page=admin_services'">Nouveau Service</li>
+		<li class="menuverti" onclick="location.href='Index.php?page=admin_solutions'">Nouvelle Solution</li>
+		<li class="menuverti" onclick="location.href='Index.php?page=admin_ref'">Nouvelle R&eacutef&eacuterence</li>
 	</ul>
+</center>
 <?php
 }
 ?>
