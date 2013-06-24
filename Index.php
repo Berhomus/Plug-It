@@ -16,6 +16,13 @@
 
 		<title>Plug-it</title>
 		<link type="text/css" rel="stylesheet" href="styles/index.css"/>
+		<link rel="stylesheet" href="css/iview.css" />
+		<link rel="stylesheet" href="css/skin 1/style.css" />
+		<link rel="stylesheet" href="css/styles.css" />
+		
+		<script src="js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="js/raphael-min.js"></script>
+		<script type="text/javascript" src="js/jquery.easing.js"></script>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<script type="text/javascript">
 			var pos = new google.maps.LatLng(49.8853893, 2.3037014);
@@ -43,6 +50,19 @@
 			// init lorsque la page est chargée
 			google.maps.event.addDomListener( window, 'load', initCarte);
 		</script>
+		
+		<script src="js/iview.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				$('#iview').iView({
+					pauseTime: 3000,
+					directionNav: false,
+					controlNav: true,
+					tooltipY: -15
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<div class="Banniere">
@@ -62,5 +82,33 @@
 				INCLUDE("include\common\pied.php");
 			?>
 		</div>
+		
+		
+		<div id="iview">
+			<div data-iview:image="images/slide_01.jpg" data-iview:transition="slice-top-fade,slice-right-fade">
+
+			</div>
+
+			<div data-iview:image="images/slide_02.jpg" data-iview:transition="zigzag-drop-top,zigzag-drop-bottom" >
+
+			</div>
+
+			<div data-iview:image="images/slide_03.jpg" data-iview:transition="strip-right-fade,strip-left-fade">
+			
+			</div>
+
+			<div data-iview:image="images/slide_04.jpg">
+				
+			</div>
+
+			<div data-iview:image="images/slide_05.jpg">
+				
+			</div>
+
+			<div data-iview:image="images/slide_06.jpg">
+
+			</div>
+		</div>
+		
 	</body>
 </html>
