@@ -72,7 +72,7 @@
 						</div>';
 						
 					
-					//affichage autre liens					
+					//affichage autres liens					
 					$retour = mysql_query("SELECT * FROM solutions WHERE id<>'".$_GET['id']."' ORDER BY date DESC LIMIT 10") or die('Erreur SQL !<br />'.mysql_error());
 					
 					$i=1; //délimite les colonnes

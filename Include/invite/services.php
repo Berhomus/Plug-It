@@ -56,7 +56,7 @@
 		break;
 			
 		case 'viewone':
-			if(isset($_GET['id']))//verif existance id
+			if(isset($_GET['id']))//verif existence id
 			{
 				$retour = mysql_query("SELECT count(id) as cpt FROM services WHERE id='".$_GET["id"]."'")or die('Erreur SQL !<br />'.mysql_error());
 				$donnees = mysql_fetch_array($retour);
@@ -79,7 +79,7 @@
 						</div>';
 						
 					
-					//affichage autre liens					
+					//affichage autres liens					
 					$retour = mysql_query("SELECT * FROM services WHERE id<>'".$_GET['id']."' ORDER BY date DESC LIMIT 10")or die('Erreur SQL !<br />'.mysql_error());
 					
 					$i=1; //délimite les colonnes
