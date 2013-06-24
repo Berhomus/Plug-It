@@ -1,4 +1,4 @@
 AuthName "Page d'administration protégée"
 AuthType Basic
-AuthUserFile "C:/wamp/www/Plug-It/include/admin/admin.php/.htpasswd"
+AuthUserFile "C:/wamp/www/Plug-It/traitement/.htpasswd"
 Require valid-user
