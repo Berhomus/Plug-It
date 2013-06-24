@@ -85,7 +85,7 @@
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					
-					echo'<div style="margin:auto;width:65%;">
+					echo'<div style="margin:auto;width:80%;">
 					<table cellspacing="10">';
 					while ($donnees = mysql_fetch_array($retour))
 						{
@@ -101,7 +101,7 @@
 							</div></td>';
 							
 							$i++;
-							if($i > 4)
+							if($i > 5)
 							{
 								$i=1;
 								$j++;
