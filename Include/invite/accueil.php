@@ -36,7 +36,7 @@
 				</div>
 			</div>
 
-			<div>
+			<div style="margin-top:40px;">
 				<table class="table_accueil" border="0" cellspacing="10" cellpadding="10">
 					<tr>
 						<td>
@@ -169,6 +169,7 @@
 				<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
 				Propriétaire du site Internet
 				</h4>
+				<br/>
 				<p>
 					<b>Plug-It</b> - 36 bis, rue Saint-Fuscien - 80000 AMIENS <br/>
 					Tél. : 03 22 22 10 90 <br/>
@@ -181,38 +182,48 @@
 				</p>
 				
 				<br/>
-				
+				<br/>
 				<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
 				Directeur de la publication
 				</h4>
+				<br/>
 				<p>
 					<b>Thierry Bochard</b> - Directeur
 				</p>
 				
 				<br/>
-				
+				<br/>
 				<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
 				Conception du site Internet
 				</h4>
+				<br/>
 				<p>
+					<b>Design</b><br/>
+					<b>Rhinocérose</b> - 20, rue Verlaine - 60800 CRÉPY-EN-VALOIS<br/>
+					Tél. & fax : 03 44 94 28 40<br/>
+					Courriel : <a class="mail" href="mailto:contact@rhinocerose.fr">contact@rhinocerose.fr</a><br/>
+					Site internet : <a class="mail" href="http://www.rhinocerose.fr/">www.rhinocerose.fr</a><br/>
+					<br/>
 					<b>AS Informatique</b> - Antoine Bovin, Benoît Villain, Borhane Bensaid <br/>
 					IUT Amiens
 				</p>
 				
 				<br/>
-				
+				<br/>
 				<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
 				Hébergeur du site Internet
 				</h4>
+				<br/>
 				<p>
 					<b>OVH</b> - 2, rue Kellermann - 59100 ROUBAIX
 				</p>
 				
 				<br/>
-				
+				<br/>
 				<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
 				Important
 				</h4>
+				<br/>
 				<p>
 					Toutes les informations présentes sur le site (textes, photographies, etc.) sont la propriété exclusive de Plug-It. 
 					Toute reproduction, même partielle, doit faire l'objet <br/>
