@@ -8,8 +8,32 @@
 	{
 		case 'main':
 ?>
-			<div style="background-color:#f9bd1a; height:475px; width:100%; margin-top:-5%;">
-				
+			<div style="background-color:#f9bd1a; height:475px; width:100%; margin-top:-5%;padding-top:1%;">
+				<div id="iview">
+					<div data-iview:image="images/slide_01.jpg" data-iview:transition="slice-top-fade,slice-right-fade">
+
+					</div>
+
+					<div data-iview:image="images/slide_02.jpg" data-iview:transition="zigzag-drop-top,zigzag-drop-bottom" >
+
+					</div>
+
+					<div data-iview:image="images/slide_03.jpg" data-iview:transition="strip-right-fade,strip-left-fade">
+					
+					</div>
+
+					<div data-iview:image="images/slide_04.jpg">
+						
+					</div>
+
+					<div data-iview:image="images/slide_05.jpg">
+						
+					</div>
+
+					<div data-iview:image="images/slide_06.jpg">
+
+					</div>
+				</div>
 			</div>
 
 			<div>
