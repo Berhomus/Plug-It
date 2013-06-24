@@ -8,8 +8,8 @@
 	{
 		case 'main':
 ?>
-			<div>
-
+			<div style="background-color:#f9bd1a; height:475px; width:100%; margin-top:-5%;">
+				
 			</div>
 
 			<div>
