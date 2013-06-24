@@ -17,11 +17,12 @@
 			Administration
 		</td>
 		
-		<td width="15px">
-		</td>
-		
 		<td class="boutbout" onclick="location.href='index.php?page=accueil&sub=mentions'" >
 			MENTIONS LEGALES
+		</td>
+		
+		<td class="boutbout" onclick="location.href='http://www.rhinocerose.fr/'" >
+			    Design - Rhinoc&eacuterose
 		</td>
 	</tr>
 
