@@ -56,7 +56,7 @@ else
 	<ul style="width:20%;margin:auto;">
 		<li><a href="">Nouveau Service</a></li>
 		<li><a href="">Nouvelle Solution</a></li>
-		<li><a href="">Nouvelle R&eacutef&eacuterence</a></li>
+		<li><a href="Index.php?page=admin_ref">Nouvelle R&eacutef&eacuterence</a></li>
 	</ul>
 <?php
 }
