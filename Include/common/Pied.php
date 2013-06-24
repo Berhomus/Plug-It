@@ -1,10 +1,3 @@
-<?php
-				if(isset($_SESSION['id']))
-					$x = 'index.php?page=accueil&dc=1';
-				else
-					$x = 'index.php?page=admin';
-?>
-
 <p class="p"><span class="span">Plug-It &copy; 2013</span>
 
 
