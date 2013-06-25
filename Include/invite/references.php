@@ -36,7 +36,7 @@
 							}
 							
 							echo'	
-								<a href="'.$donnees['lien'].'" ><img src="'.$donnees['image'].'" style="width:100%;"/></a><br/>
+								<a href="'.$donnees['lien'].'" ><img src="'.$donnees['image'].'" style="width:100%;" width="220" height="161"/></a><br/>
 								<h4>'.$donnees['titre'].'</h4>
 								'.$donnees['sous_titre'].'
 							</div></td>';

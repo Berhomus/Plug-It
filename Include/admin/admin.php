@@ -57,7 +57,7 @@ else
 	<ul style="width:20%;margin:auto;">
 		<li class="menuverti" onclick="location.href='Index.php?page=admin_services'">Nouveau Service</li>
 		<li class="menuverti" onclick="location.href='Index.php?page=admin_solutions'">Nouvelle Solution</li>
-		<li class="menuverti" onclick="location.href='Index.php?page=admin_ref'">Nouvelle R&eacutef&eacuterence</li>
+		<li class="menuverti" onclick="location.href='Index.php?page=admin_ref'"><?php echo utf8_decode('Nouvelle Référence'); ?></li>
 	</ul>
 </center>
 <?php
