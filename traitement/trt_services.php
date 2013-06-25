@@ -2,8 +2,6 @@
 	
 	include("../function/upload.php");
 	
-	header( 'content-type: text/html; charset=utf-8' );
-	
 	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
 
@@ -55,22 +53,24 @@
 							
 							$titre = htmlspecialchars($titre);
 							$soustitre = htmlspecialchars($soustitre);
-							$corps = htmlspecialchars($corps);
+							
+							$corps = preg_replace('`\n`isU', '<br />', $corps);
 							
 							$titre = mysql_real_escape_string($titre);
 							$soustitre = mysql_real_escape_string($soustitre);
 							$corps = mysql_real_escape_string($corps);
 							
-							mysql_query("UPDATE ref SET image='$path', titre='$titre', subtitre='$soustitre', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+							mysql_query("UPDATE services SET image='$path', titre='$titre', subtitre='$soustitre', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 							echo '<h2 style="color:green;">Service Modifié !</h2>';
 						}
 						else
 						{
+							
 							echo '
 								<form method="POST" action="../index.php?page=admin_services&id='.$_GET['id'].'">
-									<input type="hidden" name="nomcli" value="'.$_POST['nomref'].'"/>
-									<input type="hidden" name="soustitre" value="'.$_POST['soustitre'].'"/>
-									<input type="hidden" name="lien" value="'.$_POST['corps'].'"/>
+									<input type="hidden" name="nomserv" value=\''.$_POST['nomserv'].'\'/>
+									<input type="hidden" name="soustitre" value=\''.$_POST['soustitre'].'\'/>
+									<input type="hidden" name="corps" value=\''.$_POST['corps'].'\'/>
 									<input type="submit" value="Retour Formulaire"/>
 								</form>
 							';
@@ -92,25 +92,26 @@
 				if(isset($_POST) and !empty($_POST))
 				{	
 					
-					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'logo')) != '')
+					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'logoserv')) != '')
 					{
-						$titre = htmlspecialchars($_POST['nomcli']);
+						$titre = htmlspecialchars($_POST['nomserv']);
 						$soustitre = htmlspecialchars($_POST['soustitre']);
 						
 						$titre = mysql_real_escape_string($titre);
 						$soustitre = mysql_real_escape_string($soustitre);
 						$corps = mysql_real_escape_string($_POST['corps']);
+						$corps = preg_replace('`\n`isU', '<br />', $corps);
 						
-						mysql_query("INSERT INTO ref VALUES (Null,'$titre','$corps','$path','$soustitre',Null)")or die('Erreur SQL !<br />'.mysql_error());
+						mysql_query("INSERT INTO services VALUES (Null,'$titre','$corps','$path','$soustitre',Null)")or die('Erreur SQL !<br />'.mysql_error());
 						echo '<h2 style="color:green;">Référence Créé !</h2>';
 					}
 					else
 					{
 						echo '
 								<form method="POST" action="../index.php?page=admin_services">
-									<input type="hidden" name="nomcli" value="'.$_POST['nomref'].'"/>
-									<input type="hidden" name="soustitre" value="'.$_POST['soustitre'].'"/>
-									<input type="hidden" name="lien" value="'.$_POST['corps'].'"/>
+									<input type="hidden" name="nomserv" value=\''.$_POST['nomserv'].'\'/>
+									<input type="hidden" name="soustitre" value=\''.$_POST['soustitre'].'\'/>
+									<input type="hidden" name="corps" value=\''.$_POST['corps'].'\'/>
 									<input type="submit" value="Retour Formulaire"/>
 								</form>
 							';
@@ -134,5 +135,5 @@
 	
 	mysql_close();
 	
-	echo '<center><a href="../index.php?page=services">Retour Référence</a></center>';
+	echo '<center><a href="../index.php?page=services">Retour Services</a></center>';
 ?>

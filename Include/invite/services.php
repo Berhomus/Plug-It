@@ -33,7 +33,7 @@
 							{
 								echo'
 								<span style="margin-left:10%;"><a class="bt" href="index.php?page=admin_services&mode=modifier&id='.$donnees['id'].'">Modifier</a> - 
-								<a class="bt" href="index.php?page=admin_services&mode=delete&id='.$donnees['id'].'">Supprimer</a></span>';
+								<a class="bt" href="traitement/trt_services.php?mode=delete&id='.$donnees['id'].'">Supprimer</a></span>';
 							}
 								
 								
