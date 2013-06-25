@@ -10,29 +10,29 @@
 ?>
 			<div style="background-color:#f9bd1a; height:475px; width:100%; margin-top:-5%;padding-top:1%;">
 				<div id="iview">
-					<div data-iview:image="images/slide_01.jpg" data-iview:transition="slice-top-fade,slice-right-fade">
-
-					</div>
-
-					<div data-iview:image="images/slide_02.jpg" data-iview:transition="zigzag-drop-top,zigzag-drop-bottom" >
-
-					</div>
-
-					<div data-iview:image="images/slide_03.jpg" data-iview:transition="strip-right-fade,strip-left-fade">
+				<?php
+				
+					mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
+					mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
 					
-					</div>
-
-					<div data-iview:image="images/slide_04.jpg">
-						
-					</div>
-
-					<div data-iview:image="images/slide_05.jpg">
-						
-					</div>
-
-					<div data-iview:image="images/slide_06.jpg">
-
-					</div>
+					$rq=mysql_query("SELECT COUNT(id) as nombreslides FROM solutions")or die('Erreur SQL !<br />'.mysql_error());
+					$array = mysql_fetch_array($rq);
+					$max= max(10,$array['nombreslides']);
+					
+					$rq=mysql_query("SELECT * FROM solutions ORDER by date DESC LIMIT ".$max."")or die('Erreur SQL !<br />'.mysql_error());
+					
+					
+					$effet = array('slice-top-fade,slice-right-fade','zigzag-drop-top,zigzag-drop-bottom','strip-right-fade,strip-left-fade','');
+					$i=0;
+					
+					while($array=mysql_fetch_array($rq))
+					{	
+						echo '<div data-iview:image="'.$array['image_car'].'" data-iview:transition="'.$effet[$i].'"></div>';
+						$i++;
+						if($i > 3)
+							$i =0;
+					}
+				?>
 				</div>
 			</div>
 
