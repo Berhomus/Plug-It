@@ -110,7 +110,7 @@
 					
 					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'logosolu')) != '')
 					{
-						if(($path2 = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'grandeimg')) != '')
+						if(($path2 = upload('../images/',250*1024,array('.png', '.gif', '.jpg', '.jpeg'),'grandeimg')) != '')
 						{
 							$titre = htmlspecialchars($_POST['nomsolu']);
 							$desc = htmlspecialchars($_POST['desc']);
