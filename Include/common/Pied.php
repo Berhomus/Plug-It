@@ -1,3 +1,9 @@
+<!--********************************************************
+Made by : AS Amiens - Bovin Antoine/Bensaid Bohrane/Villain Benoit
+Last Update : 26/06/2013
+Name : Pied.php => Plug-it
+*********************************************************-->
+
 <p class="p"><span class="span">Plug-It &copy; 2013</span>
 
 

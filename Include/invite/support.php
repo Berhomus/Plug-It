@@ -1,3 +1,9 @@
+<!--********************************************************
+Made by : AS Amiens - Bovin Antoine/Bensaid Bohrane/Villain Benoit
+Last Update : 26/06/2013
+Name : support.php => Plug-it
+*********************************************************-->
+
 <center>
 	<h2 class="titre">Téléchargez l’outil de prise en main à distance TeamViewer ci-dessous </h2>
 	
