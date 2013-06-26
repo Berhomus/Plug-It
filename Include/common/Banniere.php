@@ -11,8 +11,8 @@ Name : Banniere.php => Plug-it
 
 
 <div style="overflow:hidden;">
-	<a href="index.php?page=accueil"><img src="images/logotype_plug_it.png" style="float:left;margin-top:40px;margin-left:200px;"/></a>
-	<table style="float:right;margin-left:5%;margin-right:16%;" height="137px" class="menu" cellspacing="0">
+	<a href="index.php?page=accueil"><img src="images/logotype_plug_it.png" style="position:absolute;bottom:25%;left:10%;"/></a>
+	<table style="position:absolute;right:10%;" height="137px" class="menu" cellspacing="0">
 		<tr>
 			<td onclick="location.href='Index.php?page=accueil&sub=main'"
 			<?php

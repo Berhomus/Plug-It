@@ -14,7 +14,7 @@ Name : accueil.php => Plug-it
 	{
 		case 'main':
 ?>
-			<div style="background-color:#f9bd1a; height:475px; width:100%; margin-top:-5%;padding-top:1%;">
+			<div style="background-color:#f9bd1a; height:475px; width:100%; padding-top:1%;">
 				<div id="iview">
 				<?php
 				
