@@ -7,7 +7,7 @@ Name : Pied.php => Plug-it
 <p class="p"><span class="span">Plug-It &copy; 2013</span>
 
 
-<table style="position:absolute; right:5%;top:0; height:40px;" cellspacing="0">
+<table style="position:absolute; right:5%;top:0; height:40px" cellspacing="0">
 	<tr>
 		<?php
 		if(isset($_SESSION['id']))

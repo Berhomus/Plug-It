@@ -18,7 +18,7 @@ Name : services.php => Plug-it
 	{
 	
 		case 'view':
-			echo'<div style="margin:auto;width:70%;">
+			echo'<div style="margin:auto;width:980px;">
 				<h2>DÉCOUVREZ L\'ENSEMBLE DE NOS SERVICES INFORMATIQUES LES PLUS POINTUS</h2>';
 					
 					$retour = mysql_query('SELECT * FROM services ORDER BY date DESC') or die('Erreur SQL !<br />'.mysql_error());

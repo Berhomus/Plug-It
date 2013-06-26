@@ -18,7 +18,7 @@ Name : solutions.php => Plug-it
 	{
 	
 		case 'view':
-			echo'<div style="margin:auto;width:70%;">
+			echo'<div style="margin:auto;width:1000px;">
 				<h2>Découvrez toutes nos solutions innovantes pour vous satisfaire</h2>';
 					
 					$retour = mysql_query('SELECT * FROM solutions ORDER BY date DESC') or die('Erreur SQL !<br />'.mysql_error());
