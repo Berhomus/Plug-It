@@ -6,7 +6,7 @@ $error_co = connect();
 
 ?>
 <!--********************************************************
-Made by : AS Amiens - Bovin Antoine/Bensaid Bohrane/Villain Benoit
+Made by : AS Amiens - Bovin Antoine/Bensaid Borhane/Villain Benoit
 Last Update : 26/06/2013
 Name : admin.php => Plug-it
 *********************************************************-->	
