@@ -35,13 +35,19 @@ if(!isset($_SESSION['id']))
 										<td> <p>Mot de Passe :</p></td>
 										<td><input type="password" size="15" name="pass" required="required"/></td>
 									</tr>';
-							
-						if(isset($error_co) && $error_co != 0)
+						if(isset($error_co))
 						{
-							echo "<tr><td colspawn=2>Erreur : $error_co</td></tr>";
-						}
-									
-									
+							switch($error_co)
+							{
+								case -1 :
+								echo "<tr><td colspawn=2>Erreur : Id inexistant</td></tr>";	 
+								break;
+
+								case -2 :
+								echo "<tr><td colspawn=2>Erreur : Mot de passe Invalide</td></tr>";
+								break;
+							}			
+						}			
 						echo '</table>';
 					?>
 				</td>
