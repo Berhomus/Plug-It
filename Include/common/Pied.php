@@ -12,7 +12,7 @@ Name : Pied.php => Plug-it
 		<?php
 		if(isset($_SESSION['id']))
 		{
-			echo '<td class="boutbout" onclick="location.href=\'index.p0hp?page=accueil&dc=1\'">
+			echo '<td class="boutbout" onclick="location.href=\'index.php?page=accueil&dc=1\'">
 				Deconnexion
 			</td>';
 		}
