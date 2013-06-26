@@ -11,7 +11,7 @@
 	{
 	
 		case 'view':
-			echo'<div style="margin:auto;width:70%;">
+			echo'<div style="margin:auto;width:900px;">
 				<h2>Ils nous font confiance</h2>';
 					
 					$retour = mysql_query("SELECT * FROM ref") or die('Erreur SQL !<br />'.mysql_error());
