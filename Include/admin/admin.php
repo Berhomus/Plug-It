@@ -5,7 +5,11 @@ include("function/connect_f.php");
 $error_co = connect();
 
 ?>
-	
+<!--********************************************************
+Made by : AS Amiens - Bovin Antoine/Bensaid Bohrane/Villain Benoit
+Last Update : 26/06/2013
+Name : admin.php => Plug-it
+*********************************************************-->	
 
 <h2>Administration</h2>
 <br/>

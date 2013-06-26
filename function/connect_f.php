@@ -1,3 +1,9 @@
+<!--********************************************************
+Made by : AS Amiens - Bovin Antoine/Bensaid Bohrane/Villain Benoit
+Last Update : 26/06/2013
+Name : connect_f.php => Plug-it
+*********************************************************-->
+
 <?php
 function connect()
 {	

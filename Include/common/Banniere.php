@@ -1,3 +1,8 @@
+<!--********************************************************
+Made by : AS Amiens - Bovin Antoine/Bensaid Bohrane/Villain Benoit
+Last Update : 26/06/2013
+Name : Banniere.php => Plug-it
+*********************************************************-->
 
 <div style="overflow:hidden;">
 	<a href="index.php?page=accueil"><img src="images/logotype_plug_it.png" style="float:left;margin-top:3%;margin-left:15%;"/></a>
