@@ -81,7 +81,7 @@ Name : accueil.php => Plug-it
 							mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
 							
 							$retour = mysql_query('SELECT * FROM services ORDER BY date DESC') or die('Erreur SQL !<br />'.mysql_error());
-							echo '<table style="margin-left:auto; margin-right:auto; width:50%;">';
+							echo '<table style="margin-left:auto; margin-right:auto; width:80%;">';
 							while ($donnees = mysql_fetch_array($retour))
 							{
 								echo'<tr>

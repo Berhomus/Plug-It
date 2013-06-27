@@ -13,13 +13,14 @@ function upload($dossier,$taille_maxi,$extensions,$nom)
 		$taille = filesize($_FILES[$nom]['tmp_name']);
 		$extension = strrchr($_FILES[$nom]['name'], '.'); 
 		//Début des vérifications de sécurité...
+		
 		if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
 		{
-			 $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
+			 $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg !<br/>';
 		}
 		if($taille>$taille_maxi)
 		{
-			 $erreur = 'Le fichier est trop gros...';
+			 $erreur = 'Le fichier est trop important, max :  '.($taille_maxi/1024).' kiloctect !<br/>';
 		}
 		if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
 		{
@@ -30,23 +31,23 @@ function upload($dossier,$taille_maxi,$extensions,$nom)
 			 $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
 			 if(move_uploaded_file($_FILES[$nom]['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
 			 {
-				  echo 'Upload effectué avec succès !';
+				  echo utf8_decode('Upload effectué avec succès !<br/>');
 				  return 'images/' . $fichier;
 			 }
 			 else //Sinon (la fonction renvoie FALSE).
 			 {
-				  echo 'Echec de l\'upload !';
+				  echo utf8_decode('Echec de l\'upload '.$fichier.' !<br/>');
 				  return '';
 			 }
 		}
 		else
 		{
-			 echo $erreur;
+			 echo utf8_decode($erreur);
 			 return '';
 		}
 	}
 	else
-		echo '<h2 style="color:red;">Pas de fichier existant</h2>';
+		echo utf8_decode('<h2 style="color:red;">Pas de fichier existant</h2><br/>');
 	
 	return -1;
 }

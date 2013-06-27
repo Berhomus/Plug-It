@@ -4,6 +4,7 @@ Last Update : 26/06/2013
 Name : trt_services.php => Plug-it
 *********************************************************-->
 
+<div style="margin:auto;width:400px;">
 <?php
 	
 	include("../function/upload.php");
@@ -16,7 +17,7 @@ Name : trt_services.php => Plug-it
 		switch($_GET['mode'])
 		{
 			case 'delete':
-				echo '<h2>Suppression Service</h2>';
+				echo utf8_decode('<h2>Suppression Service</h2>');
 				if(isset($_GET['id']))
 				{
 					$rq=mysql_query("SELECT COUNT(id) as cpt FROM services WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
@@ -25,21 +26,21 @@ Name : trt_services.php => Plug-it
 					if($array['cpt'])
 					{
 						mysql_query("DELETE FROM services WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-						echo '<h2 style="color:green;">Service Supprimé !</h2>';
+						echo utf8_decode('<h2 style="color:green;">Service Supprimé !</h2>');
 					}
 					else
 					{
-						echo '<h2 style="color:red;">Service inexistante !</h2>';
+						echo utf8_decode('<h2 style="color:red;">Service inexistante !</h2>');
 					}
 				}
 				else
 				{
-					echo '<h2 style="color:red;">Service non spécifié !</h2>';
+					echo utf8_decode('<h2 style="color:red;">Service non spécifié !</h2>');
 				}
 			break;
 			
 			case 'modif':
-				echo '<h2>Modification Service</h2>';
+				echo utf8_decode('<h2>Modification Service</h2>');
 				if(isset($_GET['id']))
 				{
 					$rq=mysql_query("SELECT COUNT(id) as cpt FROM services WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
@@ -67,34 +68,33 @@ Name : trt_services.php => Plug-it
 							$corps = mysql_real_escape_string($corps);
 							
 							mysql_query("UPDATE services SET image='$path', titre='$titre', subtitre='$soustitre', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-							echo '<h2 style="color:green;">Service Modifié !</h2>';
+							echo utf8_decode('<h2 style="color:green;">Service Modifié !</h2>');
 						}
 						else
-						{
-							
-							echo '
-								<form method="POST" action="../index.php?page=admin_services&id='.$_GET['id'].'">
-									<input type="hidden" name="nomserv" value=\''.$_POST['nomserv'].'\'/>
-									<input type="hidden" name="soustitre" value=\''.$_POST['soustitre'].'\'/>
-									<input type="hidden" name="corps" value=\''.$_POST['corps'].'\'/>
-									<input type="submit" value="Retour Formulaire"/>
-								</form>
-							';
+						{	
+							?>		
+									<form method="POST" action="../index.php?page=admin_services&id=<?php echo $_GET['id'];?>">
+										<input type="hidden" name="nomserv" value="<?php echo htmlspecialchars($_POST['nomserv']);?>"/>
+										<input type="hidden" name="soustitre" value="<?php echo htmlspecialchars($_POST['soustitre']);?>"/>
+										<input type="hidden" name="corps" value="<?php echo htmlspecialchars($_POST['corps']);?>"/>
+										<input type="submit" value="Retour Formulaire"/>
+									</form>
+							<?php
 						}
 					}
 					else
 					{
-						echo '<h2 style="color:red;">Service inexistante !</h2>';
+						echo utf8_decode('<h2 style="color:red;">Service inexistante !</h2>');
 					}
 				}
 				else
 				{
-					echo '<h2 style="color:red;">Service non spécifié !</h2>';
+					echo utf8_decode('<h2 style="color:red;">Service non spécifié !</h2>');
 				}
 			break;
 			
 			case 'create':
-				echo '<h2>Création Service</h2>';
+				echo utf8_decode('<h2>Création Service</h2>');
 				if(isset($_POST) and !empty($_POST))
 				{	
 					
@@ -109,37 +109,39 @@ Name : trt_services.php => Plug-it
 						$corps = preg_replace('`\n`isU', '<br />', $corps);
 						
 						mysql_query("INSERT INTO services VALUES (Null,'$titre','$corps','$path','$soustitre',Null)")or die('Erreur SQL !<br />'.mysql_error());
-						echo '<h2 style="color:green;">Référence Créé !</h2>';
+						echo utf8_decode('<h2 style="color:green;">Référence Créé !</h2>');
 					}
 					else
 					{
-						echo '
-								<form method="POST" action="../index.php?page=admin_services">
-									<input type="hidden" name="nomserv" value=\''.$_POST['nomserv'].'\'/>
-									<input type="hidden" name="soustitre" value=\''.$_POST['soustitre'].'\'/>
-									<input type="hidden" name="corps" value=\''.$_POST['corps'].'\'/>
-									<input type="submit" value="Retour Formulaire"/>
-								</form>
-							';
+						?>
+								
+									<form method="POST" action="../index.php?page=admin_services">
+										<input type="hidden" name="nomserv" value="<?php echo htmlspecialchars($_POST['nomserv']);?>"/>
+										<input type="hidden" name="soustitre" value="<?php echo htmlspecialchars($_POST['soustitre']);?>"/>
+										<input type="hidden" name="corps" value="<?php echo htmlspecialchars($_POST['corps']);?>"/>
+										<input type="submit" value="Retour Formulaire"/>
+									</form>
+						<?php
 					}
 				}
 				else
 				{
-					echo '<h2 style="color:red;">Donnée inexistante !</h2>';
+					echo utf8_decode('<h2 style="color:red;">Donnée inexistante !</h2>');
 				}
 			break;
 			
 			default:
-				echo '<h2 style="color:red;">404 Page Introuvable !</h2>';
+				echo utf8_decode('<h2 style="color:red;">404 Page Introuvable !</h2>');
 			break;
 		}
 	}
 	else
 	{
-		echo '<h2 style="color:red;">Mode Non spécifié !</h2>';
+		echo utf8_decode('<h2 style="color:red;">Mode Non spécifié !</h2>');
 	}
 	
 	mysql_close();
 	
-	echo '<center><a href="../index.php?page=services">Retour Services</a></center>';
+	echo utf8_decode('<center><a href="../index.php?page=services">Retour Services</a></center>');
 ?>
+</div>

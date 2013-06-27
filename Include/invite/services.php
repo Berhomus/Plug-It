@@ -5,6 +5,7 @@ Name : services.php => Plug-it
 *********************************************************-->
 
 <?php
+
 	if(!isset($_GET['mode']))
 	{
 		$_GET['mode'] = 'view';
@@ -44,7 +45,7 @@ Name : services.php => Plug-it
 								
 								
 							echo'	
-								<img src="'.$donnees['image'].'" style="margin-left:5%;width:90%;"/><br/>
+								<img src="'.$donnees['image'].'"  width="280" height="157" style="margin-left:5%;width:90%;"/><br/>
 								<h3 style="font-size:18px;">'.$donnees['titre'].'</h3>
 								
 							</div></td>';
