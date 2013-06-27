@@ -79,7 +79,7 @@ Name : accueil.php => Plug-it
 						<?php
 							mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 							mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
-							
+							mysql_query("UPDATE services SET corps = replace(corps, '<br/>', '')");
 							$retour = mysql_query('SELECT * FROM services ORDER BY date DESC') or die('Erreur SQL !<br />'.mysql_error());
 							echo '<table style="margin-left:auto; margin-right:auto; width:80%;">';
 							while ($donnees = mysql_fetch_array($retour))

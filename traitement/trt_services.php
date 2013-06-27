@@ -48,7 +48,7 @@ Name : trt_services.php => Plug-it
 
 					if($array['cpt'])
 					{
-						if(empty($_FILES['logoserv']['name']) or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'logoserv')) != '')
+						if(empty($_FILES['logoserv']['name']) or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logoserv')) != '')
 						{
 							$rq=mysql_query("SELECT * FROM services WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 							$array=mysql_fetch_array($rq);
@@ -60,8 +60,6 @@ Name : trt_services.php => Plug-it
 							
 							$titre = htmlspecialchars($titre);
 							$soustitre = htmlspecialchars($soustitre);
-							
-							$corps = preg_replace('`\n`isU', '<br />', $corps);
 							
 							$titre = mysql_real_escape_string($titre);
 							$soustitre = mysql_real_escape_string($soustitre);
@@ -98,7 +96,7 @@ Name : trt_services.php => Plug-it
 				if(isset($_POST) and !empty($_POST))
 				{	
 					
-					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'logoserv')) != '')
+					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logoserv')) != '')
 					{
 						$titre = htmlspecialchars($_POST['nomserv']);
 						$soustitre = htmlspecialchars($_POST['soustitre']);
@@ -106,7 +104,6 @@ Name : trt_services.php => Plug-it
 						$titre = mysql_real_escape_string($titre);
 						$soustitre = mysql_real_escape_string($soustitre);
 						$corps = mysql_real_escape_string($_POST['corps']);
-						$corps = preg_replace('`\n`isU', '<br />', $corps);
 						
 						mysql_query("INSERT INTO services VALUES (Null,'$titre','$corps','$path','$soustitre',Null)")or die('Erreur SQL !<br />'.mysql_error());
 						echo utf8_decode('<h2 style="color:green;">Référence Créé !</h2>');

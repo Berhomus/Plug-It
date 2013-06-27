@@ -82,7 +82,7 @@ Name : services.php => Plug-it
 							</tr>
 						</table>
 						<hr/>
-						'.$donnees['corps'].'
+						'.nl2br($donnees['corps']).'
 						</div>';
 						
 					

@@ -47,10 +47,10 @@ Name : trt_solutions.php => Plug-it
 
 					if($array['cpt'])
 					{
-						if(empty($_FILES['logosolu']['name'])or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'logosolu')) != '')
+						if(empty($_FILES['logosolu']['name'])or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logosolu')) != '')
 						{
 						
-							if(empty($_FILES['grandeimg']['name'])or ($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'grandeimg')) != '')
+							if(empty($_FILES['grandeimg']['name'])or ($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'grandeimg')) != '')
 							{
 								$rq=mysql_query("SELECT * FROM solutions WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 								$array=mysql_fetch_array($rq);
@@ -63,8 +63,6 @@ Name : trt_solutions.php => Plug-it
 								
 								$titre = htmlspecialchars($titre);
 								$desc = htmlspecialchars($desc);
-								
-								$corps = preg_replace('`\n`isU', '<br />', $corps);
 								
 								$titre = mysql_real_escape_string($titre);
 								$desc = mysql_real_escape_string($desc);
@@ -115,9 +113,9 @@ Name : trt_solutions.php => Plug-it
 				if(isset($_POST) and !empty($_POST))
 				{	
 					
-					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'logosolu')) != '')
+					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logosolu')) != '')
 					{
-						if(($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'grandeimg')) != '')
+						if(($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'grandeimg')) != '')
 						{
 							$titre = htmlspecialchars($_POST['nomsolu']);
 							$desc = htmlspecialchars($_POST['desc']);
@@ -125,7 +123,6 @@ Name : trt_solutions.php => Plug-it
 							$titre = mysql_real_escape_string($titre);
 							$desc = mysql_real_escape_string($desc);
 							$corps = mysql_real_escape_string($_POST['corps']);
-							$corps = preg_replace('`\n`isU', '<br />', $corps);
 							
 							mysql_query("INSERT INTO solutions VALUES (Null,'$titre','$corps','$path2','$path','$desc',Null)")or die('Erreur SQL !<br />'.mysql_error());
 							echo utf8_decode('<h2 style="color:green;">Référence Créé !</h2>');

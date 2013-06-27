@@ -74,7 +74,7 @@ Name : solutions.php => Plug-it
 					
 					echo '<div style="margin:auto;width:70%;">
 							<img src="'.$donnees['image_sol'].'" style="float:right;"/>
-							'.$donnees['corps'].'
+							'.nl2br($donnees['corps']).'
 						</div>';
 						
 					

@@ -96,7 +96,7 @@ Name : trt_ref.php => Plug-it
 				if(isset($_POST) and !empty($_POST))
 				{	
 					
-					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'logo','bmp')) != '')
+					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'logo','.bmp')) != '')
 					{
 						$titre = htmlspecialchars($_POST['nomcli']);
 						$soustitre = htmlspecialchars($_POST['soustitre']);
