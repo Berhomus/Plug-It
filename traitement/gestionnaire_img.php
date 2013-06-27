@@ -1,3 +1,9 @@
+<!--********************************************************
+Made by : AS Amiens - Bovin Antoine/Bensaid Borhane/Villain Benoit
+Last Update : 27/06/2013
+Name : admin.php => Plug-it
+*********************************************************-->
+
 <h2>Gestionnaire d'images</h2>
 
 <div style="text-align:center;">
