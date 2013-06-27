@@ -11,7 +11,7 @@ Name : admin.php => Plug-it
 	if(isset($_FILES) and !empty($_FILES))
 	{
 		include("function/upload.php");
-		upload('images/',1024*1024*2,array('.png','.jpg','.bmp','.gif','jpeg'),'fichier');
+		upload('images/',1024*1024*2,array('.png','.jpg','.bmp','.gif','.jpeg'),'fichier');
 	}
 	
 	if(isset($_GET['path']))
