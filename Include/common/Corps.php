@@ -77,8 +77,17 @@ Name : Corps.php => Plug-it
 			echo 'erreur';
 		break;
 		
+		case 'backup':
+		if(isset($_SESSION['id']))
+		{
+			INCLUDE("traitement/backup.php");
+		}
+		else
+			echo 'erreur';
+		break;
+		
 		default :
-		echo 'Page Inexistante';
+		echo '<h2>Page Inexistante</h2>';
 		break;
 	}
 			
