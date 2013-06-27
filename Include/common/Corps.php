@@ -68,6 +68,15 @@ Name : Corps.php => Plug-it
 			echo 'erreur';
 		break;
 		
+		case 'gestionnaire_img':
+		if(isset($_SESSION['id']))
+		{
+			INCLUDE("traitement/gestionnaire_img.php");
+		}
+		else
+			echo 'erreur';
+		break;
+		
 		default :
 		echo 'Page Inexistante';
 		break;
