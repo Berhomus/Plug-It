@@ -69,6 +69,7 @@ else
 		<li class="menuverti" onclick="location.href='Index.php?page=admin_services'">Nouveau Service</li>
 		<li class="menuverti" onclick="location.href='Index.php?page=admin_solutions'">Nouvelle Solution</li>
 		<li class="menuverti" onclick="location.href='Index.php?page=admin_ref'"><?php echo utf8_decode('Nouvelle Référence'); ?></li>
+		<li class="menuverti" onclick="location.href='Index.php?page=gestionnaire_img'">Gestionnaire d'images</li>
 	</ul>
 </center>
 <?php

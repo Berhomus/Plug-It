@@ -16,11 +16,11 @@ function upload($dossier,$taille_maxi,$extensions,$nom)
 		
 		if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
 		{
-			 $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, bmp !<br/>';
+			 $erreur = '<span style="color:red;">Vous devez uploader un fichier de type png, gif, jpg, jpeg !</span><br/>';
 		}
 		if($taille>$taille_maxi)
 		{
-			 $erreur = 'Le fichier est trop important, max :  '.($taille_maxi/1024).' kiloctect !<br/>';
+			 $erreur = '<span style="color:red;">Le fichier est trop important, max :  '.($taille_maxi/1024).' kiloctect !</span><br/>';
 		}
 		if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
 		{

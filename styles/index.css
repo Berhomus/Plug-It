@@ -132,6 +132,26 @@ Name : Index.css => Plug-it
 	 border-color:#696969 #DCDCDC #DCDCDC #696969;
 	}
 	
+.croixred
+	{
+	display:block;
+	width:30px;
+	background-color:#e30e0e;
+	color:white;
+	text-decoration:none;
+	text-align:center;
+	padding:5px;
+	border:2px solid;
+	cursor: pointer;
+	border-color:#DCDCDC #696969 #696969 #DCDCDC;
+	}
+.croixred:hover
+	{
+	 background-color:#ff0000;
+	 color:white;
+	 border-color:#696969 #DCDCDC #DCDCDC #696969;
+	}
+	
 .bt
 	{
 	text-decoration:none;
