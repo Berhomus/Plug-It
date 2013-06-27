@@ -47,10 +47,10 @@ Name : trt_solutions.php => Plug-it
 
 					if($array['cpt'])
 					{
-						if(empty($_FILES['logosolu']['name'])or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'logosolu')) != '')
+						if(empty($_FILES['logosolu']['name'])or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'logosolu')) != '')
 						{
 						
-							if(empty($_FILES['grandeimg']['name'])or ($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg'),'grandeimg')) != '')
+							if(empty($_FILES['grandeimg']['name'])or ($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'grandeimg')) != '')
 							{
 								$rq=mysql_query("SELECT * FROM solutions WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 								$array=mysql_fetch_array($rq);
@@ -115,9 +115,9 @@ Name : trt_solutions.php => Plug-it
 				if(isset($_POST) and !empty($_POST))
 				{	
 					
-					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'logosolu')) != '')
+					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'logosolu')) != '')
 					{
-						if(($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg'),'grandeimg')) != '')
+						if(($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'grandeimg')) != '')
 						{
 							$titre = htmlspecialchars($_POST['nomsolu']);
 							$desc = htmlspecialchars($_POST['desc']);

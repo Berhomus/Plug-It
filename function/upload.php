@@ -16,7 +16,7 @@ function upload($dossier,$taille_maxi,$extensions,$nom)
 		
 		if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
 		{
-			 $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg !<br/>';
+			 $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, bmp !<br/>';
 		}
 		if($taille>$taille_maxi)
 		{

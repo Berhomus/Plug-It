@@ -47,7 +47,7 @@ Name : trt_ref.php => Plug-it
 
 					if($array['cpt'])
 					{
-						if(empty($_FILES['logo']['name']) or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'logo')) != '')
+						if(empty($_FILES['logo']['name']) or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'logo')) != '')
 						{
 							$rq=mysql_query("SELECT * FROM ref WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 							$array=mysql_fetch_array($rq);
@@ -96,7 +96,7 @@ Name : trt_ref.php => Plug-it
 				if(isset($_POST) and !empty($_POST))
 				{	
 					
-					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'logo')) != '')
+					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'logo','bmp')) != '')
 					{
 						$titre = htmlspecialchars($_POST['nomcli']);
 						$soustitre = htmlspecialchars($_POST['soustitre']);

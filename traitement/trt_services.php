@@ -48,7 +48,7 @@ Name : trt_services.php => Plug-it
 
 					if($array['cpt'])
 					{
-						if(empty($_FILES['logoserv']['name']) or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'logoserv')) != '')
+						if(empty($_FILES['logoserv']['name']) or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'logoserv')) != '')
 						{
 							$rq=mysql_query("SELECT * FROM services WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 							$array=mysql_fetch_array($rq);
@@ -98,7 +98,7 @@ Name : trt_services.php => Plug-it
 				if(isset($_POST) and !empty($_POST))
 				{	
 					
-					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg'),'logoserv')) != '')
+					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'logoserv')) != '')
 					{
 						$titre = htmlspecialchars($_POST['nomserv']);
 						$soustitre = htmlspecialchars($_POST['soustitre']);
