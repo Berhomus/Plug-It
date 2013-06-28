@@ -16,6 +16,7 @@ if(isset($_SESSION['id']))
 	{
 		case 'main':
 			echo '<h2>Back-Up</h2>
+			<br/>
 			<center>
 				<ul style="width:20%;margin:auto;">
 					<li class="menuverti" onclick="location.href=\'Index.php?page=backup&sub=save\'">Sauvegarder</li>
