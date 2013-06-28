@@ -82,6 +82,7 @@ Name : services.php => Plug-it
 							</tr>
 						</table>
 						<hr/>
+						<br/>
 						'.nl2br($donnees['corps']).'
 						</div>';
 						
@@ -92,7 +93,7 @@ Name : services.php => Plug-it
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					
-					echo'<div style="margin:auto;width:80%;">
+					echo'<div style="margin:auto;width:70%;margin-top:20px;">
 					<table cellspacing="10">';
 					while ($donnees = mysql_fetch_array($retour))
 						{

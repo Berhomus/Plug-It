@@ -47,7 +47,7 @@ Name : Corps.php => Plug-it
 			INCLUDE("\include\admin\admin_solutions.php");
 		}
 		else
-			echo 'erreur';
+			echo '<h2>Access Forbidden</h2>';
 		break;
 		
 		case 'admin_services':
@@ -56,7 +56,7 @@ Name : Corps.php => Plug-it
 			INCLUDE("\include\admin\admin_services.php");
 		}
 		else
-			echo 'erreur';
+			echo '<h2>Access Forbidden</h2>';
 		break;
 		
 		case 'admin_ref':
@@ -65,7 +65,7 @@ Name : Corps.php => Plug-it
 			INCLUDE("\include\admin\admin_ref.php");
 		}
 		else
-			echo 'erreur';
+			echo '<h2>Access Forbidden</h2>';
 		break;
 		
 		case 'gestionnaire_img':
@@ -74,7 +74,7 @@ Name : Corps.php => Plug-it
 			INCLUDE("traitement/gestionnaire_img.php");
 		}
 		else
-			echo 'erreur';
+			echo '<h2>Access Forbidden</h2>';
 		break;
 		
 		case 'backup':
@@ -83,7 +83,7 @@ Name : Corps.php => Plug-it
 			INCLUDE("traitement/backup.php");
 		}
 		else
-			echo 'erreur';
+			echo '<h2>Access Forbidden</h2>';
 		break;
 		
 		default :

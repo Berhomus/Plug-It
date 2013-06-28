@@ -73,9 +73,18 @@ Name : solutions.php => Plug-it
 					$donnees = mysql_fetch_array($retour);
 					
 					echo '<div style="margin:auto;width:70%;">
-							<img src="'.$donnees['image_sol'].'" style="float:right;"/>
-							'.nl2br($donnees['corps']).'
-						</div>';
+							<img src="'.$donnees['image_sol'].'" style="float:right;" width="280" height="170" />
+							'.nl2br($donnees['corps']);
+							
+					$j=mb_substr_count(nl2br($donnees['corps']),'<br />');
+
+					for($i=15-$j;$i>0;$i--)
+					{
+						echo '<br/>';
+					}
+					
+					
+					echo '</div>';
 						
 					
 					//affichage autres liens					
@@ -84,7 +93,7 @@ Name : solutions.php => Plug-it
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					
-					echo'<div style="margin:auto;width:65%;">
+					echo'<div style="margin:auto;width:60%;margin-top:20px;">
 					<table cellspacing="10">';
 					while ($donnees = mysql_fetch_array($retour))
 						{
