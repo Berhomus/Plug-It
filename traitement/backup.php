@@ -58,7 +58,7 @@ if(isset($_SESSION['id']))
 }
 else
 {
-	echo '<h2 style="color:red">Access Forbiden !</h2>';
+	echo '<h2 style="color:red">Access Forbidden !</h2>';
 }
 ?>
 
