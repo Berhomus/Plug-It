@@ -17,7 +17,7 @@ Name : trt_ref.php => Plug-it
 		switch($_GET['mode'])
 		{
 			case 'delete':
-				echo '<h2>Suppression Référence</h2>';
+				echo utf8_decode('<h2>Suppression Référence</h2>');
 				if(isset($_GET['id']))
 				{
 					$rq=mysql_query("SELECT COUNT(id) as cpt FROM ref WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
@@ -26,7 +26,7 @@ Name : trt_ref.php => Plug-it
 					if($array['cpt'])
 					{
 						mysql_query("DELETE FROM ref WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-						echo utf8_decode('<h2 style="color:green;">Référence Supprimé !</h2>');
+						echo utf8_decode('<h2 style="color:green;">Référence Supprimée !</h2>');
 					}
 					else
 					{
@@ -35,7 +35,7 @@ Name : trt_ref.php => Plug-it
 				}
 				else
 				{
-					echo utf8_decode('<h2 style="color:red;">Référence non spécifié !</h2>');
+					echo utf8_decode('<h2 style="color:red;">Référence non spécifiée !</h2>');
 				}
 			break;
 			
@@ -67,7 +67,7 @@ Name : trt_ref.php => Plug-it
 							$lien = mysql_real_escape_string($lien);
 							
 							mysql_query("UPDATE ref SET image='$path', titre='$titre', sous_titre='$soustitre', lien='$lien' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-							echo utf8_decode('<h2 style="color:green;">Référence Modifié !</h2>');
+							echo utf8_decode('<h2 style="color:green;">Référence Modifiée !</h2>');
 						}
 						else
 						{
@@ -88,7 +88,7 @@ Name : trt_ref.php => Plug-it
 				}
 				else
 				{
-					echo utf8_decode('<h2 style="color:red;">Référence non spécifié !</h2>');
+					echo utf8_decode('<h2 style="color:red;">Référence non spécifiée !</h2>');
 				}
 			break;
 			
@@ -108,7 +108,7 @@ Name : trt_ref.php => Plug-it
 						$lien = mysql_real_escape_string($lien);
 						
 						mysql_query("INSERT INTO ref VALUES (Null,'$path','$titre','$lien','$soustitre',Null)")or die('Erreur SQL !<br />'.mysql_error());
-						echo utf8_decode('<h2 style="color:green;">Référence Créé !</h2>');
+						echo utf8_decode('<h2 style="color:green;">Référence Créée !</h2>');
 					}
 					else
 					{

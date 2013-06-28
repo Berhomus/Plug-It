@@ -26,7 +26,7 @@ Name : trt_solutions.php => Plug-it
 					if($array['cpt'])
 					{
 						mysql_query("DELETE FROM solutions WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-						echo utf8_decode('<h2 style="color:green;">Solution Supprimé !</h2>');
+						echo utf8_decode('<h2 style="color:green;">Solution Supprimée !</h2>');
 					}
 					else
 					{
@@ -35,7 +35,7 @@ Name : trt_solutions.php => Plug-it
 				}
 				else
 				{
-					echo utf8_decode('<h2 style="color:red;">Solution non spécifié !</h2>');
+					echo utf8_decode('<h2 style="color:red;">Solution non spécifiée !</h2>');
 				}
 			break;
 			
@@ -70,7 +70,7 @@ Name : trt_solutions.php => Plug-it
 								$corps = mysql_real_escape_string($corps);
 								
 								mysql_query("UPDATE solutions SET image_sol='$path', image_car='$path2', titre='$titre', description='$desc', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-								echo utf8_decode('<h2 style="color:green;">Solution Modifié !</h2>');
+								echo utf8_decode('<h2 style="color:green;">Solution Modifiée !</h2>');
 							}
 							else
 							{
@@ -105,7 +105,7 @@ Name : trt_solutions.php => Plug-it
 				}
 				else
 				{
-					echo utf8_decode('<h2 style="color:red;">Solution non spécifié !</h2>');
+					echo utf8_decode('<h2 style="color:red;">Solution non spécifiée !</h2>');
 				}
 			break;
 			
@@ -126,7 +126,7 @@ Name : trt_solutions.php => Plug-it
 							$corps = mysql_real_escape_string($_POST['corps']);
 							
 							mysql_query("INSERT INTO solutions VALUES (Null,'$titre','$corps','$path2','$path','$desc',Null)")or die('Erreur SQL !<br />'.mysql_error());
-							echo utf8_decode('<h2 style="color:green;">Référence Créé !</h2>');
+							echo utf8_decode('<h2 style="color:green;">Solution Créée !</h2>');
 						}
 						else
 						{
