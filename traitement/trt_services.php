@@ -4,11 +4,6 @@ Last Update : 26/06/2013
 Name : trt_services.php => Plug-it
 *********************************************************-->
 
-<?php
-if(isset($_SESSION['id']))
-{
-?>
-
 <div style="margin:auto;width:400px;">
 <?php
 	
@@ -147,11 +142,3 @@ if(isset($_SESSION['id']))
 	echo utf8_decode('<center><a href="../index.php?page=services">Retour Services</a></center>');
 ?>
 </div>
-
-	<?php
-	}
-	else
-	{
-		echo '<h2 style="color:red">Access Forbidden !</h2>';
-	}
-	?>

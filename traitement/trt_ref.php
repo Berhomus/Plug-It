@@ -3,10 +3,6 @@ Made by : AS Amiens - Bovin Antoine/Bensaid Borhane/Villain Benoit
 Last Update : 26/06/2013
 Name : trt_ref.php => Plug-it
 *********************************************************-->
-<?php
-if(isset($_SESSION['id']))
-{
-?>
 
 <div style="margin:auto;width:80%;">
 <?php
@@ -147,11 +143,3 @@ if(isset($_SESSION['id']))
 	echo utf8_decode('<center><a href="../index.php?page=references">Retour Référence</a></center>');
 ?>
 </div>
-
-	<?php
-	}
-	else
-	{
-		echo '<h2 style="color:red">Access Forbidden !</h2>';
-	}
-	?>
