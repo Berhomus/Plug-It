@@ -3,7 +3,10 @@ Made by : AS Amiens - Bovin Antoine/Bensaid Borhane/Villain Benoit
 Last Update : 27/06/2013
 Name : admin.php => Plug-it
 *********************************************************-->
-
+<?php
+if(isset($_SESSION['id']))
+{
+?>
 <h2>Gestionnaire d'images</h2>
 
 <div style="text-align:center;">
@@ -87,3 +90,10 @@ function mkmap($dir){
 ?>
 <?php mkmap('./images'); ?>
 </center>
+<?php
+}
+else
+{
+	echo '<h2 style="color:red">Access Forbiden !</h2>';
+}
+?>

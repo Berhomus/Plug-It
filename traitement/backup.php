@@ -4,7 +4,8 @@ Last Update : 27/06/2013
 Name : admin.php => Plug-it
 *********************************************************-->	
 <?php
-
+if(isset($_SESSION['id']))
+{
 	if(!isset($_GET['sub']))
 	{
 		$_GET['sub'] = 'main';
@@ -53,6 +54,10 @@ Name : admin.php => Plug-it
 		default:
 		break;
 	}
-
+}
+else
+{
+	echo '<h2 style="color:red">Access Forbiden !</h2>';
+}
 ?>
 
