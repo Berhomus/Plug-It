@@ -106,7 +106,7 @@ Name : trt_services.php => Plug-it
 						$corps = mysql_real_escape_string($_POST['corps']);
 						
 						mysql_query("INSERT INTO services VALUES (Null,'$titre','$corps','$path','$soustitre',Null)")or die('Erreur SQL !<br />'.mysql_error());
-						echo utf8_decode('<h2 style="color:green;">Référence Créé !</h2>');
+						echo utf8_decode('<h2 style="color:green;">Service Créé !</h2>');
 					}
 					else
 					{
