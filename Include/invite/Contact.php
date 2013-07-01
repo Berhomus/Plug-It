@@ -4,6 +4,24 @@ Last Update : 26/06/2013
 Name : Contact.php => Plug-it
 *********************************************************-->
 
+<script>
+	function isEmail(adr, id){
+     // étape consistant à définir l'expression régulière d'une adresse email
+     var regEmail = new RegExp('^[0-9a-z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}$','i');
+
+     if(regEmail.test(adr.value))
+	 {
+		id.style.color='green';
+	 }
+	 else
+	 {
+		id.style.color='red';
+		adr.value='';
+		alert('Mail Invalide');
+	 }
+   }
+</script>
+
 <?php
 
 	$error_contact = 0;
@@ -67,8 +85,8 @@ Name : Contact.php => Plug-it
 				</tr>
 				
 				<tr>
-					<td><label for="courriel"><b>Courriel <span class="red">*</span></b></label></td>
-					<td><input type="text" name="courriel" id="courriel" required/></td>
+					<td><label for="courriel" id="email"><b>Courriel <span class="red">*</span></b></label></td>
+					<td><input type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/></td>
 				</tr>
 				
 				<tr>	
