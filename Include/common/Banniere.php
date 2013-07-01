@@ -56,6 +56,13 @@ Name : Banniere.php => Plug-it
 				else
 					echo 'class="menu_unselected"';
 			?>>Support</td>
+			<td onclick="location.href='Index.php?page=reglement'"
+			<?php
+				if($_GET['page'] == 'reglement')
+					echo 'class="menu_selected"';
+				else
+					echo 'class="menu_unselected"';
+			?>>Réglement</td>
 		</tr>
 	</table>
 </div>

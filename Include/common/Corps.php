@@ -36,6 +36,10 @@ Name : Corps.php => Plug-it
 		case 'support':
 		INCLUDE("\include\invite\support.php");
 		break;
+		
+		case 'reglement':
+		INCLUDE("/include/invite/reglement.php");
+		break;
 
 		case 'admin':
 		INCLUDE("\include\admin\admin.php");

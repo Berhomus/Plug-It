@@ -16,7 +16,7 @@ Name : Index.css => Plug-it
 	
 .menu td
 {
-	width:14%;
+	width:100px;
 	text-align:center;
 	cursor: pointer;
 	font-weight:bold; 
