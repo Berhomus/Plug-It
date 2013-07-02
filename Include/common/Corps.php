@@ -45,6 +45,15 @@ Name : Corps.php => Plug-it
 		INCLUDE("\include\admin\admin.php");
 		break;
 		
+		case 'trt_paiement':
+		if(isset($_POST['DATA']))
+		{
+			INCLUDE("/include/invite/trt_paiement.php");
+		}
+		else
+			echo '<h2>Page Unreachable</h2>';
+		break;
+		
 		case 'admin_solutions':
 		if(isset($_SESSION['id']))
 		{

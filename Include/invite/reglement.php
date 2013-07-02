@@ -61,11 +61,28 @@ function isNumber(field,id){
 	else
 	{
 		id.style.color = "green";
+		
+		var value = field.value.replace(",",".");
+		
+		var entiere = parseInt(value);
+		var decimale = field.value.substring(value.lastIndexOf("."));
+		if(decimale != entiere)
+		{
+			var i;
+			for(i = decimale.length;i<3;i++)
+				value += "0";
+		}
+		else
+		{
+			value += ".00";
+		}
+		
+		field.value = value;
 	}
 }
 </script>
 
-<h2 class="titre">Réglement en ligne</h2>
+<h2 class="titre">Paiement en ligne</h2>
 
 <?php
 	if(isset($_POST) and !empty($_POST))
@@ -117,18 +134,23 @@ function isNumber(field,id){
 		<form method="post" action="#">
 			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
 						<tr>
+							<td><label for="num"><b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num">(10 caractères)</small></label></td>
+							<td><input style="text-align:right;" type="text" name="num" id="num" onblur="textLimit2(this,10, lim_num);" required/></td>
+						</tr>
+						
+						<tr>
 							<td><label for="nom"><b>Nom du client <span class="red">*</span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label></td>
-							<td><input type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/></td>
+							<td><input  style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/></td>
 						</tr>
 						
 						<tr>
 							<td><label for="societe"><b>Société </b><br/><small id="lim_soc">(Max 50 caractères)</small></label></td>
-							<td><input type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" /></td>
+							<td><input style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" /></td>
 						</tr>
 						
 						<tr>
 							<td><label for="courriel" id="email"><b>Courriel <span class="red">*</span></b></label></td>
-							<td><input type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/></td>
+							<td><input style="text-align:right;" type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/></td>
 						</tr>
 						
 						<tr>
@@ -138,7 +160,7 @@ function isNumber(field,id){
 						
 						<tr>	
 							<td><label for="montant" id="lim_montant"><b>Montant <span class="red">*</span></b></label></td>
-							<td><input type="text" name="montant" id="montant" onblur="isNumber(this,lim_montant);" required/> €</td>
+							<td><input style="text-align:right;" type="text" name="montant" id="montant" onblur="isNumber(this,lim_montant);" required/> €</td>
 						</tr>
 						
 						<tr>

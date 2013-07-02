@@ -21,11 +21,11 @@ LOGO2!commercant.gif!
 
 # URL de retour suite a paiement refuse
 
-CANCEL_URL!http://!
+#CANCEL_URL!http://!
 
 # URL de retour suite a paiement accepte
 
-RETURN_URL!http://!
+#RETURN_URL!http://!
 
 # END OF FILE
 
