@@ -83,10 +83,178 @@ function isNumber(field,id){
 
 /*####FONCTION AJOUT DE FACTURE####*/
 
-function ajoutfacture()
+var nbr_fac = 1;
+
+function ajoutfacture(n)
 {
+	var array = document.getElementById("facture").innerHTML.split("");
+	
+	var chaine = "";
+	
+	nbr_fac++;
+	
+	var i;
+	for(i=0;i<(8+n);i++)
+	{
+		chaine += (array[i]+"");
+	}
+	chaine +=
+	' \
+		<label for="num_'+n+'"><b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num_'+n+'">(10 caractères)</small></label> \
+		<input style="text-align:right;" type="text" name="num_'+n+'" id="num_'+n+'" onblur="textLimit2(this,10, lim_num_'+n+');" required/> \
+		<label for="date'+n+'"><b>Date <span class="red">*</span></b><br/><small id="lim_date_'+n+'">(JJ/MM/AA)</small></label> \
+		<input type="date" name="date_'+n+'" id="date_'+n+'" onblur="textLimit2(this,10, lim_date_'+n+');" required/> \
+		<label for="montant" id="lim_montant_'+n+'"><b>Montant TTC <span class="red">*</span></b></label> \
+		<input style="text-align:right;" type="text" name="montant_'+n+'" id="montant_'+n+'" onblur="isNumber(this,lim_montant_'+n+');" required/> € \
+		<input type="button" value="X" id="moins" onclick="deletefacture('+n+');"/> \
+	';
+
+	array[i] = '<input type="button" value="+" id="plus" onclick="ajoutfacture('+(n+1)+');"/>';
+	
+	for(i=(8+n);i<array.length-1;i++)
+		chaine += (array[i]+"");
+		
+	chaine += array[i];
+	
+	document.getElementById("facture").innerHTML = chaine;
+		
+}
+
+function deletefacture(n){
+
+	var array = document.getElementById("facture").innerHTML.split("");
+	
+	var chaine = "";
+
+	array[(nbr_fac+9)] = '<input type="button" value="+" id="plus" onclick="ajoutfacture('+(nbr_fac)+');"/>';
+	
+	nbr_fac--;
+	
+	var i;
+	for(i=0;i<array.length-1;i++)
+	{
+		if(i != (n+8))
+			chaine += (array[i]+"");
+	}
+
+	chaine += array[i];
+	
+	document.getElementById("facture").innerHTML = chaine;
 	
 }
+
+    function creerElement(ID)
+    {
+      var Conteneur = document.createElement('div');
+      Conteneur.setAttribute('id', 'element' + ID);
+      var Input = document.createElement('input');
+      Input.setAttribute('type', 'text');
+      Input.setAttribute('name', 'input' + ID);
+      Input.setAttribute('id', 'input' + ID);
+      var Delete = document.createElement('input');
+      Delete.setAttribute('type', 'button');
+      Delete.setAttribute('value', 'Supprimer n°' + ID + ' !');
+      Delete.setAttribute('id', 'delete' + ID);
+      Delete.onclick = supprimerElement;
+      Conteneur.appendChild(Input);
+      Conteneur.appendChild(Delete);
+      return Conteneur;
+    }
+
+	    function dernierElement()
+    {
+      var Conteneur = document.getElementById('conteneur'), n = 0;
+      if(Conteneur)
+      {
+        var elementID, elementNo;
+        if(Conteneur.childNodes.length > 0)
+        {
+          for(var i = 0; i < Conteneur.childNodes.length; i++)
+          {
+            // Ici, on vérifie qu'on peut récupérer les attributs, si ce n'est pas possible, on renvoit false, sinon l'attribut
+            elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
+            if(elementID)
+            {
+				var elementPattern=new RegExp("element([0-9]*)","g");
+              elementNo = parseInt(elementID.replace(elementPattern, '$1'));
+              if(!isNaN(elementNo) && elementNo > n)
+              {
+                n = elementNo;
+              }
+            }
+          }
+        }
+      }
+      return n;
+    }
+
+	    function ajouterElement()
+    {
+            var Conteneur = document.getElementById('conteneur');
+            if(Conteneur)
+            {	
+                    Conteneur.appendChild(creerElement(dernierElement() + 1))
+            }
+    }
+
+    function supprimerElement()
+    {
+		var deletePattern=new RegExp("delete([0-9]*)","g");
+      var Conteneur = document.getElementById('conteneur');
+      var n = parseInt(this.id.replace(deletePattern, '$1'));
+      if(Conteneur && !isNaN(n))
+      {
+        var elementID, elementNo;
+        if(Conteneur.childNodes.length > 0)
+        {
+          for(var i = 0; i < Conteneur.childNodes.length; i++)
+          {
+            elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
+            if(elementID)
+            {
+				var elementPattern=new RegExp("element([0-9]*)","g");
+              elementNo = parseInt(elementID.replace(elementPattern, '$1'));
+              if(!isNaN(elementNo) && elementNo  == n)
+              {
+                Conteneur.removeChild(Conteneur.childNodes[i]);
+                updateElements(); // A supprimer si tu ne veux pas la màj
+                return;
+              }
+            }
+          }
+        }
+      }  
+    }
+
+	
+	    function updateElements()
+    {
+      var Conteneur = document.getElementById('conteneur'), n = 0;
+      if(Conteneur)
+      {
+        var elementID, elementNo;
+        if(Conteneur.childNodes.length > 0)
+        {
+          for(var i = 0; i < Conteneur.childNodes.length; i++)
+          {
+            elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
+            if(elementID)
+            {
+				var elementPattern=new RegExp("element([0-9]*)","g");
+              elementNo = parseInt(elementID.replace(elementPattern, '$1'));
+              if(!isNaN(elementNo))
+              {
+                n++
+                Conteneur.childNodes[i].setAttribute('id', 'element' + n);
+                document.getElementById('input' + elementNo).setAttribute('name', 'input' + n);
+                document.getElementById('input' + elementNo).setAttribute('id', 'input' + n);
+                document.getElementById('delete' + elementNo).setAttribute('id', 'delete' + n);
+              }
+            }
+          }
+        }
+      }
+    }
 
 </script>
 
@@ -101,35 +269,35 @@ function ajoutfacture()
 ?>		
 		<h2 class="titre">Récapitulatif</h2>
 		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
-			<tr>
-				<td><b>Numéro de facture</b></td>
-				<td><?php echo $_POST['num']; ?></td>
-			</tr>
 			
-			<tr>
-				<td><b>Nom du client</b></td>
-				<td><?php echo $_POST['nom']; ?></td>
-			</tr>
+				<b>Numéro de facture</b>
+				<?php echo $_POST['num']; ?>
 			
-			<tr>
-				<td><b>Société</b></td>
-				<td><?php echo $_POST['societe']; ?></td>
-			</tr>
 			
-			<tr>
-				<td><b>Courriel</b></td>
-				<td><?php echo $_POST['courriel']; ?></td>
-			</tr>
 			
-			<tr>	
-				<td><b>Montant</b></td>
-				<td><?php echo $_POST['montant']; ?>€</td>
-			</tr>
+				<b>Nom du client</b>
+				<?php echo $_POST['nom']; ?>
 			
-			<tr>
-				<td><b>Commentaire</b></td>
-				<td><?php echo $_POST['commentaire']; ?></td>
-			</tr>	
+			
+			
+				<b>Société</b>
+				<?php echo $_POST['societe']; ?>
+			
+			
+			
+				<b>Courriel</b>
+				<?php echo $_POST['courriel']; ?>
+			
+			
+				
+				<b>Montant</b>
+				<?php echo $_POST['montant']; ?>€
+			
+			
+			
+				<b>Commentaire</b>
+				<?php echo $_POST['commentaire']; ?>
+				
 		</table>
 		
 <?php
@@ -140,88 +308,91 @@ function ajoutfacture()
 	{
 ?>
 		<form method="post" action="#">
-			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
-						<tr>
-							<td colspan="6"><hr/></td>
-						</tr>
+			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" id="facture">
 						
-						<tr>
-							<td colspan="6" style="text-align:center;"><b>Vos coordonnées</b></td>
-						</tr>
+							<td colspan="6"><hr/>
 						
-						<tr>
-							<td colspan="6"><hr/></td>
-						</tr>
 						
-						<tr>
-							<td><label for="nom"><b>Nom du client <span class="red">*</span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label></td>
-							<td><input  style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/></td>
-						</tr>
 						
-						<tr>
-							<td><label for="societe"><b>Société </b><br/><small id="lim_soc">(Max 50 caractères)</small></label></td>
-							<td><input style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" /></td>
-						</tr>
+							<td colspan="6" style="text-align:center;"><b>Vos coordonnées</b>
 						
-						<tr>
-							<td><label for="courriel" id="email"><b>Courriel <span class="red">*</span></b></label></td>
-							<td><input style="text-align:right;" type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/></td>
-						</tr>
 						
-						<tr>
-							<td colspan="6"><hr/></td>
-						</tr>
 						
-						<tr>
-							<td style="text-align:center;" colspan="6"><b>Vos factures</b></td>
-						</tr>
+							<td colspan="6"><hr/>
 						
-						<tr>
-							<td colspan="6"><hr/></td>
-						</tr>
 						
-						<tr>
-							<td><label for="num"><b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num">(10 caractères)</small></label></td>
-							<td><input style="text-align:right;" type="text" name="num" id="num" onblur="textLimit2(this,10, lim_num);" required/></td>
 						
-							<td><label for="date"><b>Date <span class="red">*</span></b><br/><small id="lim_date">(JJ/MM/AA)</small></label></td>
-							<td><input type="date" name="date" id="date" onblur="textLimit2(this,10, lim_date);" required/></td>
+							<label for="nom"><b>Nom du client <span class="red">*</span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label>
+							<input  style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/>
+						
+						
+						
+							<label for="societe"><b>Société </b><br/><small id="lim_soc">(Max 50 caractères)</small></label>
+							<input style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" />
+						
+						
+						
+							<label for="courriel" id="email"><b>Courriel <span class="red">*</span></b></label>
+							<input style="text-align:right;" type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/>
+						
+						
+						
+							<td colspan="6"><hr/>
+						
+						
+						
+							<td style="text-align:center;" colspan="6"><b>Vos factures</b>
+						
+						
+						
+							<td colspan="6"><hr/>
 							
-							<td><label for="montant" id="lim_montant"><b>Montant TTC <span class="red">*</span></b></label></td>
-							<td><input style="text-align:right;" type="text" name="montant" id="montant" onblur="isNumber(this,lim_montant);" required/> €</td>
-						</tr>
+					</table>
+						<div id="conteneur">
 						
-						<tr>
-							<td><input type="button" value="+" id="plus" onclick=""/></td>
-						</tr>
+						<div id="element1">
+							<label for="num_1"><b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num_1">(10 caractères)</small></label>
+							<input style="text-align:right;" type="text" name="num_1" id="num_1" onblur="textLimit2(this,10, lim_num_1);" required/>
 						
-						<tr>
-							<td style="text-align:right;" colspan="5"><label for="montanttot" ><b>Montant Total</b></label></td>
-							<td colspan="6"><input style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €</td>
-						</tr>
+							<label for="date_1"><b>Date <span class="red">*</span></b><br/><small id="lim_date_1">(JJ/MM/AA)</small></label>
+							<input type="date" name="date_1" id="date_1" onblur="textLimit2(this,10, lim_date_1);" required/>
+							
+							<label for="montant_1" id="lim_montant_1"><b>Montant TTC <span class="red">*</span></b></label>
+							<input style="text-align:right;" type="text" name="montant_1" id="montant_1" onblur="isNumber(this,lim_montant_1);" required/> €
+						</div>	
 						
-						<tr>
-							<td colspan="6"><hr/></td>
-						</tr>
+						</div>
 						
-						<tr>
-							<td style="text-align:center;" colspan="6"><b>Informations complémentaires</b></td>
-						</tr>
+							<input type="button" value="+" id="plus" onclick="ajouterElement();"/>
 						
-						<tr>
-							<td colspan="6"><hr/></td>
-						</tr>
+					<table>	
 						
-						<tr>
-							<td><label for="commentaire"><b>Commentaire </b><br/><small>(facultatif)</small></label></td>
-							<td colspan="3"><textarea name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea></td>
-						</tr>
+							<td style="text-align:right;" colspan="5"><label for="montanttot" ><b>Montant Total</b></label>
+							<td colspan="6"><input style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €
 						
-						<tr>
-							<td>
-							</td>
-							<td style="text-align:right;"><input type="submit" name="envoyer" value="Envoyer" /></td>
-						</tr>		
+						
+						
+							<td colspan="6"><hr/>
+						
+						
+						
+							<td style="text-align:center;" colspan="6"><b>Informations complémentaires</b>
+						
+						
+						
+							<td colspan="6"><hr/>
+						
+						
+						
+							<label for="commentaire"><b>Commentaire </b><br/><small>(facultatif)</small></label>
+							<td colspan="3"><textarea name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea>
+						
+						
+						
+							
+							
+							<td style="text-align:right;"><input type="submit" name="envoyer" value="Envoyer" />
+								
 				</table>
 			</form>	
 <?php
