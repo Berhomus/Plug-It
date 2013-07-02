@@ -94,12 +94,11 @@
     //    -> Unix    : $logfile="/home/repertoire/log/logfile.txt";
     //
 
-	$logfile="/log_paiement.txt";
+	$logfile="c:/wamp/www/plug-it/log_paiement.txt";
 
 	// Ouverture du fichier de log en append
 
 	$fp=fopen($logfile, "a");
-
 	//  analyse du code retour
 
   if (( $code == "" ) && ( $error == "" ) )

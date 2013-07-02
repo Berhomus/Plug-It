@@ -119,7 +119,7 @@
 
 		print("<H3>Paiement en ligne</H3>\n");
 
-		/*print("<b><h4>\n");
+		print("<b><h4>\n");
 		print("<br><hr>\n");
 		print("<br>merchant_id : $merchant_id\n");
 		print("<br>merchant_country : $merchant_country\n");
@@ -162,7 +162,7 @@
 		print("<br>score_profile: $score_profile\n");
 		print("<br>threed_ls_code: $threed_ls_code\n");
 		print("<br>threed_relegation_code: $threed_relegation_code\n");
-		print("<br><br><hr></b></h4>");*/
+		print("<br><br><hr></b></h4>");
 	}
 
 
