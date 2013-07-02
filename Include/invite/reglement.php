@@ -83,10 +83,6 @@ function isNumber(field,id){
 
 /*####FONCTION AJOUT DE FACTURE####*/
 
-function ajoutfacture()
-{
-	
-}
 
 </script>
 
@@ -140,7 +136,7 @@ function ajoutfacture()
 	{
 ?>
 		<form method="post" action="#">
-			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
+			<table id="paiement" border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
 						<tr>
 							<td colspan="6"><hr/></td>
 						</tr>
@@ -218,9 +214,7 @@ function ajoutfacture()
 						</tr>
 						
 						<tr>
-							<td>
-							</td>
-							<td style="text-align:right;"><input type="submit" name="envoyer" value="Envoyer" /></td>
+							<td colspan="6" style="text-align:right;"><input type="submit" name="envoyer" value="Envoyer" /></td>
 						</tr>		
 				</table>
 			</form>	
