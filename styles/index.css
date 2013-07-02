@@ -164,6 +164,22 @@ Name : Index.css => Plug-it
 	text-decoration:none;
 	color:red;
 	}
+	
+/*####FORMULAIRE PAIEMENT####*/
+
+.formulaire
+	{
+		margin:auto;
+		width:800px;
+		
+	}
+	
+.lab
+	{
+		display:block;
+		vertical-align:center;
+
+	}
 
 /*#######PARAMETRES#######*/
 
