@@ -80,6 +80,14 @@ function isNumber(field,id){
 		field.value = value;
 	}
 }
+
+/*####FONCTION AJOUT DE FACTURE####*/
+
+function ajoutfacture()
+{
+	
+}
+
 </script>
 
 <h2 class="titre">Paiement en ligne</h2>
@@ -134,8 +142,15 @@ function isNumber(field,id){
 		<form method="post" action="#">
 			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
 						<tr>
-							<td><label for="num"><b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num">(10 caractères)</small></label></td>
-							<td><input style="text-align:right;" type="text" name="num" id="num" onblur="textLimit2(this,10, lim_num);" required/></td>
+							<td colspan="6"><hr/></td>
+						</tr>
+						
+						<tr>
+							<td colspan="6" style="text-align:center;"><b>Vos coordonnées</b></td>
+						</tr>
+						
+						<tr>
+							<td colspan="6"><hr/></td>
 						</tr>
 						
 						<tr>
@@ -154,18 +169,52 @@ function isNumber(field,id){
 						</tr>
 						
 						<tr>
-							<td><label for="num"><b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num">(10 caractères)</small></label></td>
-							<td><input type="text" name="num" id="num" onblur="textLimit2(this,10, lim_num);" required/></td>
+							<td colspan="6"><hr/></td>
 						</tr>
 						
-						<tr>	
-							<td><label for="montant" id="lim_montant"><b>Montant <span class="red">*</span></b></label></td>
+						<tr>
+							<td style="text-align:center;" colspan="6"><b>Vos factures</b></td>
+						</tr>
+						
+						<tr>
+							<td colspan="6"><hr/></td>
+						</tr>
+						
+						<tr>
+							<td><label for="num"><b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num">(10 caractères)</small></label></td>
+							<td><input style="text-align:right;" type="text" name="num" id="num" onblur="textLimit2(this,10, lim_num);" required/></td>
+						
+							<td><label for="date"><b>Date <span class="red">*</span></b><br/><small id="lim_date">(JJ/MM/AA)</small></label></td>
+							<td><input type="date" name="date" id="date" onblur="textLimit2(this,10, lim_date);" required/></td>
+							
+							<td><label for="montant" id="lim_montant"><b>Montant TTC <span class="red">*</span></b></label></td>
 							<td><input style="text-align:right;" type="text" name="montant" id="montant" onblur="isNumber(this,lim_montant);" required/> €</td>
 						</tr>
 						
 						<tr>
+							<td><input type="button" value="+" id="plus" onclick=""/></td>
+						</tr>
+						
+						<tr>
+							<td style="text-align:right;" colspan="5"><label for="montanttot" ><b>Montant Total</b></label></td>
+							<td colspan="6"><input style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €</td>
+						</tr>
+						
+						<tr>
+							<td colspan="6"><hr/></td>
+						</tr>
+						
+						<tr>
+							<td style="text-align:center;" colspan="6"><b>Informations complémentaires</b></td>
+						</tr>
+						
+						<tr>
+							<td colspan="6"><hr/></td>
+						</tr>
+						
+						<tr>
 							<td><label for="commentaire"><b>Commentaire </b><br/><small>(facultatif)</small></label></td>
-							<td><textarea name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea></td>
+							<td colspan="3"><textarea name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea></td>
 						</tr>
 						
 						<tr>
