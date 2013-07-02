@@ -33,9 +33,11 @@ Name : Index.php => Plug-it
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<script type="text/javascript">
 			var pos = new google.maps.LatLng(49.8853893, 2.3037014);
-			function initCarte(){
+			function initCarte()
+			{
 				// création de la carte
-				var oMap = new google.maps.Map( document.getElementById( 'div_carte'),{
+				var oMap = new google.maps.Map( document.getElementById( 'div_carte'),
+				{
 				'center' : pos,
 				'zoom' : 17,
 				'mapTypeId' : google.maps.MapTypeId.ROADMAP

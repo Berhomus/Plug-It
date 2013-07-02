@@ -36,7 +36,8 @@ if(isset($_SESSION['id']))
 		else 
 		{            xhr = new XMLHttpRequest();        }    } 
 	else 
-	{        alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");        return null;    }         return xhr;}/*####FONCTION DE VISUALISATION####*/function view(textareaId, viewDiv)
+	{        alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");        return null;    }         return xhr;}
+/*####FONCTION DE VISUALISATION####*/function view(textareaId, viewDiv)
 {    var content = encodeURIComponent(document.getElementById(textareaId).value);    var xhr = getXMLHttpRequest();         if (xhr && xhr.readyState != 0) 
 	{        xhr.abort();        delete xhr;    }         xhr.onreadystatechange = function()
 	{        if (xhr.readyState == 4 && xhr.status == 200)

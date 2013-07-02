@@ -117,11 +117,6 @@ function isNumber(field,id){
 		<form method="post" action="#">
 			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
 						<tr>
-							<td><label for="num"><b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num">(10 caractères)</small></label></td>
-							<td><input type="text" name="num" id="num" onblur="textLimit2(this,10, lim_num);" required/></td>
-						</tr>
-						
-						<tr>
 							<td><label for="nom"><b>Nom du client <span class="red">*</span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label></td>
 							<td><input type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/></td>
 						</tr>
@@ -134,6 +129,11 @@ function isNumber(field,id){
 						<tr>
 							<td><label for="courriel" id="email"><b>Courriel <span class="red">*</span></b></label></td>
 							<td><input type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/></td>
+						</tr>
+						
+						<tr>
+							<td><label for="num"><b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num">(10 caractères)</small></label></td>
+							<td><input type="text" name="num" id="num" onblur="textLimit2(this,10, lim_num);" required/></td>
 						</tr>
 						
 						<tr>	
