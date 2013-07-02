@@ -39,9 +39,9 @@
 	// 		Les valeurs proposées ne sont que des exemples
 	// 		Les champs et leur utilisation sont expliqués dans le Dictionnaire des données
 	//
-	// 		$parm="$parm normal_return_url=http://www.maboutique.fr/cgi-bin/call_response.php";
-	//		$parm="$parm cancel_return_url=http://www.maboutique.fr/cgi-bin/call_response.php";
-	//		$parm="$parm automatic_response_url=http://www.maboutique.fr/cgi-bin/call_autoresponse.php";
+	 		$parm="$parm normal_return_url=http://127.0.0.1/plug-it/index.php?page=trt_paiement";
+			$parm="$parm cancel_return_url=http://127.0.0.1/plug-it/index.php?page=trt_paiement";
+			$parm="$parm automatic_response_url=http://127.0.0.1/plug-it/include/webaffaires/call_autoresponse.php";
 	//		$parm="$parm language=fr";
 	//		$parm="$parm payment_means=CB,2,VISA,2,MASTERCARD,2";
 	//		$parm="$parm header_flag=no";
@@ -148,6 +148,5 @@
 		print ("  $message <br>");
 	}
 
-print ("</BODY></HTML>");
 
 ?>

@@ -62,7 +62,7 @@ Name : Banniere.php => Plug-it
 					echo 'class="menu_selected"';
 				else
 					echo 'class="menu_unselected"';
-			?>>Réglement</td>
+			?>>Paiement<!--<br/>en Ligne--></td>
 		</tr>
 	</table>
 </div>
