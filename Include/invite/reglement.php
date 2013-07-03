@@ -340,52 +340,78 @@ var nbr_fac = 0;
 	{
 ?>
 		<form method="post" action="#">
-		<div class="formulaire">
-			
-			<br/>			
-			<hr/>
-			<br/>
-			<b><center>Vos coordonnées</center></b>
-			<br/>
-			<hr/>
-			<br/>
-			
-			<label class="lab" for="nom"><b>Nom du client <span class="red">*</span></b><input  style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/>
-			<br/><small id="lim_nom">(Max 50 caractères)</small></label>
-			<br/>
-			<label class="lab" for="societe" ><b>Société </b><input style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" />
-			<br/><small id="lim_soc">(Max 50 caractères)</small></label>
-			<br/>
-			<label class="lab" for="courriel" id="email"><b>Courriel <span class="red">*</span></b></label><input style="text-align:right;" type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/>
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="800px">
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+			<tr>
+				<td style="text-align:center;" colspan="6"><b>Vos coordonnées</b></td>
+			</tr>
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
 
-			<br/>
-			<hr/>
-			<br/>
-			<b><center>Vos factures</center></b>
-			<br/>
-			<hr/>
-			<br/>
+			<tr>
+				<td width="150px"><label class="lab" for="nom"><b>Nom du client <span class="red">* </span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label></td>
+				<td><input class="lab" style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/></td>
+			</tr>
 			
-			<table style="margin:auto;" id="conteneur">	
-			</table>
-			
-			<input type="button" value="+" id="plus" onclick="ajouterElement();"/>
+			<tr>
+				<td><label class="lab" for="societe"><b>Société </b><br/><small id="lim_soc">(Max 50 caractères)</small></label></td>
+				<td><input class="lab" style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" /></td>
+			</tr>
+			<tr>
+				<td><label class="lab" for="courriel" id="email"><b>Courriel <span class="red">* </span></b></label>
+				<td><input class="lab" style="text-align:right;" type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/>
+			</tr>
+		</table>
 		
-			<label class="lab" for="montanttot" ><b>Montant Total</b></label><input style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="800px">	
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+			<tr>
+				<td style="text-align:center;" colspan="6"><b>Vos factures</b></td>
+			</tr>
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
 			
-			<br/>
-			<hr/>	
-			<br/>
-			<b><center>Informations complémentaires</center></b>
-			<br/>
-			<hr/>
-			<br/>
+			<table style="margin:auto;" id="conteneur">
+				
+			</table>
+
 			
-			<label class="lab" for="commentaire"><b>Commentaire </b><textarea name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea>
-			<br/><small>(facultatif)</small></label>
-			<br/>
-			<input type="submit" name="envoyer" value="Envoyer" />
-		</div>
+			<tr>
+				<td><input style="margin:10px;" type="button" value="+" id="plus" onclick="ajouterElement();"/></td>
+			</tr>
+			
+			<tr>
+				<td colspan="5" style="text-align:right;" width="600px"><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
+				<td colspan="6" style="text-align:right;" width="150px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €</td>
+			</tr>
+		</table>
+			
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="800px">
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+			<tr>
+				<td style="text-align:center;" colspan="6"><b>Informations complémentaires</b></td>
+			</tr>
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+			
+			<tr>
+				<td><b>Commentaire </b><br/><small>(facultatif)</small></td>
+				<td><label class="lab" for="commentaire"><textarea class="lab" name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea></label></td>
+			</tr>
+			
+			<tr>
+				<td><input type="submit" name="envoyer" value="Envoyer" /></td>
+			</tr>
+		</table>
 		</form>	
 <?php
 	}
