@@ -109,7 +109,7 @@ var nbr_fac = 0;
 		  var td3 = document.createElement('td')
 		  var label_date = document.createElement('label');
 		  label_date.setAttribute('for', 'date'+ID);
-		  label_num.setAttribute('id', 'label_date'+ID);
+		  label_date.setAttribute('id', 'label_date'+ID);
 		  label_date.innerHTML = '<b>Date <span class="red">*</span></b><br/><small id="lim_date'+ID+'">(JJ/MM/AAAA)</small>';
 		  
 		  var td4 = document.createElement('td')
@@ -198,6 +198,7 @@ var nbr_fac = 0;
             if(Conteneur)
             {	
 					nbr_fac++;
+					document.getElementById('nbr_fac').value = nbr_fac;
                     Conteneur.appendChild(creerElement(dernierElement() + 1))
 					
 					del = (document.getElementById('delete1')) ? document.getElementById('delete1') : false;
@@ -237,6 +238,8 @@ var nbr_fac = 0;
               {
                 Conteneur.removeChild(Conteneur.childNodes[i]);
 				nbr_fac--;
+				
+				document.getElementById('nbr_fac').value = nbr_fac;
 				
                 updateElements();
 				add_total();
@@ -432,81 +435,84 @@ function verif(valeur, soustitre){
 	{
 ?>
 		<form method="post" action="#">
-		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">
-			<tr>
-				<td colspan="6"><hr/></td>
-			</tr>
-			<tr>
-				<td style="text-align:center;" colspan="6"><b>Vos coordonnées</b></td>
-			</tr>
-			<tr>
-				<td colspan="6"><hr/></td>
-			</tr>
+			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">
+				<tr>
+					<td colspan="6"><hr/></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;" colspan="6"><b>Vos coordonnées</b></td>
+				</tr>
+				<tr>
+					<td colspan="6"><hr/></td>
+				</tr>
 
-			<tr>
-				<td width="150px"><label class="lab" for="nom"><b>Nom du client <span class="red">* </span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label></td>
-				<td><input class="lab" style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/></td>
-			</tr>
-			
-			<tr>
-				<td><label class="lab" for="societe"><b>Société </b><br/><small id="lim_soc">(Max 50 caractères)</small></label></td>
-				<td><input class="lab" style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" /></td>
-			</tr>
-			<tr>
-				<td><label class="lab" for="courriel" id="email"><b>Courriel <span class="red">* </span></b></label>
-				<td><input class="lab" style="text-align:right;" type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/>
-			</tr>
-		</table>
-		
-		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">	
-			<tr>
-				<td colspan="6"><hr/></td>
-			</tr>
-			<tr>
-				<td style="text-align:center;" colspan="6"><b>Vos factures</b></td>
-			</tr>
-			<tr>
-				<td colspan="6"><hr/></td>
-			</tr>
-		</table>
-			
-		<table border="0" cellspacing="10" cellpadding="5" style="margin:auto;" id="conteneur" width="900px">
+				<tr>
+					<td width="150px"><label class="lab" for="nom"><b>Nom du client <span class="red">* </span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label></td>
+					<td><input class="lab" style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/></td>
+				</tr>
 				
-		</table>
+				<tr>
+					<td><label class="lab" for="societe"><b>Société </b><br/><small id="lim_soc">(Max 50 caractères)</small></label></td>
+					<td><input class="lab" style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" /></td>
+				</tr>
+				<tr>
+					<td><label class="lab" for="courriel" id="email"><b>Courriel <span class="red">* </span></b></label>
+					<td><input class="lab" style="text-align:right;" type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/>
+				</tr>
+			</table>
+			
+			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">	
+				<tr>
+					<td colspan="6"><hr/></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;" colspan="6"><b>Vos factures</b></td>
+				</tr>
+				<tr>
+					<td colspan="6"><hr/></td>
+				</tr>
+			</table>
+			
+			<table border="0" cellspacing="10" cellpadding="5" style="margin:auto;" id="conteneur" width="900px">
+					
+			</table>
 		
-		<table border="0" cellspacing="0" cellpadding="5" style="margin:auto;" width="900px">		
-			<tr>
-				<td><input style="margin:10px;" type="button" value="+" id="plus" onclick="ajouterElement();"/></td>
-			</tr>
+			<table border="0" cellspacing="0" cellpadding="5" style="margin:auto;" width="900px">		
+				<tr>
+					<td><input style="margin:10px;" type="button" value="+" id="plus" onclick="ajouterElement();"/></td>
+				</tr>
+				
+				<tr>
+					<td width="610px"></td>
+					<td width="110px" ><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
+					<td width="100px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /></td>
+					<td> €</td>
+				</tr>
+			</table>
 			
-			<tr>
-				<td width="610px"></td>
-				<td width="110px" ><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
-				<td width="100px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /></td>
-				<td> €</td>
-			</tr>
-		</table>
-			
-		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">
-			<tr>
-				<td colspan="6"><hr/></td>
-			</tr>
-			<tr>
-				<td style="text-align:center;" colspan="6"><b>Informations complémentaires</b></td>
-			</tr>
-			<tr>
-				<td colspan="6"><hr/></td>
-			</tr>
-			
-			<tr>
-				<td><b>Commentaire </b><br/><small>(facultatif)</small></td>
-				<td><label class="lab" for="commentaire"><textarea class="lab" name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea></label></td>
-			</tr>
-			
-			<tr>
-				<td><input type="submit" name="envoyer" value="Envoyer" /></td>
-			</tr>
-		</table>
+			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">
+				<tr>
+					<td colspan="6"><hr/></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;" colspan="6"><b>Informations complémentaires</b></td>
+				</tr>
+				<tr>
+					<td colspan="6"><hr/></td>
+				</tr>
+				
+				<tr>
+					<td><b>Commentaire </b><br/><small>(facultatif)</small></td>
+					<td><label class="lab" for="commentaire"><textarea class="lab" name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea></label></td>
+				</tr>
+				
+				<tr>
+					<td><input type="submit" name="envoyer" value="Envoyer" /></td>
+				</tr>
+			</table>
+		
+			<input type="hidden" value="0" name="nbr_fac" id="nbr_fac"/>
+		
 		</form>	
 <?php
 	}
