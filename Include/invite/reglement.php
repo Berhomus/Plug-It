@@ -462,7 +462,7 @@ function verif(valeur, soustitre){
 				</tr>
 			</table>
 			
-			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">	
+			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">	
 				<tr>
 					<td colspan="6"><hr/></td>
 				</tr>
@@ -478,42 +478,6 @@ function verif(valeur, soustitre){
 					
 			</table>
 
-			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">	
-				<tr>
-					<td colspan="6"><hr/></td>
-				</tr>
-				<tr>
-					<td style="text-align:center;" colspan="6"><b>Vos factures</b></td>
-				</tr>
-				<tr>
-					<td colspan="6"><hr/></td>
-				</tr>
-			</table>
-
-			
-			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">
-				<tr>
-					<td colspan="6"><hr/></td>
-				</tr>
-				<tr>
-					<td style="text-align:center;" colspan="6"><b>Informations complémentaires</b></td>
-				</tr>
-				<tr>
-					<td colspan="6"><hr/></td>
-				</tr>
-				
-				<tr>
-					<td><b>Commentaire </b><br/><small>(facultatif)</small></td>
-					<td><label class="lab" for="commentaire"><textarea class="lab" name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea></label></td>
-				</tr>
-				
-				<tr>
-					<td><input type="submit" name="envoyer" value="Envoyer" /></td>
-				</tr>
-			</table>
-		
-			<input type="hidden" value="0" name="nbr_fac" id="nbr_fac"/>
-		
 			<table border="0" cellspacing="0" cellpadding="5" style="margin:auto;" width="900px">		
 				<tr>
 					<td><input style="margin:10px;" type="button" value="+" id="plus" onclick="ajouterElement();"/></td>
