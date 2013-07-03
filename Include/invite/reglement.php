@@ -435,7 +435,8 @@ function verif(valeur, soustitre){
 	{
 ?>
 		<form method="post" action="#">
-			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">
+
+			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">
 				<tr>
 					<td colspan="6"><hr/></td>
 				</tr>
@@ -476,19 +477,19 @@ function verif(valeur, soustitre){
 			<table border="0" cellspacing="10" cellpadding="5" style="margin:auto;" id="conteneur" width="900px">
 					
 			</table>
-		
-			<table border="0" cellspacing="0" cellpadding="5" style="margin:auto;" width="900px">		
+
+			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">	
 				<tr>
-					<td><input style="margin:10px;" type="button" value="+" id="plus" onclick="ajouterElement();"/></td>
+					<td colspan="6"><hr/></td>
 				</tr>
-				
 				<tr>
-					<td width="610px"></td>
-					<td width="110px" ><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
-					<td width="100px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /></td>
-					<td> €</td>
+					<td style="text-align:center;" colspan="6"><b>Vos factures</b></td>
+				</tr>
+				<tr>
+					<td colspan="6"><hr/></td>
 				</tr>
 			</table>
+
 			
 			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">
 				<tr>
@@ -513,6 +514,43 @@ function verif(valeur, soustitre){
 		
 			<input type="hidden" value="0" name="nbr_fac" id="nbr_fac"/>
 		
+			<table border="0" cellspacing="0" cellpadding="5" style="margin:auto;" width="900px">		
+				<tr>
+					<td><input style="margin:10px;" type="button" value="+" id="plus" onclick="ajouterElement();"/></td>
+				</tr>
+				
+				<tr>
+					<td width="610px"></td>
+					<td width="110px" ><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
+					<td width="100px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /></td>
+					<td> €</td>
+				</tr>
+			</table>
+				
+			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">
+				<tr>
+					<td colspan="6"><hr/></td>
+				</tr>
+				<tr>
+					<td style="text-align:center;" colspan="6"><b>Informations complémentaires</b></td>
+				</tr>
+				<tr>
+					<td colspan="6"><hr/></td>
+				</tr>
+				
+				<tr>
+					<td><b>Commentaire </b><br/><small>(facultatif)</small></td>
+					<td><label class="lab" for="commentaire"><textarea class="lab" name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea></label></td>
+				</tr>
+				
+				<tr>
+					<td colspan="6" style="text-align:right;"><input type="submit" name="envoyer" value="Suivant" style="width:100px; height:30px;"/></td>
+				</tr>
+			</table>
+
+			
+			<input type="hidden" name="nbr_fac" value="0" id="nbr_fac" />
+			
 		</form>	
 <?php
 	}
