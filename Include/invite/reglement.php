@@ -365,8 +365,8 @@ function deletefacture(n){
 			</tr>
 			
 			<tr>
-				<td><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
-				<td><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €</td>
+				<td colspan="5" style="text-align:right;" width="600px"><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
+				<td colspan="6" style="text-align:right;" width="150px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €</td>
 			</tr>
 		</table>
 			
