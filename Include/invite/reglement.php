@@ -504,7 +504,7 @@ function verif(valeur, soustitre){
 			</tr>
 			
 			<tr>
-				<td><input type="submit" name="envoyer" value="Envoyer" /></td>
+				<td colspan="6" style="text-align:right;"><input type="submit" name="envoyer" value="Suivant" style="width:100px; height:30px;"/></td>
 			</tr>
 		</table>
 		</form>	
