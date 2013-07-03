@@ -365,9 +365,10 @@ function verif(valeur, soustitre){
 	{
 		alert('Date non valable')
 		valeur.value='';
-		soustitre.style.color='red';	
+		soustitre.style.color='red';
 	}
-    else{
+    else
+	{
         var date_temp = date_pas_sure.split('/');
         date_temp[1] -=1;
         var ma_date = new Date();
