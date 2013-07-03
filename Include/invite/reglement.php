@@ -470,19 +470,20 @@ function verif(valeur, soustitre){
 			</tr>
 		</table>
 			
-		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" id="conteneur" width="900px">
+		<table border="0" cellspacing="10" cellpadding="5" style="margin:auto;" id="conteneur" width="900px">
 				
 		</table>
 		
-		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">		
+		<table border="0" cellspacing="0" cellpadding="5" style="margin:auto;" width="900px">		
 			<tr>
 				<td><input style="margin:10px;" type="button" value="+" id="plus" onclick="ajouterElement();"/></td>
 			</tr>
 			
 			<tr>
-				<td colspan="4" width="500px">
-				<td colspan="5" width="80px"><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
-				<td colspan="6" width="110px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €</td>
+				<td width="610px"></td>
+				<td width="110px" ><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
+				<td width="100px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /></td>
+				<td> €</td>
 			</tr>
 		</table>
 			
