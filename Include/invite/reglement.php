@@ -432,7 +432,7 @@ function verif(valeur, soustitre){
 	{
 ?>
 		<form method="post" action="#">
-		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">
 			<tr>
 				<td colspan="6"><hr/></td>
 			</tr>
@@ -458,7 +458,7 @@ function verif(valeur, soustitre){
 			</tr>
 		</table>
 		
-		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">	
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">	
 			<tr>
 				<td colspan="6"><hr/></td>
 			</tr>
@@ -487,7 +487,7 @@ function verif(valeur, soustitre){
 			</tr>
 		</table>
 			
-		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">
 			<tr>
 				<td colspan="6"><hr/></td>
 			</tr>
