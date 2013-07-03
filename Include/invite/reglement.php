@@ -81,7 +81,7 @@ function isNumber(field,id){
 	}
 }
 
-/*####FONCTION AJOUT DE FACTURE####*/
+/*####FONCTION AJOUT DE FACTURES####*/
 
 var nbr_fac = 0;
 
@@ -110,14 +110,14 @@ var nbr_fac = 0;
 		  var label_date = document.createElement('label');
 		  label_date.setAttribute('for', 'date'+ID);
 		  label_num.setAttribute('id', 'label_date'+ID);
-		  label_date.innerHTML = '<b>Date <span class="red">*</span></b><br/><small id="lim_date_'+ID+'">(JJ/MM/AAAA)</small>';
+		  label_date.innerHTML = '<b>Date <span class="red">*</span></b><br/><small id="lim_date'+ID+'">(JJ/MM/AAAA)</small>';
 		  
 		  var td4 = document.createElement('td')
 		  var Input_date = document.createElement('input');
 		  Input_date.setAttribute('type', 'date');
 		  Input_date.setAttribute('name', 'date' + ID);
 		  Input_date.setAttribute('id', 'date' + ID);
-		  Input_date.setAttribute('onblur', 'textLimit2(this,10, lim_date'+ID+');');
+		  Input_date.setAttribute('onblur', 'verif(this, lim_date'+ID+');');
 		  Input_date.setAttribute('required', '');
 		  //Input_date.style.text-align = "right";
 		  
@@ -301,6 +301,40 @@ var nbr_fac = 0;
 	
 		document.getElementById('montanttot').value = somme;
 	}
+
+	
+/*####VERFICATION DU FORMAT DATE####*/
+
+function verif(valeur, soustitre){
+    var date_pas_sure = valeur.value;
+    var format = /^(\d{1,2}\/){2}\d{4}$/;
+    if(!format.test(date_pas_sure))
+	{
+		alert('Date non valable')
+		valeur.value='';
+		soustitre.style.color='red';	
+	}
+    else{
+        var date_temp = date_pas_sure.split('/');
+        date_temp[1] -=1;
+        var ma_date = new Date();
+        ma_date.setFullYear(date_temp[2]);
+        ma_date.setMonth(date_temp[1]);
+        ma_date.setDate(date_temp[0]);
+        if(ma_date.getFullYear()==date_temp[2] && ma_date.getMonth()==date_temp[1] && ma_date.getDate()==date_temp[0])
+		{
+			soustitre.style.color='green';
+        }
+        else
+		{
+            alert('Date non valable');
+			valeur.value='';
+			soustitre.style.color='red';
+        }
+    }
+}
+
+</script>
 
 </script>
 
