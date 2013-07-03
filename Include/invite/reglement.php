@@ -109,8 +109,8 @@ var nbr_fac = 0;
 		  var td3 = document.createElement('td')
 		  var label_date = document.createElement('label');
 		  label_date.setAttribute('for', 'date'+ID);
-		  label_date.setAttribute('id', 'label_date'+ID);
-		  label_date.innerHTML = '<b>Date <span class="red">*</span></b><br/><small id="lim_date'+ID+'">(JJ/MM/AA)</small>';
+		  label_num.setAttribute('id', 'label_date'+ID);
+		  label_date.innerHTML = '<b>Date <span class="red">*</span></b><br/><small id="lim_date_'+ID+'">(JJ/MM/AAAA)</small>';
 		  
 		  var td4 = document.createElement('td')
 		  var Input_date = document.createElement('input');
@@ -398,7 +398,7 @@ var nbr_fac = 0;
 	{
 ?>
 		<form method="post" action="#">
-		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="800px">
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">
 			<tr>
 				<td colspan="6"><hr/></td>
 			</tr>
@@ -424,7 +424,7 @@ var nbr_fac = 0;
 			</tr>
 		</table>
 		
-		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="800px">	
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">	
 			<tr>
 				<td colspan="6"><hr/></td>
 			</tr>
@@ -434,23 +434,25 @@ var nbr_fac = 0;
 			<tr>
 				<td colspan="6"><hr/></td>
 			</tr>
+		</table>
 			
-			<table style="margin:auto;" id="conteneur">
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" id="conteneur" width="900px">
 				
-			</table>
-
-			
+		</table>
+		
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">		
 			<tr>
 				<td><input style="margin:10px;" type="button" value="+" id="plus" onclick="ajouterElement();"/></td>
 			</tr>
 			
 			<tr>
-				<td colspan="5" style="text-align:right;" width="600px"><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
-				<td colspan="6" style="text-align:right;" width="150px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €</td>
+				<td colspan="4" width="410px">
+				<td colspan="5" width="70px"><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
+				<td colspan="6" width="120px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €</td>
 			</tr>
 		</table>
 			
-		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="800px">
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="900px">
 			<tr>
 				<td colspan="6"><hr/></td>
 			</tr>
