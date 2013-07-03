@@ -135,22 +135,13 @@ var nbr_fac = 0;
 		  Input_montant.setAttribute('onblur', 'isNumber(this,lim_montant'+ID+');add_total();');
 		  Input_montant.setAttribute('required', '');
 		  //Input_montant.style.text-align = "right";
-		  
-		  var td7 = document.createElement('td')
-		  var Delete = document.createElement('input');
-		  Delete.setAttribute('type', 'button');
-		  Delete.setAttribute('value', 'X');
-		  Delete.setAttribute('id', 'delete' + ID);
-		  Delete.onclick = supprimerElement;
-		  
-		  
+
 		  td1.appendChild(label_num);
 		  td2.appendChild(Input_num);
 		  td3.appendChild(label_date);
 		  td4.appendChild(Input_date);
 		  td5.appendChild(label_montant);
 		  td6.appendChild(Input_montant);
-		  td7.appendChild(Delete);
 		  
 		  Conteneur.appendChild(td1);
 		  Conteneur.appendChild(td2);
@@ -158,7 +149,18 @@ var nbr_fac = 0;
 		  Conteneur.appendChild(td4);
 		  Conteneur.appendChild(td5);
 		  Conteneur.appendChild(td6);
-		  Conteneur.appendChild(td7);
+		  
+		   if(nbr_fac >1)
+			{
+				var td = document.createElement('td')
+				var Delete = document.createElement('input');
+				Delete.setAttribute('type', 'button');
+				Delete.setAttribute('value', 'X');
+				Delete.setAttribute('id', 'delete' + ID);
+				Delete.onclick = supprimerElement;
+				td.appendChild(Delete);
+				Conteneur.appendChild(td);
+			}
 		  
 		  return Conteneur;
     }
@@ -195,8 +197,22 @@ var nbr_fac = 0;
             var Conteneur = document.getElementById('conteneur');
             if(Conteneur)
             {	
-                    Conteneur.appendChild(creerElement(dernierElement() + 1))
 					nbr_fac++;
+                    Conteneur.appendChild(creerElement(dernierElement() + 1))
+					
+					del = (document.getElementById('delete1')) ? document.getElementById('delete1') : false;
+					if(del == false && nbr_fac == 2)
+					{
+						//ajout supp 1er lign
+						var td = document.createElement('td')
+						var Delete = document.createElement('input');
+						Delete.setAttribute('type', 'button');
+						Delete.setAttribute('value', 'X');
+						Delete.setAttribute('id', 'delete1');
+						Delete.onclick = supprimerElement;
+						td.appendChild(Delete);
+						document.getElementById('element1').appendChild(td);
+					}
             }
     }
 
@@ -272,13 +288,41 @@ var nbr_fac = 0;
 							
 							
 							document.getElementById('lim_montant'+elementNo).setAttribute('for','montant'+n);
-							document.getElementById('lim_montant'+elementNo).setAttribute('id','lim_montan'+n);
+							document.getElementById('lim_montant'+elementNo).setAttribute('id','lim_montant'+n);
 							
 							
 							document.getElementById('montant'+elementNo).setAttribute('name','montant'+n);
 							document.getElementById('montant'+elementNo).setAttribute('id','montant'+n);
 							
-							document.getElementById('delete'+elementNo).setAttribute('id','delete'+n);
+							
+							if(nbr_fac >1)
+							{
+								del = (document.getElementById('delete'+elementNo)) ? document.getElementById('delete'+elementNo) : false;
+								if(del)
+								{
+									document.getElementById('delete'+elementNo).setAttribute('id','delete'+n);
+								}
+								else
+								{
+									var td = document.createElement('td')
+									var Delete = document.createElement('input');
+									Delete.setAttribute('type', 'button');
+									Delete.setAttribute('value', 'X');
+									Delete.setAttribute('id', 'delete' + n);
+									Delete.onclick = supprimerElement;
+									td.appendChild(Delete);
+									Conteneur.childNodes[i].appendChild(td);
+								}
+							}
+							else
+							{
+								del = (document.getElementById('delete'+elementNo)) ? document.getElementById('delete'+elementNo) : false;
+								if(del)
+								{
+									del.parentNode.parentNode.removeChild(del.parentNode);
+									delete(del);
+								}
+							}
 						}
 					}
 				}
