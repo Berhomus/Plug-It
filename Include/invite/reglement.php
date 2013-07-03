@@ -308,63 +308,88 @@ function deletefacture(n){
 	{
 ?>
 		<form method="post" action="#">
-		<div class="formulaire">
-			
-			<br/>			
-			<hr/>
-			<br/>
-			<b><center>Vos coordonnées</center></b>
-			<br/>
-			<hr/>
-			<br/>
-			
-			<label class="lab" for="nom"><b>Nom du client <span class="red">*</span></b><input  style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/>
-			<br/><small id="lim_nom">(Max 50 caractères)</small></label>
-			<br/>
-			<label class="lab" for="societe"><b>Société </b><input style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" />
-			<br/><small id="lim_soc">(Max 50 caractères)</small></label>
-			<br/>
-			<label class="lab" for="courriel" id="email"><b>Courriel <span class="red">*</span></b></label><input style="text-align:right;" type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/>
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="800px">
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+			<tr>
+				<td style="text-align:center;" colspan="6"><b>Vos coordonnées</b></td>
+			</tr>
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
 
-			<br/>
-			<hr/>
-			<br/>
-			<b><center>Vos factures</center></b>
-			<br/>
-			<hr/>
-			<br/>
+			<tr>
+				<td width="150px"><label class="lab" for="nom"><b>Nom du client <span class="red">* </span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label></td>
+				<td><input class="lab" style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/></td>
+			</tr>
+			
+			<tr>
+				<td><label class="lab" for="societe"><b>Société </b><br/><small id="lim_soc">(Max 50 caractères)</small></label></td>
+				<td><input class="lab" style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" /></td>
+			</tr>
+			
+			<tr>
+				<td><label class="lab" for="courriel" id="email"><b>Courriel <span class="red">* </span></b></label>
+				<td><input class="lab" style="text-align:right;" type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/>
+			</tr>
+		</table>
+		
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="800px">	
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+			<tr>
+				<td style="text-align:center;" colspan="6"><b>Vos factures</b></td>
+			</tr>
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
 			
 			<div id="conteneur">
 				<div id="element1">
+				<p class="mep2">
+				<label class="lab" for="num_1"><b>Numéro de facture <span class="red">* </span></b><input class="lab" style="text-align:right;" type="text" name="num_1" id="num_1" onblur="textLimit2(this,10, lim_num_1);" required/>
+				<small id="lim_num_1">(10 caractères)</small></label>
+						
+				<label class="lab" for="date_1"><b>Date <span class="red">* </span></b><input class="lab" type="date" name="date_1" id="date_1" onblur="textLimit2(this,10, lim_date_1);" required/>
+				<small id="lim_date_1">(JJ/MM/AA)</small></label>
 				
-				<label class="lab" for="num_1"><b>Numéro de facture <span class="red">*</span></b><input style="text-align:right;" type="text" name="num_1" id="num_1" onblur="textLimit2(this,10, lim_num_1);" required/>
-				<br/><small id="lim_num_1">(10 caractères)</small></label>
-				<br/>			
-				<label class="lab" for="date_1"><b>Date <span class="red">*</span></b><input type="date" name="date_1" id="date_1" onblur="textLimit2(this,10, lim_date_1);" required/>
-				<br/><small id="lim_date_1">(JJ/MM/AA)</small></label>
-				<br/>
-				<label class="lab" for="montant_1" id="lim_montant_1"><b>Montant TTC <span class="red">*</span></b></label><input style="text-align:right;" type="text" name="montant_1" id="montant_1" onblur="isNumber(this,lim_montant_1);" required/> €
-				
+				<label class="lab" for="montant_1" id="lim_montant_1"><b>Montant TTC <span class="red">* </span></b></label><input class="lab" style="text-align:right;" type="text" name="montant_1" id="montant_1" onblur="isNumber(this,lim_montant_1);" required/> €
+				</p>
 				</div>		
 			</div>
 			
-			<input type="button" value="+" id="plus" onclick="ajouterElement();"/>
-		
-			<label class="lab" for="montanttot" ><b>Montant Total</b></label><input style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €
+			<tr>
+				<td><input style="margin:10px;" type="button" value="+" id="plus" onclick="ajouterElement();"/></td>
+			</tr>
 			
-			<br/>
-			<hr/>	
-			<br/>
-			<b><center>Informations complémentaires</center></b>
-			<br/>
-			<hr/>
-			<br/>
+			<tr>
+				<td><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
+				<td><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €</td>
+			</tr>
+		</table>
 			
-			<label class="lab" for="commentaire"><b>Commentaire </b><textarea name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea>
-			<br/><small>(facultatif)</small></label>
-			<br/>
-			<input type="submit" name="envoyer" value="Envoyer" />
-		</div>
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="800px">
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+			<tr>
+				<td style="text-align:center;" colspan="6"><b>Informations complémentaires</b></td>
+			</tr>
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+			
+			<tr>
+				<td><b>Commentaire </b><br/><small>(facultatif)</small></td>
+				<td><label class="lab" for="commentaire"><textarea class="lab" name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea></label></td>
+			</tr>
+			
+			<tr>
+				<td><input type="submit" name="envoyer" value="Envoyer" /></td>
+			</tr>
+		</table>
 		</form>	
 <?php
 	}
