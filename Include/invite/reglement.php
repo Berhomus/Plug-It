@@ -62,6 +62,12 @@ function isNumber(field,id){
 	{
 		id.style.color = "green";
 		
+		format_number(field);
+	}
+}
+
+function format_number(field)
+{
 		var value = field.value.replace(",",".");
 		
 		var entiere = parseInt(value);
@@ -78,7 +84,6 @@ function isNumber(field,id){
 		}
 		
 		field.value = value;
-	}
 }
 
 /*####FONCTION AJOUT DE FACTURES####*/
@@ -345,8 +350,9 @@ var nbr_fac = 0;
 			
 			somme += (document.getElementById('montant'+i).value != "") ? parseFloat(document.getElementById('montant'+i).value):0;
 		}
-	
+		somme.toFixed(2);
 		document.getElementById('montanttot').value = somme;
+		format_number(document.getElementById('montanttot'));
 	}
 
 	
@@ -396,39 +402,51 @@ function verif(valeur, soustitre){
 ?>		
 		<h2 class="titre">Récapitulatif</h2>
 		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
+			<tr>	
+				<td><b>Nom du client</b></td>
+				<td><?php echo $_POST['nom']; ?></td>
+			</tr>
+			<tr>	
+				<td><b>Société</b></td>
+				<td><?php echo $_POST['societe']; ?></td>
+			</tr>
+			<tr>	
+				<td><b>courriel</b></td>
+				<td><?php echo $_POST['courriel']; ?></td>
+			</tr>
 			
-				<b>Numéro de facture</b>
-				<?php echo $_POST['num']; ?>
+			<tr>	
+				<td><b>N°Facture</b></td>
+				<td><b>Date</b></td>
+				<td><b>Montant</b></td>
+			</tr>
+			<?php
 			
+				for($i=1;$i<=$_POST['nbr_fac'];$i++)
+					echo '
+						<tr>	
+							<td>'.$_POST['num'.$i].'</td>
+							<td>'.$_POST['date'.$i].'</td>
+							<td>'.$_POST['montant'.$i].'€</td>
+						</tr>
+					';
 			
+			?>
+			<tr>
+				<td><b>Montant Total</b></td>
+				<td></td>
+				<td><?php echo $_POST['montanttot']; ?>€</td>
+			</tr>
 			
-				<b>Nom du client</b>
-				<?php echo $_POST['nom']; ?>
-			
-			
-			
-				<b>Société</b>
-				<?php echo $_POST['societe']; ?>
-			
-			
-			
-				<b>Courriel</b>
-				<?php echo $_POST['courriel']; ?>
-			
-			
-				
-				<b>Montant</b>
-				<?php echo $_POST['montant']; ?>€
-			
-			
-			
-				<b>Commentaire</b>
-				<?php echo $_POST['commentaire']; ?>
+			<tr>	
+				<td><b>Commentaire</b></td>
+				<td><?php echo $_POST['commentaire']; ?></td>
+			</tr>
 				
 		</table>
 		
 <?php
-		$_POST['montant'] = str_replace('.',"",$_POST['montant']);
+		$_POST['montanttot'] = str_replace('.',"",$_POST['montanttot']);
 		include("include/webaffaires/call_request.php");
 	}
 	else

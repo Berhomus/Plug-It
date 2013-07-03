@@ -15,7 +15,7 @@
 
 	$parm="merchant_id=014022286611111";
 	$parm="$parm merchant_country=fr";
-	$parm="$parm amount=".$_POST['montant'];
+	$parm="$parm amount=".$_POST['montanttot'];
 	$parm="$parm currency_code=978";
 
 
