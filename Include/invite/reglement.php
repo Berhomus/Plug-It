@@ -95,36 +95,36 @@ var nbr_fac = 0;
 		  var label_num = document.createElement('label');
 		  label_num.setAttribute('for', 'num'+ID);
 		  label_num.setAttribute('id', 'label_num'+ID);
-		  label_num.innerHTML = '<b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num_'+ID+'">(10 caractères)</small>';
+		  label_num.innerHTML = '<b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num'+ID+'">(10 caractères)</small>';
 		  
 		  var td2 = document.createElement('td')
 		  var Input_num = document.createElement('input');
 		  Input_num.setAttribute('type', 'text');
 		  Input_num.setAttribute('name', 'num' + ID);
 		  Input_num.setAttribute('id', 'num' + ID);
-		  Input_num.setAttribute('onblur', 'textLimit2(this,10, lim_num_'+ID+');');
+		  Input_num.setAttribute('onblur', 'textLimit2(this,10, lim_num'+ID+');');
 		  Input_num.setAttribute('required', '');
 		  //Input_num.style.text-align = "right";
 
 		  var td3 = document.createElement('td')
 		  var label_date = document.createElement('label');
 		  label_date.setAttribute('for', 'date'+ID);
-		  label_num.setAttribute('id', 'label_date'+ID);
-		  label_date.innerHTML = '<b>Date <span class="red">*</span></b><br/><small id="lim_date_'+ID+'">(JJ/MM/AA)</small>';
+		  label_date.setAttribute('id', 'label_date'+ID);
+		  label_date.innerHTML = '<b>Date <span class="red">*</span></b><br/><small id="lim_date'+ID+'">(JJ/MM/AA)</small>';
 		  
 		  var td4 = document.createElement('td')
 		  var Input_date = document.createElement('input');
 		  Input_date.setAttribute('type', 'date');
 		  Input_date.setAttribute('name', 'date' + ID);
 		  Input_date.setAttribute('id', 'date' + ID);
-		  Input_date.setAttribute('onblur', 'textLimit2(this,10, lim_date_'+ID+');');
+		  Input_date.setAttribute('onblur', 'textLimit2(this,10, lim_date'+ID+');');
 		  Input_date.setAttribute('required', '');
 		  //Input_date.style.text-align = "right";
 		  
 		  var td5 = document.createElement('td')
 		  var label_montant = document.createElement('label');
 		  label_montant.setAttribute('for', 'montant'+ID);
-		  label_montant.setAttribute('id', 'lim_montant_'+ID);
+		  label_montant.setAttribute('id', 'lim_montant'+ID);
 		  label_montant.innerHTML = '<b>Montant TTC <span class="red">*</span></b>';
 		  
 		  var td6 = document.createElement('td')
@@ -132,7 +132,7 @@ var nbr_fac = 0;
 		  Input_montant.setAttribute('type', 'text');
 		  Input_montant.setAttribute('name', 'montant' + ID);
 		  Input_montant.setAttribute('id', 'montant' + ID);
-		  Input_montant.setAttribute('onblur', 'isNumber(this,lim_montant_'+ID+');add_total();');
+		  Input_montant.setAttribute('onblur', 'isNumber(this,lim_montant'+ID+');add_total();');
 		  Input_montant.setAttribute('required', '');
 		  //Input_montant.style.text-align = "right";
 		  
@@ -252,18 +252,32 @@ var nbr_fac = 0;
 						{
 							n++
 							Conteneur.childNodes[i].setAttribute('id', 'element' + n);
-							document.getElementById('label_num'+elementNo).setAttribute('id','label_num'+n);
+							
 							document.getElementById('label_num'+elementNo).setAttribute('for','num'+n);
-							document.getElementById('num'+elementNo).setAttribute('id','num'+n);
+							document.getElementById('label_num'+elementNo).setAttribute('id','label_num'+n);
+							
+							
 							document.getElementById('num'+elementNo).setAttribute('name','num'+n);
-							document.getElementById('label_date'+elementNo).setAttribute('id','label_date'+n);
+							document.getElementById('num'+elementNo).setAttribute('id','num'+n);
+							document.getElementById('lim_num'+elementNo).setAttribute('id','lim_num'+n);
+							
+							
 							document.getElementById('label_date'+elementNo).setAttribute('for','date'+n);
-							document.getElementById('date'+elementNo).setAttribute('id','date'+n);
+							document.getElementById('label_date'+elementNo).setAttribute('id','label_date'+n);
+							document.getElementById('lim_date'+elementNo).setAttribute('id','lim_date'+n);
+							
+							
 							document.getElementById('date'+elementNo).setAttribute('name','date'+n);
+							document.getElementById('date'+elementNo).setAttribute('id','date'+n);
+							
+							
+							document.getElementById('lim_montant'+elementNo).setAttribute('for','montant'+n);
 							document.getElementById('lim_montant'+elementNo).setAttribute('id','lim_montan'+n);
-							document.getElementById('lim_montan'+elementNo).setAttribute('for','montant'+n);
-							document.getElementById('montant'+elementNo).setAttribute('id','montant'+n);
+							
+							
 							document.getElementById('montant'+elementNo).setAttribute('name','montant'+n);
+							document.getElementById('montant'+elementNo).setAttribute('id','montant'+n);
+							
 							document.getElementById('delete'+elementNo).setAttribute('id','delete'+n);
 						}
 					}
