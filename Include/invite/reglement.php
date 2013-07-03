@@ -480,9 +480,9 @@ function verif(valeur, soustitre){
 			</tr>
 			
 			<tr>
-				<td colspan="4" width="410px">
-				<td colspan="5" width="70px"><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
-				<td colspan="6" width="120px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €</td>
+				<td colspan="4" width="500px">
+				<td colspan="5" width="80px"><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
+				<td colspan="6" width="110px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /> €</td>
 			</tr>
 		</table>
 			
