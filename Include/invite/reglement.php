@@ -83,123 +83,126 @@ function isNumber(field,id){
 
 /*####FONCTION AJOUT DE FACTURE####*/
 
-var nbr_fac = 1;
+var nbr_fac = 0;
 
-function ajoutfacture(n)
-{
-	var array = document.getElementById("facture").innerHTML.split("");
-	
-	var chaine = "";
-	
-	nbr_fac++;
-	
-	var i;
-	for(i=0;i<(8+n);i++)
-	{
-		chaine += (array[i]+"");
-	}
-	chaine +=
-	' \
-		<label for="num_'+n+'"><b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num_'+n+'">(10 caractères)</small></label> \
-		<input style="text-align:right;" type="text" name="num_'+n+'" id="num_'+n+'" onblur="textLimit2(this,10, lim_num_'+n+');" required/> \
-		<label for="date'+n+'"><b>Date <span class="red">*</span></b><br/><small id="lim_date_'+n+'">(JJ/MM/AA)</small></label> \
-		<input type="date" name="date_'+n+'" id="date_'+n+'" onblur="textLimit2(this,10, lim_date_'+n+');" required/> \
-		<label for="montant" id="lim_montant_'+n+'"><b>Montant TTC <span class="red">*</span></b></label> \
-		<input style="text-align:right;" type="text" name="montant_'+n+'" id="montant_'+n+'" onblur="isNumber(this,lim_montant_'+n+');" required/> € \
-		<input type="button" value="X" id="moins" onclick="deletefacture('+n+');"/> \
-	';
-
-	array[i] = '<input type="button" value="+" id="plus" onclick="ajoutfacture('+(n+1)+');"/>';
-	
-	for(i=(8+n);i<array.length-1;i++)
-		chaine += (array[i]+"");
-		
-	chaine += array[i];
-	
-	document.getElementById("facture").innerHTML = chaine;
-		
-}
-
-function deletefacture(n){
-
-	var array = document.getElementById("facture").innerHTML.split("");
-	
-	var chaine = "";
-
-	array[(nbr_fac+9)] = '<input type="button" value="+" id="plus" onclick="ajoutfacture('+(nbr_fac)+');"/>';
-	
-	nbr_fac--;
-	
-	var i;
-	for(i=0;i<array.length-1;i++)
-	{
-		if(i != (n+8))
-			chaine += (array[i]+"");
-	}
-
-	chaine += array[i];
-	
-	document.getElementById("facture").innerHTML = chaine;
-	
-}
 
     function creerElement(ID)
     {
-      var Conteneur = document.createElement('div');
-      Conteneur.setAttribute('id', 'element' + ID);
-      var Input = document.createElement('input');
-      Input.setAttribute('type', 'text');
-      Input.setAttribute('name', 'input' + ID);
-      Input.setAttribute('id', 'input' + ID);
-      var Delete = document.createElement('input');
-      Delete.setAttribute('type', 'button');
-      Delete.setAttribute('value', 'Supprimer n°' + ID + ' !');
-      Delete.setAttribute('id', 'delete' + ID);
-      Delete.onclick = supprimerElement;
-      Conteneur.appendChild(Input);
-      Conteneur.appendChild(Delete);
-      return Conteneur;
+		  var Conteneur = document.createElement('tr');
+		  Conteneur.setAttribute('id', 'element' + ID);
+		  
+		  var td1 = document.createElement('td')
+		  var label_num = document.createElement('label');
+		  label_num.setAttribute('for', 'num'+ID);
+		  label_num.setAttribute('id', 'label_num'+ID);
+		  label_num.innerHTML = '<b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num_'+ID+'">(10 caractères)</small>';
+		  
+		  var td2 = document.createElement('td')
+		  var Input_num = document.createElement('input');
+		  Input_num.setAttribute('type', 'text');
+		  Input_num.setAttribute('name', 'num' + ID);
+		  Input_num.setAttribute('id', 'num' + ID);
+		  Input_num.setAttribute('onblur', 'textLimit2(this,10, lim_num_'+ID+');');
+		  Input_num.setAttribute('required', '');
+		  //Input_num.style.text-align = "right";
+
+		  var td3 = document.createElement('td')
+		  var label_date = document.createElement('label');
+		  label_date.setAttribute('for', 'date'+ID);
+		  label_num.setAttribute('id', 'label_date'+ID);
+		  label_date.innerHTML = '<b>Date <span class="red">*</span></b><br/><small id="lim_date_'+ID+'">(JJ/MM/AA)</small>';
+		  
+		  var td4 = document.createElement('td')
+		  var Input_date = document.createElement('input');
+		  Input_date.setAttribute('type', 'date');
+		  Input_date.setAttribute('name', 'date' + ID);
+		  Input_date.setAttribute('id', 'date' + ID);
+		  Input_date.setAttribute('onblur', 'textLimit2(this,10, lim_date_'+ID+');');
+		  Input_date.setAttribute('required', '');
+		  //Input_date.style.text-align = "right";
+		  
+		  var td5 = document.createElement('td')
+		  var label_montant = document.createElement('label');
+		  label_montant.setAttribute('for', 'montant'+ID);
+		  label_montant.setAttribute('id', 'lim_montant_'+ID);
+		  label_montant.innerHTML = '<b>Montant TTC <span class="red">*</span></b>';
+		  
+		  var td6 = document.createElement('td')
+		  var Input_montant = document.createElement('input');
+		  Input_montant.setAttribute('type', 'text');
+		  Input_montant.setAttribute('name', 'montant' + ID);
+		  Input_montant.setAttribute('id', 'montant' + ID);
+		  Input_montant.setAttribute('onblur', 'isNumber(this,lim_montant_'+ID+');add_total();');
+		  Input_montant.setAttribute('required', '');
+		  //Input_montant.style.text-align = "right";
+		  
+		  var td7 = document.createElement('td')
+		  var Delete = document.createElement('input');
+		  Delete.setAttribute('type', 'button');
+		  Delete.setAttribute('value', 'X');
+		  Delete.setAttribute('id', 'delete' + ID);
+		  Delete.onclick = supprimerElement;
+		  
+		  
+		  td1.appendChild(label_num);
+		  td2.appendChild(Input_num);
+		  td3.appendChild(label_date);
+		  td4.appendChild(Input_date);
+		  td5.appendChild(label_montant);
+		  td6.appendChild(Input_montant);
+		  td7.appendChild(Delete);
+		  
+		  Conteneur.appendChild(td1);
+		  Conteneur.appendChild(td2);
+		  Conteneur.appendChild(td3);
+		  Conteneur.appendChild(td4);
+		  Conteneur.appendChild(td5);
+		  Conteneur.appendChild(td6);
+		  Conteneur.appendChild(td7);
+		  
+		  return Conteneur;
     }
 
-	    function dernierElement()
+	function dernierElement()
     {
-      var Conteneur = document.getElementById('conteneur'), n = 0;
-      if(Conteneur)
-      {
-        var elementID, elementNo;
-        if(Conteneur.childNodes.length > 0)
-        {
-          for(var i = 0; i < Conteneur.childNodes.length; i++)
-          {
-            // Ici, on vérifie qu'on peut récupérer les attributs, si ce n'est pas possible, on renvoit false, sinon l'attribut
-            elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
-            if(elementID)
-            {
-				var elementPattern=new RegExp("element([0-9]*)","g");
-              elementNo = parseInt(elementID.replace(elementPattern, '$1'));
-              if(!isNaN(elementNo) && elementNo > n)
-              {
-                n = elementNo;
-              }
-            }
-          }
-        }
-      }
-      return n;
+		  var Conteneur = document.getElementById('conteneur'), n = 0;
+		  if(Conteneur)
+		  {
+			var elementID, elementNo;
+			if(Conteneur.childNodes.length > 0)
+			{
+			  for(var i = 0; i < Conteneur.childNodes.length; i++)
+			  {
+				// Ici, on vérifie qu'on peut récupérer les attributs, si ce n'est pas possible, on renvoit false, sinon l'attribut
+				elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
+				if(elementID)
+				{
+					var elementPattern=new RegExp("element([0-9]*)","g");
+				  elementNo = parseInt(elementID.replace(elementPattern, '$1'));
+				  if(!isNaN(elementNo) && elementNo > n)
+				  {
+					n = elementNo;
+				  }
+				}
+			  }
+			}
+		  }
+		  return n;
     }
 
-	    function ajouterElement()
+	function ajouterElement()
     {
             var Conteneur = document.getElementById('conteneur');
             if(Conteneur)
             {	
                     Conteneur.appendChild(creerElement(dernierElement() + 1))
+					nbr_fac++;
             }
     }
 
     function supprimerElement()
     {
-		var deletePattern=new RegExp("delete([0-9]*)","g");
+	  var deletePattern=new RegExp("delete([0-9]*)","g");
       var Conteneur = document.getElementById('conteneur');
       var n = parseInt(this.id.replace(deletePattern, '$1'));
       if(Conteneur && !isNaN(n))
@@ -217,7 +220,10 @@ function deletefacture(n){
               if(!isNaN(elementNo) && elementNo  == n)
               {
                 Conteneur.removeChild(Conteneur.childNodes[i]);
-                updateElements(); // A supprimer si tu ne veux pas la màj
+				nbr_fac--;
+				
+                updateElements();
+				add_total();
                 return;
               }
             }
@@ -227,34 +233,60 @@ function deletefacture(n){
     }
 
 	
-	    function updateElements()
+	function updateElements()
     {
-      var Conteneur = document.getElementById('conteneur'), n = 0;
-      if(Conteneur)
-      {
-        var elementID, elementNo;
-        if(Conteneur.childNodes.length > 0)
-        {
-          for(var i = 0; i < Conteneur.childNodes.length; i++)
-          {
-            elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
-            if(elementID)
-            {
-				var elementPattern=new RegExp("element([0-9]*)","g");
-              elementNo = parseInt(elementID.replace(elementPattern, '$1'));
-              if(!isNaN(elementNo))
-              {
-                n++
-                Conteneur.childNodes[i].setAttribute('id', 'element' + n);
-                document.getElementById('input' + elementNo).setAttribute('name', 'input' + n);
-                document.getElementById('input' + elementNo).setAttribute('id', 'input' + n);
-                document.getElementById('delete' + elementNo).setAttribute('id', 'delete' + n);
-              }
-            }
-          }
-        }
-      }
+			var Conteneur = document.getElementById('conteneur'), n = 0;
+			if(Conteneur)
+			{
+				var elementID, elementNo;
+				if(Conteneur.childNodes.length > 0)
+				{
+				for(var i = 0; i < Conteneur.childNodes.length; i++)
+				{
+					elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
+					if(elementID)
+					{
+						var elementPattern=new RegExp("element([0-9]*)","g");
+						elementNo = parseInt(elementID.replace(elementPattern, '$1'));
+						if(!isNaN(elementNo))
+						{
+							n++
+							Conteneur.childNodes[i].setAttribute('id', 'element' + n);
+							document.getElementById('label_num'+elementNo).setAttribute('id','label_num'+n);
+							document.getElementById('label_num'+elementNo).setAttribute('for','num'+n);
+							document.getElementById('num'+elementNo).setAttribute('id','num'+n);
+							document.getElementById('num'+elementNo).setAttribute('name','num'+n);
+							document.getElementById('label_date'+elementNo).setAttribute('id','label_date'+n);
+							document.getElementById('label_date'+elementNo).setAttribute('for','date'+n);
+							document.getElementById('date'+elementNo).setAttribute('id','date'+n);
+							document.getElementById('date'+elementNo).setAttribute('name','date'+n);
+							document.getElementById('lim_montant'+elementNo).setAttribute('id','lim_montan'+n);
+							document.getElementById('lim_montan'+elementNo).setAttribute('for','montant'+n);
+							document.getElementById('montant'+elementNo).setAttribute('id','montant'+n);
+							document.getElementById('montant'+elementNo).setAttribute('name','montant'+n);
+							document.getElementById('delete'+elementNo).setAttribute('id','delete'+n);
+						}
+					}
+				}
+			}
+		  }
     }
+
+/*####FONCTION MODIF PRIX TOTAL####*/
+
+	function add_total(){
+		
+		var i;
+		var somme = 0.00;
+		
+		for(i=1;i<=nbr_fac;i++)
+		{
+			
+			somme += (document.getElementById('montant'+i).value != "") ? parseFloat(document.getElementById('montant'+i).value):0;
+		}
+	
+		document.getElementById('montanttot').value = somme;
+	}
 
 </script>
 
@@ -321,7 +353,7 @@ function deletefacture(n){
 			<label class="lab" for="nom"><b>Nom du client <span class="red">*</span></b><input  style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/>
 			<br/><small id="lim_nom">(Max 50 caractères)</small></label>
 			<br/>
-			<label class="lab" for="societe"><b>Société </b><input style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" />
+			<label class="lab" for="societe" ><b>Société </b><input style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" />
 			<br/><small id="lim_soc">(Max 50 caractères)</small></label>
 			<br/>
 			<label class="lab" for="courriel" id="email"><b>Courriel <span class="red">*</span></b></label><input style="text-align:right;" type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/>
@@ -334,19 +366,8 @@ function deletefacture(n){
 			<hr/>
 			<br/>
 			
-			<div id="conteneur">
-				<div id="element1">
-				
-				<label class="lab" for="num_1"><b>Numéro de facture <span class="red">*</span></b><input style="text-align:right;" type="text" name="num_1" id="num_1" onblur="textLimit2(this,10, lim_num_1);" required/>
-				<br/><small id="lim_num_1">(10 caractères)</small></label>
-				<br/>			
-				<label class="lab" for="date_1"><b>Date <span class="red">*</span></b><input type="date" name="date_1" id="date_1" onblur="textLimit2(this,10, lim_date_1);" required/>
-				<br/><small id="lim_date_1">(JJ/MM/AA)</small></label>
-				<br/>
-				<label class="lab" for="montant_1" id="lim_montant_1"><b>Montant TTC <span class="red">*</span></b></label><input style="text-align:right;" type="text" name="montant_1" id="montant_1" onblur="isNumber(this,lim_montant_1);" required/> €
-				
-				</div>		
-			</div>
+			<table style="margin:auto;" id="conteneur">	
+			</table>
 			
 			<input type="button" value="+" id="plus" onclick="ajouterElement();"/>
 		
@@ -369,3 +390,9 @@ function deletefacture(n){
 <?php
 	}
 ?>
+
+<script>
+
+	ajouterElement();
+	
+</script>

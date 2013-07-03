@@ -117,48 +117,103 @@
 
 	// OK, Sauvegarde des champs de la réponse
 
-	fwrite( $fp, "merchant_id : $merchant_id\n");
-	fwrite( $fp, "merchant_country : $merchant_country\n");
-	fwrite( $fp, "amount : $amount\n");
-	fwrite( $fp, "transaction_id : $transaction_id\n");
-	fwrite( $fp, "transmission_date: $transmission_date\n");
-	fwrite( $fp, "payment_means: $payment_means\n");
-	fwrite( $fp, "payment_time : $payment_time\n");
-	fwrite( $fp, "payment_date : $payment_date\n");
-	fwrite( $fp, "response_code : $response_code\n");
-	fwrite( $fp, "payment_certificate : $payment_certificate\n");
-	fwrite( $fp, "authorisation_id : $authorisation_id\n");
-	fwrite( $fp, "currency_code : $currency_code\n");
-	fwrite( $fp, "card_number : $card_number\n");
-	fwrite( $fp, "cvv_flag: $cvv_flag\n");
-	fwrite( $fp, "cvv_response_code: $cvv_response_code\n");
-	fwrite( $fp, "bank_response_code: $bank_response_code\n");
-	fwrite( $fp, "complementary_code: $complementary_code\n");
-	fwrite( $fp, "complementary_info: $complementary_info\n");
-	fwrite( $fp, "return_context: $return_context\n");
-	fwrite( $fp, "caddie : $caddie\n");
-	fwrite( $fp, "receipt_complement: $receipt_complement\n");
-	fwrite( $fp, "merchant_language: $merchant_language\n");
-	fwrite( $fp, "language: $language\n");
-	fwrite( $fp, "customer_id: $customer_id\n");
-	fwrite( $fp, "order_id: $order_id\n");
-	fwrite( $fp, "customer_email: $customer_email\n");
-	fwrite( $fp, "customer_ip_address: $customer_ip_address\n");
-	fwrite( $fp, "capture_day: $capture_day\n");
-	fwrite( $fp, "capture_mode: $capture_mode\n");
-	fwrite( $fp, "data: $data\n");
-	fwrite( $fp, "order_validity: $order_validity\n");
-	fwrite( $fp, "transaction_condition: $transaction_condition\n");
-	fwrite( $fp, "statement_reference: $statement_reference\n");
-	fwrite( $fp, "card_validity: $card_validity\n");
-	fwrite( $fp, "score_value: $score_value\n");
-	fwrite( $fp, "score_color: $score_color\n");
-	fwrite( $fp, "score_info: $score_info\n");
-	fwrite( $fp, "score_threshold: $score_threshold\n");
-	fwrite( $fp, "score_profile: $score_profile\n");
-	fwrite( $fp, "threed_ls_code: $threed_ls_code\n");
-	fwrite( $fp, "threed_relegation_code: $threed_relegation_code\n");
-	fwrite( $fp, "-------------------------------------------\n");
+		if($bank_response_code == "00"){
+		
+			$arrayCaddie = unserialize(base64_decode($caddie));
+
+			//Date (ymd) / Heure (His) de paiement en français
+			$DatePay = substr($payment_date, 6, 2) . "/" . substr($payment_date, 4, 2) . "/"
+			. substr($payment_date, 0, 4) ;
+
+			$HeurePay = substr($payment_time, 0, 2) . "h " . substr($payment_time, 2, 2) . ":"
+			. substr($payment_time, 4, 2) ;
+
+			//Le reçu de la transaction que nous allons envoyer pour confirmation
+			$Sujet = "Confirmation de votre paiement en ligne [Plug-it.fr]";
+
+			$Msg.= "### CECI EST UN MESSAGE AUTOMATIQUE . MERCI DE NE PAS Y RÉPONDRE ###\n\n";
+			$Msg.= "Bonjour,\n";
+			$Msg.= "Veuillez trouver ci-dessous le reçu de votre paiement en ligne sur Plug-it.fr \n\n";
+			$Msg.= "Prenez soin d'imprimer ce message et de le joindre à votre facture.\n";
+			$Msg.= "Ces documents vous seront indispensables en cas de réclamation.\n\n";
+
+			$Msg.= "DÉTAIL DE VOTRE COMMANDE \n";
+			$Msg.= "------------------------------------------------------------\n\n";
+			$Msg.= "NUMÉRO DE COMMANDE             = " . $arrayCaddie[14] . " \n";
+
+			$Msg.= "DATE DE LA TRANSACTION         = $DatePay à $HeurePay \n";
+			$Msg.= "ADRESSE WEB DU COMMERCANT      = WWW.MONSITE.COM \n";
+			$Msg.= "IDENTIFIANT COMMERCANT         = $merchant_id \n";
+			$Msg.= "REFERENCE DE LA TRANSACTION    = $transaction_id \n";
+			$Msg.= "MONTANT DE LA TRANSACTION      = " . substr($amount,0,-2) . "," . substr($amount ,-2)
+			. " euros \n";
+			$Msg.= "NUMERO DE CARTE                = $card_number  \n";
+			$Msg.= "AUTORISATION                   = $authorisation_id \n";
+			$Msg.= "CERTIFICAT DE LA TRANSACTION   = $payment_certificate \n\n";
+			$Msg.= "------------------------------------------------------------\n\n";
+
+			$Msg.= "http://www.Plug-it.fr\n\n";
+
+			$Msg.= "Merci de votre confiance \n";
+			
+			//mail($customer_email , $Sujet, $Msg, 'From: shop@monsite.com');
+
+			//On en profite pour s'envoyer également le reçu
+			//mail('xxxxx@xxxxx.fr' , $Sujet, $Msg, 'From: shop@monsite.com');
+			
+			//ajout BDD
+			mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
+			mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+			
+			mysql_query("INSERT INTO facturation VALUES ('','$order_id','$transaction_id','$customer_id','$customer_email','$amount','$payment_time')")or die("Erreur SQL");
+			
+			mysql_close();
+		
+		}
+	
+		fwrite( $fp, "#======================== Le : " . date("d/m/Y H:i:s") . " ====================#\n");
+		fwrite( $fp, "merchant_id : $merchant_id\n");
+		fwrite( $fp, "merchant_country : $merchant_country\n");
+		fwrite( $fp, "amount : $amount\n");
+		fwrite( $fp, "transaction_id : $transaction_id\n");
+		fwrite( $fp, "transmission_date: $transmission_date\n");
+		fwrite( $fp, "payment_means: $payment_means\n");
+		fwrite( $fp, "payment_time : $payment_time\n");
+		fwrite( $fp, "payment_date : $payment_date\n");
+		fwrite( $fp, "response_code : $response_code\n");
+		fwrite( $fp, "payment_certificate : $payment_certificate\n");
+		fwrite( $fp, "authorisation_id : $authorisation_id\n");
+		fwrite( $fp, "currency_code : $currency_code\n");
+		fwrite( $fp, "card_number : $card_number\n");
+		fwrite( $fp, "cvv_flag: $cvv_flag\n");
+		fwrite( $fp, "cvv_response_code: $cvv_response_code\n");
+		fwrite( $fp, "bank_response_code: $bank_response_code\n");
+		fwrite( $fp, "complementary_code: $complementary_code\n");
+		fwrite( $fp, "complementary_info: $complementary_info\n");
+		fwrite( $fp, "return_context: $return_context\n");
+		fwrite( $fp, "caddie : $caddie\n");
+		fwrite( $fp, "receipt_complement: $receipt_complement\n");
+		fwrite( $fp, "merchant_language: $merchant_language\n");
+		fwrite( $fp, "language: $language\n");
+		fwrite( $fp, "customer_id: $customer_id\n");
+		fwrite( $fp, "order_id: $order_id\n");
+		fwrite( $fp, "customer_email: $customer_email\n");
+		fwrite( $fp, "customer_ip_address: $customer_ip_address\n");
+		fwrite( $fp, "capture_day: $capture_day\n");
+		fwrite( $fp, "capture_mode: $capture_mode\n");
+		fwrite( $fp, "data: $data\n");
+		fwrite( $fp, "order_validity: $order_validity\n");
+		fwrite( $fp, "transaction_condition: $transaction_condition\n");
+		fwrite( $fp, "statement_reference: $statement_reference\n");
+		fwrite( $fp, "card_validity: $card_validity\n");
+		fwrite( $fp, "score_value: $score_value\n");
+		fwrite( $fp, "score_color: $score_color\n");
+		fwrite( $fp, "score_info: $score_info\n");
+		fwrite( $fp, "score_threshold: $score_threshold\n");
+		fwrite( $fp, "score_profile: $score_profile\n");
+		fwrite( $fp, "threed_ls_code: $threed_ls_code\n");
+		fwrite( $fp, "threed_relegation_code: $threed_relegation_code\n");
+		fwrite( $fp, "-------------------------------------------\n");
 	}
 
 	fclose ($fp);

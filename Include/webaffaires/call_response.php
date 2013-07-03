@@ -119,7 +119,28 @@
 
 		print("<H3>Paiement en ligne</H3>\n");
 
-		print("<b><h4>\n");
+		
+		if($bank_response_code == "00"){
+
+			print("<center><h1>Merci</h1></center>");
+			print("<p>Votre paiement a été accepté par notre établissement bancaire</p>");
+			print("<p>Un message électronique vous a été envoyé <br />");
+			print("il contient le reçu de la transaction et le détail de votre commande</p>");
+			print("<p>Merci de votre confiance</p>");
+		}
+		else{
+
+			print("<center><h1>Votre paiement a été refusé par notre établissement bancaire</h1></center>");
+
+		}
+		
+		if($response_code == "17"){
+
+			print("<center><h1>Transaction annulée par l'utilisateur</h1></center>");
+
+		}
+		
+		/*print("<b><h4>\n");
 		print("<br><hr>\n");
 		print("<br>merchant_id : $merchant_id\n");
 		print("<br>merchant_country : $merchant_country\n");
@@ -162,7 +183,7 @@
 		print("<br>score_profile: $score_profile\n");
 		print("<br>threed_ls_code: $threed_ls_code\n");
 		print("<br>threed_relegation_code: $threed_relegation_code\n");
-		print("<br><br><hr></b></h4>");
+		print("<br><br><hr></b></h4>");*/
 	}
 
 
