@@ -348,7 +348,7 @@ var nbr_fac = 0;
 			
 			somme += (document.getElementById('montant'+i).value != "") ? parseFloat(document.getElementById('montant'+i).value):0;
 		}
-		somme.toFixed(2);
+		somme=Math.round(somme*100)/100;
 		document.getElementById('montanttot').value = somme;
 		format_number(document.getElementById('montanttot'));
 	}
