@@ -256,3 +256,218 @@ score_profile:
 threed_ls_code: 9
 threed_relegation_code: 0
 -------------------------------------------
+#======================== Le : 04/07/2013 08:06:51 ====================#
+merchant_id : 014022286611111
+merchant_country : fr
+amount : 2000
+transaction_id : 100645
+transmission_date: 20130704080645
+payment_means: VISA
+payment_time : 
+payment_date : 
+response_code : 17
+payment_certificate : 
+authorisation_id : 
+currency_code : 978
+card_number : 
+cvv_flag: 
+cvv_response_code: 
+bank_response_code: 
+complementary_code: 
+complementary_info: 
+return_context: 
+caddie : 
+receipt_complement: 
+merchant_language: fr
+language: fr
+customer_id: 
+order_id: 
+customer_email: 
+customer_ip_address: 
+capture_day: 
+capture_mode: 
+data: 
+order_validity: 02
+transaction_condition: SSL
+statement_reference: 
+card_validity: 
+score_value: 
+score_color: 
+score_info: 
+score_threshold: 
+score_profile: 
+threed_ls_code: 
+threed_relegation_code: 
+-------------------------------------------
+#======================== Le : 04/07/2013 08:08:52 ====================#
+merchant_id : 014022286611111
+merchant_country : fr
+amount : 2000
+transaction_id : 100645
+transmission_date: 20130704080645
+payment_means: VISA
+payment_time : 
+payment_date : 
+response_code : 17
+payment_certificate : 
+authorisation_id : 
+currency_code : 978
+card_number : 
+cvv_flag: 
+cvv_response_code: 
+bank_response_code: 
+complementary_code: 
+complementary_info: 
+return_context: 
+caddie : 
+receipt_complement: 
+merchant_language: fr
+language: fr
+customer_id: 
+order_id: 
+customer_email: 
+customer_ip_address: 
+capture_day: 
+capture_mode: 
+data: 
+order_validity: 02
+transaction_condition: SSL
+statement_reference: 
+card_validity: 
+score_value: 
+score_color: 
+score_info: 
+score_threshold: 
+score_profile: 
+threed_ls_code: 
+threed_relegation_code: 
+-------------------------------------------
+#======================== Le : 04/07/2013 08:10:09 ====================#
+merchant_id : 014022286611111
+merchant_country : fr
+amount : 2000
+transaction_id : 100934
+transmission_date: 20130704080934
+payment_means: CB
+payment_time : 101010
+payment_date : 20130704
+response_code : 00
+payment_certificate : 1372925410
+authorisation_id : 925410
+currency_code : 978
+card_number : 1234.00
+cvv_flag: 1
+cvv_response_code: 4D
+bank_response_code: 00
+complementary_code: 
+complementary_info: 
+return_context: 
+caddie : 
+receipt_complement: 
+merchant_language: fr
+language: fr
+customer_id: 
+order_id: 
+customer_email: 
+customer_ip_address: 
+capture_day: 0
+capture_mode: AUTHOR_CAPTURE
+data: 
+order_validity: 02
+transaction_condition: SSL
+statement_reference: 
+card_validity: 201501
+score_value: 
+score_color: 
+score_info: 
+score_threshold: 
+score_profile: 
+threed_ls_code: 9
+threed_relegation_code: 0
+-------------------------------------------
+#======================== Le : 04/07/2013 08:15:09 ====================#
+merchant_id : 014022286611111
+merchant_country : fr
+amount : 2000
+transaction_id : 100934
+transmission_date: 20130704080934
+payment_means: CB
+payment_time : 101010
+payment_date : 20130704
+response_code : 00
+payment_certificate : 1372925410
+authorisation_id : 925410
+currency_code : 978
+card_number : 1234.00
+cvv_flag: 1
+cvv_response_code: 4D
+bank_response_code: 00
+complementary_code: 
+complementary_info: 
+return_context: 
+caddie : 
+receipt_complement: 
+merchant_language: fr
+language: fr
+customer_id: 
+order_id: 
+customer_email: 
+customer_ip_address: 
+capture_day: 0
+capture_mode: AUTHOR_CAPTURE
+data: 
+order_validity: 02
+transaction_condition: SSL
+statement_reference: 
+card_validity: 201501
+score_value: 
+score_color: 
+score_info: 
+score_threshold: 
+score_profile: 
+threed_ls_code: 9
+threed_relegation_code: 0
+-------------------------------------------
+#======================== Le : 04/07/2013 08:16:51 ====================#
+merchant_id : 014022286611111
+merchant_country : fr
+amount : 2000
+transaction_id : 100934
+transmission_date: 20130704080934
+payment_means: CB
+payment_time : 101010
+payment_date : 20130704
+response_code : 00
+payment_certificate : 1372925410
+authorisation_id : 925410
+currency_code : 978
+card_number : 1234.00
+cvv_flag: 1
+cvv_response_code: 4D
+bank_response_code: 00
+complementary_code: 
+complementary_info: 
+return_context: 
+caddie : 
+receipt_complement: 
+merchant_language: fr
+language: fr
+customer_id: 
+order_id: 
+customer_email: 
+customer_ip_address: 
+capture_day: 0
+capture_mode: AUTHOR_CAPTURE
+data: 
+order_validity: 02
+transaction_condition: SSL
+statement_reference: 
+card_validity: 201501
+score_value: 
+score_color: 
+score_info: 
+score_threshold: 
+score_profile: 
+threed_ls_code: 9
+threed_relegation_code: 0
+-------------------------------------------
