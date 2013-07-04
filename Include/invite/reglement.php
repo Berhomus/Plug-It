@@ -40,7 +40,6 @@ function textLimit(field, maxlen, idlimite) {
 function textLimit2(field, maxlen, idlimite) {
 	if (field.value.length != maxlen) {
       field.value = "";
-      alert('Nombre de caractères invalide !');
 	  idlimite.style.color='red';
    }
    else
@@ -56,7 +55,6 @@ function isNumber(field,id){
 	{
 		field.value = ""; // la valeur devient nulle
 		id.style.color = "red";
-		alert("Valeur incorrecte !");
 	}
 	else
 	{
@@ -363,7 +361,6 @@ function verif(valeur, soustitre){
     var format = /^(\d{1,2}\/){2}\d{4}$/;
     if(!format.test(date_pas_sure))
 	{
-		alert('Date non valable')
 		valeur.value='';
 		soustitre.style.color='red';
 	}
@@ -381,7 +378,6 @@ function verif(valeur, soustitre){
         }
         else
 		{
-            alert('Date non valable');
 			valeur.value='';
 			soustitre.style.color='red';
         }
