@@ -13,6 +13,8 @@
  <?php
 	//		Affectation des paramètres obligatoires
 
+if(isset($_POST) and !empty($_POST))	
+{	
 	$parm="merchant_id=014022286611111";
 	$parm="$parm merchant_country=fr";
 	$parm="$parm amount=".$_POST['montanttot'];
@@ -148,5 +150,5 @@
 		print ("  $message <br>");
 	}
 
-
+}
 ?>

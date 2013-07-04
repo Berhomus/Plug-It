@@ -13,7 +13,8 @@
 <!--	Affichage du header html -->
 
 <?php
-
+if(isset($_POST['DATA']))
+{
 	// Récupération de la variable cryptée DATA
 	$message="message=$_POST[DATA]";
 	
@@ -185,6 +186,6 @@
 		print("<br>threed_relegation_code: $threed_relegation_code\n");
 		print("<br><br><hr></b></h4>");*/
 	}
-
+}
 
 ?>
