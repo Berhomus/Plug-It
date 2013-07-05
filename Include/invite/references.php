@@ -20,7 +20,12 @@ Name : references.php => Plug-it
 		case 'view':
 			echo'<div style="margin:auto;width:900px;">
 				<h2>Ils nous font confiance</h2>';
-					
+				
+				if(isset($_SESSION['id']))
+				{
+					echo '<br/><ul style="width:20%;margin:auto;"><li class="menuverti" onclick="location.href=\'Index.php?page=admin_ref\'">Ajouter une r&eacutef&eacuterence</li></ul>';
+				}
+				
 					$retour = mysql_query("SELECT * FROM ref") or die('Erreur SQL !<br />'.mysql_error());
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
