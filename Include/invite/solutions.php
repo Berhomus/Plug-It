@@ -22,6 +22,12 @@ Name : solutions.php => Plug-it
 				<h2>Découvrez toutes nos solutions innovantes pour vous satisfaire</h2>';
 					
 					$retour = mysql_query('SELECT * FROM solutions ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
+
+					if(isset($_SESSION['id']))
+					{
+						echo '<br/><ul style="width:20%;margin:auto;"><li class="menuverti" onclick="location.href=\'Index.php?page=admin_solutions\'">Ajouter une solution</li></ul>';
+					}
+					
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					

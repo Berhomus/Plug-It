@@ -21,6 +21,11 @@ Name : services.php => Plug-it
 		case 'view':
 			echo'<div style="margin:auto;width:980px;">
 				<h2>DÉCOUVREZ L\'ENSEMBLE DE NOS SERVICES INFORMATIQUES LES PLUS POINTUS</h2>';
+				
+					if(isset($_SESSION['id']))
+					{
+						echo '<br/><ul style="width:20%;margin:auto;"><li class="menuverti" onclick="location.href=\'Index.php?page=admin_services\'">Ajouter un service</li></ul>';
+					}
 					
 					$retour = mysql_query('SELECT * FROM services ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
 					$i=1; //délimite les colonnes
