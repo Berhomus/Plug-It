@@ -1,28 +1,28 @@
 Design : 
 
--Recentrer le design
--Eclaircir l'écriture du footer
+- Recentrer le design
+X Eclaircir l'écriture du footer
 
 Fonctionnel :
 
--Lien pour ajouter
--Possiblité d'ordonner services
--Ne pas afficher les balises (visu direct)
+X Lien pour ajouter
+- Possiblité d'ordonner services
+X Ne pas afficher les balises (visu direct)
 
 Nouveauté :
 
--Partie client ?
--e commerce ?
--bdd gest comm ?
--Filtre image
--Preformatage pour mass mailing
--Inclusion vidéo accueil ?
+- Partie client ?
+- e commerce ?
+- bdd gest comm ?
+- Filtre image
+- Preformatage pour mass mailing
+- Inclusion vidéo accueil ?
 
 Compléter & tester :
 
--API de paiement
--Mailing
+- API de paiement
+- Mailing
 
 Securité :
 
--https partie admin
+- https partie admin
