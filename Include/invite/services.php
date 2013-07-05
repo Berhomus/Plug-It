@@ -22,7 +22,7 @@ Name : services.php => Plug-it
 			echo'<div style="margin:auto;width:980px;">
 				<h2>DÉCOUVREZ L\'ENSEMBLE DE NOS SERVICES INFORMATIQUES LES PLUS POINTUS</h2>';
 					
-					$retour = mysql_query('SELECT * FROM services ORDER BY date DESC') or die('Erreur SQL !<br />'.mysql_error());
+					$retour = mysql_query('SELECT * FROM services ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					
@@ -88,7 +88,7 @@ Name : services.php => Plug-it
 						
 					
 					//affichage autres liens					
-					$retour = mysql_query("SELECT * FROM services WHERE id<>'".$_GET['id']."' ORDER BY date DESC LIMIT 10")or die('Erreur SQL !<br />'.mysql_error());
+					$retour = mysql_query("SELECT * FROM services WHERE id<>'".$_GET['id']."' ORDER BY ordre LIMIT 10")or die('Erreur SQL !<br />'.mysql_error());
 					
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes

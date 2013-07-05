@@ -13,6 +13,7 @@ Name : accueil.php => Plug-it
 	switch($_GET['sub'])
 	{
 		case 'main':
+		
 ?>
 			<div style="background-color:#f9bd1a; height:475px; width:100%; padding-top:1%;">
 				<div id="iview">
@@ -80,7 +81,7 @@ Name : accueil.php => Plug-it
 							mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 							mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
 							mysql_query("UPDATE services SET corps = replace(corps, '<br/>', '')");
-							$retour = mysql_query('SELECT * FROM services ORDER BY date DESC') or die('Erreur SQL !<br />'.mysql_error());
+							$retour = mysql_query('SELECT * FROM services ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
 							echo '<table style="margin-left:auto; margin-right:auto; width:80%;">';
 							while ($donnees = mysql_fetch_array($retour))
 							{

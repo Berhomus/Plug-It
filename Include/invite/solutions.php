@@ -21,7 +21,7 @@ Name : solutions.php => Plug-it
 			echo'<div style="margin:auto;width:1000px;">
 				<h2>Découvrez toutes nos solutions innovantes pour vous satisfaire</h2>';
 					
-					$retour = mysql_query('SELECT * FROM solutions ORDER BY date DESC') or die('Erreur SQL !<br />'.mysql_error());
+					$retour = mysql_query('SELECT * FROM solutions ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					
@@ -88,7 +88,7 @@ Name : solutions.php => Plug-it
 						
 					
 					//affichage autres liens					
-					$retour = mysql_query("SELECT * FROM solutions WHERE id<>'".$_GET['id']."' ORDER BY date DESC LIMIT 10") or die('Erreur SQL !<br />'.mysql_error());
+					$retour = mysql_query("SELECT * FROM solutions WHERE id<>'".$_GET['id']."' ORDER BY ordre LIMIT 10") or die('Erreur SQL !<br />'.mysql_error());
 					
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
