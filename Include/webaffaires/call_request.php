@@ -44,8 +44,8 @@ if(isset($_POST) and !empty($_POST))
 	 		$parm="$parm normal_return_url=http://127.0.0.1/plug-it/index.php?page=trt_paiement";
 			$parm="$parm cancel_return_url=http://127.0.0.1/plug-it/index.php?page=trt_paiement";
 			$parm="$parm automatic_response_url=http://127.0.0.1/plug-it/include/webaffaires/call_autoresponse.php";
-	//		$parm="$parm language=fr";
-	//		$parm="$parm payment_means=CB,2,VISA,2,MASTERCARD,2";
+			$parm="$parm language=fr";
+			$parm="$parm payment_means=CB,2,VISA,2,MASTERCARD,2";
 	//		$parm="$parm header_flag=no";
 	//		$parm="$parm capture_day=";
 	//		$parm="$parm capture_mode=";
