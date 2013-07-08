@@ -32,7 +32,6 @@ Name : update_ordre.php => Plug-it
 			$swap=$fin;
 			$fin=min($deb,$fin);
 			$deb=max($deb,$swap);
-			echo $deb."=>".$fin.":".$pas;
 			for($i=$deb;$i>=$fin;$i=$i-$pas)
 			{
 				$rq = mysql_query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'")or die("fail ".$i. " => Erreur SQL !<br />".mysql_error());

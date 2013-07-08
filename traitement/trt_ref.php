@@ -63,6 +63,7 @@ Name : trt_ref.php => Plug-it
 							$soustitre = (!empty($_POST['soustitre'])) ? $_POST['soustitre']:$array['sous_titre'];
 							$lien = (!empty($_POST['lien'])) ? $_POST['lien']:$array['lien'];
 							$path = (isset($path)) ? $path:$array['image'];
+							$ordre = $_POST['ordre'];
 							
 							
 							$titre = htmlspecialchars($titre);

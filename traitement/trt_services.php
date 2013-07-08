@@ -70,8 +70,7 @@ Name : trt_services.php => Plug-it
 							$soustitre = mysql_real_escape_string($soustitre);
 							$corps = mysql_real_escape_string($corps);
 							
-<<<<<<< HEAD
-=======
+
 							if($ordre>$array['ordre'])
 							{
 								$pas=-1;
@@ -84,7 +83,6 @@ Name : trt_services.php => Plug-it
 							if($ordre!=$array['ordre'])
 								update_ordre($array['ordre']-$pas,$ordre,$pas,'services');
 							
->>>>>>> b49cda895faf39cd91fee5f34e7d94a773093760
 							mysql_query("UPDATE services SET ordre='$ordre', image='$path', titre='$titre', subtitre='$soustitre', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 							echo utf8_decode('<h2 style="color:green;">Service Modifié !</h2>');
 						}
