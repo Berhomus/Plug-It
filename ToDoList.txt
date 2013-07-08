@@ -4,11 +4,11 @@ Design :
 X Eclaircir l'écriture du footer
 
 Fonctionnel :
-X Afficher les balises (visu direct) X
-X Lien pour ajouter
-- Possiblité d'ordonner services
-X Ne pas afficher les balises (visu direct)
 
+- Script image
+X Lien pour ajouter
+X Possiblité d'ordonner services
+X Ne pas afficher les balises (visu direct)
 
 Nouveauté :
 
