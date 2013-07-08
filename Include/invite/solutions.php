@@ -25,7 +25,7 @@ Name : solutions.php => Plug-it
 
 					if(isset($_SESSION['id']))
 					{
-						echo '<br/><ul style="width:20%;margin:auto;"><li class="menuverti" onclick="location.href=\'Index.php?page=admin_solutions\'">Ajouter une solution</li></ul>';
+						echo '<br/><div style="margin-left:415px;" class="menuverti" onclick="location.href=\'Index.php?page=admin_solutions\'">Ajouter une solution</div>';
 					}
 					
 					$i=1; //délimite les colonnes
