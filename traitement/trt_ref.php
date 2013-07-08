@@ -8,6 +8,7 @@ Name : trt_ref.php => Plug-it
 <?php
 	
 	include("../function/upload.php");
+	include("../function/update_ordre.php");
 	
 	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
@@ -20,11 +21,14 @@ Name : trt_ref.php => Plug-it
 				echo utf8_decode('<h2>Suppression Référence</h2>');
 				if(isset($_GET['id']))
 				{
+					$ordre = $_POST['ordre'];
+					
 					$rq=mysql_query("SELECT COUNT(id) as cpt FROM ref WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 					$array=mysql_fetch_array($rq);
 					
 					if($array['cpt'])
 					{
+						update_ordre($ordre,0,-1,'ref');
 						mysql_query("DELETE FROM ref WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 						echo utf8_decode('<h2 style="color:green;">Référence Supprimée !</h2>');
 					}
@@ -58,6 +62,7 @@ Name : trt_ref.php => Plug-it
 							$lien = (!empty($_POST['lien'])) ? $_POST['lien']:$array['lien'];
 							$path = (isset($path)) ? $path:$array['image'];
 							
+							
 							$titre = htmlspecialchars($titre);
 							$soustitre = htmlspecialchars($soustitre);
 							$lien = htmlspecialchars($lien);
@@ -66,7 +71,19 @@ Name : trt_ref.php => Plug-it
 							$soustitre = mysql_real_escape_string($soustitre);
 							$lien = mysql_real_escape_string($lien);
 							
-							mysql_query("UPDATE ref SET image='$path', titre='$titre', sous_titre='$soustitre', lien='$lien' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+							if($ordre>$array['ordre'])
+							{
+								$pas=1;
+							}
+							else
+							{
+								$pas=-1;
+							}
+							
+							if($ordre!=$array['ordre'])
+								update_ordre($array['ordre']+$pas,$ordre,$pas,'ref');
+							
+							mysql_query("UPDATE ref SET ordre='$ordre', image='$path', titre='$titre', sous_titre='$soustitre', lien='$lien' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 							echo utf8_decode('<h2 style="color:green;">Référence Modifiée !</h2>');
 						}
 						else
@@ -76,6 +93,7 @@ Name : trt_ref.php => Plug-it
 									<input type="hidden" name="nomsolu" value="<?php echo htmlspecialchars($_POST['nomcli']);?>"/>
 									<input type="hidden" name="desc" value="<?php echo htmlspecialchars($_POST['soustitre']);?>"/>
 									<input type="hidden" name="corps" value="<?php echo htmlspecialchars($_POST['lien']);?>"/>
+									<input type="hidden" name="ordre" value="<?php echo $_POST['ordre'];?>"/>
 									<input type="submit" value="Retour Formulaire"/>
 								</form>
 							<?php
@@ -106,8 +124,11 @@ Name : trt_ref.php => Plug-it
 						$titre = mysql_real_escape_string($titre);
 						$soustitre = mysql_real_escape_string($soustitre);
 						$lien = mysql_real_escape_string($lien);
+						$ordre = $_POST['ordre'];
 						
-						mysql_query("INSERT INTO ref VALUES (Null,'$path','$titre','$lien','$soustitre',Null)")or die('Erreur SQL !<br />'.mysql_error());
+						update_ordre($ordre,0,1,'ref');
+						
+						mysql_query("INSERT INTO ref VALUES (Null,'$path','$titre','$lien','$soustitre',Null,'$ordre')")or die('Erreur SQL !<br />'.mysql_error());
 						echo utf8_decode('<h2 style="color:green;">Référence Créée !</h2>');
 					}
 					else
@@ -117,6 +138,7 @@ Name : trt_ref.php => Plug-it
 								<input type="hidden" name="nomsolu" value="<?php echo htmlspecialchars($_POST['nomcli']);?>"/>
 								<input type="hidden" name="desc" value="<?php echo htmlspecialchars($_POST['soustitre']);?>"/>
 								<input type="hidden" name="corps" value="<?php echo htmlspecialchars($_POST['lien']);?>"/>
+								<input type="hidden" name="ordre" value="<?php echo $_POST['ordre'];?>"/>
 								<input type="submit" value="Retour Formulaire"/>
 							</form>
 						<?php
