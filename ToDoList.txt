@@ -5,9 +5,9 @@ Design :
 
 Fonctionnel :
 
--Lien pour ajouter
+-Lien pour ajouter X
 -Possiblité d'ordonner services
--Ne pas afficher les balises (visu direct)
+-Ne pas afficher les balises (visu direct) X
 
 Nouveauté :
 

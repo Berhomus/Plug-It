@@ -24,7 +24,7 @@ Name : services.php => Plug-it
 				
 					if(isset($_SESSION['id']))
 					{
-						echo '<br/><ul style="width:20%;margin:auto;"><li class="menuverti" onclick="location.href=\'Index.php?page=admin_services\'">Ajouter un service</li></ul>';
+						echo '<br/><div style="margin:auto;" class="menuverti" onclick="location.href=\'Index.php?page=admin_services\'">Ajouter un service</div>';
 					}
 					
 					$retour = mysql_query('SELECT * FROM services ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
