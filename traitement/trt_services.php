@@ -67,7 +67,7 @@ Name : trt_services.php => Plug-it
 							$soustitre = mysql_real_escape_string($soustitre);
 							$corps = mysql_real_escape_string($corps);
 							
-							mysql_query("UPDATE services SET ordre='$ordre' image='$path', titre='$titre', subtitre='$soustitre', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+							mysql_query("UPDATE services SET ordre='$ordre', image='$path', titre='$titre', subtitre='$soustitre', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 							echo utf8_decode('<h2 style="color:green;">Service Modifié !</h2>');
 						}
 						else
