@@ -86,7 +86,7 @@ Name : trt_solutions.php => Plug-it
 								if($ordre!=$array['ordre'])
 									update_ordre($array['ordre']-$pas,$ordre,$pas,'solutions');
 								
-								mysql_query("UPDATE solutions SET ordre='ordre', image_sol='$path', image_car='$path2', titre='$titre', description='$desc', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+								mysql_query("UPDATE solutions SET ordre='$ordre', image_sol='$path', image_car='$path2', titre='$titre', description='$desc', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 								echo utf8_decode('<h2 style="color:green;">Solution Modifiée !</h2>');
 							}
 							else
