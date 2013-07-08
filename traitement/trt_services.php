@@ -8,6 +8,7 @@ Name : trt_services.php => Plug-it
 <?php
 	
 	include("../function/upload.php");
+	include("../function/update_ordre.php");
 	
 	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
@@ -57,6 +58,7 @@ Name : trt_services.php => Plug-it
 							$soustitre = (!empty($_POST['soustitre'])) ? $_POST['soustitre']:$array['subtitre'];
 							$corps = (!empty($_POST['corps'])) ? $_POST['corps']:$array['corps'];
 							$path = (isset($path)) ? $path:$array['image'];
+							$ordre = $_POST['ordre'];
 							
 							$titre = htmlspecialchars($titre);
 							$soustitre = htmlspecialchars($soustitre);
@@ -65,7 +67,7 @@ Name : trt_services.php => Plug-it
 							$soustitre = mysql_real_escape_string($soustitre);
 							$corps = mysql_real_escape_string($corps);
 							
-							mysql_query("UPDATE services SET image='$path', titre='$titre', subtitre='$soustitre', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+							mysql_query("UPDATE services SET ordre='$ordre' image='$path', titre='$titre', subtitre='$soustitre', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 							echo utf8_decode('<h2 style="color:green;">Service Modifié !</h2>');
 						}
 						else
@@ -75,6 +77,7 @@ Name : trt_services.php => Plug-it
 										<input type="hidden" name="nomserv" value="<?php echo htmlspecialchars($_POST['nomserv']);?>"/>
 										<input type="hidden" name="soustitre" value="<?php echo htmlspecialchars($_POST['soustitre']);?>"/>
 										<input type="hidden" name="corps" value="<?php echo htmlspecialchars($_POST['corps']);?>"/>
+										<input type="hidden" name="ordre" value="<?php echo $_POST['ordre'];?>"/>
 										<input type="submit" value="Retour Formulaire"/>
 									</form>
 							<?php
@@ -104,8 +107,9 @@ Name : trt_services.php => Plug-it
 						$titre = mysql_real_escape_string($titre);
 						$soustitre = mysql_real_escape_string($soustitre);
 						$corps = mysql_real_escape_string($_POST['corps']);
+						$ordre = $_POST['ordre'];
 						
-						mysql_query("INSERT INTO services VALUES (Null,'$titre','$corps','$path','$soustitre',Null)")or die('Erreur SQL !<br />'.mysql_error());
+						mysql_query("INSERT INTO services VALUES (Null,'$titre','$corps','$path','$soustitre',Null,'$ordre')")or die('Erreur SQL !<br />'.mysql_error());
 						echo utf8_decode('<h2 style="color:green;">Service Créé !</h2>');
 					}
 					else
@@ -116,6 +120,7 @@ Name : trt_services.php => Plug-it
 										<input type="hidden" name="nomserv" value="<?php echo htmlspecialchars($_POST['nomserv']);?>"/>
 										<input type="hidden" name="soustitre" value="<?php echo htmlspecialchars($_POST['soustitre']);?>"/>
 										<input type="hidden" name="corps" value="<?php echo htmlspecialchars($_POST['corps']);?>"/>
+										<input type="hidden" name="ordre" value="<?php echo $_POST['ordre'];?>"/>
 										<input type="submit" value="Retour Formulaire"/>
 									</form>
 						<?php

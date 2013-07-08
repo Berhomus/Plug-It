@@ -8,6 +8,7 @@ Name : trt_solutions.php => Plug-it
 <?php
 	
 	include("../function/upload.php");
+	include("../function/update_ordre.php");
 	
 	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
@@ -61,6 +62,7 @@ Name : trt_solutions.php => Plug-it
 								$corps = (!empty($_POST['corps'])) ? $_POST['corps']:$array['corps'];
 								$path = (isset($path)) ? $path:$array['image_sol'];
 								$path2 = (isset($path2)) ? $path2:$array['image_car'];
+								$ordre = $_POST['ordre'];
 								
 								$titre = htmlspecialchars($titre);
 								$desc = htmlspecialchars($desc);
@@ -69,7 +71,7 @@ Name : trt_solutions.php => Plug-it
 								$desc = mysql_real_escape_string($desc);
 								$corps = mysql_real_escape_string($corps);
 								
-								mysql_query("UPDATE solutions SET image_sol='$path', image_car='$path2', titre='$titre', description='$desc', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+								mysql_query("UPDATE solutions SET ordre='ordre', image_sol='$path', image_car='$path2', titre='$titre', description='$desc', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 								echo utf8_decode('<h2 style="color:green;">Solution Modifiée !</h2>');
 							}
 							else
@@ -80,6 +82,7 @@ Name : trt_solutions.php => Plug-it
 										<input type="hidden" name="nomsolu" value="<?php echo htmlspecialchars($_POST['nomsolu']);?>"/>
 										<input type="hidden" name="desc" value="<?php echo htmlspecialchars($_POST['desc']);?>"/>
 										<input type="hidden" name="corps" value="<?php echo htmlspecialchars($_POST['corps']);?>"/>
+										<input type="hidden" name="ordre" value="<?php echo $_POST['ordre'];?>"/>
 										<input type="submit" value="Retour Formulaire"/>
 									</form>
 							<?php
@@ -93,6 +96,7 @@ Name : trt_solutions.php => Plug-it
 										<input type="hidden" name="nomsolu" value="<?php echo htmlspecialchars($_POST['nomsolu']);?>"/>
 										<input type="hidden" name="desc" value="<?php echo htmlspecialchars($_POST['desc']);?>"/>
 										<input type="hidden" name="corps" value="<?php echo htmlspecialchars($_POST['corps']);?>"/>
+										<input type="hidden" name="ordre" value="<?php echo $_POST['ordre'];?>"/>
 										<input type="submit" value="Retour Formulaire"/>
 									</form>
 							<?php
@@ -124,8 +128,9 @@ Name : trt_solutions.php => Plug-it
 							$titre = mysql_real_escape_string($titre);
 							$desc = mysql_real_escape_string($desc);
 							$corps = mysql_real_escape_string($_POST['corps']);
+							$ordre = $_POST['corps'];
 							
-							mysql_query("INSERT INTO solutions VALUES (Null,'$titre','$corps','$path2','$path','$desc',Null)")or die('Erreur SQL !<br />'.mysql_error());
+							mysql_query("INSERT INTO solutions VALUES (Null,'$titre','$corps','$path2','$path','$desc',Null,'$ordre')")or die('Erreur SQL !<br />'.mysql_error());
 							echo utf8_decode('<h2 style="color:green;">Solution Créée !</h2>');
 						}
 						else
