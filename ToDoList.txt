@@ -1,11 +1,12 @@
 Design : 
 
-- Recentrer le design
+- Recentrer le design ?
 X Eclaircir l'écriture du footer
 
 Fonctionnel :
 
 - Script image
+X Afficher les balises (visu direct)
 X Lien pour ajouter
 X Possiblité d'ordonner services
 X Ne pas afficher les balises (visu direct)
