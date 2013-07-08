@@ -28,7 +28,9 @@ Name : trt_ref.php => Plug-it
 					
 					if($array['cpt'])
 					{
-						update_ordre($ordre,0,-1,'ref');
+						$rq = mysql_query("SELECT ordre FROM ref WHERE id='".$_GET['id']."'")or die("fail ".$i. " => Erreur SQL !<br />".mysql_error());
+						$ar = mysql_fetch_array($rq);
+						update_ordre($ar['ordre'],0,-1,'ref');
 						mysql_query("DELETE FROM ref WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 						echo utf8_decode('<h2 style="color:green;">Référence Supprimée !</h2>');
 					}
@@ -73,15 +75,15 @@ Name : trt_ref.php => Plug-it
 							
 							if($ordre>$array['ordre'])
 							{
-								$pas=1;
+								$pas=-1;
 							}
 							else
 							{
-								$pas=-1;
+								$pas=1;
 							}
 							
 							if($ordre!=$array['ordre'])
-								update_ordre($array['ordre']+$pas,$ordre,$pas,'ref');
+								update_ordre($array['ordre']-$pas,$ordre,$pas,'ref');
 							
 							mysql_query("UPDATE ref SET ordre='$ordre', image='$path', titre='$titre', sous_titre='$soustitre', lien='$lien' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 							echo utf8_decode('<h2 style="color:green;">Référence Modifiée !</h2>');

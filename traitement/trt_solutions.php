@@ -26,6 +26,9 @@ Name : trt_solutions.php => Plug-it
 					
 					if($array['cpt'])
 					{
+						$rq = mysql_query("SELECT ordre FROM solutions WHERE id='".$_GET['id']."'")or die("fail ".$i. " => Erreur SQL !<br />".mysql_error());
+						$ar = mysql_fetch_array($rq);
+						update_ordre($ar['ordre'],0,-1,'solutions');
 						mysql_query("DELETE FROM solutions WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 						echo utf8_decode('<h2 style="color:green;">Solution Supprimée !</h2>');
 					}
@@ -70,6 +73,18 @@ Name : trt_solutions.php => Plug-it
 								$titre = mysql_real_escape_string($titre);
 								$desc = mysql_real_escape_string($desc);
 								$corps = mysql_real_escape_string($corps);
+								
+								if($ordre>$array['ordre'])
+								{
+									$pas=-1;
+								}
+								else
+								{
+									$pas=1;
+								}
+								
+								if($ordre!=$array['ordre'])
+									update_ordre($array['ordre']-$pas,$ordre,$pas,'solutions');
 								
 								mysql_query("UPDATE solutions SET ordre='ordre', image_sol='$path', image_car='$path2', titre='$titre', description='$desc', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 								echo utf8_decode('<h2 style="color:green;">Solution Modifiée !</h2>');
@@ -129,6 +144,8 @@ Name : trt_solutions.php => Plug-it
 							$desc = mysql_real_escape_string($desc);
 							$corps = mysql_real_escape_string($_POST['corps']);
 							$ordre = $_POST['corps'];
+							
+							update_ordre($ordre,0,1,'solutions');
 							
 							mysql_query("INSERT INTO solutions VALUES (Null,'$titre','$corps','$path2','$path','$desc',Null,'$ordre')")or die('Erreur SQL !<br />'.mysql_error());
 							echo utf8_decode('<h2 style="color:green;">Solution Créée !</h2>');

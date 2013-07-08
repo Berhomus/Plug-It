@@ -26,6 +26,9 @@ Name : trt_services.php => Plug-it
 					
 					if($array['cpt'])
 					{
+						$rq = mysql_query("SELECT ordre FROM services WHERE id='".$_GET['id']."'")or die("fail ".$i. " => Erreur SQL !<br />".mysql_error());
+						$ar = mysql_fetch_array($rq);
+						update_ordre($ar['ordre'],0,-1,'services');
 						mysql_query("DELETE FROM services WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 						echo utf8_decode('<h2 style="color:green;">Service Supprimé !</h2>');
 					}
@@ -67,7 +70,19 @@ Name : trt_services.php => Plug-it
 							$soustitre = mysql_real_escape_string($soustitre);
 							$corps = mysql_real_escape_string($corps);
 							
-							mysql_query("UPDATE services SET ordre='$ordre' image='$path', titre='$titre', subtitre='$soustitre', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+							if($ordre>$array['ordre'])
+							{
+								$pas=-1;
+							}
+							else
+							{
+								$pas=1;
+							}
+							
+							if($ordre!=$array['ordre'])
+								update_ordre($array['ordre']-$pas,$ordre,$pas,'services');
+							
+							mysql_query("UPDATE services SET ordre='$ordre', image='$path', titre='$titre', subtitre='$soustitre', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 							echo utf8_decode('<h2 style="color:green;">Service Modifié !</h2>');
 						}
 						else
@@ -108,6 +123,8 @@ Name : trt_services.php => Plug-it
 						$soustitre = mysql_real_escape_string($soustitre);
 						$corps = mysql_real_escape_string($_POST['corps']);
 						$ordre = $_POST['ordre'];
+						
+						update_ordre($ordre,0,1,'services');
 						
 						mysql_query("INSERT INTO services VALUES (Null,'$titre','$corps','$path','$soustitre',Null,'$ordre')")or die('Erreur SQL !<br />'.mysql_error());
 						echo utf8_decode('<h2 style="color:green;">Service Créé !</h2>');
