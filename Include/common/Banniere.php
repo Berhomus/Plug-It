@@ -7,6 +7,9 @@ Name : Banniere.php => Plug-it
 <?php
 	if(!isset($_GET['page']))
 		$_GET['page'] = 'accueil';
+		
+	header( 'content-type: text/html; charset=utf-8' );
+
 ?>
 
 
@@ -41,7 +44,7 @@ Name : Banniere.php => Plug-it
 					echo 'class="menu_selected"';
 				else
 					echo 'class="menu_unselected"';
-			?>>Références</td>
+			?>>RÃ©fÃ©rences</td>
 			<td onclick="location.href='Index.php?page=contact'"
 			<?php
 				if($_GET['page'] == 'contact')

@@ -47,12 +47,12 @@ Name : accueil.php => Plug-it
 				<table class="table_accueil" border="0" cellspacing="10" cellpadding="10">
 					<tr>
 						<td>
-							<h2>L'écoute, le conseil</h2>
+							<h2>L'Ã©coute, le conseil</h2>
 							<hr style="color:#dedede"/>
 						</td>
 						
 						<td>
-							<h2>Les solutions dédiées</h2>
+							<h2>Les solutions dÃ©diÃ©es</h2>
 							<hr style="color:#dedede"/>
 						</td>
 						
@@ -65,14 +65,14 @@ Name : accueil.php => Plug-it
 					<tr>
 						<td>
 							Depuis 15 ans au service des entreprises,
-							notre équipe commerciale est principalement
+							notre Ã©quipe commerciale est principalement
 							issue du milieu technique et rompue aux
-							nouvelles technologies de l’informatique.
+							nouvelles technologies de l'informatique.
 						</td>
 						
 						<td>
-							Première et unique solution de Cloud Computing locale,
-							nos solutions sont différenciées en packs d’abonnement mensuel ou annuel.
+							PremiÃ¨re et unique solution de Cloud Computing locale,
+							nos solutions sont diffÃ©renciÃ©es en packs d'abonnement mensuel ou annuel.
 						</td>
 						
 						<td>
@@ -80,6 +80,7 @@ Name : accueil.php => Plug-it
 						<?php
 							mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 							mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+							mysql_set_charset( 'utf8' );
 							mysql_query("UPDATE services SET corps = replace(corps, '<br/>', '')");
 							$retour = mysql_query('SELECT * FROM services ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
 							echo '<table style="margin-left:auto; margin-right:auto; width:80%;">';
@@ -124,17 +125,17 @@ Name : accueil.php => Plug-it
 					<p style="text-align: justify;">
 							
 							<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
-							Première et unique solution de Cloud Computing locale,nos solutions <br/>
-							sont différenciées en packs d’abonnement mensuel ou annuel.
+							PremiÃ¨re et unique solution de Cloud Computing locale,nos solutions <br/>
+							sont diffÃ©renciÃ©es en packs d'abonnement mensuel ou annuel.
 							</h4>
 							<br/>
-							On y trouve en premier lieu notre solution de bureau virtuel sous serveurs Microsoft© Windows 2008 et <br/>
-							suites Microsoft© Office Pro 2010 mais aussi des boites aux lettres Microsoft© Exchange avec toutes <br/>
-							ses fonctionnalités de partage, du filtrage antispam, de la sauvegarde en ligne,de la Gestion <br/>
-							commerciale, des logiciels de comptabilité, etc.
+							On y trouve en premier lieu notre solution de bureau virtuel sous serveurs MicrosoftÂ© Windows 2008 et <br/>
+							suites MicrosoftÂ© Office Pro 2010 mais aussi des boites aux lettres MicrosoftÂ© Exchange avec toutes <br/>
+							ses fonctionnalitÃ©s de partage, du filtrage antispam, de la sauvegarde en ligne,de la Gestion <br/>
+							commerciale, des logiciels de comptabilitÃ©, etc.
 							<br/>
 							<br/>
-							Le travail coopératif n’est pas en reste avec notre offre Wanashare où nous mettons en œuvre Microsoft© Sharepoint 2010.
+							Le travail coopÃ©ratif n'est pas en reste avec notre offre Wanashare oÃ¹ nous mettons en Å“uvre MicrosoftÂ© Sharepoint 2010.
 					</p>
 				</div>
 			</div>
@@ -152,18 +153,18 @@ Name : accueil.php => Plug-it
 					<p style="text-align: justify;">
 							
 							<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
-							Depuis 15 ans au service des entreprises, notre équipe commerciale est <br/>
+							Depuis 15 ans au service des entreprises, notre Ã©quipe commerciale est <br/>
 							principalement issue du milieu technique et rompue aux nouvelles <br/>
-							technologies de l’informatique.
+							technologies de l'informatique.
 							</h4>
 							<br/>
-							Cette particularité a pour avantage de mieux traduire les besoins exprimés par nos clients et ainsi de <br/>
-							naturellement d’effectuer une parfaite transmission des besoins à notre service technique.<br/>
-							Nous sommes à même de proposer notre expertise en matière d’audit et de conseils en informatique et <br/>
-							d’œuvrer en tant que maître d’œuvre.
+							Cette particularitÃ© a pour avantage de mieux traduire les besoins exprimÃ©s par nos clients et ainsi de <br/>
+							naturellement d'effectuer une parfaite transmission des besoins Ã  notre service technique.<br/>
+							Nous sommes Ã  mÃªme de proposer notre expertise en matiÃ¨re d'audit et de conseils en informatique et <br/>
+							d'Å“vrer en tant que maÃ®tre d'Å“uvre.
 							<br/>
 							<br/>
-							De la rédaction de vos cahiers des charges au suivi de la réalisation et à la recette de l’ensemble.
+							De la rÃ©daction de vos cahiers des charges au suivi de la rÃ©alisation et Ã  la recette de l'ensemble.
 					</p>
 				</div>
 			</div>
@@ -174,15 +175,15 @@ Name : accueil.php => Plug-it
 ?>
 			<div style="text-align:justify; margin-left:auto; margin-right:auto; width:80%;"> 
 				<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
-				Propriétaire du site Internet
+				PropriÃ©taire du site Internet
 				</h4>
 				<br/>
 				<p>
 					<b>Plug-It</b> - 36 bis, rue Saint-Fuscien - 80000 AMIENS <br/>
-					Tél. : 03 22 22 10 90 <br/>
+					TÃ©l. : 03 22 22 10 90 <br/>
 					Fax : 03 22 80 76 52 <br/>
 					Courriel : <a class="mail" href="mailto:contact@plug-it.com">contact@plug-it.com</a> <br/>
-					SARL au capital de 201 000 € <br/>
+					SARL au capital de 201 000 â‚¬ <br/>
 					SIRET : 421 617 366 00032 <br/>
 					TVA FR46421617366 <br/>
 					NAF : 2620Z <br/>
@@ -206,19 +207,19 @@ Name : accueil.php => Plug-it
 				<br/>
 				<p>
 					<b>Design</b><br/>
-					<b>Rhinocérose</b> - 20, rue Verlaine - 60800 CRÉPY-EN-VALOIS<br/>
-					Tél. & fax : 03 44 94 28 40<br/>
+					<b>RhinocÃ©rose</b> - 20, rue Verlaine - 60800 CRÃ‰PY-EN-VALOIS<br/>
+					TÃ©l. & fax : 03 44 94 28 40<br/>
 					Courriel : <a class="mail" href="mailto:contact@rhinocerose.fr">contact@rhinocerose.fr</a><br/>
 					Site internet : <a class="mail" href="http://www.rhinocerose.fr/">www.rhinocerose.fr</a><br/>
 					<br/>
-					<b>AS Informatique</b> - Antoine Bovin, Benoît Villain, Borhane Bensaid <br/>
+					<b>AS Informatique</b> - Antoine Bovin, BenoÃ®t Villain, Borhane Bensaid <br/>
 					IUT Amiens
 				</p>
 				
 				<br/>
 				<br/>
 				<h4 style="text-transform:uppercase;"><img src="images/fleche.png"/>
-				Hébergeur du site Internet
+				HÃ©bergeur du site Internet
 				</h4>
 				<br/>
 				<p>
@@ -232,9 +233,9 @@ Name : accueil.php => Plug-it
 				</h4>
 				<br/>
 				<p>
-					Toutes les informations présentes sur le site (textes, photographies, etc.) sont la propriété exclusive de Plug-It. 
-					Toute reproduction, même partielle, doit faire l'objet <br/>
-					d'une demande spécifique auprès de Plug-It.
+					Toutes les informations prÃ©sentes sur le site (textes, photographies, etc.) sont la propriÃ©tÃ© exclusive de Plug-It. 
+					Toute reproduction, mÃªme partielle, doit faire l'objet <br/>
+					d'une demande spÃ©cifique auprÃ¨s de Plug-It.
 				</p>
 			</div>
 <?php

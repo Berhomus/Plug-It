@@ -14,6 +14,7 @@ Name : services.php => Plug-it
 	
 	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_set_charset( 'utf8' );
 	
 	switch($_GET['mode'])
 	{

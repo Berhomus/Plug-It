@@ -5,7 +5,7 @@ X Eclaircir l'écriture du footer
 
 Fonctionnel :
 
-- Script image
+X Script image
 X Afficher les balises (visu direct)
 X Lien pour ajouter
 X Possiblité d'ordonner services
@@ -28,3 +28,7 @@ Compléter & tester :
 Securité :
 
 - https partie admin
+
+Autre:
+- modif editeur text (titre +stylewithcss)
+- encodage utf8

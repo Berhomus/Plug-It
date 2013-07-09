@@ -99,6 +99,15 @@ Name : Corps.php => Plug-it
 			echo '<h2>Access Forbidden</h2>';
 		break;
 		
+		case 'mass_mailing':
+		if(isset($_SESSION['id']))
+		{
+			INCLUDE("include/admin/mass_mail.php");
+		}
+		else
+			echo '<h2>Access Forbidden</h2>';
+		break;
+		
 		default :
 		echo '<h2>Page Inexistante</h2>';
 		break;
