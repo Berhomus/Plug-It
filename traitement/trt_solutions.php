@@ -9,6 +9,7 @@ Name : trt_solutions.php => Plug-it
 	
 	include("../function/upload.php");
 	include("../function/update_ordre.php");
+	include("../function/trt_image.php");
 	
 	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
@@ -63,8 +64,8 @@ Name : trt_solutions.php => Plug-it
 								$titre = (!empty($_POST['nomsolu'])) ? $_POST['nomsolu']:$array['titre'];
 								$desc = (!empty($_POST['desc'])) ? $_POST['desc']:$array['description'];
 								$corps = (!empty($_POST['corps'])) ? $_POST['corps']:$array['corps'];
-								$path = (isset($path)) ? $path:$array['image_sol'];
-								$path2 = (isset($path2)) ? $path2:$array['image_car'];
+								$path = (isset($path)) ? make_limg($path):$array['image_sol'];
+								$path2 = (isset($path2)) ? make_img($path2,$titre,$desc):$array['image_car'];
 								$ordre = $_POST['ordre'];
 								
 								$titre = htmlspecialchars($titre);
@@ -72,7 +73,7 @@ Name : trt_solutions.php => Plug-it
 								
 								$titre = mysql_real_escape_string($titre);
 								$desc = mysql_real_escape_string($desc);
-								$corps = mysql_real_escape_string($corps);
+								$corps = mysql_real_escape_string($corps);							
 								
 								if($ordre>$array['ordre'])
 								{
@@ -143,9 +144,11 @@ Name : trt_solutions.php => Plug-it
 							$titre = mysql_real_escape_string($titre);
 							$desc = mysql_real_escape_string($desc);
 							$corps = mysql_real_escape_string($_POST['corps']);
-							$ordre = $_POST['corps'];
+							$ordre = $_POST['ordre'];
 							
 							update_ordre($ordre,0,1,'solutions');
+							$path2 = make_img($path2,$titre,$desc);
+							$path = make_limg($path);
 							
 							mysql_query("INSERT INTO solutions VALUES (Null,'$titre','$corps','$path2','$path','$desc',Null,'$ordre')")or die('Erreur SQL !<br />'.mysql_error());
 							echo utf8_decode('<h2 style="color:green;">Solution Créée !</h2>');
