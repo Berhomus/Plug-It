@@ -1,10 +1,10 @@
 <!--
 -------------------------------------------------------------
- Topic		: Exemple PHP traitement de la réponse de paiement
+ Topic		: Exemple PHP traitement de la rÃ©ponse de paiement
  Version 	: P617
 
-	Dans cet exemple, les données de la transaction	sont
-	décryptées et affichées sur le navigateur de l'internaute.
+	Dans cet exemple, les donnÃ©es de la transaction	sont
+	dÃ©cryptÃ©es et affichÃ©es sur le navigateur de l'internaute.
 
 -------------------------------------------------------------
 -->
@@ -15,7 +15,7 @@
 <?php
 if(isset($_POST['DATA']))
 {
-	// Récupération de la variable cryptée DATA
+	// RÃ©cupÃ©ration de la variable cryptÃ©e DATA
 	$message="message=$_POST[DATA]";
 	
 	// Initialisation du chemin du fichier pathfile (Ã  modifier)
