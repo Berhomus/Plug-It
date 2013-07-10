@@ -98,7 +98,7 @@ var nbr_fac = 0;
 		  var label_num = document.createElement('label');
 		  label_num.setAttribute('for', 'num'+ID);
 		  label_num.setAttribute('id', 'label_num'+ID);
-		  label_num.innerHTML = '<b>Numéro de facture <span class="red">*</span></b><br/><small id="lim_num'+ID+'">(10 caractères)</small>';
+		  label_num.innerHTML = '<b>NumÃ©ro de facture <span class="red">*</span></b><br/><small id="lim_num'+ID+'">(10 caractÃ¨res)</small>';
 		  
 		  var td2 = document.createElement('td')
 		  var Input_num = document.createElement('input');
@@ -424,7 +424,7 @@ function verif(valeur, soustitre){
 						<tr>	
 							<td>'.$_POST['num'.$i].'</td>
 							<td>'.$_POST['date'.$i].'</td>
-							<td>'.$_POST['montant'.$i].'€</td>
+							<td>'.$_POST['montant'.$i].'â‚¬</td>
 						</tr>
 					';
 			
