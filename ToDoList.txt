@@ -16,19 +16,19 @@ Nouveauté :
 - Partie client ?
 - e commerce ?
 - bdd gest comm ?
-- Filtre image
 - Preformatage pour mass mailing
 - Inclusion vidéo accueil ?
 
 Compléter & tester :
 
 - API de paiement
-- Mailing
+X Mailing
 
 Securité :
 
 - https partie admin
 
-Autre:
-- modif editeur text (titre +stylewithcss)
-- encodage utf8
+Autre :
+
+X modif editeur text (titre +stylewithcss)
+X encodage utf8
