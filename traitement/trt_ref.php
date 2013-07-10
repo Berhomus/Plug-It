@@ -12,13 +12,14 @@ Name : trt_ref.php => Plug-it
 	
 	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_set_charset( 'utf8' );
 
 	if(isset($_GET['mode']))
 	{
 		switch($_GET['mode'])
 		{
 			case 'delete':
-				echo utf8_decode('<h2>Suppression Référence</h2>');
+				echo ('<h2>Suppression Référence</h2>');
 				if(isset($_GET['id']))
 				{
 					$ordre = $_POST['ordre'];
@@ -32,21 +33,21 @@ Name : trt_ref.php => Plug-it
 						$ar = mysql_fetch_array($rq);
 						update_ordre($ar['ordre'],0,-1,'ref');
 						mysql_query("DELETE FROM ref WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-						echo utf8_decode('<h2 style="color:green;">Référence Supprimée !</h2>');
+						echo ('<h2 style="color:green;">Référence Supprimée !</h2>');
 					}
 					else
 					{
-						echo utf8_decode('<h2 style="color:red;">Référence inexistante !</h2>');
+						echo ('<h2 style="color:red;">Référence inexistante !</h2>');
 					}
 				}
 				else
 				{
-					echo utf8_decode('<h2 style="color:red;">Référence non spécifiée !</h2>');
+					echo ('<h2 style="color:red;">Référence non spécifiée !</h2>');
 				}
 			break;
 			
 			case 'modif':
-				echo utf8_decode('<h2>Modification Référence</h2>');
+				echo ('<h2>Modification Référence</h2>');
 				if(isset($_GET['id']))
 				{
 					$rq=mysql_query("SELECT COUNT(id) as cpt FROM ref WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
@@ -87,7 +88,7 @@ Name : trt_ref.php => Plug-it
 								update_ordre($array['ordre']-$pas,$ordre,$pas,'ref');
 							
 							mysql_query("UPDATE ref SET ordre='$ordre', image='$path', titre='$titre', sous_titre='$soustitre', lien='$lien' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-							echo utf8_decode('<h2 style="color:green;">Référence Modifiée !</h2>');
+							echo ('<h2 style="color:green;">Référence Modifiée !</h2>');
 						}
 						else
 						{
@@ -104,17 +105,17 @@ Name : trt_ref.php => Plug-it
 					}
 					else
 					{
-						echo utf8_decode('<h2 style="color:red;">Référence inexistante !</h2>');
+						echo ('<h2 style="color:red;">Référence inexistante !</h2>');
 					}
 				}
 				else
 				{
-					echo utf8_decode('<h2 style="color:red;">Référence non spécifiée !</h2>');
+					echo ('<h2 style="color:red;">Référence non spécifiée !</h2>');
 				}
 			break;
 			
 			case 'create':
-				echo utf8_decode('<h2>Création Référence</h2>');
+				echo ('<h2>Création Référence</h2>');
 				if(isset($_POST) and !empty($_POST))
 				{	
 					
@@ -132,7 +133,7 @@ Name : trt_ref.php => Plug-it
 						update_ordre($ordre,0,1,'ref');
 						
 						mysql_query("INSERT INTO ref VALUES (Null,'$path','$titre','$lien','$soustitre',Null,'$ordre')")or die('Erreur SQL !<br />'.mysql_error());
-						echo utf8_decode('<h2 style="color:green;">Référence Créée !</h2>');
+						echo ('<h2 style="color:green;">Référence Créée !</h2>');
 					}
 					else
 					{
@@ -149,22 +150,22 @@ Name : trt_ref.php => Plug-it
 				}
 				else
 				{
-					echo utf8_decode('<h2 style="color:red;">Donnée inexistante !</h2>');
+					echo ('<h2 style="color:red;">Donnée inexistante !</h2>');
 				}
 			break;
 			
 			default:
-				echo utf8_decode('<h2 style="color:red;">404 Page Introuvable !</h2>');
+				echo ('<h2 style="color:red;">404 Page Introuvable !</h2>');
 			break;
 		}
 	}
 	else
 	{
-		echo utf8_decode('<h2 style="color:red;">Mode Non spécifié !</h2>');
+		echo ('<h2 style="color:red;">Mode Non spécifié !</h2>');
 	}
 	
 	mysql_close();
 	
-	echo utf8_decode('<center><a href="../index.php?page=references">Retour Référence</a></center>');
+	echo ('<center><a href="../index.php?page=references">Retour Référence</a></center>');
 ?>
 </div>

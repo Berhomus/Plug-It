@@ -12,13 +12,14 @@ Name : trt_services.php => Plug-it
 	
 	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_set_charset( 'utf8' );
 
 	if(isset($_GET['mode']))
 	{
 		switch($_GET['mode'])
 		{
 			case 'delete':
-				echo utf8_decode('<h2>Suppression Service</h2>');
+				echo '<h2>Suppression Service</h2>';
 				if(isset($_GET['id']))
 				{
 					$rq=mysql_query("SELECT COUNT(id) as cpt FROM services WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
@@ -30,21 +31,21 @@ Name : trt_services.php => Plug-it
 						$ar = mysql_fetch_array($rq);
 						update_ordre($ar['ordre'],0,-1,'services');
 						mysql_query("DELETE FROM services WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-						echo utf8_decode('<h2 style="color:green;">Service Supprimé !</h2>');
+						echo ('<h2 style="color:green;">Service Supprimé !</h2>');
 					}
 					else
 					{
-						echo utf8_decode('<h2 style="color:red;">Service inexistante !</h2>');
+						echo ('<h2 style="color:red;">Service inexistante !</h2>');
 					}
 				}
 				else
 				{
-					echo utf8_decode('<h2 style="color:red;">Service non spécifié !</h2>');
+					echo ('<h2 style="color:red;">Service non spécifié !</h2>');
 				}
 			break;
 			
 			case 'modif':
-				echo utf8_decode('<h2>Modification Service</h2>');
+				echo '<h2>Modification Service</h2>';
 				if(isset($_GET['id']))
 				{
 					$rq=mysql_query("SELECT COUNT(id) as cpt FROM services WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
@@ -84,7 +85,7 @@ Name : trt_services.php => Plug-it
 								update_ordre($array['ordre']-$pas,$ordre,$pas,'services');
 							
 							mysql_query("UPDATE services SET ordre='$ordre', image='$path', titre='$titre', subtitre='$soustitre', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-							echo utf8_decode('<h2 style="color:green;">Service Modifié !</h2>');
+							echo ('<h2 style="color:green;">Service Modifié !</h2>');
 						}
 						else
 						{	
@@ -101,17 +102,17 @@ Name : trt_services.php => Plug-it
 					}
 					else
 					{
-						echo utf8_decode('<h2 style="color:red;">Service inexistante !</h2>');
+						echo ('<h2 style="color:red;">Service inexistante !</h2>');
 					}
 				}
 				else
 				{
-					echo utf8_decode('<h2 style="color:red;">Service non spécifié !</h2>');
+					echo ('<h2 style="color:red;">Service non spécifié !</h2>');
 				}
 			break;
 			
 			case 'create':
-				echo utf8_decode('<h2>Création Service</h2>');
+				echo ('<h2>Création Service</h2>');
 				if(isset($_POST) and !empty($_POST))
 				{	
 					
@@ -128,7 +129,7 @@ Name : trt_services.php => Plug-it
 						update_ordre($ordre,0,1,'services');
 						
 						mysql_query("INSERT INTO services VALUES (Null,'$titre','$corps','$path','$soustitre',Null,'$ordre')")or die('Erreur SQL !<br />'.mysql_error());
-						echo utf8_decode('<h2 style="color:green;">Service Créé !</h2>');
+						echo ('<h2 style="color:green;">Service Créé !</h2>');
 					}
 					else
 					{
@@ -146,22 +147,22 @@ Name : trt_services.php => Plug-it
 				}
 				else
 				{
-					echo utf8_decode('<h2 style="color:red;">Donnée inexistante !</h2>');
+					echo ('<h2 style="color:red;">Donnée inexistante !</h2>');
 				}
 			break;
 			
 			default:
-				echo utf8_decode('<h2 style="color:red;">404 Page Introuvable !</h2>');
+				echo ('<h2 style="color:red;">404 Page Introuvable !</h2>');
 			break;
 		}
 	}
 	else
 	{
-		echo utf8_decode('<h2 style="color:red;">Mode Non spécifié !</h2>');
+		echo ('<h2 style="color:red;">Mode Non spécifié !</h2>');
 	}
 	
 	mysql_close();
 	
-	echo utf8_decode('<center><a href="../index.php?page=services">Retour Services</a></center>');
+	echo ('<center><a href="../index.php?page=services">Retour Services</a></center>');
 ?>
 </div>

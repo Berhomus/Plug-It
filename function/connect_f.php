@@ -18,6 +18,8 @@ function connect()
 		//connection bdd
 		$connexion = mysql_connect('localhost', 'root', '') OR die('Erreur de connexion');
 		mysql_select_db('plugit') OR die('Sélection de la base impossible'); 
+		mysql_set_charset( 'utf8' );
+		
 		$login = $_POST["login"];
 		$rq = mysql_query("SELECT COUNT(login) AS cpt FROM admin WHERE login ='$login'");//selection données
 		$array = mysql_fetch_assoc($rq);

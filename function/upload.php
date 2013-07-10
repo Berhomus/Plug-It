@@ -31,23 +31,23 @@ function upload($dossier,$taille_maxi,$extensions,$nom)
 			 $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
 			 if(move_uploaded_file($_FILES[$nom]['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
 			 {
-				  echo utf8_decode('Upload effectué avec succès !<br/>');
+				  echo ('Upload effectué avec succès !<br/>');
 				  return 'images/' . $fichier;
 			 }
 			 else //Sinon (la fonction renvoie FALSE).
 			 {
-				  echo utf8_decode('Echec de l\'upload '.$fichier.' !<br/>');
+				  echo ('Echec de l\'upload '.$fichier.' !<br/>');
 				  return '';
 			 }
 		}
 		else
 		{
-			 echo utf8_decode($erreur);
+			 echo ($erreur);
 			 return '';
 		}
 	}
 	else
-		echo utf8_decode('<h2 style="color:red;">Pas de fichier existant</h2><br/>');
+		echo ('<h2 style="color:red;">Pas de fichier existant</h2><br/>');
 	
 	return -1;
 }

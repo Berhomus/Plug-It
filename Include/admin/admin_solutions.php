@@ -124,6 +124,7 @@ try {
 						
 							mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 							mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+							mysql_set_charset( 'utf8' );
 							
 							$rq=mysql_query("SELECT COUNT(id) AS nombre FROM solutions");
 							$rq=mysql_fetch_array($rq);
@@ -140,6 +141,7 @@ try {
 									echo '<option value="'.$i.'">'.$i.'</option>';
 								}
 							}
+							MySQL_Close();
 						?>
 					</select>
 				</td>
