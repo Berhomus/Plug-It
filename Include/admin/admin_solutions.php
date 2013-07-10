@@ -97,7 +97,19 @@ function img()
 	document.getElementById('ortf').focus();
 }
 
-document.execCommand('stylewithCSS',true, null);
+try {
+	Editor.execCommand("styleWithCSS", 0, false);
+} catch (e) {
+	try {
+		Editor.execCommand("useCSS", 0, true);
+	} catch (e) {
+		try {
+			Editor.execCommand('styleWithCSS', false, false);
+		}
+		catch (e) {
+		}
+	}
+}
 </script><?php	$id=0;	$nomsolu="";	$corps="";	$logosolu="";	$grandeimg="";	$desc="";
 	$ordre=0;		if(isset($_POST) and !empty($_POST))	{		$id= (isset($_GET['id'])) ? $_GET['id']:0;		$nomsolu=$_POST['nomsolu'];		$desc=$_POST['desc'];		$corps=$_POST['corps'];
 		$ordre=$_POST['ordre'];	}	if(isset($_GET['id']))	{		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());		mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());		mysql_set_charset( 'utf8' );
