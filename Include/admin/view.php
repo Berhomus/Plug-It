@@ -9,6 +9,6 @@ Name : view.php => Plug-it
 if (isset($_POST["string"])) {
     $content = $_POST["string"];
 
-    echo nl2br($content); // Ecriture du contenu parsé.
+    echo nl2br($content); // Ecriture du contenu parsÃ©.
 }
 ?>

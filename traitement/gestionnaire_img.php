@@ -22,7 +22,7 @@ if(isset($_SESSION['id']))
 		if(file_exists($_GET['path']) and filetype($_GET['path']) != 'dir')
 		{
 			unlink($_GET['path']);
-			echo '<center style="color:green;">Suppression Réussite</center>';
+			echo '<center style="color:green;">Suppression RÃ©ussite</center>';
 		}
 		else
 		{

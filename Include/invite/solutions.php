@@ -20,7 +20,7 @@ Name : solutions.php => Plug-it
 	
 		case 'view':
 			echo'<div style="margin:auto;width:1000px;">
-				<h2>Découvrez toutes nos solutions innovantes pour vous satisfaire</h2>';
+				<h2>DÃ©couvrez toutes nos solutions innovantes pour vous satisfaire</h2>';
 					
 					$retour = mysql_query('SELECT * FROM solutions ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
 
@@ -29,8 +29,8 @@ Name : solutions.php => Plug-it
 						echo '<br/><div style="margin-left:415px;" class="menuverti" onclick="location.href=\'Index.php?page=admin_solutions\'">Ajouter une solution</div>';
 					}
 					
-					$i=1; //délimite les colonnes
-					$j=1; //délimite les lignes
+					$i=1; //dÃ©limite les colonnes
+					$j=1; //dÃ©limite les lignes
 					
 					echo '<table cellspacing="20">';
 					while ($donnees = mysql_fetch_array($retour))
@@ -97,8 +97,8 @@ Name : solutions.php => Plug-it
 					//affichage autres liens					
 					$retour = mysql_query("SELECT * FROM solutions WHERE id<>'".$_GET['id']."' ORDER BY ordre LIMIT 10") or die('Erreur SQL !<br />'.mysql_error());
 					
-					$i=1; //délimite les colonnes
-					$j=1; //délimite les lignes
+					$i=1; //dÃ©limite les colonnes
+					$j=1; //dÃ©limite les lignes
 					
 					echo'<div style="margin:auto;width:60%;margin-top:20px;">
 					<table cellspacing="10">';

@@ -225,7 +225,11 @@ if(isset($_SESSION['id']))
 					<td><input size="50" type="text" name="titre" id="titre" required="" onblur="textLimit(this, 20, lim_nom);"/></td>
 				</tr>
 				
-	
+				<tr>
+					<td><label for="objet"><b>Objet <span class="red">*</span></b></label></td>
+					<td><input size="50" type="text" name="objet" id="objet" required/></td>
+				</tr>
+				
 				<tr>
 					<td colspan="2">
 						<div>

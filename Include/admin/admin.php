@@ -68,7 +68,7 @@ else
 	<ul style="width:20%;margin:auto;">
 		<li class="menuverti" onclick="location.href='Index.php?page=admin_services'">Nouveau Service</li>
 		<li class="menuverti" onclick="location.href='Index.php?page=admin_solutions'">Nouvelle Solution</li>
-		<li class="menuverti" onclick="location.href='Index.php?page=admin_ref'"><?php echo utf8_decode('Nouvelle Référence'); ?></li>
+		<li class="menuverti" onclick="location.href='Index.php?page=admin_ref'">Nouvelle Référence</li>
 		<li class="menuverti" onclick="location.href='Index.php?page=gestionnaire_img'">Gestionnaire d'images</li>
 		<li class="menuverti" onclick="location.href='Index.php?page=mass_mailing'">E-Mail de Masse</li>
 		<!--<li class="menuverti" onclick="location.href='Index.php?page=backup'">Gestionnaire de backup</li>-->

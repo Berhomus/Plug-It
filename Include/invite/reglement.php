@@ -6,7 +6,7 @@ Name : reglement.php => Plug-it
 
 <script>
 	function isEmail(adr, id){
-     // étape consistant à définir l'expression régulière d'une adresse email
+     // Ã©tape consistant Ã  dÃ©finir l'expression rÃ©guliÃ¨re d'une adresse email
      var regEmail = new RegExp('^[0-9a-z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}$','i');
 
      if(regEmail.test(adr.value) && adr.value.length < 50)
@@ -26,7 +26,7 @@ Name : reglement.php => Plug-it
 function textLimit(field, maxlen, idlimite) {
    if (field.value.length > maxlen) {
       field.value = field.value.substring(0, maxlen);
-      alert('Dépassement de la limite de caracteres');
+      alert('DÃ©passement de la limite de caracteres');
 	  idlimite.style.color='red';
 	  setTimeout(function(){idlimite.style.color='green';},2000);
    }
@@ -51,7 +51,7 @@ function textLimit2(field, maxlen, idlimite) {
 function isNumber(field,id){
 	var regNbr = new RegExp('^[0-9]*([\.,][0-9]{0,2})?$','i');
 	
-	if (!regNbr.test(field.value) || field.value.length == 0) //cas où la valeur n'est pas du tout un nombre
+	if (!regNbr.test(field.value) || field.value.length == 0) //cas oÃ¹ la valeur n'est pas du tout un nombre
 	{
 		field.value = ""; // la valeur devient nulle
 		id.style.color = "red";
@@ -178,7 +178,7 @@ var nbr_fac = 0;
 			{
 			  for(var i = 0; i < Conteneur.childNodes.length; i++)
 			  {
-				// Ici, on vérifie qu'on peut récupérer les attributs, si ce n'est pas possible, on renvoit false, sinon l'attribut
+				// Ici, on vÃ©rifie qu'on peut rÃ©cupÃ©rer les attributs, si ce n'est pas possible, on renvoit false, sinon l'attribut
 				elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
 				if(elementID)
 				{
@@ -397,14 +397,14 @@ function verif(valeur, soustitre){
 		$_POST['commentaire'] = (!empty($_POST['commentaire'])) ? $_POST['commentaire']:"/";
 		
 ?>		
-		<h2 class="titre">Récapitulatif</h2>
+		<h2 class="titre">RÃ©capitulatif</h2>
 		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
 			<tr>	
 				<td><b>Nom du client</b></td>
 				<td><?php echo $_POST['nom']; ?></td>
 			</tr>
 			<tr>	
-				<td><b>Société</b></td>
+				<td><b>SociÃ©tÃ©</b></td>
 				<td><?php echo $_POST['societe']; ?></td>
 			</tr>
 			<tr>	
@@ -413,7 +413,7 @@ function verif(valeur, soustitre){
 			</tr>
 			
 			<tr>	
-				<td><b>N°Facture</b></td>
+				<td><b>NÂ°Facture</b></td>
 				<td><b>Date</b></td>
 				<td><b>Montant</b></td>
 			</tr>
@@ -432,7 +432,7 @@ function verif(valeur, soustitre){
 			<tr>
 				<td><b>Montant Total</b></td>
 				<td></td>
-				<td><?php echo $_POST['montanttot']; ?>€</td>
+				<td><?php echo $_POST['montanttot']; ?>â‚¬</td>
 			</tr>
 			
 			<tr>	
@@ -456,19 +456,19 @@ function verif(valeur, soustitre){
 					<td colspan="6"><hr/></td>
 				</tr>
 				<tr>
-					<td style="text-align:center;" colspan="6"><b>Vos coordonnées</b></td>
+					<td style="text-align:center;" colspan="6"><b>Vos coordonnÃ©es</b></td>
 				</tr>
 				<tr>
 					<td colspan="6"><hr/></td>
 				</tr>
 
 				<tr>
-					<td width="150px"><label class="lab" for="nom"><b>Nom du client <span class="red">* </span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label></td>
+					<td width="150px"><label class="lab" for="nom"><b>Nom du client <span class="red">* </span></b><br/><small id="lim_nom">(Max 50 caractÃ¨res)</small></label></td>
 					<td><input class="lab" style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/></td>
 				</tr>
 				
 				<tr>
-					<td><label class="lab" for="societe"><b>Société </b><br/><small id="lim_soc">(Max 50 caractères)</small></label></td>
+					<td><label class="lab" for="societe"><b>SociÃ©tÃ© </b><br/><small id="lim_soc">(Max 50 caractÃ¨res)</small></label></td>
 					<td><input class="lab" style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" /></td>
 				</tr>
 				<tr>
@@ -502,7 +502,7 @@ function verif(valeur, soustitre){
 					<td width="610px"></td>
 					<td width="110px" ><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
 					<td width="100px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /></td>
-					<td> €</td>
+					<td> â‚¬</td>
 				</tr>
 			</table>
 				
@@ -511,7 +511,7 @@ function verif(valeur, soustitre){
 					<td colspan="6"><hr/></td>
 				</tr>
 				<tr>
-					<td style="text-align:center;" colspan="6"><b>Informations complémentaires</b></td>
+					<td style="text-align:center;" colspan="6"><b>Informations complÃ©mentaires</b></td>
 				</tr>
 				<tr>
 					<td colspan="6"><hr/></td>
