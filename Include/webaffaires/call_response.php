@@ -39,8 +39,8 @@ if(isset($_POST['DATA']))
 
 
 	//	Sortie de la fonction : !code!error!v1!v2!v3!...!v29
-	//		- code=0	: la fonction retourne les données de la transaction dans les variables v1, v2, ...
-	//				: Ces variables sont décrites dans le GUIDE DU PROGRAMMEUR
+	//		- code=0	: la fonction retourne les donnÃ©es de la transaction dans les variables v1, v2, ...
+	//				: Ces variables sont dÃ©crites dans le GUIDE DU PROGRAMMEUR
 	//		- code=-1 	: La fonction retourne un message d'erreur dans la variable error
 
 
@@ -48,7 +48,7 @@ if(isset($_POST['DATA']))
 
 	$tableau = explode ("!", $result);
 
-	//	Récupération des données de la réponse
+	//	RÃ©cupÃ©ration des donnÃ©es de la rÃ©ponse
 
 	$code = $tableau[1];
 	$error = $tableau[2];
@@ -111,10 +111,10 @@ if(isset($_POST['DATA']))
 		print (" message erreur : $error <br>");
 	}
 
-	// OK, affichage des champs de la réponse
+	// OK, affichage des champs de la rÃ©ponse
 	else {
 		
-		# OK, affichage du mode DEBUG si activé
+		# OK, affichage du mode DEBUG si activÃ©
 		print (" $error <br>");
 		
 
