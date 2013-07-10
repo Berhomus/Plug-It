@@ -408,7 +408,7 @@ function verif(valeur, soustitre){
 				<td><?php echo $_POST['societe']; ?></td>
 			</tr>
 			<tr>	
-				<td><b>courriel</b></td>
+				<td><b>Courriel</b></td>
 				<td><?php echo $_POST['courriel']; ?></td>
 			</tr>
 			
