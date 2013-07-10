@@ -213,9 +213,6 @@ function img()
 
 <?php
 
-header( 'content-type: text/html; charset=utf-8' );
-
-
 if(isset($_SESSION['id']))
 {
 	echo '<h2>E-Mail de Masse</h2>';
