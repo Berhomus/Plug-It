@@ -1,10 +1,10 @@
 <!--
 -------------------------------------------------------------
- Topic		: Exemple PHP traitement de la réponse de paiement
+ Topic		: Exemple PHP traitement de la rÃ©ponse de paiement
  Version 	: P617
 
-	Dans cet exemple, les données de la transaction	sont
-	décryptées et affichées sur le navigateur de l'internaute.
+	Dans cet exemple, les donnÃ©es de la transaction	sont
+	dÃ©cryptÃ©es et affichÃ©es sur le navigateur de l'internaute.
 
 -------------------------------------------------------------
 -->
@@ -15,17 +15,17 @@
 <?php
 if(isset($_POST['DATA']))
 {
-	// Récupération de la variable cryptée DATA
+	// RÃ©cupÃ©ration de la variable cryptÃ©e DATA
 	$message="message=$_POST[DATA]";
 	
-	// Initialisation du chemin du fichier pathfile (à modifier)
+	// Initialisation du chemin du fichier pathfile (Ã  modifier)
     //   ex :
     //    -> Windows : $pathfile="pathfile=c:/repertoire/pathfile";
     //    -> Unix    : $pathfile="pathfile=/home/repertoire/pathfile";
    
    $pathfile="pathfile=c:/wamp/www/plug-it/include/webaffaires/param/pathfile";
 
-	// Initialisation du chemin de l'executable response (à modifier)
+	// Initialisation du chemin de l'executable response (Ã  modifier)
 	// ex :
 	// -> Windows : $path_bin = "c:/repertoire/bin/response";
 	// -> Unix    : $path_bin = "/home/repertoire/bin/response";
@@ -39,8 +39,8 @@ if(isset($_POST['DATA']))
 
 
 	//	Sortie de la fonction : !code!error!v1!v2!v3!...!v29
-	//		- code=0	: la fonction retourne les données de la transaction dans les variables v1, v2, ...
-	//				: Ces variables sont décrites dans le GUIDE DU PROGRAMMEUR
+	//		- code=0	: la fonction retourne les donnÃ©es de la transaction dans les variables v1, v2, ...
+	//				: Ces variables sont dÃ©crites dans le GUIDE DU PROGRAMMEUR
 	//		- code=-1 	: La fonction retourne un message d'erreur dans la variable error
 
 
@@ -48,7 +48,7 @@ if(isset($_POST['DATA']))
 
 	$tableau = explode ("!", $result);
 
-	//	Récupération des données de la réponse
+	//	RÃ©cupÃ©ration des donnÃ©es de la rÃ©ponse
 
 	$code = $tableau[1];
 	$error = $tableau[2];
@@ -111,10 +111,10 @@ if(isset($_POST['DATA']))
 		print (" message erreur : $error <br>");
 	}
 
-	// OK, affichage des champs de la réponse
+	// OK, affichage des champs de la rÃ©ponse
 	else {
 		
-		# OK, affichage du mode DEBUG si activé
+		# OK, affichage du mode DEBUG si activÃ©
 		print (" $error <br>");
 		
 
@@ -124,20 +124,20 @@ if(isset($_POST['DATA']))
 		if($bank_response_code == "00"){
 
 			print("<center><h1>Merci</h1></center>");
-			print("<p>Votre paiement a été accepté par notre établissement bancaire</p>");
-			print("<p>Un message électronique vous a été envoyé <br />");
-			print("il contient le reçu de la transaction et le détail de votre commande</p>");
+			print("<p>Votre paiement a Ã©tÃ© acceptÃ© par notre Ã©tablissement bancaire</p>");
+			print("<p>Un message Ã©lectronique vous a Ã©tÃ© envoyÃ© <br />");
+			print("il contient le reÃ§u de la transaction et le dÃ©tail de votre commande</p>");
 			print("<p>Merci de votre confiance</p>");
 		}
 		else{
 
-			print("<center><h1>Votre paiement a été refusé par notre établissement bancaire</h1></center>");
+			print("<center><h1>Votre paiement a Ã©tÃ© refusÃ© par notre Ã©tablissement bancaire</h1></center>");
 
 		}
 		
 		if($response_code == "17"){
 
-			print("<center><h1>Transaction annulée par l'utilisateur</h1></center>");
+			print("<center><h1>Transaction annulÃ©e par l'utilisateur</h1></center>");
 
 		}
 		
