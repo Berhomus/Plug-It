@@ -86,7 +86,7 @@ if(isset($_POST) and !empty($_POST))
 	// 		$parm="$parm logo_id2=";
 	// 		$parm="$parm advert=";
 	// 		$parm="$parm background_id=";
-	// 		$parm="$parm templatefile=";
+	 		$parm="$parm templatefile=tmp/merchant_template";
 
 
 	//		insertion de la commande en base de données (optionnel)
