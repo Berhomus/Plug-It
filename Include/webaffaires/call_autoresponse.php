@@ -1,10 +1,10 @@
 <!--
 -------------------------------------------------------------
- Topic	 : Exemple PHP traitement de l'autoréponse de paiement
+ Topic	 : Exemple PHP traitement de l'autorÃ©ponse de paiement
  Version : P617
 
- 		Dans cet exemple, les données de la transaction	sont
-		décryptées et sauvegardées dans un fichier log.
+ 		Dans cet exemple, les donnÃ©es de la transaction	sont
+		dÃ©cryptÃ©es et sauvegardÃ©es dans un fichier log.
 
 -------------------------------------------------------------
 -->
@@ -15,17 +15,17 @@ if(isset($_POST['DATA']))
 
 	
 		
-		// Récupération de la variable cryptée DATA
+		// RÃ©cupÃ©ration de la variable cryptÃ©e DATA
 			$message="message=$_POST[DATA]";
 
-		// Initialisation du chemin du fichier pathfile (à modifier)
+		// Initialisation du chemin du fichier pathfile (Ã  modifier)
 			//   ex :
 			//    -> Windows : $pathfile="pathfile=c:/repertoire/pathfile"
 			//    -> Unix    : $pathfile="pathfile=/home/repertoire/pathfile"
 			
 		$pathfile="pathfile=c:/wamp/www/plug-it/include/webaffaires/param/pathfile";
 
-		//Initialisation du chemin de l'executable response (à modifier)
+		//Initialisation du chemin de l'executable response (Ã  modifier)
 		//ex :
 		//-> Windows : $path_bin = "c:/repertoire/bin/response"
 		//-> Unix    : $path_bin = "/home/repertoire/bin/response"
@@ -37,8 +37,8 @@ if(isset($_POST['DATA']))
 		$message = escapeshellcmd($message);
 		$result=exec("$path_bin $pathfile $message");
 		//	Sortie de la fonction : !code!error!v1!v2!v3!...!v29
-		//		- code=0	: la fonction retourne les données de la transaction dans les variables v1, v2, ...
-		//				: Ces variables sont décrites dans le GUIDE DU PROGRAMMEUR
+		//		- code=0	: la fonction retourne les donnÃ©es de la transaction dans les variables v1, v2, ...
+		//				: Ces variables sont dÃ©crites dans le GUIDE DU PROGRAMMEUR
 		//		- code=-1 	: La fonction retourne un message d'erreur dans la variable error
 
 
@@ -90,7 +90,7 @@ if(isset($_POST['DATA']))
 		$threed_ls_code = $tableau[43];
 		$threed_relegation_code = $tableau[44];
 
-		// Initialisation du chemin du fichier de log (à modifier)
+		// Initialisation du chemin du fichier de log (Ã  modifier)
 		//   ex :
 		//    -> Windows : $logfile="c:\\repertoire\\log\\logfile.txt";
 		//    -> Unix    : $logfile="/home/repertoire/log/logfile.txt";
@@ -116,30 +116,30 @@ if(isset($_POST['DATA']))
 		}
 		else {
 
-		// OK, Sauvegarde des champs de la réponse
+		// OK, Sauvegarde des champs de la rÃ©ponse
 
 			if($bank_response_code == "00"){
 
-				//Date (ymd) / Heure (His) de paiement en français
+				//Date (ymd) / Heure (His) de paiement en franÃ§ais
 				$DatePay = substr($payment_date, 6, 2) . "/" . substr($payment_date, 4, 2) . "/"
 				. substr($payment_date, 0, 4) ;
 
 				$HeurePay = substr($payment_time, 0, 2) . "h " . substr($payment_time, 2, 2) . ":"
 				. substr($payment_time, 4, 2) ;
 
-				//Le reçu de la transaction que nous allons envoyer pour confirmation
+				//Le reÃ§u de la transaction que nous allons envoyer pour confirmation
 				$Sujet = "Confirmation de votre paiement en ligne [Plug-it.fr]";
 
-				$Msg = "### CECI EST UN MESSAGE AUTOMATIQUE . MERCI DE NE PAS Y RÉPONDRE ###\n\n";
+				$Msg = "### CECI EST UN MESSAGE AUTOMATIQUE . MERCI DE NE PAS Y RÃ‰PONDRE ###\n\n";
 				$Msg.= "Bonjour,\n";
-				$Msg.= "Veuillez trouver ci-dessous le reçu de votre paiement en ligne sur Plug-it.fr \n\n";
-				$Msg.= "Prenez soin d'imprimer ce message et de le joindre à votre facture.\n";
-				$Msg.= "Ces documents vous seront indispensables en cas de réclamation.\n\n";
+				$Msg.= "Veuillez trouver ci-dessous le reÃ§u de votre paiement en ligne sur Plug-it.fr \n\n";
+				$Msg.= "Prenez soin d'imprimer ce message et de le joindre Ã  votre facture.\n";
+				$Msg.= "Ces documents vous seront indispensables en cas de rÃ©clamation.\n\n";
 
-				$Msg.= "DÉTAIL DE VOTRE COMMANDE \n";
+				$Msg.= "DÃ‰TAIL DE VOTRE COMMANDE \n";
 				$Msg.= "------------------------------------------------------------\n\n";
 
-				$Msg.= "DATE DE LA TRANSACTION         = $DatePay à $HeurePay \n";
+				$Msg.= "DATE DE LA TRANSACTION         = $DatePay Ã  $HeurePay \n";
 				$Msg.= "ADRESSE WEB DU COMMERCANT      = WWW.PLUG-IT.FR \n";
 				$Msg.= "IDENTIFIANT COMMERCANT         = $merchant_id \n";
 				$Msg.= "REFERENCE DE LA TRANSACTION    = $transaction_id \n";
@@ -156,7 +156,7 @@ if(isset($_POST['DATA']))
 				
 				//mail($customer_email , $Sujet, $Msg, 'From: shop@monsite.com');
 
-				//On en profite pour s'envoyer également le reçu
+				//On en profite pour s'envoyer Ã©galement le reÃ§u
 				//mail('xxxxx@xxxxx.fr' , $Sujet, $Msg, 'From: shop@monsite.com');
 				
 				//ajout BDD
