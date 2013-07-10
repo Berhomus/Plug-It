@@ -6,7 +6,7 @@ Name : Contact.php => Plug-it
 
 <script>
 	function isEmail(adr, id){
-     // étape consistant à définir l'expression régulière d'une adresse email
+     // Ã©tape consistant Ã  dÃ©finir l'expression rÃ©guliÃ¨re d'une adresse email
      var regEmail = new RegExp('^[0-9a-z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}$','i');
 
      if(regEmail.test(adr.value))
@@ -60,7 +60,7 @@ Name : Contact.php => Plug-it
 <form method="post" action="#">
 	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
 				<tr>
-					<td><b>Civilité <span class="red">*</span></b></td>
+					<td><b>CivilitÃ© <span class="red">*</span></b></td>
 					<td><select name="liste" required>
 						<option></option>
 						<option value="M">M.</option>
@@ -75,12 +75,12 @@ Name : Contact.php => Plug-it
 				</tr>
 				
 				<tr>
-					<td><label for="prenom"><b>Prénom <span class="red">*</span></b></label></td>
+					<td><label for="prenom"><b>PrÃ©nom <span class="red">*</span></b></label></td>
 					<td><input type="text" name="prenom" id="prenom" required/></td>
 				</tr>
 				
 				<tr>
-					<td><label for="societe"><b>Société </b></label></td>
+					<td><label for="societe"><b>SociÃ©tÃ© </b></label></td>
 					<td><input type="text" name="societe" id="societe" /></td>
 				</tr>
 				
@@ -110,10 +110,10 @@ Name : Contact.php => Plug-it
 									echo '<h2 style="color:red;">Email invalide !</h2>';
 								break;
 								case 2:
-									echo '<h2 style="color:green;">Message Envoyé !</h2>';
+									echo '<h2 style="color:green;">Message EnvoyÃ© !</h2>';
 								break;
 								case 3:
-									echo '<h2 style="color:red;">Message Non-Envoyé !</h2>';
+									echo '<h2 style="color:red;">Message Non-EnvoyÃ© !</h2>';
 								break;
 							}	
 						}
@@ -142,7 +142,7 @@ Name : Contact.php => Plug-it
 	</b></p>
 	<br/>
 	<p>
-	Tél. : 03 22 22 10 90
+	TÃ©l. : 03 22 22 10 90
 	<br/>
 	Fax : 03 22 80 76 52
 	<br/>

@@ -21,7 +21,7 @@ Name : services.php => Plug-it
 	
 		case 'view':
 			echo'<div style="margin:auto;width:980px;">
-				<h2>DÉCOUVREZ L\'ENSEMBLE DE NOS SERVICES INFORMATIQUES LES PLUS POINTUS</h2>';
+				<h2>DÃ©COUVREZ L\'ENSEMBLE DE NOS SERVICES INFORMATIQUES LES PLUS POINTUS</h2>';
 				
 					if(isset($_SESSION['id']))
 					{
@@ -29,8 +29,8 @@ Name : services.php => Plug-it
 					}
 					
 					$retour = mysql_query('SELECT * FROM services ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
-					$i=1; //délimite les colonnes
-					$j=1; //délimite les lignes
+					$i=1; //dÃ©limite les colonnes
+					$j=1; //dÃ©limite les lignes
 					
 					echo '<table cellspacing="20">';
 					while ($donnees = mysql_fetch_array($retour))
@@ -96,8 +96,8 @@ Name : services.php => Plug-it
 					//affichage autres liens					
 					$retour = mysql_query("SELECT * FROM services WHERE id<>'".$_GET['id']."' ORDER BY ordre LIMIT 10")or die('Erreur SQL !<br />'.mysql_error());
 					
-					$i=1; //délimite les colonnes
-					$j=1; //délimite les lignes
+					$i=1; //dÃ©limite les colonnes
+					$j=1; //dÃ©limite les lignes
 					
 					echo'<div style="margin:auto;width:70%;margin-top:20px;">
 					<table cellspacing="10">';

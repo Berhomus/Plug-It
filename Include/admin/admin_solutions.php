@@ -10,20 +10,20 @@ if(isset($_SESSION['id']))
 ?>
 
 <script>/*####FONCTION D'INSERTION DE BALISES####*/			function insertTag(startTag, endTag, corpsId, tagType) 
-	{		var field  = document.getElementById(corpsId); 		var scroll = field.scrollTop; // On met en mémoire la position du scroll		field.focus(); // On remet le focus sur la zone de texte, suivant les navigateurs, on perd le focus en appelant la fonction. 	 	 /* === Partie 1 : on récupère la sélection === */	if (window.ActiveXObject) 
+	{		var field  = document.getElementById(corpsId); 		var scroll = field.scrollTop; // On met en mÃ©moire la position du scroll		field.focus(); // On remet le focus sur la zone de texte, suivant les navigateurs, on perd le focus en appelant la fonction. 	 	 /* === Partie 1 : on rÃ©cupÃ¨re la sÃ©lection === */	if (window.ActiveXObject) 
 	{			var textRange = document.selection.createRange();           			var currentSelection = textRange.text;	} 
 	else 
 	{			var startSelection   = field.value.substring(0, field.selectionStart);			var currentSelection = field.value.substring(field.selectionStart, field.selectionEnd);			var endSelection     = field.value.substring(field.selectionEnd);              	}	 	/* === Partie 2 : on analyse le tagType === */	if (tagType) 
 	{			switch (tagType) 
 			{					case "lien":							endTag = "</a>";							if (currentSelection) 
-							{ // Il y a une sélection									if (currentSelection.indexOf("http://") == 0 || currentSelection.indexOf("https://") == 0 || currentSelection.indexOf("ftp://") == 0 || currentSelection.indexOf("www.") == 0) 
-									{											// La sélection semble être un lien. On demande alors le libellé											var label = prompt("Quel est le libellé du lien ?") || "";											startTag = "<a class=\"mail\" href=\"" + currentSelection + "\">";											currentSelection = label;									} 
+							{ // Il y a une sÃ©lection									if (currentSelection.indexOf("http://") == 0 || currentSelection.indexOf("https://") == 0 || currentSelection.indexOf("ftp://") == 0 || currentSelection.indexOf("www.") == 0) 
+									{											// La sÃ©lection semble Ãªtre un lien. On demande alors le libellÃ©											var label = prompt("Quel est le libellÃ© du lien ?") || "";											startTag = "<a class=\"mail\" href=\"" + currentSelection + "\">";											currentSelection = label;									} 
 									else 
-									{											// La sélection n'est pas un lien, donc c'est le libelle. On demande alors l'URL											var URL = prompt("Quelle est l'url ?");											startTag = "<a class=\"mail\" href=\"" + URL + "\">";									}							} 
+									{											// La sÃ©lection n'est pas un lien, donc c'est le libelle. On demande alors l'URL											var URL = prompt("Quelle est l'url ?");											startTag = "<a class=\"mail\" href=\"" + URL + "\">";									}							} 
 							else 
-							{ // Pas de sélection, donc on demande l'URL et le libelle									var URL = prompt("Quelle est l'url ?") || "";									var label = prompt("Quel est le libellé du lien ?") || "";									startTag = "<a class=\"mail\" href=\"" + URL + "\">";									currentSelection = label;                    							}					break;										case "image":							endTag = "";							if (currentSelection) 
-							{ // Il y a une sélection								startTag = "<img src=\"" + currentSelection + "\"/>";							}							else 
-							{ // Pas de sélection, donc on demande l'URL et le libelle									var URL = prompt("Quelle est le chemin de l'image ?\n (si elle est en local, exemple : images/nom_de_l_image.png)") || "";									startTag = "<img src=\"" + URL + "\"/>";									currentSelection = "";                    							}					break;			}	}	 	/* === Partie 3 : on insère le tout === */	if (window.ActiveXObject) 
+							{ // Pas de sÃ©lection, donc on demande l'URL et le libelle									var URL = prompt("Quelle est l'url ?") || "";									var label = prompt("Quel est le libellÃ© du lien ?") || "";									startTag = "<a class=\"mail\" href=\"" + URL + "\">";									currentSelection = label;                    							}					break;										case "image":							endTag = "";							if (currentSelection) 
+							{ // Il y a une sÃ©lection								startTag = "<img src=\"" + currentSelection + "\"/>";							}							else 
+							{ // Pas de sÃ©lection, donc on demande l'URL et le libelle									var URL = prompt("Quelle est le chemin de l'image ?\n (si elle est en local, exemple : images/nom_de_l_image.png)") || "";									startTag = "<img src=\"" + URL + "\"/>";									currentSelection = "";                    							}					break;			}	}	 	/* === Partie 3 : on insÃ¨re le tout === */	if (window.ActiveXObject) 
 	{			textRange.text = startTag + currentSelection + endTag;			textRange.moveStart("character", -endTag.length - currentSelection.length);			textRange.moveEnd("character", -endTag.length);			textRange.select();    	} 
 	else 
 	{			field.value = startSelection + startTag + currentSelection + endTag + endSelection;			field.focus();			field.setSelectionRange(startSelection.length + startTag.length, startSelection.length + startTag.length + currentSelection.length);	}	field.scrollTop = scroll;     	}/*####FONCTION PERMETTANT DE FAIRE DES REQUETES HTTP POUR RECUPERER DONNEES AU FORMAT XML####*/	function getXMLHttpRequest() 
@@ -52,7 +52,7 @@ function textLimit(field, maxlen, idlimite)
    if (field.value.length > maxlen)
    {
       field.value = field.value.substring(0, maxlen);
-      alert('Dépassement de la limite de caracteres');
+      alert('DÃ©passement de la limite de caracteres');
 	  idlimite.style.color='red';
 	  setTimeout(function(){idlimite.style.color='green';},2000);
    }
@@ -66,9 +66,9 @@ function textLimit(field, maxlen, idlimite)
 
 function lien()
 {
- // Pas de sélection, donc on demande l'URL et le libelle
+ // Pas de sÃ©lection, donc on demande l'URL et le libelle
 		var URL = prompt("Quelle est l'url ?") || "";
-		var label = prompt("Quel est le libellé du lien ?") || "";
+		var label = prompt("Quel est le libellÃ© du lien ?") || "";
 		document.execCommand('insertHTML', false, '<a class="mail" href="'+URL+'">'+label+'</a>');
 		document.getElementById('ortf').focus();
 }
@@ -101,10 +101,10 @@ document.execCommand('stylewithCSS',true, null);
 </script><?php	$id=0;	$nomsolu="";	$corps="";	$logosolu="";	$grandeimg="";	$desc="";
 	$ordre=0;		if(isset($_POST) and !empty($_POST))	{		$id= (isset($_GET['id'])) ? $_GET['id']:0;		$nomsolu=$_POST['nomsolu'];		$desc=$_POST['desc'];		$corps=$_POST['corps'];
 		$ordre=$_POST['ordre'];	}	if(isset($_GET['id']))	{		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());		mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());				$rq=mysql_query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());		$array=mysql_fetch_array($rq);				if($array['cpt']==1)		{			$rq=mysql_query("SELECT * FROM solutions WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());			$array=mysql_fetch_array($rq);						$id=$array['id'];			$nomsolu=$array['titre'];			$corps=$array['corps'];			$logosolu=$array['image_sol'];			$desc=$array['description'];			$grandeimg=$array['image_car'];
-			$ordre=$array['ordre'];		}		else		{			echo '<center><font color=red>Erreur solutions introuvable</font></center><br/>';		}				mysql_close();	}		if($id!=0)	{		echo '<h2>Modification d\'une solution</h2>			<br/><center>Tout champ vide ne sera pas modifié</center>';		$require = "";		$type = "modif&id=".$id;	}	else	{		echo '<h2>Ajout d\'une solution</h2>';		$require = "required";		$type = "create";	}	?><form method="post" enctype="multipart/form-data" action="traitement/trt_solutions.php?mode=<?php echo $type; ?>">	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">							<tr>				<td><label for="nomsolu"><b>Nom de la solution <span class="red">*</span></b><br/><small id="lim_nom">(Max 20 caractères)</small></label></td>				<td><input size="50" type="text" name="nomsolu" id="nomsolu" value="<?php echo $nomsolu; ?>" <?php echo $require; ?> onblur="textLimit(this, 20, lim_nom);"/></td>			</tr>						<tr>				<td><label for="logosolu"><b>Logo de la solution <span class="red">*</span></b><br/><small>(Max 100Ko et uniquement jpg, png, gif et bmp<br/>(Taille conseillée 280x170)</small></label></td>				<td><input size="50" type="file" name="logosolu" id="logosolu" value="<?php echo $logosolu; ?>" <?php echo $require; ?>/></td>			</tr>						<tr>				<td><label for="grandeimg"><b>Grande image pour l'accueil <span class="red">*</span></b><br/><small>(Max 300Ko et uniquement jpg, png, gif et bmp)<br/>(Taille conseillée 940x387)</small></label></td>				<td><input size="50" type="file" name="grandeimg" id="grandeimg" value="<?php echo $grandeimg; ?>" <?php echo $require; ?>/></td>			</tr>						<tr>				<td><label for="desc"><b>Résumé de la solution <span class="red">*</span></b><br/><small id="lim_resu">(Max 400 caractères)</small></label></td>				<td><textarea name="desc" id="desc" rows="5" cols="40" style="resize:none" <?php echo $require; ?> onblur="textLimit(this, 400, lim_resu);"/><?php echo nl2br($desc); ?></textarea></td>			</tr>
+			$ordre=$array['ordre'];		}		else		{			echo '<center><font color=red>Erreur solutions introuvable</font></center><br/>';		}				mysql_close();	}		if($id!=0)	{		echo '<h2>Modification d\'une solution</h2>			<br/><center>Tout champ vide ne sera pas modifiÃ©</center>';		$require = "";		$type = "modif&id=".$id;	}	else	{		echo '<h2>Ajout d\'une solution</h2>';		$require = "required";		$type = "create";	}	?><form method="post" enctype="multipart/form-data" action="traitement/trt_solutions.php?mode=<?php echo $type; ?>">	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">							<tr>				<td><label for="nomsolu"><b>Nom de la solution <span class="red">*</span></b><br/><small id="lim_nom">(Max 20 caractÃ¨res)</small></label></td>				<td><input size="50" type="text" name="nomsolu" id="nomsolu" value="<?php echo $nomsolu; ?>" <?php echo $require; ?> onblur="textLimit(this, 20, lim_nom);"/></td>			</tr>						<tr>				<td><label for="logosolu"><b>Logo de la solution <span class="red">*</span></b><br/><small>(Max 100Ko et uniquement jpg, png, gif et bmp<br/>(Taille conseillÃ©e 280x170)</small></label></td>				<td><input size="50" type="file" name="logosolu" id="logosolu" value="<?php echo $logosolu; ?>" <?php echo $require; ?>/></td>			</tr>						<tr>				<td><label for="grandeimg"><b>Grande image pour l'accueil <span class="red">*</span></b><br/><small>(Max 300Ko et uniquement jpg, png, gif et bmp)<br/>(Taille conseillÃ©e 940x387)</small></label></td>				<td><input size="50" type="file" name="grandeimg" id="grandeimg" value="<?php echo $grandeimg; ?>" <?php echo $require; ?>/></td>			</tr>						<tr>				<td><label for="desc"><b>RÃ©sumÃ© de la solution <span class="red">*</span></b><br/><small id="lim_resu">(Max 400 caractÃ¨res)</small></label></td>				<td><textarea name="desc" id="desc" rows="5" cols="40" style="resize:none" <?php echo $require; ?> onblur="textLimit(this, 400, lim_resu);"/><?php echo nl2br($desc); ?></textarea></td>			</tr>
 			
 			<tr>
-				<td><label for="ordre"><b>Position</b><br/><small>(1ere position par défaut)</small></label></td>
+				<td><label for="ordre"><b>Position</b><br/><small>(1ere position par dÃ©faut)</small></label></td>
 				<td>
 					<select name="ordre" id="ordre">
 						<?php
@@ -142,7 +142,7 @@ document.execCommand('stylewithCSS',true, null);
 					</div>
 					
 					<select name="cmbpolice" onchange="document.getElementById('ortf').focus(); document.execCommand('FontName', false ,this.value)">
-						<option selected="" value="Arial">Police par défaut</option>
+						<option selected="" value="Arial">Police par dÃ©faut</option>
 						<option value="Arial">Arial</option>
 						<option value="Verdana">Verdana</option>
 						<option value="Courier New">Courier New</option>
@@ -151,7 +151,7 @@ document.execCommand('stylewithCSS',true, null);
 					</select>
 
 					<select name="cmbtaille" onchange="document.getElementById('ortf').focus(); document.execCommand('FontSize',false,this.value)">
-						<option selected="" value="3">Taille par défaut</option>
+						<option selected="" value="3">Taille par dÃ©faut</option>
 						<option value="1">1 (petite)</option>
 						<option value="2">2</option>
 						<option value="3">3 (normale)</option>
@@ -162,7 +162,7 @@ document.execCommand('stylewithCSS',true, null);
 					</select>
 								
 					<select name="cmbcouleur" onchange="document.getElementById('ortf').focus(); document.execCommand('ForeColor',false,this.value)">
-						<option selected="" value="555555">Couleur par défaut</option>
+						<option selected="" value="555555">Couleur par dÃ©faut</option>
 						<option value="ff0000">Rouge</option>
 						<option value="0000ff">Bleu</option>
 						<option value="00ff00">Vert</option>

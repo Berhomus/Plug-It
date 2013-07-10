@@ -40,8 +40,8 @@ if(isset($_SESSION['id']))
 			$username = 'root';
 			$password = '';
 			$db = 'plugit';
-			$table = 'table1 table2'; //Nom des tables à sauvegarder - Optionnel
-			$rep = './'.$path; //Répertoire où sauvegarder le dump de la base de données
+			$table = 'table1 table2'; //Nom des tables Ã  sauvegarder - Optionnel
+			$rep = './'.$path; //RÃ©pertoire oÃ¹ sauvegarder le dump de la base de donnÃ©es
 
 			system("mysqldump --host=".$host." --user=".$username." --password=".$password." 
 			".$db."  > ".$rep.$db."-".date("d-m-Y-H\hi").".sql");
