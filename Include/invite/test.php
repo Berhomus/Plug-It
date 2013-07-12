@@ -233,7 +233,7 @@ function extern(field,Idcorps)
 	while(Idcorps != this.value)
 	{
 		this.value=this.value -> next;
-		cpt++
+		cpt++;
 	}
 	for(i=1;i<cpt;i++)
 	{
