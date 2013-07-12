@@ -683,7 +683,7 @@ else {
 	print("<strong>Num&eacute;ro de commande : </strong> " . $NumCmd  ."</p>");
 	print("<p align='center'><a href='javascript:history.go(-1)'>RETOUR</a></p>");
 
-	//Vérifier le contenu du parm caddie que l'on va envoyer (Test ONLY !!!)
+	//Vérifier le contenu du parm caddie que l'on va envoyer
 
 	/*
 	$arrayCaddie = unserialize(base64_decode($xCaddie));
