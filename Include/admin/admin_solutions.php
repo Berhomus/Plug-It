@@ -121,7 +121,6 @@ try {
 				<td>
 					<select name="ordre" id="ordre">
 						<?php
-						
 							mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 							mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
 							mysql_set_charset( 'utf8' );
