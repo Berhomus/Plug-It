@@ -5,6 +5,9 @@
 ##########################################################-->
 
 <script TYPE="text/javascript">
+
+/*####INFERIEUR OU SUPERIEUR####*/	
+
 	function PpouPg(Min, Max, Nbcoups, valeur)
 	{	
 		while((reponse < Min)||(reponse > Max))
@@ -195,6 +198,57 @@ function view(textareaId, viewDiv)
     xhr.open("POST", "include/admin/view.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("string=" + content);
+	
+}
+
+/*####FONCTION EXTERNALISATION####*/
+/*Secondaire*/
+
+function extern(field,Idcorps)
+{
+	var cpt=0;
+	
+	if(field.value != this)
+	{
+		xhr.send("Area = " + content);
+	}
+	xhr.onreadystatechange = function()
+	{
+		if (window.ActiveXObject) 
+		{
+            try
+			{
+                xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+			catch(e) 
+			{
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+		else 
+		{
+            xhr = new XMLHttpRequest();
+        }
+	}
+	while(Idcorps != this.value)
+	{
+		this.value=this.value -> next;
+		cpt++
+	}
+	for(i=1;i<cpt;i++)
+	{
+		Idcorps.field = "<table class=\"tableau\"><tr><td>"+xhr.send("Area = ", content)+"</td></tr>";
+		xhr = new ActiveXObject("Msxml2.XMLHTTP");
+		
+		try
+		{
+			delete xhr;
+		}
+		catch(e)
+		{
+			Alert("Impossible de supprimer");
+		}
+	}
 }
 
 /*####FONCTION LIMITATION DE CARACTERES####*/
@@ -256,6 +310,26 @@ function img()
 		}
 	}
 }
+
+/*####FONCTION DE VERIFICATION DE MAIL####*/
+
+function isEmail(adr, id)
+{
+    // étape consistant à définir l'expression régulière d'une adresse email
+    var regEmail = new RegExp('^[0-9a-z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}$','i');
+
+    if(regEmail.test(adr.value))
+	{
+		id.style.color='green';
+	}
+	else
+	{
+		id.style.color='red';
+		adr.value='';
+		alert('Mail Invalide');
+	}
+}
+
 </script>
 <html>
 	<head>Menu</head>
