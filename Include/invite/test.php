@@ -3,28 +3,27 @@
 #                PARTIE DE TEST (JS, PHP)                   #
 #                                                           #
 ##########################################################-->
+
 <script TYPE="text/javascript">
-	function PpouPg(reponse, Min, Max){
-		
-		Prompt("Entrer Une Valeur Entre "+Min+" et "+Max+"");
-		
+	function PpouPg(Min, Max, Nbcoups, valeur)
+	{	
 		while((reponse < Min)||(reponse > Max))
 		{
-			Prompt("Valeur comprise entre "+Min+" et "+Max+"");
+			reponse = Prompt("Valeur comprise entre "+Min+" et "+Max+"");
 		}
 		if(reponse < valeur)
 		{
 			Prompt("Plus Grand");
-			Min=reponse;
-			PpouPg(reponse, Min, Max);
+			Min = reponse;
 			Nbcoups++;
+			PpouPg(Min, Max, Nbcoups, valeur);
 		} 
 		else if (reponse > valeur)
 			{
 				Prompt("Plus Petit");
-				Max=reponse;
-				PpouPg(reponse, Min, Max);
+				Max = reponse;
 				Nbcoups++;
+				PpouPg(Min, Max, Nbcoups, valeur);
 			}
 			else
 			{
@@ -38,7 +37,14 @@
 		var Min = Prompt("Entrer le Minimum");
 		var Max = Prompt("Entrer le Maximum");
 		
+		var Nbcoups = 1;
+		
 		NbreCoupsMoy = (Max - Min) / Math.Pow(4,((Max - Min) / 4);
+		
+		
+		PpouPg(Min, Max, Nbcoups, valeur);
+		
+		Prompt("Valeur trouvée en "+Nbcoups+", la moyenne est de "+NbreCoupsMoy+"");
 	}
 </script>
 <html>
