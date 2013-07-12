@@ -1035,4 +1035,22 @@ else {
 
 	}
 }
+
+switch($bank_response_code){
+
+	case "00" :
+		print("<p>Votre paiement a été accepté par votre établissement bancaire</p>");
+		break;
+
+	case "05" :
+		print("<p>Votre paiement a été refusé par votre établissement bancaire</p>");
+		break;
+
+	case "33" :
+		print("<p>La date de validité de votre carte bancaire est dépassée</p>");
+		break;
+	
+	default : print("<p>La transaction n'a pu aboutir suite à un problème technique</p>");
+
+}
 ?>
