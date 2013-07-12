@@ -853,8 +853,8 @@ else {
 		//le reçu
 		mail('contact@plug-it.fr' , $Sujet, $Msg, 'From: www.plug-it.com');
 
-		//Mise à jour de la base de données
-		//la transaction a réussie et le paiement a été accepté
+		// Mise à jour de la base de données
+		// la transaction a réussie et le paiement a été accepté
 
 	}
 
@@ -865,8 +865,8 @@ else {
 	//Quelque soit le résultat (paiement accepté ou refusé) , nous enregistrerons toutes les données
 	//Ceci nous fait une sécurité de plus en cas de panne ou de litige avec le client
 	//ou si aucun email n'a été reçu ( ou message envoyé dans le dossier SPAM du logiciel de messagerie)
-	//Si votre boutique débite pas mal, ce que je vous souhaite, vous penserez à vider
-	//régulièrement votre fichier de logs pour ne pas encombrer votre espace disque.
+	// Si votre boutique débite pas mal, ce que je vous souhaite, vous penserez à vider
+	// régulièrement votre fichier de logs pour ne pas encombrer votre espace disque.
 	fwrite( $fp, "#======================== Le : " . date("d/m/Y H:i:s") . " ====================#\n");
 	fwrite( $fp, "merchant_id : $merchant_id\n");
 	fwrite( $fp, "merchant_country : $merchant_country\n");
