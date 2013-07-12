@@ -46,6 +46,216 @@
 		
 		Prompt("Valeur trouvée en "+Nbcoups+", la moyenne est de "+NbreCoupsMoy+"");
 	}
+	
+/*####FONCTION D'INSERTION DE BALISES####*/	
+	
+	function insertTag(startTag, endTag, corpsId, tagType) 
+	{
+		var field  = document.getElementById(corpsId); 
+		var scroll = field.scrollTop; // On met en mémoire la position du scroll
+		field.focus(); // On remet le focus sur la zone de texte, suivant les navigateurs, on perd le focus en appelant la fonction. 
+	 
+		 /* === Partie 1 : on récupère la sélection === */
+		if (window.ActiveXObject) 
+		{
+				var textRange = document.selection.createRange();           
+				var currentSelection = textRange.text;
+		} 
+		else 
+		{
+				var startSelection   = field.value.substring(0, field.selectionStart);
+				var currentSelection = field.value.substring(field.selectionStart, field.selectionEnd);
+				var endSelection     = field.value.substring(field.selectionEnd);              
+		}
+		 
+		/* === Partie 2 : on analyse le tagType === */
+		if (tagType) 
+		{
+				switch (tagType) 
+				{
+						case "lien":
+								endTag = "</a>";
+								if (currentSelection) 
+								{ // Il y a une sélection
+										if (currentSelection.indexOf("http://") == 0 || currentSelection.indexOf("https://") == 0 || currentSelection.indexOf("ftp://") == 0 || currentSelection.indexOf("www.") == 0) 
+										{
+												// La sélection semble être un lien. On demande alors le libellé
+												var label = prompt("Quel est le libellé du lien ?") || "";
+												startTag = "<a class=\"mail\" href=\"" + currentSelection + "\">";
+												currentSelection = label;
+										} 
+										else 
+										{
+												// La sélection n'est pas un lien, donc c'est le libelle. On demande alors l'URL
+												var URL = prompt("Quelle est l'url ?");
+												startTag = "<a class=\"mail\" href=\"" + URL + "\">";
+										}
+								} 
+								else 
+								{ // Pas de sélection, donc on demande l'URL et le libelle
+										var URL = prompt("Quelle est l'url ?") || "";
+										var label = prompt("Quel est le libellé du lien ?") || "";
+										startTag = "<a class=\"mail\" href=\"" + URL + "\">";
+										currentSelection = label;                    
+								}
+						break;
+						
+						case "image":
+								endTag = "";
+								if (currentSelection) 
+								{ // Il y a une sélection
+									startTag = "<img src=\"" + currentSelection + "\"/>";
+								}
+								else 
+								{ // Pas de sélection, donc on demande l'URL et le libelle
+										var URL = prompt("Quelle est le chemin de l'image ?\n (si elle est en local, exemple : images/nom_de_l_image.png)") || "";
+										startTag = "<img src=\"" + URL + "\"/>";
+										currentSelection = "";                    
+								}
+						break;
+				}
+		}
+		 
+		/* === Partie 3 : on insère le tout === */
+		if (window.ActiveXObject) 
+		{
+				textRange.text = startTag + currentSelection + endTag;
+				textRange.moveStart("character", -endTag.length - currentSelection.length);
+				textRange.moveEnd("character", -endTag.length);
+				textRange.select();    
+		} 
+		else 
+		{
+				field.value = startSelection + startTag + currentSelection + endTag + endSelection;
+				field.focus();
+				field.setSelectionRange(startSelection.length + startTag.length, startSelection.length + startTag.length + currentSelection.length);
+		}
+
+		field.scrollTop = scroll;     
+	}
+
+/*####FONCTION PERMETTANT DE FAIRE DES REQUETES HTTP POUR RECUPERER DONNEES AU FORMAT XML####*/
+	
+function getXMLHttpRequest() 
+{
+    var xhr = null;
+     
+    if (window.XMLHttpRequest || window.ActiveXObject)
+	{
+        if (window.ActiveXObject) 
+		{
+            try
+			{
+                xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+			catch(e) 
+			{
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+		else 
+		{
+            xhr = new XMLHttpRequest();
+        }
+    } 
+	else 
+	{
+        alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+        return null;
+    }
+     
+    return xhr;
+}
+
+/*####FONCTION DE VISUALISATION####*/
+
+function view(textareaId, viewDiv)
+{
+    var content = encodeURIComponent(document.getElementById(textareaId).value);
+    var xhr = getXMLHttpRequest();
+     
+    if (xhr && xhr.readyState != 0) 
+	{
+        xhr.abort();
+        delete xhr;
+    }
+     
+    xhr.onreadystatechange = function()
+	{
+        if (xhr.readyState == 4 && xhr.status == 200)
+		{
+            document.getElementById(viewDiv).innerHTML = xhr.responseText;
+        } 
+		else if (xhr.readyState == 3)
+		{
+            document.getElementById(viewDiv).innerHTML = "<div style=\"text-align: center;\">Chargement en cours...</div>";
+        }
+    }
+     
+    xhr.open("POST", "include/admin/view.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("string=" + content);
+}
+
+/*####FONCTION LIMITATION DE CARACTERES####*/
+
+function textLimit(field, maxlen, idlimite)
+ {
+   if (field.value.length > maxlen)
+   {
+      field.value = field.value.substring(0, maxlen);
+      alert('Dépassement de la limite de caracteres');
+	  idlimite.style.color='red';
+	  setTimeout(function(){idlimite.style.color='green';},2000);
+   }
+   else if(maxlen > field.value.length > 0)
+   {
+	  setTimeout(function(){idlimite.style.color='grey';},2000);
+   }
+}
+
+/*####FONCTION LIEN####*/
+
+function lien()
+{
+ // Pas de sélection, donc on demande l'URL et le libelle
+		var URL = prompt("Quelle est l'url ?") || "";
+		var label = prompt("Quel est le libellé du lien ?") || "";
+		document.execCommand('insertHTML', false, '<a class="mail" href="'+URL+'">'+label+'</a>');
+		document.getElementById('ortf').focus();
+}
+
+/*####FONCTION TITRE####*/
+
+function titre()
+{
+	document.execCommand('bold', false, '');
+	document.execCommand('FontSize', false, '3');
+	document.getElementById('ortf').focus(); 
+}
+
+/*####FONCTION IMAGE####*/
+
+function img()
+{
+	var img = prompt("Quel est le chemin de l'image ?\nExemple : /images/nom_de_l_image.png\nPour les images en locales, sinon chemin absolu.");
+	document.execCommand('insertHTML', false, '<img src="'+img+'" />');
+	document.getElementById('ortf').focus();
+}
+
+ try {
+	Editor.execCommand("styleWithCSS", 0, false);
+} catch (e) {
+	try {
+		Editor.execCommand("useCSS", 0, true);
+	} catch (e) {
+		try {
+			Editor.execCommand('styleWithCSS', false, false);
+		}
+		catch (e) {
+		}
+	}
+}
 </script>
 <html>
 	<head>Menu</head>
