@@ -491,13 +491,13 @@ $parm .= " caddie=" . $xCaddie ;
 
 //url en cas d'annulation
 $SUPERID = session_id();
-$parm .= " cancel_return_url=http://www.monsite.com/response.php?SUPERID=" . $SUPERID;
+$parm .= " cancel_return_url=http://www.plug-it.com/response.php?SUPERID=" . $SUPERID;
 
 // url réponse automatique
-$parm .= " automatic_response_url=http://www.monsite.com/call_autoresponse.php";
+$parm .= " automatic_response_url=http://www.plug-it.com/call_autoresponse.php";
 
 //url de retour du client après le paiement
-$parm .= " normal_return_url=http://www.monsite.com/response.php?SUPERID=" . $SUPERID;
+$parm .= " normal_return_url=http://www.plug-it.com/response.php?SUPERID=" . $SUPERID;
 
 
 //et enfin, vous pouvez préciser ici le template que vous souhaitez utiliser
@@ -558,7 +558,7 @@ else {
 
 	//Ici on peut vérifier le contenu du parm caddie que l'on va envoyer
 	//pour nous assurer que nous envoyons bien tout ce dont nous aurons besoin au retour
-	//de la transaction (pour les tests ONLY !!!)
+	//de la transaction 
 	//Décommentez les lignes ci-dessous pendant les tests
 	//n'oubliez pas de les repasser en commentaire ou de les effacer ensuite
 
@@ -566,16 +566,7 @@ else {
 	$arrayCaddie = unserialize(base64_decode($xCaddie));
 	for($i = 0 ; $i < count($arrayCaddie); $i++){
 	echo $arrayCaddie[$i] . "<br />";
-	}
-	
-		 ____
-		/____\
-		|o><o|
-		\ <> /
-		 \__/
-	 /////  \\\\\
-	 |||||  |||||
-	 
+	} 
 	*/
 
 }
@@ -609,7 +600,7 @@ $xCaddie = base64_encode(serialize($TheCaddie));
 $parm = "merchant_id=013044876511111";
 
 //Chemins binaire + pathfile
-$parm .= " pathfile=/srv/www/htdocs/monsiteweb/xpay/pathfile";
+$parm .= " pathfile=/srv/www/htdocs/plug-it/xpay/pathfile";
 $path_bin = "/srv/www/htdocs/empty/request_2.6.9_3.4.2";
 
 //Langages
@@ -640,13 +631,13 @@ $parm .= " caddie=" . $xCaddie ;
 
 //url en cas d'annulation
 $SUPERID = session_id();
-$parm .= " cancel_return_url=http://www.monsite.com/response.php?SUPERID=" . $SUPERID;
+$parm .= " cancel_return_url=http://www.plug-it.com/response.php?SUPERID=" . $SUPERID;
 
 // url réponse automatique
-$parm .= " automatic_response_url=http://www.monsite.com/call_autoresponse.php";
+$parm .= " automatic_response_url=http://www.plug-it.com/call_autoresponse.php";
 
 //url de retour du client après le paiement
-$parm .= " normal_return_url=http://www.monsite.com/response.php?SUPERID=" . $SUPERID;
+$parm .= " normal_return_url=http://www.plug-it.com/response.php?SUPERID=" . $SUPERID;
 
 //Template
 $parm .= " templatefile=le_template_de_mon_site";
@@ -710,7 +701,7 @@ $message = "message=" . escapeshellcmd($_POST['DATA']);
 
 
 // Initialisation du chemin du fichier pathfile
-$pathfile = "pathfile=/srv/www/htdocs/monsiteweb/xpay/pathfile";
+$pathfile = "pathfile=/srv/www/htdocs/plug-it/xpay/pathfile";
 
 //Initialisation du chemin de l'executable response
 $path_bin = "/srv/www/htdocs/empty/response_2.6.9_3.4.2";
@@ -760,7 +751,7 @@ $data                = $tableau[32];
 
 //Initialisation du chemin du fichier de log que nous avions mis dans le même
 //répertoire que les fichiers du système de paiement
-$logfile = "/srv/www/htdocs/monsiteweb/xpay/log.txt";
+$logfile = "/srv/www/htdocs/plug-it/xpay/log.txt";
 
 //Ouverture du fichier de log en append
 $fp = fopen($logfile, "a");
@@ -816,11 +807,11 @@ else {
 		. substr($payment_time, 4, 2) ;
 
 		//Le reçu de la transaction que nous allons envoyer pour confirmation
-		$Sujet = "Confirmation de votre paiement en ligne [MONSITE.COM]";
+		$Sujet = "Confirmation de votre paiement en ligne [PLUG-IT.COM]";
 
 		$Msg.= "### CECI EST UN MESSAGE AUTOMATIQUE . MERCI DE NE PAS Y RÉPONDRE ###\n\n";
 		$Msg.= "Bonjour,\n";
-		$Msg.= "Veuillez trouver ci-dessous le reçu de votre paiement en ligne sur MONSITE.COM \n\n";
+		$Msg.= "Veuillez trouver ci-dessous le reçu de votre paiement en ligne sur PLUG-IT.COM \n\n";
 		$Msg.= "Prenez soin d'imprimer ce message et de le joindre à votre facture.\n";
 		$Msg.= "Ces documents vous seront indispensables en cas de réclamation.\n\n";
 
@@ -829,7 +820,7 @@ else {
 		$Msg.= "NUMÉRO DE COMMANDE             = " . $arrayCaddie[14] . " \n";
 
 		$Msg.= "DATE DE LA TRANSACTION         = $DatePay à $HeurePay \n";
-		$Msg.= "ADRESSE WEB DU COMMERCANT      = WWW.MONSITE.COM \n";
+		$Msg.= "ADRESSE WEB DU COMMERCANT      = WWW.PLUG-IT.COM \n";
 		$Msg.= "IDENTIFIANT COMMERCANT         = $merchant_id \n";
 		$Msg.= "REFERENCE DE LA TRANSACTION    = $transaction_id \n";
 		$Msg.= "MONTANT DE LA TRANSACTION      = " . substr($amount,0,-2) . "," . substr($amount ,-2)
@@ -850,17 +841,17 @@ else {
 		$Msg.= "LOGICIEL                       = " . $arrayCaddie[11] . " \n";
 		$Msg.= "VERSION                        = " . $arrayCaddie[12] . " \n";
 		$Msg.= "------------------------------------------------------------\n\n";
-
-		$Msg.= "http://www.monsite.com\n\n";
+		
+		$Msg.= "http://www.plug-it.com\n\n";
 
 		$Msg.= "Merci de votre confiance \n";
 
 
 		//Envoi du message au client
-		mail($customer_email , $Sujet, $Msg, 'From: shop@monsite.com');
+		mail($customer_email , $Sujet, $Msg, 'From: www.plug-it.com');
 
 		//le reçu
-		mail('xxxxx@xxxxx.fr' , $Sujet, $Msg, 'From: shop@monsite.com');
+		mail('contact@plug-it.fr' , $Sujet, $Msg, 'From: www.plug-it.com');
 
 		//Mise à jour de la base de données
 		//la transaction a réussie et le paiement a été accepté
@@ -900,6 +891,8 @@ else {
 	//ici on dépiote le caddie
 	fwrite( $fp, "caddie : \n");
 	fwrite( $fp, "----------- \n");
+	
+	// echo '<img src="./images/fleche.png"/><a class="mail" href="www.plug-it.com">PLUG-IT</a>';
 
 	for($i = 0 ; $i < count($arrayCaddie); $i++){
 		fwrite( $fp, $arrayCaddie[$i] . "\n");
@@ -983,7 +976,7 @@ $data                = $tableau[32];
 
 if (( $code == "" ) && ( $error == "" ) ){
 
-	//Si nous n'obtenons aucun retour de l'API c'est qu'il n'a pas été exécuté (CQFD)
+	//Si nous n'obtenons aucun retour de l'API c'est qu'il n'a pas été exécuté 
 	//Il s'agit la plupart du temps d'un problème dans le chemin vers le binaire response
 	//Il peut s'agir d'un problème de droits : vérifiez qu'il ait bien les droits d'exécution
 
@@ -1007,7 +1000,7 @@ else {
 
 	//OK
 	//Ici, la transaction s'est bien déroulée, mais cela ne veut pas dire pour autant que
-	//le paiement a été accepté !
+	//le paiement a été accepté
 
 	//Paiement accepté = '00'
 	//Référez-vous au Dictionnaire des données pour les numéros de réponse
