@@ -31,5 +31,6 @@ Securité :
 Autre:
 X modif editeur text (titre +stylewithcss)
 X encodage utf8
-- Nettoyage code (partie inutile)
+X Nettoyage code (partie inutile)
+- Modif image
 
