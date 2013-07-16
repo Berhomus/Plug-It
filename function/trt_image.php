@@ -28,7 +28,7 @@ function make_img($src,$title,$desc){
 		imagecopyresampled($d, $destination, 0, 0, 0, 0, 940, 387, $largeur_destination, $hauteur_destination);	
 		 
 		 // On veut placer le logo en bas à droite, on calcule les coordonnées où on doit placer le logo sur la photo
-		$destination_x = 90;
+		$destination_x = 50;
 		$destination_y =  150;
 		$noir = imagecolorallocate($destination, 52, 52, 52);
 		$orange = imagecolorallocate($destination, 242, 200, 78);
@@ -36,7 +36,7 @@ function make_img($src,$title,$desc){
 		imagecopymerge($d, $border, $destination_x, $destination_y, 0, 0, $largeur_border, $hauteur_border, 90);
 		 
 		// On veut placer le logo en bas à droite, on calcule les coordonnées où on doit placer le logo sur la photo
-		$destination_x = 150;
+		$destination_x = 110;
 		$destination_y =  160;
 
 		imagecopymerge($d, $dossier, $destination_x, $destination_y, 0, 0, $largeur_dossier, $hauteur_dossier, 100);
@@ -61,8 +61,8 @@ function make_img($src,$title,$desc){
 		return ($name[0]."_make.".$name[1]);
 	}
 	else
-		echo "gato";
-	return "";
+		echo "Echec Création Image !";
+	return "Echec Création Image !";
 }
 
 //incrustage mini image
@@ -108,7 +108,9 @@ function make_limg($src){
 		
 		return ($name[0]."_make.".$name[1]);
 	}
-	return "";
+	else
+		return "Echec Création Image !";
+	return "Echec Création Image !";
 }	
 			 
 
