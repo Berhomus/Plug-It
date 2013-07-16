@@ -135,7 +135,7 @@ if(isset($_POST['DATA']))
 				$Msg.= "Veuillez trouver ci-dessous le reçu de votre paiement en ligne sur Plug-it.fr \n\n";
 				$Msg.= "Prenez soin d'imprimer ce message et de le joindre à votre facture.\n";
 				$Msg.= "Ces documents vous seront indispensables en cas de réclamation.\n\n";
-
+				
 				$Msg.= "DÉTAIL DE VOTRE COMMANDE \n";
 				$Msg.= "------------------------------------------------------------\n\n";
 
@@ -149,13 +149,13 @@ if(isset($_POST['DATA']))
 				$Msg.= "AUTORISATION                   = $authorisation_id \n";
 				$Msg.= "CERTIFICAT DE LA TRANSACTION   = $payment_certificate \n\n";
 				$Msg.= "------------------------------------------------------------\n\n";
-
+				
 				$Msg.= "http://www.Plug-it.fr\n\n";
-
+				
 				$Msg.= "Merci de votre confiance \n";
 				
 				//mail($customer_email , $Sujet, $Msg, 'From: shop@monsite.com');
-
+				
 				//On en profite pour s'envoyer également le reçu
 				//mail('xxxxx@xxxxx.fr' , $Sujet, $Msg, 'From: shop@monsite.com');
 				
