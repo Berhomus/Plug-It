@@ -24,7 +24,7 @@ Name : update_ordre.php => Plug-it
 				
 				$rq = mysql_query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'")or die("f1ail ".$i. " => Erreur SQL !<br />".mysql_error());
 				$ar = mysql_fetch_array($rq);
-				MySQL_Query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'") or die("fail ".$i. " => Erreur SQL !<br />".mysql_error());
+				MySQL_Query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'") or die("failn ".$i. " => Erreur SQL !<br />".mysql_error());
 			}
 		}
 		else
@@ -36,7 +36,7 @@ Name : update_ordre.php => Plug-it
 			{
 				$rq = mysql_query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'")or die("f2ail ".$i. " => Erreur SQL !<br />".mysql_error());
 				$ar = mysql_fetch_array($rq);
-				MySQL_Query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id=".$ar['id']."") or die("fail ".$i. " => Erreur SQL !<br />".mysql_error());
+				MySQL_Query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'") or die("fails ".$i. " => Erreur SQL !<br />".mysql_error());
 			}
 		}
 		

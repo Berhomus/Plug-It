@@ -53,7 +53,7 @@ function make_img($src,$title,$desc){
 		$max = 0;
 		for($i=0;$i<count($label_t);$i++)
 		{//taille tt - marge - taille ligne
-			$nbr_add_needed = (330 - 80 - strlen($label_t[$i])*11)%11;
+			$nbr_add_needed = (330 - 40 - strlen($label_t[$i])*11)%11;
 			if($nbr_add_needed > $max)
 				$max = $nbr_add_needed; 
 		}

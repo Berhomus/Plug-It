@@ -139,7 +139,7 @@ Name : trt_solutions.php => Plug-it
 						if(($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'grandeimg')) != '')
 						{
 							$titre = htmlspecialchars($_POST['nomsolu']);
-							$desc = htmlspecialchars($_POST['desc']);
+
 							
 							$titre = mysql_real_escape_string($titre);
 							$desc = mysql_real_escape_string($desc);
