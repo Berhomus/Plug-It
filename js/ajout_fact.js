@@ -252,21 +252,56 @@ var nbr_fac = 0;
 
 /*####FONCTION MODIF PRIX TOTAL####*/
 
-	function add_total(){
+function add_total(){
+	
+	var i;
+	var somme = 0.00;
+	
+	for(i=1;i<=nbr_fac;i++)
+	{
 		
-		var i;
-		var somme = 0.00;
-		
-		for(i=1;i<=nbr_fac;i++)
-		{
-			
-			somme += (document.getElementById('montant'+i).value != "") ? parseFloat(document.getElementById('montant'+i).value):0;
-		}
-		somme=Math.round(somme*100)/100;
-		document.getElementById('montanttot').value = somme;
-		format_number(document.getElementById('montanttot'));
+		somme += (document.getElementById('montant'+i).value != "") ? parseFloat(document.getElementById('montant'+i).value):0;
 	}
+	somme=Math.round(somme*100)/100;
+	document.getElementById('montanttot').value = somme;
+	format_number(document.getElementById('montanttot'));
+}
 
+function isNumber(field,id){
+	var regNbr = new RegExp('^[0-9]*([\.,][0-9]{0,2})?$','i');
+
+	if (!regNbr.test(field.value) || field.value.length == 0) //cas où la valeur n'est pas du tout un nombre
+	{
+		field.value = ""; // la valeur devient nulle    
+		id.style.color = "red";
+	}
+	else
+	{
+		id.style.color = "green";
+
+		format_number(field);
+	}
+} 
+	
+function format_number(field)
+{
+    var value = field.value.replace(",",".");
+    
+    var entiere = parseInt(value);
+    var decimale = field.value.substring(value.lastIndexOf("."));
+    if(decimale != entiere)
+    {
+      var i;
+      for(i = decimale.length;i<3;i++)
+        value += "0";
+    }
+    else
+    {
+      value += ".00";
+    }
+    
+    field.value = value;
+} 	
 	
 /*####VERFICATION DU FORMAT DATE####*/
 
