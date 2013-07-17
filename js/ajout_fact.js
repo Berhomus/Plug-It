@@ -21,7 +21,7 @@ var nbr_fac = 0;
 		  Input_num.setAttribute('id', 'num' + ID);
 		  Input_num.setAttribute('onblur', 'textLimit2(this,10, lim_num'+ID+');');
 		  Input_num.setAttribute('required', '');
-		  //Input_num.style.text-align = "right";
+		  Input_num.style.textAlign = "right";
 
 		  var td3 = document.createElement('td')
 		  var label_date = document.createElement('label');
@@ -36,7 +36,7 @@ var nbr_fac = 0;
 		  Input_date.setAttribute('id', 'date' + ID);
 		  Input_date.setAttribute('onblur', 'verif(this, lim_date'+ID+');');
 		  Input_date.setAttribute('required', '');
-		  //Input_date.style.text-align = "right";
+		  Input_date.style.textAlign = "right";
 		  
 		  var td5 = document.createElement('td')
 		  var label_montant = document.createElement('label');
@@ -51,7 +51,7 @@ var nbr_fac = 0;
 		  Input_montant.setAttribute('id', 'montant' + ID);
 		  Input_montant.setAttribute('onblur', 'isNumber(this,lim_montant'+ID+');add_total();');
 		  Input_montant.setAttribute('required', '');
-		  //Input_montant.style.text-align = "right";
+		  Input_montant.style.textAlign = "right";
 
 		  td1.appendChild(label_num);
 		  td2.appendChild(Input_num);
@@ -171,12 +171,12 @@ var nbr_fac = 0;
 	
 	function updateElements()
     {
-			var Conteneur = document.getElementById('conteneur'), n = 0;
-			if(Conteneur)
+		var Conteneur = document.getElementById('conteneur'), n = 0;
+		if(Conteneur)
+		{
+			var elementID, elementNo;
+			if(Conteneur.childNodes.length > 0)
 			{
-				var elementID, elementNo;
-				if(Conteneur.childNodes.length > 0)
-				{
 				for(var i = 0; i < Conteneur.childNodes.length; i++)
 				{
 					elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
@@ -247,8 +247,8 @@ var nbr_fac = 0;
 					}
 				}
 			}
-		  }
-    }
+		}
+	}
 
 /*####FONCTION MODIF PRIX TOTAL####*/
 
