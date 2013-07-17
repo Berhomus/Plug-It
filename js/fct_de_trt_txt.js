@@ -49,6 +49,17 @@ function textLimit(field, maxlen, idlimite)
    
 }
 
+function textLimit2(field, maxlen, idlimite) {
+	if (field.value.length != maxlen) {
+		field.value = "";
+		idlimite.style.color='red';
+	}
+	else
+	{
+		idlimite.style.color='green';
+	}
+} 
+
 /*####FONCTION LIEN####*/
 
 function lien()
