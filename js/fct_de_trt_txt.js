@@ -60,21 +60,24 @@ function textLimit2(field, maxlen, idlimite) {
 	}
 } 
 
-function textLimit3(field, maxlen, idlimite) 
+function textLimit3(field, idlimite) 
 {
-	var n = field.innerHTML.replace("<br/>","");
-   if (n.length > maxlen)
+	var nbr_ligne = field.innerHTML.split("<br>" ).length 
+	var n = "";
+   if (nbr_ligne > 3)
    {
-      field.innerHTML = field.innerHTML.substring(0, maxlen);
-      alert('Dépassement de la limite de caractères');
+      var ligne =  field.innerHTML.split("<br>" );
+	  var i;
+	  n = ligne[0];
+	  for(i=1;i<3;i++)
+	  {
+		 n += "<br>" + ligne[i];
+	  }
+	  field.innerHTML = n;
+      alert('Dépassement de la limite ligne');
 	  idlimite.style.color='red';
 	  setTimeout(function(){idlimite.style.color='green';},2000);
    }
-   else if((maxlen > n.length) && (n.length > 0))
-   {
-	  setTimeout(function(){idlimite.style.color='green';},2000);
-   }
-   
 }
 
 
@@ -140,3 +143,14 @@ function isEmail(adr, id){
 		alert('Mail Invalide');
 	 }
    }
+   
+ function required(field,photo_label,photo){
+
+	if(field.innerHTML.length > 0)
+	{
+		if(photo.value == '')
+			photo_label.style.color = "red";
+			
+		photo.setAttribute("required", true);
+	}
+ }
