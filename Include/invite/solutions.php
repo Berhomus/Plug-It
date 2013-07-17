@@ -52,7 +52,7 @@ Name : solutions.php => Plug-it
 							echo'
 								<img src="'.$donnees['image_sol'].'" style="margin-left:5%;width:90%;" width="280" height="170"/><br/>
 								<h3 style="text-align:center;font-size:18px;">'.$donnees['titre'].'</h3>
-								'.$donnees['description'].'
+								'.nl2br($donnees['description']).'
 							</div></td>';
 							
 							$i++;

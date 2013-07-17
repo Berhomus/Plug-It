@@ -60,6 +60,24 @@ function textLimit2(field, maxlen, idlimite) {
 	}
 } 
 
+function textLimit3(field, maxlen, idlimite) 
+{
+	var n = field.innerHTML.replace("<br/>","");
+   if (n.length > maxlen)
+   {
+      field.innerHTML = field.innerHTML.substring(0, maxlen);
+      alert('Dépassement de la limite de caractères');
+	  idlimite.style.color='red';
+	  setTimeout(function(){idlimite.style.color='green';},2000);
+   }
+   else if((maxlen > n.length) && (n.length > 0))
+   {
+	  setTimeout(function(){idlimite.style.color='green';},2000);
+   }
+   
+}
+
+
 /*####FONCTION LIEN####*/
 
 function lien()

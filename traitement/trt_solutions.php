@@ -70,7 +70,6 @@ Name : trt_solutions.php => Plug-it
 								$ordre = $_POST['ordre'];
 								
 								$titre = htmlspecialchars($titre);
-								$desc = htmlspecialchars($desc);
 								
 								$titre = mysql_real_escape_string($titre);
 								$desc = mysql_real_escape_string($desc);
