@@ -4,6 +4,7 @@ Last Update : 12/07/2013
 Name : solutions.php => Plug-it
 *********************************************************-->
 
+</script>
 <?php
 	if(!isset($_GET['mode']))
 	{

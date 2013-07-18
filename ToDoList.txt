@@ -6,7 +6,6 @@ X Eclaircir l'écriture du footer
 Fonctionnel :
 
 X Script image
-X Afficher les balises (visu direct)
 X Lien pour ajouter
 X Possiblité d'ordonner services
 X Ne pas afficher les balises (visu direct)
