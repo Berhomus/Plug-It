@@ -8,23 +8,24 @@ Name : view.php => Plug-it
 
 <?php
  
- //header("Content-Type: image/gif" ); 
+ header("Content-Type: image/gif" ); 
  
 //incrustage slider
 
 function make_img($src,$title,$desc){
+	echo "titre:".$src;
 	if(file_exists("../".$src))
 	{
 		$extension=strrchr($src,'.');
 		
 		if($extension == ".png")
-			$destination = imagecreatefrompng("../".$src);
+			$destination = imagecreatefrompng($src);
 		else
-			$destination = imagecreatefromjpeg("../".$src);
+			$destination = imagecreatefromjpeg($src);
 			
-		$dossier = imagecreatefrompng("../images/dossier_g.png");
-		$border = imagecreatefrompng("../images/border_g.png");
-		$add = imagecreatefrompng("../images/add11.png");
+		$dossier = imagecreatefrompng("../../images/dossier_g.png");
+		$border = imagecreatefrompng("../../images/border_g.png");
+		$add = imagecreatefrompng("../../images/add11.png");
 
 		$largeur_dossier = imagesx($dossier);
 		$hauteur_dossier = imagesy($dossier);
@@ -158,10 +159,9 @@ function make_limg($src){
 }
 
 if(isset($_FILES) and !empty($_FILES))
-{
-	make_img($_FILES['grandeimg']['name'],$_POST['name'],$_POST['desc']);
+{	var_dump($_FILES);
+	make_img($_FILES['file']['tmp_name'],"nya","yup");
 }
 
-echo "lol";
 
 ?>
