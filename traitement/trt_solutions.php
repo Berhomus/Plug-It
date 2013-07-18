@@ -142,7 +142,7 @@ Name : trt_solutions.php => Plug-it
 
 							
 							$titre = mysql_real_escape_string($titre);
-							$desc = mysql_real_escape_string($desc);
+							$desc = mysql_real_escape_string($_POST['desc']);
 							$corps = mysql_real_escape_string($_POST['corps']);
 							$ordre = $_POST['ordre'];
 							
