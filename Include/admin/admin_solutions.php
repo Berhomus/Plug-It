@@ -207,17 +207,25 @@ fileInput.onchange = function() {
 		filesLen = files.length,
 		imgType;
 		
-	for (var i = 0 ; i < filesLen ; i++) {
-		 
-		imgType = files[i].name.split('.');
-		imgType = imgType[imgType.length - 1];
-		 
-		if(allowedTypes.indexOf(imgType) != -1) {
-			createThumbnail(files[i]);
-		}
-		 
+
+	if(files[0].size > 300*1024)
+	{
+		alert('Image trop lourde');
+		this.value='';
 	}
-	 
+	else
+	{
+		for (var i = 0 ; i < filesLen ; i++) {
+			 
+			imgType = files[i].name.split('.');
+			imgType = imgType[imgType.length - 1];
+			 
+			if(allowedTypes.indexOf(imgType) != -1) {
+				createThumbnail(files[i]);
+			}
+			 
+		}
+	}
 };
 
 </script>
