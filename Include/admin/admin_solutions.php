@@ -50,7 +50,7 @@ function view(){
     xhr.onload = function() {
         alert('Upload terminé !');
     };
-     alert("lol");
+     
     xhr.open("POST", "view.php", true);
     xhr.setRequestHeader("Content-Type", "image/gif");
     var form = new FormData();
