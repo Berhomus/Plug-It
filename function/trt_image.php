@@ -53,20 +53,23 @@ function make_img($src,$title,$desc){
 		$max = 0;
 		for($i=0;$i<count($label_t);$i++)
 		{//taille tt - marge - taille ligne
-			$nbr_add_needed = (330 - 40 - strlen($label_t[$i])*11)%11;
-			if($nbr_add_needed > $max)
+			$nbr_add_needed = (330 - 80 - (strlen($label_t[$i])*7.2));
+			if($nbr_add_needed < $max)
 				$max = $nbr_add_needed; 
 		}
-		echo $max;
-		/*ajout morceaux*/
-		$destination_x = 383;
-		$destination_y =  238;
-		for($i=0;$i<$max;$i++)
-		{
-			imagecopymerge($d, $add, $destination_x, $destination_y, 0, 0, $largeur_add, $hauteur_add, 90);
-			$destination_x += 11;
-		}
 		
+		if($max<0)
+		{
+			$max=ceil(($max*-1)/11);
+			/*ajout morceaux*/
+			$destination_x = 383;
+			$destination_y =  238;
+			for($i=0;$i<$max;$i++)
+			{
+				imagecopymerge($d, $add, $destination_x, $destination_y, 0, 0, $largeur_add, $hauteur_add, 90);
+				$destination_x += 11;
+			}
+		}
 		
 		//blit texte
 		
