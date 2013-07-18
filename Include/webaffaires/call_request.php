@@ -1,10 +1,6 @@
 <!--
 -------------------------------------------------------------
- Topic	 : Exemple PHP traitement de la requête de paiement
  Version : P617
-
- 		Dans cet exemple, on affiche un formulaire HTML
-		de connection à l'internaute.
 
 -------------------------------------------------------------
 -->
@@ -15,7 +11,18 @@
 
 if(isset($_POST) and !empty($_POST))	
 {	
-	$parm="merchant_id=014022286611111";
+
+	$TheCaddie = array();
+
+	$TheCaddie[] =  $_POST['nom'];
+	$TheCaddie[] =  $_POST['societe'];
+	$TheCaddie[] =  $_POST['courriel'];
+	$TheCaddie[] =  $_POST['commentaire'];
+
+	$TheCaddie[] =  $_POST['montanttot'];
+	
+
+	$parm="merchant_id=042161736600032";
 	$parm="$parm merchant_country=fr";
 	$parm="$parm amount=".$_POST['montanttot'];
 	$parm="$parm currency_code=978";
