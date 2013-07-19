@@ -22,6 +22,9 @@ Name : accueil.php => Plug-it
 					mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 					mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
 					
+					$img = array('.png', '.gif', '.jpg', '.jpeg','.bmp','.avi','.mp4');
+					$video = array('.avi','.mp4');
+					
 					$rq=mysql_query("SELECT COUNT(id) as nombreslides FROM solutions")or die('Erreur SQL !<br />'.mysql_error());
 					$array = mysql_fetch_array($rq);
 					$max= max(10,$array['nombreslides']);
@@ -34,12 +37,23 @@ Name : accueil.php => Plug-it
 					
 					while($array=mysql_fetch_array($rq))
 					{	
-						echo '<div data-iview:image="'.$array['image_car'].'" data-iview:transition="'.$effet[$i].'"></div>';
+						$ext = strtolower(strrchr($array['image_car'], '.')); 
+						if(in_array($ext,$video))
+							echo '<div data-iview:image="images/slide_01(banniere 2test).jpg" data-iview:type="video" data-iview:transition="'.$effet[$i].'">
+								<iframe src="http://127.0.0.1/plug-it/include/invite/viewvid.php?vid=../../'.$array['image_car'].'" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+								<div class="iview-caption caption1" data-x="80" data-y="200">'.$array['titre'].'</sup></div>
+								<div class="iview-caption" data-x="80" data-y="275" data-transition="wipeRight">'.$array['description'].'</div>
+								</div>';
+						else
+							echo '<div data-iview:image="'.$array['image_car'].'" data-iview:transition="'.$effet[$i].'"></div>';
+						
 						$i++;
 						if($i > 3)
 							$i =0;
 					}
 				?>
+				
+						
 				</div>
 			</div>
 

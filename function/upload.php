@@ -11,14 +11,27 @@ function upload($dossier,$taille_maxi,$extensions,$nom)
 	{
 		$fichier = basename($_FILES[$nom]['name']);
 		$taille = filesize($_FILES[$nom]['tmp_name']);
-		$extension = strrchr($_FILES[$nom]['name'], '.'); 
+		$extension = strtolower(strrchr($_FILES[$nom]['name'], '.')); 
 		//Début des vérifications de sécurité...
 		
+		$img = array('.png', '.gif', '.jpg', '.jpeg','.bmp','.avi','.mp4');
+		$video = array('.avi','.mp4');
+		
+		/*if(in_array($extension,$video))
+		{
+			$dossier = '../videos/';
+		}
+		
+		if(is_uploaded_file($_FILES[$nom]['tmp_name']))
+			echo 'lol';
+		else
+			echo 'gato';*/
+			
 		if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
 		{
-			 $erreur = '<span style="color:red;">Vous devez uploader un fichier de type png, gif, jpg, jpeg !</span><br/>';
+			 $erreur = '<span style="color:red;">Type de Fichier non supporté !</span><br/>';
 		}
-		if($taille>$taille_maxi)
+		if(!in_array($extension,$video) and $taille>$taille_maxi)
 		{
 			 $erreur = '<span style="color:red;">Le fichier est trop important, max :  '.($taille_maxi/1024).' kiloctect !</span><br/>';
 		}
@@ -31,8 +44,11 @@ function upload($dossier,$taille_maxi,$extensions,$nom)
 			 $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
 			 if(move_uploaded_file($_FILES[$nom]['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
 			 {
-				  echo ('Upload effectué avec succès !<br/>');
-				  return 'images/' . $fichier;
+				echo ('Upload effectué avec succès !<br/>');
+				if(in_array($extension,$video))
+					return 'videos/' . $fichier;
+				else
+					return 'images/' . $fichier;
 			 }
 			 else //Sinon (la fonction renvoie FALSE).
 			 {
