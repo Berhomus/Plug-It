@@ -1,0 +1,12 @@
+====================V1.0=====================
+=#############################19/07/13######=
+=============================================
+Eclaircir l'écriture du footer
+Script image (correction ajout bande)
+Lien pour ajouter
+Possiblité d'ordonner services
+Ne pas afficher les balises (visu direct)
+encodage utf8
+====================V1.1=====================
+=#############################xx/xx/xx######=
+=============================================
