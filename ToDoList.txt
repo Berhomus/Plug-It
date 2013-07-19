@@ -5,7 +5,8 @@ X Eclaircir l'écriture du footer
 
 Fonctionnel :
 
-X Script image
+X Script image (correction ajout bande)
+X Afficher les balises (visu direct)
 X Lien pour ajouter
 X Possiblité d'ordonner services
 X Ne pas afficher les balises (visu direct)
@@ -25,10 +26,11 @@ X Mailing
 
 Securité :
 
-- https partie admin
+- https partie admin + client
 
 Autre:
 X modif editeur text (titre +stylewithcss)
 X encodage utf8
 X Nettoyage code (partie inutile)
-
+~ Preview image ?
+- Ajout module RS

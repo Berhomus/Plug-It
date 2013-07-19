@@ -212,6 +212,8 @@ fileInput.onchange = function() {
 	{
 		alert('Image trop lourde');
 		this.value='';
+		if(document.getElementById("img_prev"))
+			prev.removeChild(document.getElementById("img_prev"));
 	}
 	else
 	{

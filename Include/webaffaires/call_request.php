@@ -12,14 +12,14 @@
 if(isset($_POST) and !empty($_POST))	
 {	
 
-	$TheCaddie = array();
+	/*$TheCaddie = array();
 
 	$TheCaddie[] =  $_POST['nom'];
 	$TheCaddie[] =  $_POST['societe'];
 	$TheCaddie[] =  $_POST['courriel'];
 	$TheCaddie[] =  $_POST['commentaire'];
 
-	$TheCaddie[] =  $_POST['montanttot'];
+	$TheCaddie[] =  $_POST['montanttot'];*/
 	
 
 	$parm="merchant_id=042161736600032";
