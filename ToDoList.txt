@@ -1,36 +1,27 @@
 Design : 
-
-- Recentrer le design ?
-X Eclaircir l'écriture du footer
-
-Fonctionnel :
-
-X Script image (correction ajout bande)
-X Afficher les balises (visu direct)
-X Lien pour ajouter
-X Possiblité d'ordonner services
-X Ne pas afficher les balises (visu direct)
-
-Nouveauté :
-
-- Partie client ?
-- e commerce ?
-- bdd gest comm ?
-- Preformatage pour mass mailing
-- Inclusion vidéo accueil ?
+- Recentrer le design 
 
 Compléter & tester :
 
-- API de paiement
-X Mailing
+~ API de paiement
 
 Securité :
 
-- https partie admin + client
+~ https partie admin
 
-Autre:
-X modif editeur text (titre +stylewithcss)
-X encodage utf8
-X Nettoyage code (partie inutile)
-~ Preview image ?
-- Ajout module RS
+fonctionnalité :
+
+- menu déroulant
+- lien vers réseaux sociaux
+- boutique (avec possiblité de la cacher)
+- Preformatage pour mass mailing
+- Possiblité d'Inclusion vidéo accueil 
+- regrouper solutions et services
+- possibilité d'éditer le menu
+- gest img miniature, et gestion globale
+
+Autre : 
+
+- préview d'image ?
+- limitation de caratères sur desc solution
+
