@@ -12,12 +12,14 @@ Securité :
 fonctionnalité :
 
 - menu déroulant
+- regrouper solutions et services
+- possibilité d'éditer le menu
+
 - lien vers réseaux sociaux
 - boutique (avec possiblité de la cacher)
 - Preformatage pour mass mailing
 - Possiblité d'Inclusion vidéo accueil 
-- regrouper solutions et services
-- possibilité d'éditer le menu
+
 - gest img miniature, et gestion globale
 
 Autre : 
@@ -25,3 +27,6 @@ Autre :
 - préview d'image ?
 - limitation de caratères sur desc solution
 
+référencement :
+
+- google
