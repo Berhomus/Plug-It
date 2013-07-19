@@ -39,7 +39,7 @@ Name : accueil.php => Plug-it
 					{	
 						$ext = strtolower(strrchr($array['image_car'], '.')); 
 						if(in_array($ext,$video))
-							echo '<div data-iview:image="images/slide_01(banniere 2test).jpg" data-iview:type="video" data-iview:transition="'.$effet[$i].'">
+							echo '<div data-iview:image="images/slide_08.jpg" data-iview:type="video" data-iview:transition="'.$effet[$i].'">
 								<iframe src="http://127.0.0.1/plug-it/include/invite/viewvid.php?vid=../../'.$array['image_car'].'" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 								<div class="iview-caption caption1" data-x="80" data-y="200">'.$array['titre'].'</sup></div>
 								<div class="iview-caption" data-x="80" data-y="275" data-transition="wipeRight">'.$array['description'].'</div>

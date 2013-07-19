@@ -17,55 +17,29 @@ Name : Banniere.php => Plug-it
 	<a href="index.php?page=accueil"><img src="images/logotype_plug_it.png" style="position:absolute;bottom:25%;left:10%;"/></a>
 	<table style="position:absolute;right:10%;" height="137px" class="menu" cellspacing="0">
 		<tr>
-			<td onclick="location.href='Index.php?page=accueil&sub=main'"
-			<?php
-				if($_GET['page'] == 'accueil')
+<?php
+		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
+		mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+		mysql_set_charset( 'utf8' );
+		
+		$rq = mysql_query("SELECT * FROM menu ORDER BY position")or die('Erreur SQL !<br />'.mysql_error());
+		
+		$accent = array("é","è","ë","ê","à","ù","ô","î","ï");
+		$replace = array("e","e","e","e","a","u","o","i","i");
+		
+		while($ar=mysql_fetch_array($rq))
+		{
+			echo '
+			<td onclick="location.href=\''.$ar['lien'].'\'"';
+				if($_GET['page'] == strtolower(str_replace($accent,$replace,$ar['nom'])))
 					echo 'class="menu_selected"';
 				else
 					echo 'class="menu_unselected"';
-			?> >Accueil</td>
-			<td onclick="location.href='Index.php?page=services&mode=view'"
-			<?php
-				if($_GET['page'] == 'services')
-					echo 'class="menu_selected"';
-				else
-					echo 'class="menu_unselected"';
-			?>>Services</td>
-			<td onclick="location.href='Index.php?page=solutions&mode=view'"
-			<?php
-				if($_GET['page'] == 'solutions')
-					echo 'class="menu_selected"';
-				else
-					echo 'class="menu_unselected"';
-			?>>Solutions</td>
-			<td onclick="location.href='Index.php?page=references&mode=view'"
-			<?php
-				if($_GET['page'] == 'references')
-					echo 'class="menu_selected"';
-				else
-					echo 'class="menu_unselected"';
-			?>>Références</td>
-			<td onclick="location.href='Index.php?page=contact'"
-			<?php
-				if($_GET['page'] == 'contact')
-					echo 'class="menu_selected"';
-				else
-					echo 'class="menu_unselected"';
-			?>>Contact</td>
-			<td onclick="location.href='Index.php?page=support'"
-			<?php
-				if($_GET['page'] == 'support')
-					echo 'class="menu_selected"';
-				else
-					echo 'class="menu_unselected"';
-			?>>Support</td>
-			<td onclick="location.href='Index.php?page=reglement'"
-			<?php
-				if($_GET['page'] == 'reglement')
-					echo 'class="menu_selected"';
-				else
-					echo 'class="menu_unselected"';
-			?>>Paiement<!--<br/>en Ligne--></td>
+			echo '>'.$ar['nom'].'</td>';
+		}
+		
+		mysql_close();
+?>
 		</tr>
 	</table>
 </div>
