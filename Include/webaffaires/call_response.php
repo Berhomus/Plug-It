@@ -124,20 +124,20 @@ if(isset($_POST['DATA']))
 		if($bank_response_code == "00"){
 
 			print("<center><h1>Merci</h1>");
-			print("<p>Votre paiement a Ã©tÃ© acceptÃ© par notre Ã©tablissement bancaire</p>");
-			print("<p>Un message Ã©lectronique vous a Ã©tÃ© envoyÃ© <br />");
-			print("il contient le reÃ§u de la transaction et le dÃ©tail de votre commande</p>");
+			print("<p>Votre paiement a été accepté par notre établissement bancaire</p>");
+			print("<p>Un message électronique vous a été envoyé <br />");
+			print("il contient le reçu de la transaction et le détail de votre commande</p>");
 			print("<p>Merci de votre confiance</p></center>");
 		}
 		else{
 
-			print("<center><h1>Votre paiement a Ã©tÃ© refusÃ© par notre Ã©tablissement bancaire</h1></center>");
+			print("<center><h1>Votre paiement a été refusé par notre établissement bancaire</h1></center>");
 
 		}
 		
 		if($response_code == "17"){
 
-			print("<center><h1>Transaction annulÃ©e par l'utilisateur</h1></center>");
+			print("<center><h1>Transaction annulée par l'utilisateur</h1></center>");
 
 		}
 		
