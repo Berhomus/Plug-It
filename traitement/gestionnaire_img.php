@@ -35,12 +35,11 @@ if(isset($_SESSION['id']))
 	
 	if(isset($_POST))
 	{
-		$i = 0;
 		while($_POST)
 		{
-			if(file_exists($supp) and filetype($_POST['supprimer'.$position]) != 'dir')
+			if(file_exists($_POST['supprimer'.$position]))
 			{
-				unlink($_POST['supprimer'.$position]);
+				unlink($pathfile);
 				echo '<center style="color:green;">Suppression(s) Réussie(s)</center>';
 			}
 			else
@@ -70,9 +69,9 @@ function mkmap($dir){
 
 echo '<form action="index.php?page=gestionnaire_img" method="POST" id="form_supp">';
 	echo '<input type="hidden" name="supp" />';
-    echo "<table cellspacing=20>";  
+    echo '<table cellspacing=20>';  
 	
-	echo "<tr><td colspan=5><hr/></td></tr>";
+	echo '<tr><td colspan=5><hr/></td></tr>';
 	?>
 	<tr style='text-align:center;'>
 		<td colspan=5>
@@ -82,7 +81,7 @@ echo '<form action="index.php?page=gestionnaire_img" method="POST" id="form_supp
 		</td>
 	</tr>";
 	<?php
-	echo "<tr><td colspan=5><hr/></td></tr>";
+	echo '<tr><td colspan=5><hr/></td></tr>';
 		
     $folder = opendir ($dir);
     $cpt=0;
@@ -117,8 +116,8 @@ echo '<form action="index.php?page=gestionnaire_img" method="POST" id="form_supp
     }
     closedir ($folder);
 	echo '</div>';
-    echo "</table>";
-	echo "</form>";
+    echo '</table>';
+	echo '</form>';
 }
 
 ?>
