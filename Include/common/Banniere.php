@@ -29,13 +29,17 @@ Name : Banniere.php => Plug-it
 		
 		while($ar=mysql_fetch_array($rq))
 		{
-			echo '
-			<td onclick="location.href=\''.$ar['lien'].'\'"';
-				if($_GET['page'] == strtolower(str_replace($accent,$replace,$ar['nom'])))
-					echo 'class="menu_selected"';
-				else
-					echo 'class="menu_unselected"';
-			echo '>'.$ar['nom'].'</td>';
+			$current = substr(strrchr($ar['lien'], '/'), 1 );
+			if($ar['active'] == true)
+			{
+				echo '
+				<td onclick="location.href=\''.$ar['lien'].'\'"';
+					if($ar['interne'] and $_GET['page'] == $current)
+						echo 'class="menu_selected"';
+					else
+						echo 'class="menu_unselected"';
+				echo '>'.$ar['nom'].'</td>';
+			}
 		}
 		
 		mysql_close();

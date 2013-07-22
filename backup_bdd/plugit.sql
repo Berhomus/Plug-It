@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le : Lun 22 Juillet 2013 à 07:20
+-- Généré le : Lun 22 Juillet 2013 à 09:40
 -- Version du serveur: 5.5.20
 -- Version de PHP: 5.3.10
 
@@ -48,23 +48,26 @@ INSERT INTO `admin` (`id`, `login`, `mdp_md5`) VALUES
 
 CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `interne` tinyint(1) NOT NULL,
+  `active` tinyint(1) NOT NULL,
   `nom` varchar(50) COLLATE utf32_unicode_ci NOT NULL,
   `position` int(11) NOT NULL,
   `lien` varchar(255) COLLATE utf32_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `menu`
 --
 
-INSERT INTO `menu` (`id`, `nom`, `position`, `lien`) VALUES
-(1, 'Accueil', 1, 'Index.php?page=accueil&sub=main'),
-(2, 'Solutions', 2, 'Index.php?page=solutions&mode=view'),
-(3, 'Références', 3, 'Index.php?page=references&mode=view'),
-(4, 'Contact', 4, 'Index.php?page=contact'),
-(5, 'Support', 5, 'Index.php?page=support'),
-(6, 'Paiement', 6, 'Index.php?page=reglement');
+INSERT INTO `menu` (`id`, `interne`, `active`, `nom`, `position`, `lien`) VALUES
+(1, 1, 1, 'Accueil', 1, 'Index.php?page=accueil&sub=main'),
+(2, 1, 1, 'Solutions', 2, 'Index.php?page=solutions&mode=view'),
+(3, 1, 1, 'Références', 3, 'Index.php?page=references&mode=view'),
+(4, 1, 1, 'Contact', 4, 'Index.php?page=contact'),
+(5, 1, 1, 'Support', 5, 'Index.php?page=support'),
+(6, 1, 1, 'Paiement', 6, 'Index.php?page=reglement'),
+(7, 1, 1, 'Boutique', 6, 'Index.php?page=boutique');
 
 -- --------------------------------------------------------
 

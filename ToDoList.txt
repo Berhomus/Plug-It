@@ -18,7 +18,7 @@ fonctionnalité :
 - lien vers réseaux sociaux
 - boutique (avec possiblité de la cacher)
 - Preformatage pour mass mailing
-- Possiblité d'Inclusion vidéo accueil 
+~ Possiblité d'Inclusion vidéo accueil (voir systeme upload)
 
 - gest img miniature, et gestion globale
 
