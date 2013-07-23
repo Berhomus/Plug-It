@@ -173,7 +173,7 @@ if(isset($_SESSION['id']))
 				</td>			</tr>						<tr>				<td style="text-align:right;"><input type="submit" name="envoyer" value="Envoyer" /></td>			</tr>			</table></form>	
 
 <script>
-
+//preview
 function createThumbnail(file) {
 	 
 	var reader = new FileReader();

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le : Mar 23 Juillet 2013 à 07:59
+-- Généré le : Mar 23 Juillet 2013 à 12:40
 -- Version du serveur: 5.5.20
 -- Version de PHP: 5.3.10
 
@@ -50,9 +50,9 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `interne` tinyint(1) NOT NULL,
   `active` tinyint(1) NOT NULL,
-  `nom` varchar(50) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `nom` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `position` int(11) NOT NULL,
-  `lien` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `lien` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
