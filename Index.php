@@ -15,8 +15,6 @@ Name : Index.php => Plug-it
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<link href="./css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
 		<link rel="icon" type="image/png" href="./images/favicon.png">
 		<link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico">
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -30,10 +28,8 @@ Name : Index.php => Plug-it
 		<link rel="stylesheet" href="css/styles.css" />
 		<link type="text/css" rel="stylesheet" href="styles/index.css"/>
 		
-		
-		<script src="./js/bootstrap.min.js"></script>
-		
 		<script src="js/jquery-1.7.1.min.js"></script>
+		
 		<script type="text/javascript" src="js/raphael-min.js"></script>
 		<script type="text/javascript" src="js/jquery.easing.js"></script>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -78,6 +74,8 @@ Name : Index.php => Plug-it
 				});
 			});
 		</script>
+		
+		
 		
 	</head>
 	<body>
