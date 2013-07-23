@@ -41,33 +41,135 @@
 			});
 		
 		});
+		
 		window.onscroll = scroll;
 		function scroll () {
-		document.getElementById('accordeon').style.marginTop=50+window.pageYOffset+"px";	
+			document.getElementById('accordeon').style.marginTop=50+window.pageYOffset+"px";	
 		}
 		/*window.onresize = retaille;
 		function retaille() {
 		document.getElementById('accordeon').style.right=0.1*document.body.clientWidth;	
 		}*/
 		
-		function ajoutpanier(idprod) {
-		var cont = document.getElementById('contenu');
-		var nouvelem = document.creatElement('p');
 		
-		nouvelem.setAttribute('id','nouvel');
-		nouvelem.innerHTML = '
-		
-		cont.appendChild();
-		
+		function dernierElement2()
+		{
+			  var Conteneur = document.getElementById('contenu'), n = 0;
+			  if(Conteneur)
+			  {
+				var elementID = '', elementNo;
+				if(Conteneur.childNodes.length > 0)
+				{
+					var i = 0;
+				  while(elementID != 'foot_panier')
+				    {
+					// Ici, on vérifie qu'on peut récupérer les attributs, si ce n'est pas possible, on renvoit false, sinon l'attribut
+						elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
+						i++;
+					}
+				  }
+				}
+			  return i-1;
 		}
+		
+		function alreadyIn(idprod){
+			var Conteneur = document.getElementById('contenu'), n = 0;
+			  if(Conteneur)
+			  {
+				var elementID, elementNo;
+				if(Conteneur.childNodes.length > 0)
+				{
+				  for(var i = 0; i < Conteneur.childNodes.length; i++)
+				  {
+					// Ici, on vérifie qu'on peut récupérer les attributs, si ce n'est pas possible, on renvoit false, sinon l'attribut
+					elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
+					if(elementID == ("panier_elem_"+idprod))
+					{
+						return i;
+					}
+				  }
+				}
+			  }
+			  return -1;
+		}
+		
+		function suppElem(idprod){
+			var elem = document.getElementById('panier_elem_'+idprod);
+			elem.parentNode.removeChild(elem);
+			document.getElementById('prix_tt_panier').innerHTML = Math.round(calTotal()*100)/100;
+		}
+		
+		function calTotal(){
+			var Conteneur = document.getElementById('contenu'),somme = 0.00;
+			if(Conteneur)
+			  {
+				var elementID, elementNo;
+				if(Conteneur.childNodes.length > 0)
+				{
+				  for(var i = 0; i < Conteneur.childNodes.length; i++)
+				  {
+					// Ici, on vérifie qu'on peut récupérer les attributs, si ce n'est pas possible, on renvoit false, sinon l'attribut
+					elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
+					if(elementID)
+					{
+						var elementPattern=new RegExp("panier_elem_([0-9]*)","g");
+						elementNo = parseInt(elementID.replace(elementPattern, '$1'));
+						if(!isNaN(elementNo))
+						{
+							somme = parseFloat(document.getElementById('panier_elem_prix_'+elementNo).innerHTML.replace("€",""))*parseInt(document.getElementById('panier_elem_qte_'+elementNo).innerHTML.replace("x",""));
+						}
+					}
+				  }
+				}
+			  }
+			  return somme;
+		}
+		
+		function ajoutpanier(idprod) {
+			var isIn = alreadyIn(idprod);
+			var cont = document.getElementById('contenu');
+			
+			if(isIn == -1)
+			{
+				var nouvelem = document.createElement('p');
+				var last = dernierElement2();
+				var foot = cont.childNodes[last];
+				
+				cont.removeChild(cont.childNodes[last]);
+				
+				var prix = document.getElementById('prix'+idprod).value;
+				var nom = document.getElementById('name'+idprod).value;
+				var qte = document.getElementById('qte'+idprod).value;
+				
+				nouvelem.setAttribute('id','panier_elem_'+idprod);
+				nouvelem.innerHTML = '<table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'+idprod+'">'+nom+'</td><td id="panier_elem_qte_'+idprod+'">x'+qte+'</td><td id="panier_elem_prix_'+idprod+'">'+prix+'€</td><td onclick="suppElem('+idprod+');" style="color:red;cursor: pointer;" id="panier_elem_supp_'+idprod+'">X</td></tr></table>';
+				
+				cont.appendChild(nouvelem);
+				
+				cont.appendChild(foot);
+			}
+			else//elem deja existant
+			{
+				var elem = cont.childNodes[isIn];
+				var elementQte = parseInt(document.getElementById('panier_elem_qte_'+idprod).innerHTML.replace("x","")) + parseInt(document.getElementById('qte'+idprod).value);
+				var elementPrix = parseFloat(document.getElementById('panier_elem_prix_'+idprod).innerHTML.replace("€",""));
+				var elementnom= document.getElementById('panier_elem_nom_'+idprod).innerHTML;
+				
+				elem.innerHTML = '<table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'+idprod+'">'+elementnom+'</td><td id="panier_elem_qte_'+idprod+'">x'+elementQte+'</td><td id="panier_elem_prix_'+idprod+'">'+elementPrix+'€</td><td onclick="suppElem('+idprod+');" style="color:red;cursor: pointer;" id="panier_elem_supp_'+idprod+'">X</td></tr></table>';
+			}
+			
+			document.getElementById('prix_tt_panier').innerHTML = Math.round(calTotal()*100)/100;
+		}
+		
+		
 		</script>
-	
+<form method="POST" action="#">
 <div id="accordeon"> <!-- Bloc principal, sur lequel nous appellerons le plugin -->
 	<h3><img src="./images/e_commerce_caddie.gif" style="width:20px; height:20px; vertical-align:-18%;"/>Panier</h3>
 	<div id="contenu">
-		<p><table style="width:100%"><tr><td colspan="2">Nom</td><td>Qté</td><td>Prix</td></tr></table></p>
-		<p><hr/></p>
-		<p><span style="float:left; margin-left:5px;">Montant total : 0</span><a href="#"><span style="float:right; margin-right:5px;">Payer</span></a></p>
+		<p id="top_panier"><table style="width:100%"><tr><td colspan="2">Nom</td><td>Qté</td><td>Prix Unitaire</td></tr></table></p>
+		<p id="div_panier"><hr/></p>
+		<p id="foot_panier"><span style="float:left; margin-left:5px;">Montant total : <span id="prix_tt_panier">0.00</span>€</span><input value="Payer" type="submit" style="float:right; margin-right:5px;"/></p>
 	</div>
 </div>
 
@@ -135,12 +237,16 @@
 						}
 						echo'
 							<img src="'.$ar['images'].'" style="margin-left:5%;width:90%;" width="280" height="170"/>
-						</div><span id="'.$ar['id'].'" class="boutprod" style="float:left;" onclick="alert(\'nya\');ajoutpanier();">Ajouter au panier </span><span class="boutprod2" style="float:left;"><select name="qte'.$ar['id'].'" id="qte'.$ar['id'].'">';
+						</div><span id="'.$ar['id'].'" class="boutprod" style="float:left;" onclick="ajoutpanier('.$ar['id'].');">Ajouter au panier </span><span class="boutprod2" style="float:left;"><select name="qte'.$ar['id'].'" id="qte'.$ar['id'].'">';
 						for($k=1;$k<=10;$k++)
 						{
 							echo '<option value='.$k.'>'.$k.'</option>';
 						}
 						echo '</span>';
+						
+						echo '<input type="hidden" id="name'.$ar['id'].'" value="'.$ar['nom'].'"/>
+						<input type="hidden" id="qte'.$ar['id'].'" value="0"/>
+						<input type="hidden" id="prix'.$ar['id'].'" value="'.$ar['prix'].'"/>';
 						
 						echo '</td>';
 						
@@ -158,7 +264,8 @@
 				{
 					echo '<h2>Aucun produit existant</h2>';
 				}
-				echo '</div>';
+				echo '</div>
+				</form>';
 			}
 			else
 			{
