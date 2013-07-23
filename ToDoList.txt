@@ -14,13 +14,14 @@ fonctionnalité :
 - menu déroulant
 - regrouper solutions et services
 - possibilité d'éditer le menu
+- menu selected !
 
-- lien vers réseaux sociaux
+X lien vers réseaux sociaux
 - boutique (avec possiblité de la cacher)
 - Preformatage pour mass mailing
 ~ Possiblité d'Inclusion vidéo accueil (voir systeme upload)
 
-- gest img miniature, et gestion globale
+~ gest img miniature, et gestion globale
 
 Autre : 
 

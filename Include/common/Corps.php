@@ -67,6 +67,15 @@ Name : Corps.php => Plug-it
 			echo '<h2>Access Forbidden</h2>';
 		break;
 		
+		case 'admin_menu':
+		if(isset($_SESSION['id']))
+		{
+			INCLUDE("\include\admin\admin_menu.php");
+		}
+		else
+			echo '<h2>Access Forbidden</h2>';
+		break;
+		
 		case 'admin_services':
 		if(isset($_SESSION['id']))
 		{

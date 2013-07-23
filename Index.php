@@ -78,6 +78,7 @@ Name : Index.php => Plug-it
 				});
 			});
 		</script>
+		
 	</head>
 	<body>
 		<div class="Banniere" id="head">
@@ -104,4 +105,6 @@ Name : Index.php => Plug-it
 		</div>
 
 	</body>
+	
+
 </html>
