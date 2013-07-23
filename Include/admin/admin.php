@@ -71,6 +71,7 @@ else
 		<li class="menuverti" onclick="location.href='Index.php?page=admin_ref'">Nouvelle Référence</li>
 		<li class="menuverti" onclick="location.href='Index.php?page=gestionnaire_img'">Gestionnaire d'images</li>
 		<li class="menuverti" onclick="location.href='Index.php?page=mass_mailing'">E-Mail de Masse</li>
+		<li class="menuverti" onclick="location.href='Index.php?page=admin_menu'">Edition Menu</li>
 		<!--<li class="menuverti" onclick="location.href='Index.php?page=backup'">Gestionnaire de backup</li>-->
 	</ul>
 </center>

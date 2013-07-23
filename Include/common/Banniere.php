@@ -24,19 +24,15 @@ Name : Banniere.php => Plug-it
 		
 		$rq = mysql_query("SELECT * FROM menu ORDER BY position")or die('Erreur SQL !<br />'.mysql_error());
 		
-		$accent = array("é","è","ë","ê","à","ù","ô","î","ï");
-		$replace = array("e","e","e","e","a","u","o","i","i");
-		
 		while($ar=mysql_fetch_array($rq))
 		{
-			$current = substr(strrchr($ar['lien'], '/'), 1 );
 			if($ar['active'] == true)
-			{
+			{		
 				echo '
 				<td onclick="location.href=\''.$ar['lien'].'\'"';
-					if($ar['interne'] and $_GET['page'] == $current)
+					/*if($ar['interne'] and $_GET['n'] == $ar['position'])
 						echo 'class="menu_selected"';
-					else
+					else*/
 						echo 'class="menu_unselected"';
 				echo '>'.$ar['nom'].'</td>';
 			}
