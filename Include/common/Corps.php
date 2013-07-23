@@ -45,6 +45,10 @@ Name : Corps.php => Plug-it
 		INCLUDE("\include\admin\admin.php");
 		break;
 		
+		case 'boutique':
+		INCLUDE("\include\invite\boutique.php");
+		break;
+		
 		case 'trt_paiement':
 		if(isset($_POST['DATA']))
 		{
