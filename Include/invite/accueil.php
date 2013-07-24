@@ -5,8 +5,7 @@ Name : accueil.php => Plug-it
 *********************************************************-->
 	
 	<head>
-		<title>Accueil - Plug it</title>
-		<meta name="description" content="Société de services en informatique spécialisée dans l’infogérance, l’hébergement de systèmes d’informations la mise en place de solutions de cloud computing et la maintenance de réseaux informatique." />
+		<meta name="description" content="" />
 	</head>
 	
 <?php
