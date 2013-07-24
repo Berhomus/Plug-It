@@ -14,11 +14,13 @@ function addpanier($id,$nom,$qte,$prix)
 			$article = array('nom'=>$nom,'prix'=>$prix,'qte'=>$qte,'id'=>$id);
 			$_SESSION['caddie'][$id] = $article;
 		}
+		$_SESSION['caddieTot'] += $_SESSION['caddie'][$id]['prix']*$_SESSION['caddie'][$id]['qte'];
 	}
 	else
 	{
 		$article = array('nom'=>$nom,'prix'=>$prix,'qte'=>$qte,'id'=>$id);
 		$_SESSION['caddie'][$id] = $article;
+		$_SESSION['caddieTot'] = $_SESSION['caddie'][$id]['prix']*$_SESSION['caddie'][$id]['qte'];
 	}
 }
 
@@ -28,6 +30,9 @@ function deletepanier($id)
 	{
 		if(isset($_SESSION['caddie'][$id]))//article deja présent
 		{
+			$_SESSION['caddieTot'] -= $_SESSION['caddie'][$id]['prix']*$_SESSION['caddie'][$id]['qte'];
+			if($_SESSION['caddieTot']<0)
+				$_SESSION['caddieTot'] = 0.00;
 			unset($_SESSION['caddie'][$id]);
 		}
 	}

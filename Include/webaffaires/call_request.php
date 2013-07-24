@@ -24,7 +24,7 @@ if(isset($_POST) and !empty($_POST))
 
 	$parm="merchant_id=042161736600032";
 	$parm="$parm merchant_country=fr";
-	$parm="$parm amount=".$_POST['montanttot'];
+	$parm="$parm amount=".$total;
 	$parm="$parm currency_code=978";
 
 

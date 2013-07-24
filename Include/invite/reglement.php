@@ -9,150 +9,88 @@ Name : reglement.php => Plug-it
 
 <h2 class="titre">Paiement en ligne</h2>
 
-<?php
-	if(isset($_POST) and !empty($_POST))
-	{
-		$_POST['societe'] = (!empty($_POST['societe'])) ? $_POST['societe']:"/";
-		$_POST['commentaire'] = (!empty($_POST['commentaire'])) ? $_POST['commentaire']:"/";
-		
-?>		
-		<h2 class="titre">Récapitulatif</h2>
-		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
-			<tr>	
-				<td><b>Nom du client</b></td>
-				<td><?php echo $_POST['nom']; ?></td>
-			</tr>
-			<tr>	
-				<td><b>Société</b></td>
-				<td><?php echo $_POST['societe']; ?></td>
-			</tr>
-			<tr>	
-				<td><b>Courriel</b></td>
-				<td><?php echo $_POST['courriel']; ?></td>
-			</tr>
-			
-			<tr>	
-				<td><b>N°Facture</b></td>
-				<td><b>Date</b></td>
-				<td><b>Montant</b></td>
-			</tr>
-			<?php
-			
-				for($i=1;$i<=$_POST['nbr_fac'];$i++)
-					echo '
-						<tr>	
-							<td>'.$_POST['num'.$i].'</td>
-							<td>'.$_POST['date'.$i].'</td>
-							<td>'.$_POST['montant'.$i].'€</td>
-						</tr>
-					';
-			
-			?>
+	<form method="post" action="index.php?page=paiement_final">
+
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">
 			<tr>
-				<td><b>Montant Total</b></td>
-				<td></td>
-				<td><?php echo $_POST['montanttot']; ?>€</td>
+				<td colspan="6"><hr/></td>
+			</tr>
+			<tr>
+				<td style="text-align:center;" colspan="6"><b>Vos coordonnées</b></td>
+			</tr>
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+
+			<tr>
+				<td width="150px"><label class="lab" for="nom"><b>Nom du client <span class="red">* </span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label></td>
+				<td><input class="lab" style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/></td>
 			</tr>
 			
-			<tr>	
-				<td><b>Commentaire</b></td>
-				<td><?php echo $_POST['commentaire']; ?></td>
+			<tr>
+				<td><label class="lab" for="societe"><b>Société </b><br/><small id="lim_soc">(Max 50 caractères)</small></label></td>
+				<td><input class="lab" style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" /></td>
 			</tr>
-				
+			<tr>
+				<td><label class="lab" for="courriel" id="email"><b>Courriel <span class="red">* </span></b></label>
+				<td><input class="lab" style="text-align:right;" type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/>
+			</tr>
 		</table>
 		
-<?php
-		$_POST['montanttot'] = str_replace('.',"",$_POST['montanttot']);
-		include("include/webaffaires/call_request.php");
-	}
-	else
-	{
-?>
-		<form method="post" action="#">
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">	
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+			<tr>
+				<td style="text-align:center;" colspan="6"><b>Vos factures</b></td>
+			</tr>
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+		</table>
+		
+		<table border="0" cellspacing="10" cellpadding="5" style="margin:auto;" id="conteneur" width="900px">
+				
+		</table>
 
-			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">
-				<tr>
-					<td colspan="6"><hr/></td>
-				</tr>
-				<tr>
-					<td style="text-align:center;" colspan="6"><b>Vos coordonnées</b></td>
-				</tr>
-				<tr>
-					<td colspan="6"><hr/></td>
-				</tr>
+		<table border="0" cellspacing="0" cellpadding="5" style="margin:auto;" width="900px">		
+			<tr>
+				<td><input style="margin:10px;" type="button" value="+" id="plus" onclick="ajouterElement();"/></td>
+			</tr>
+			
+			<tr>
+				<td width="610px"></td>
+				<td width="110px" ><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
+				<td width="100px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /></td>
+				<td> €</td>
+			</tr>
+		</table>
+			
+		<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+			<tr>
+				<td style="text-align:center;" colspan="6"><b>Informations complémentaires</b></td>
+			</tr>
+			<tr>
+				<td colspan="6"><hr/></td>
+			</tr>
+			
+			<tr>
+				<td><b>Commentaire </b><br/><small>(facultatif)</small></td>
+				<td><label class="lab" for="commentaire"><textarea class="lab" name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea></label></td>
+			</tr>
+			
+			<tr>
+				<td colspan="6" style="text-align:right;"><input type="submit" name="envoyer" value="Suivant" style="width:100px; height:30px;"/></td>
+			</tr>
+		</table>
 
-				<tr>
-					<td width="150px"><label class="lab" for="nom"><b>Nom du client <span class="red">* </span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label></td>
-					<td><input class="lab" style="text-align:right;"type="text" name="nom" id="nom" onblur="textLimit(this,50, lim_nom);" required/></td>
-				</tr>
-				
-				<tr>
-					<td><label class="lab" for="societe"><b>Société </b><br/><small id="lim_soc">(Max 50 caractères)</small></label></td>
-					<td><input class="lab" style="text-align:right;" type="text" name="societe" id="societe" onblur="textLimit(this,50, lim_soc);" /></td>
-				</tr>
-				<tr>
-					<td><label class="lab" for="courriel" id="email"><b>Courriel <span class="red">* </span></b></label>
-					<td><input class="lab" style="text-align:right;" type="text" name="courriel" id="courriel" onblur="isEmail(this,email);" required/>
-				</tr>
-			</table>
-			
-			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">	
-				<tr>
-					<td colspan="6"><hr/></td>
-				</tr>
-				<tr>
-					<td style="text-align:center;" colspan="6"><b>Vos factures</b></td>
-				</tr>
-				<tr>
-					<td colspan="6"><hr/></td>
-				</tr>
-			</table>
-			
-			<table border="0" cellspacing="10" cellpadding="5" style="margin:auto;" id="conteneur" width="900px">
-					
-			</table>
-
-			<table border="0" cellspacing="0" cellpadding="5" style="margin:auto;" width="900px">		
-				<tr>
-					<td><input style="margin:10px;" type="button" value="+" id="plus" onclick="ajouterElement();"/></td>
-				</tr>
-				
-				<tr>
-					<td width="610px"></td>
-					<td width="110px" ><label class="lab" for="montanttot" ><b>Montant Total</b></label></td>
-					<td width="100px"><input class="lab" style="text-align:right;" type="text" name="montanttot" id="montanttot" value="0.00" readonly /></td>
-					<td> €</td>
-				</tr>
-			</table>
-				
-			<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;" width="930px">
-				<tr>
-					<td colspan="6"><hr/></td>
-				</tr>
-				<tr>
-					<td style="text-align:center;" colspan="6"><b>Informations complémentaires</b></td>
-				</tr>
-				<tr>
-					<td colspan="6"><hr/></td>
-				</tr>
-				
-				<tr>
-					<td><b>Commentaire </b><br/><small>(facultatif)</small></td>
-					<td><label class="lab" for="commentaire"><textarea class="lab" name="commentaire" id="commentaire" rows="10" cols="40" style="resize:none" ></textarea></label></td>
-				</tr>
-				
-				<tr>
-					<td colspan="6" style="text-align:right;"><input type="submit" name="envoyer" value="Suivant" style="width:100px; height:30px;"/></td>
-				</tr>
-			</table>
-
-			
-			<input type="hidden" name="nbr_fac" value="0" id="nbr_fac" />
-			
-		</form>	
-<?php
-	}
-?>
+		
+		<input type="hidden" name="nbr_fac" value="0" id="nbr_fac" />
+		
+	</form>	
 
 <script>
 

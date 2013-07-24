@@ -4,7 +4,10 @@
 
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
-<script type="text/javascript">	
+<script type="text/javascript">
+
+//Amélio => évité calcul montant total via parcour=> récupérer var session ?
+	
 		function scroll () {
 			document.getElementById('accordeon').style.marginTop=50+window.pageYOffset+"px";	
 		}
@@ -154,14 +157,40 @@
 			 
 			return xhr;
 		}
+		
+		function viderPanier(){
+			var Conteneur = document.getElementById('contenu');
+			if(Conteneur)
+			  {
+				var elementID, elementNo;
+				
+				if(Conteneur.childNodes.length > 0)
+				{
+				  for(var i = 0; i < Conteneur.childNodes.length; i++)
+				  {
+					// Ici, on vérifie qu'on peut récupérer les attributs, si ce n'est pas possible, on renvoit false, sinon l'attribut
+					elementID = (Conteneur.childNodes[i].getAttribute) ? Conteneur.childNodes[i].getAttribute('id') : false;
+					if(elementID)
+					{
+						var elementPattern=new RegExp("panier_elem_([0-9]*)","g");
+						elementNo = parseInt(elementID.replace(elementPattern, '$1'));
+						if(!isNaN(elementNo))
+						{
+							suppElem(elementNo)
+						}
+					}
+				  }
+				}
+			  }
+			document.getElementById('prix_tt_panier').innerHTML = '0.00';
+		}
 	</script>
 <?php
 	if(!isset($_GET['mode']))
 	{
 		$_GET['mode'] = 'view';
 	}
-	
-	
+
 	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_set_charset( 'utf8' );
@@ -206,12 +235,25 @@
 						}	
 						
 						?>
-						<div id="foot_panier"><span style="float:left; margin-left:5px;">Montant total : <span id="prix_tt_panier">0.00</span>€</span><a href="#" style="float:right; margin-right:5px;">Payer</a></div>
+						<div id="foot_panier"><span style="float:left; margin-left:5px;">Montant total : 
+							<span id="prix_tt_panier">
+								<?php
+									echo (isset($_SESSION['caddieTot'])) ? $_SESSION['caddieTot']:'0.00';		
+								?>
+								</span>
+							€</span>
+							
+							<div style="float:right; margin-right:5px;">
+								<span class="bt" onclick="viderPanier();" style="cursor:pointer;">Vider</span>
+								-
+								<a class="bt" href="index.php?page=paiement_final">Payer</a>
+							</div>
+						</div>
 					</div>
 				</div>
 				
 				 <script>
-					calTotal();
+					//calTotal();
 					$(function(){
 						$('#accordeon').accordion(); // appel du plugin	
 						$('#accordeon').accordion({

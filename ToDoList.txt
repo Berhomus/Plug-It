@@ -1,5 +1,5 @@
 Design : 
-- Recentrer le design 
+~ Recentrer le design 
 
 Compléter & tester :
 
@@ -17,7 +17,7 @@ fonctionnalité :
 - menu selected !
 
 X lien vers réseaux sociaux
-- boutique (avec possiblité de la cacher)
+~ boutique (avec possiblité de la cacher)
 - Preformatage pour mass mailing
 ~ Possiblité d'Inclusion vidéo accueil (voir systeme upload)
 
@@ -27,7 +27,13 @@ Autre :
 
 - préview d'image ?
 - limitation de caratères sur desc solution
+- MODIF TRT paiement pour boutique !
 
 référencement :
 
-- google
+~ google
+
+
+Amélio:
+- gestion d'erreur bdd
+- connection bdd et rq via objet
