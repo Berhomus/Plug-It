@@ -142,7 +142,7 @@
 <div id="accordeon"> <!-- Bloc principal, sur lequel nous appellerons le plugin -->
 	<h3><img src="./images/e_commerce_caddie.gif" style="width:20px; height:20px; vertical-align:-18%;"/>Panier</h3>
 	<div id="contenu">
-		<p id="top_panier"><table style="width:100%"><tr><td colspan="2">Nom</td><td>Qté</td><td>Prix Unitaire</td></tr></table></p>
+		<p id="top_panier"><table style="width:100%"><tr><td colspan="2">Nom</td><td style="float:left; margin-left:60px;">Qté</td><td style="float:right; margin-right:30px;">Prix Unitaire</td></tr></table></p>
 		<p id="div_panier"><hr/></p>
 		<p id="foot_panier"><span style="float:left; margin-left:5px;">Montant total : <span id="prix_tt_panier">0.00</span>€</span><input value="Payer" type="submit" style="float:right; margin-right:5px;"/></p>
 	</div>
