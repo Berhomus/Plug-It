@@ -4,6 +4,12 @@ Last Update : 12/07/2013
 Name : solutions.php => Plug-it
 *********************************************************-->
 
+	<head>
+		<title>Solutions - Plug it</title>
+		<meta name="description" content="Les solutions de plug-it sont : WanaDeskvous permet d’accéder à votre bureau virtuel depuis n’importe où* sur la planète !
+*connexion Internet requise. WanaDevvous propose une solution logicielle de gestion commerciale « en ligne » et entièrement sur-mesure... WanaTelvous offre la téléphonie HD, moderne, aux fonctionnalités étendues, en réduisant au maximum vos coûts ! WanaMailvous permet d’accéder à votre messagerie en tout lieu et de partager l’ensemble de vos fonctionnalités entre tous vos salariés ! WanaStorevous offre une sauvegarde automatique et sécurisée à 100 % de toutes vos données, en toute sérénité.. WanaBox vous permet de stocker tous vos documents sur l'ensemble de vos ordinateurs, tablettes et smartphones !" />
+	</head>
+
 </script>
 <?php
 	if(!isset($_GET['mode']))

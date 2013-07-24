@@ -4,6 +4,10 @@ Last Update : 12/07/2013
 Name : references.php => Plug-it
 *********************************************************-->
 
+	<head>
+		<title>Références - Plug it</title>
+		<meta name="description" content="Les principaux clients de Plug-it, satisfait des solutions proposées et de la mise en place de nos services d'infogérance, cloud computing, maintenance réseaux ..." />
+	</head>
 
 <?php
 	if(!isset($_GET['mode']))
