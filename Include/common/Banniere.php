@@ -14,8 +14,8 @@ Name : Banniere.php => Plug-it
 
 
 <div style="overflow:hidden;">
-	<a href="index.php?page=accueil"><img src="images/logotype_plug_it.png" style="position:absolute;bottom:25%;left:10%;"/></a>
-	<table style="position:absolute;right:10%;" height="137px" class="menu" cellspacing="0">
+	<a href="index.php?page=accueil"><img src="images/logotype_plug_it.png" style="position:absolute;bottom:25%;left:16%;"/></a>
+	<table style="position:absolute;right:13%;" height="137px" class="menu" cellspacing="0">
 		<tr>
 <?php
 		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());

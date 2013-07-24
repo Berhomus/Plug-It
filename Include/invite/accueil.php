@@ -3,7 +3,12 @@ Made by : AS Amiens - Bovin Antoine/Bensaid Borhane/Villain Benoit
 Last Update : 12/07/2013
 Name : accueil.php => Plug-it
 *********************************************************-->
-
+	
+	<head>
+		<title>Accueil - Plug it</title>
+		<meta name="description" content="Société de services en informatique spécialisée dans l’infogérance, l’hébergement de systèmes d’informations la mise en place de solutions de cloud computing et la maintenance de réseaux informatique." />
+	</head>
+	
 <?php
 	if(!isset($_GET['sub']))
 	{
@@ -57,7 +62,7 @@ Name : accueil.php => Plug-it
 				</div>
 			</div>
 
-			<div style="margin-top:40px;">
+			<div style="margin-top:40px; margin-left:100px; margin-right:100px;">
 				<table class="table_accueil" border="0" cellspacing="10" cellpadding="10">
 					<tr>
 						<td>

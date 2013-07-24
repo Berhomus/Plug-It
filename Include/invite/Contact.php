@@ -4,6 +4,11 @@ Last Update : 12/07/2013
 Name : Contact.php => Plug-it
 *********************************************************-->
 
+	<head>
+		<title>Contact - Plug it</title>
+		<meta name="description" content="Contactez plug-it à Amiens pour tout renseignement sur nos solutions informatiques, de cloud computing, d'infogérance, d'hébergement de SI et de maintenance de réseaux" />
+	</head>
+
 <script type="text/javascript" src="js/fct_de_trt_txt.js"></script>
 
 <?php
@@ -42,7 +47,7 @@ Name : Contact.php => Plug-it
 <h2 class="titre">Contactez-nous</h2>
 
 <form method="post" action="#">
-	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">
+	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto; margin-right:150px;">
 				<tr>
 					<td><b>Civilité <span class="red">*</span></b></td>
 					<td><select name="liste" required>

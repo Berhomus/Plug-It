@@ -4,6 +4,11 @@ Last Update : 12/07/2013
 Name : services.php => Plug-it
 *********************************************************-->
 
+	<head>
+		<title>Services - Plug it</title>
+		<meta name="description" content="Les services de plug-it sont : Maintenance : préventive, curative & évolutive; Infogérance : maintenance, dépannage & sauvegarde; Audit & conseil; Architecture réseau & ingénierie IT; Virtualisation : utilisation optimale des ressources; Mise à la norme Européenne des PCA;" />
+	</head>
+
 <?php
 
 	if(!isset($_GET['mode']))

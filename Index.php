@@ -101,7 +101,6 @@ Name : Index.php => Plug-it
 				INCLUDE("include\common\pied.php");
 			?>
 		</div>
-
 	</body>
 	
 
