@@ -2,31 +2,6 @@
 
 <h2 class="titre">Boutique en ligne </h2>
 
-
-<!--<ul id="panier">
-        <li class="paniersuite">Panier
-			<ul>
-				<li class="paniersuite">CSS</li>
-				<li class="paniersuite">Graphic design</li>
-				<li class="paniersuite">Development tools</li>
-				<li class="paniersuite">Payer</li>
-			</ul>
-        </li>
-</ul>
-
-
-
-<div class="btn-group"> <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
-  <ul class="dropdown-menu">
-    <li><a href="#">Dompteurs</a></li>
-    <li><a href="#">Zoos</a></li>
-    <li><a href="#">Chasseurs</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Autres témoignages</a></li>
-  </ul>
-</div>
-</div>-->
-
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script type="text/javascript">
@@ -36,20 +11,17 @@
 				
 			$('#accordeon').accordion({
 				event : 'click',
-				collapsible : true,	
-				active : 2
+				collapsible : true,
+				active : 1
 			});
 		
 		});
 		
 		window.onscroll = scroll;
+		
 		function scroll () {
 			document.getElementById('accordeon').style.marginTop=50+window.pageYOffset+"px";	
 		}
-		/*window.onresize = retaille;
-		function retaille() {
-		document.getElementById('accordeon').style.right=0.1*document.body.clientWidth;	
-		}*/
 		
 		
 		function dernierElement2()
@@ -96,7 +68,11 @@
 		function suppElem(idprod){
 			var elem = document.getElementById('panier_elem_'+idprod);
 			elem.parentNode.removeChild(elem);
-			document.getElementById('prix_tt_panier').innerHTML = Math.round(calTotal()*100)/100;
+			calTotal();
+			xhr = getXMLHttpRequest();
+			xhr.open("POST", "include/invite/modifpanier.php", true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send("id="+idprod);
 		}
 		
 		function calTotal(){
@@ -104,6 +80,7 @@
 			if(Conteneur)
 			  {
 				var elementID, elementNo;
+				
 				if(Conteneur.childNodes.length > 0)
 				{
 				  for(var i = 0; i < Conteneur.childNodes.length; i++)
@@ -116,13 +93,13 @@
 						elementNo = parseInt(elementID.replace(elementPattern, '$1'));
 						if(!isNaN(elementNo))
 						{
-							somme = parseFloat(document.getElementById('panier_elem_prix_'+elementNo).innerHTML.replace("€",""))*parseInt(document.getElementById('panier_elem_qte_'+elementNo).innerHTML.replace("x",""));
+							somme += parseFloat(document.getElementById('panier_elem_prix_'+elementNo).innerHTML.replace("€",""))*parseInt(document.getElementById('panier_elem_qte_'+elementNo).innerHTML.replace("x",""));
 						}
 					}
 				  }
 				}
 			  }
-			  return somme;
+			  document.getElementById('prix_tt_panier').innerHTML = Math.round(somme*100)/100;
 		}
 		
 		function ajoutpanier(idprod) {
@@ -131,7 +108,7 @@
 			
 			if(isIn == -1)
 			{
-				var nouvelem = document.createElement('p');
+				var nouvelem = document.createElement('div');
 				var last = dernierElement2();
 				var foot = cont.childNodes[last];
 				
@@ -140,6 +117,8 @@
 				var prix = document.getElementById('prix'+idprod).value;
 				var nom = document.getElementById('name'+idprod).value;
 				var qte = document.getElementById('qte'+idprod).value;
+				
+				document.getElementById('qte'+idprod).value = qte;
 				
 				nouvelem.setAttribute('id','panier_elem_'+idprod);
 				nouvelem.innerHTML = '<table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'+idprod+'">'+nom+'</td><td id="panier_elem_qte_'+idprod+'">x'+qte+'</td><td id="panier_elem_prix_'+idprod+'">'+prix+'€</td><td onclick="suppElem('+idprod+');" style="color:red;cursor: pointer;" id="panier_elem_supp_'+idprod+'">X</td></tr></table>';
@@ -151,41 +130,51 @@
 			else//elem deja existant
 			{
 				var elem = cont.childNodes[isIn];
-				var elementQte = parseInt(document.getElementById('panier_elem_qte_'+idprod).innerHTML.replace("x","")) + parseInt(document.getElementById('qte'+idprod).value);
-				var elementPrix = parseFloat(document.getElementById('panier_elem_prix_'+idprod).innerHTML.replace("€",""));
-				var elementnom= document.getElementById('panier_elem_nom_'+idprod).innerHTML;
-				
-				elem.innerHTML = '<table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'+idprod+'">'+elementnom+'</td><td id="panier_elem_qte_'+idprod+'">x'+elementQte+'</td><td id="panier_elem_prix_'+idprod+'">'+elementPrix+'€</td><td onclick="suppElem('+idprod+');" style="color:red;cursor: pointer;" id="panier_elem_supp_'+idprod+'">X</td></tr></table>';
+				var qte = parseInt(document.getElementById('panier_elem_qte_'+idprod).innerHTML.replace("x","")) + parseInt(document.getElementById('qte'+idprod).value);
+				var prix = parseFloat(document.getElementById('panier_elem_prix_'+idprod).innerHTML.replace("€",""));
+				var nom= document.getElementById('panier_elem_nom_'+idprod).innerHTML;
+
+				document.getElementById('qte_h'+idprod).value = qte;
+				elem.innerHTML = '<table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'+idprod+'">'+nom+'</td><td id="panier_elem_qte_'+idprod+'">x'+qte+'</td><td id="panier_elem_prix_'+idprod+'">'+prix+'€</td><td onclick="suppElem('+idprod+');" style="color:red;cursor: pointer;" id="panier_elem_supp_'+idprod+'">X</td></tr></table>';
 			}
 			
-			document.getElementById('prix_tt_panier').innerHTML = Math.round(calTotal()*100)/100;
+			calTotal();
+			$( "#accordeon" ).accordion( "option", "active", 0 );
+			
+			xhr = getXMLHttpRequest();
+			
+			xhr.open("POST", "include/invite/modifpanier.php", true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send("id="+idprod+"&nom="+nom+"&prix="+prix+"&qte="+qte);
 		}
 		
-		
+		function getXMLHttpRequest() {
+			var xhr = null;
+			 
+			if (window.XMLHttpRequest || window.ActiveXObject) {
+				if (window.ActiveXObject) {
+					try {
+						xhr = new ActiveXObject("Msxml2.XMLHTTP");
+					} catch(e) {
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+				} else {
+					xhr = new XMLHttpRequest();
+				}
+			} else {
+				alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+				return null;
+			}
+			 
+			return xhr;
+		}
 		</script>
-<form method="POST" action="#">
-<div id="accordeon"> <!-- Bloc principal, sur lequel nous appellerons le plugin -->
-	<h3><img src="./images/e_commerce_caddie.gif" style="width:20px; height:20px; vertical-align:-18%;"/>Panier</h3>
-	<div id="contenu">
-		<p id="top_panier"><table style="width:100%"><tr><td colspan="2">Nom</td><td style="float:left; margin-left:60px;">Qté</td><td style="float:right; margin-right:30px;">Prix Unitaire</td></tr></table></p>
-		<p id="div_panier"><hr/></p>
-		<p id="foot_panier"><span style="float:left; margin-left:5px;">Montant total : <span id="prix_tt_panier">0.00</span>€</span><input value="Payer" type="submit" style="float:right; margin-right:5px;"/></p>
-	</div>
-</div>
-
-<?php
-	
-?>
 
 <?php
 	if(!isset($_GET['mode']))
 	{
 		$_GET['mode'] = 'view';
 	}
-	
-	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_set_charset( 'utf8' );
 	
 	switch($_GET['mode'])
 	{	
@@ -198,12 +187,43 @@
 			
 			$nomcateg = $_GET['categ'];
 	
+			mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
+			mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+			mysql_set_charset( 'utf8' );
+			
 			$rq = MySQL_Query("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = '$nomcateg'")or die('Erreur SQL !<br />'.mysql_error());
 			$rq = MySQL_fetch_array($rq);
 			
 			if($rq['nombre'] >= 1)
 			{
+			
 				$rq = MySQL_Query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC")or die('Erreur SQL !<br />'.mysql_error());
+				$ar=MySQL_fetch_array($rq);
+			
+			?>
+			
+				<div id="accordeon"> <!-- Bloc principal, sur lequel nous appellerons le plugin PANIER-->
+					<h3><img src="./images/e_commerce_caddie.gif" style="width:20px; height:20px; vertical-align:-18%;"/>Panier</h3>
+					<div id="contenu">
+						<div id="top_panier"><table style="width:100%"><tr><td colspan="2">Nom</td><td style="float:left; margin-left:60px;">Qté</td><td style="float:right; margin-right:30px;">Prix Unitaire</td></tr></table></div>
+						<div id="div_panier"><hr/></div>
+						<?php
+						
+						if(isset($_SESSION['caddie']))
+						{
+							foreach($_SESSION['caddie'] as $article)
+							{
+								echo '<div id="panier_elem_'.$article['id'].'"><table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'.$article['id'].'">'.$article['nom'].'</td><td id="panier_elem_qte_'.$article['id'].'">x'.$article['qte'].'</td><td id="panier_elem_prix_'.$article['id'].'">'.$article['prix'].'€</td><td onclick="suppElem('.$article['id'].');" style="color:red;cursor: pointer;" id="panier_elem_supp_'.$article['id'].'">X</td></tr></table></div>';
+							}
+						}	
+						
+						?>
+						<div id="foot_panier"><span style="float:left; margin-left:5px;">Montant total : <span id="prix_tt_panier">0.00</span>€</span><a href="#" style="float:right; margin-right:5px;">Payer</a></div>
+					</div>
+				</div>
+				
+				 <script>calTotal();</script>
+			<?php
 				
 				$i=1; //délimite les colonnes
 				$j=1; //délimite les lignes
@@ -214,8 +234,6 @@
 				{
 					echo '<br/><div style="margin-left:415px;" class="menuverti" onclick="location.href=\'Index.php?page=admin_boutique\'">Ajouter un produit</div>';
 				}
-				
-				$ar=MySQL_fetch_array($rq);
 				
 				if(!empty($ar))
 				{
@@ -245,7 +263,7 @@
 						echo '</span>';
 						
 						echo '<input type="hidden" id="name'.$ar['id'].'" value="'.$ar['nom'].'"/>
-						<input type="hidden" id="qte'.$ar['id'].'" value="0"/>
+						<input type="hidden" id="qte_h'.$ar['id'].'" value="0"/>
 						<input type="hidden" id="prix'.$ar['id'].'" value="'.$ar['prix'].'"/>';
 						
 						echo '</td>';
@@ -264,8 +282,7 @@
 				{
 					echo '<h2>Aucun produit existant</h2>';
 				}
-				echo '</div>
-				</form>';
+				echo '</div>';
 			}
 			else
 			{
