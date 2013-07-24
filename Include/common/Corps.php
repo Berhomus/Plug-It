@@ -49,6 +49,10 @@ Name : Corps.php => Plug-it
 		INCLUDE("\include\invite\boutique.php");
 		break;
 		
+		case 'paiement_final':
+		INCLUDE("\include\invite\paiement.php");
+		break;
+		
 		case 'trt_paiement':
 		if(isset($_POST['DATA']))
 		{
@@ -62,6 +66,15 @@ Name : Corps.php => Plug-it
 		if(isset($_SESSION['id']))
 		{
 			INCLUDE("\include\admin\admin_solutions.php");
+		}
+		else
+			echo '<h2>Access Forbidden</h2>';
+		break;
+		
+		case 'admin_boutique':
+		if(isset($_SESSION['id']))
+		{
+			INCLUDE("\include\admin\admin_boutique.php");
 		}
 		else
 			echo '<h2>Access Forbidden</h2>';
