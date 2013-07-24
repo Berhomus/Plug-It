@@ -124,7 +124,7 @@
 				var nom= document.getElementById('panier_elem_nom_'+idprod).innerHTML;
 
 				document.getElementById('qte_h'+idprod).value = qte;
-				elem.innerHTML = '<table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'+idprod+'">'+nom+'</td><td id="panier_elem_qte_'+idprod+'">x'+qte+'</td><td id="panier_elem_prix_'+idprod+'">'+prix+'€</td><td onclick="suppElem('+idprod+');" style="color:red;cursor: pointer;" id="panier_elem_supp_'+idprod+'">X</td></tr></table>';
+				elem.innerHTML = '<table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'+idprod+'">'+nom+'</td><td style="float:left; margin-left:30px;" id="panier_elem_qte_'+idprod+'">x'+qte+'</td><td style="float:right; margin-right:15px;" id="panier_elem_prix_'+idprod+'">'+prix+'€</td><td onclick="suppElem('+idprod+');" style="color:red;cursor: pointer;" id="panier_elem_supp_'+idprod+'">X</td></tr></table>';
 			}
 			
 			calTotal();
@@ -230,7 +230,7 @@
 						{
 							foreach($_SESSION['caddie'] as $article)
 							{
-								echo '<div id="panier_elem_'.$article['id'].'"><table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'.$article['id'].'">'.$article['nom'].'</td><td id="panier_elem_qte_'.$article['id'].'">x'.$article['qte'].'</td><td id="panier_elem_prix_'.$article['id'].'">'.$article['prix'].'€</td><td onclick="suppElem('.$article['id'].');" style="color:red;cursor: pointer;" id="panier_elem_supp_'.$article['id'].'">X</td></tr></table></div>';
+								echo '<div id="panier_elem_'.$article['id'].'"><table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'.$article['id'].'">'.$article['nom'].'</td><td style="float:left; margin-left:30px;" id="panier_elem_qte_'.$article['id'].'">x'.$article['qte'].'</td><td style="float:right; margin-right:15px;" id="panier_elem_prix_'.$article['id'].'">'.$article['prix'].'€</td><td onclick="suppElem('.$article['id'].');" style="color:red;cursor: pointer;" id="panier_elem_supp_'.$article['id'].'">X</td></tr></table></div>';
 							}
 						}	
 						
