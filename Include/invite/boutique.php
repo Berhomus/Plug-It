@@ -2,31 +2,6 @@
 
 <h2 class="titre">Boutique en ligne </h2>
 
-
-<!--<ul id="panier">
-        <li class="paniersuite">Panier
-			<ul>
-				<li class="paniersuite">CSS</li>
-				<li class="paniersuite">Graphic design</li>
-				<li class="paniersuite">Development tools</li>
-				<li class="paniersuite">Payer</li>
-			</ul>
-        </li>
-</ul>
-
-
-
-<div class="btn-group"> <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> Action <span class="caret"></span> </a>
-  <ul class="dropdown-menu">
-    <li><a href="#">Dompteurs</a></li>
-    <li><a href="#">Zoos</a></li>
-    <li><a href="#">Chasseurs</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Autres témoignages</a></li>
-  </ul>
-</div>
-</div>-->
-
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
 <script type="text/javascript">
@@ -36,8 +11,8 @@
 				
 			$('#accordeon').accordion({
 				event : 'click',
-				collapsible : true,	
-				active : 2
+				collapsible : true,
+				active : 1
 			});
 		
 		});
@@ -46,10 +21,6 @@
 		function scroll () {
 			document.getElementById('accordeon').style.marginTop=50+window.pageYOffset+"px";	
 		}
-		/*window.onresize = retaille;
-		function retaille() {
-		document.getElementById('accordeon').style.right=0.1*document.body.clientWidth;	
-		}*/
 		
 		
 		function dernierElement2()
@@ -116,7 +87,7 @@
 						elementNo = parseInt(elementID.replace(elementPattern, '$1'));
 						if(!isNaN(elementNo))
 						{
-							somme = parseFloat(document.getElementById('panier_elem_prix_'+elementNo).innerHTML.replace("€",""))*parseInt(document.getElementById('panier_elem_qte_'+elementNo).innerHTML.replace("x",""));
+							somme += parseFloat(document.getElementById('panier_elem_prix_'+elementNo).innerHTML.replace("€",""))*parseInt(document.getElementById('panier_elem_qte_'+elementNo).innerHTML.replace("x",""));
 						}
 					}
 				  }
@@ -141,6 +112,8 @@
 				var nom = document.getElementById('name'+idprod).value;
 				var qte = document.getElementById('qte'+idprod).value;
 				
+				document.getElementById('qte'+idprod).value = qte;
+				
 				nouvelem.setAttribute('id','panier_elem_'+idprod);
 				nouvelem.innerHTML = '<table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'+idprod+'">'+nom+'</td><td id="panier_elem_qte_'+idprod+'">x'+qte+'</td><td id="panier_elem_prix_'+idprod+'">'+prix+'€</td><td onclick="suppElem('+idprod+');" style="color:red;cursor: pointer;" id="panier_elem_supp_'+idprod+'">X</td></tr></table>';
 				
@@ -154,11 +127,13 @@
 				var elementQte = parseInt(document.getElementById('panier_elem_qte_'+idprod).innerHTML.replace("x","")) + parseInt(document.getElementById('qte'+idprod).value);
 				var elementPrix = parseFloat(document.getElementById('panier_elem_prix_'+idprod).innerHTML.replace("€",""));
 				var elementnom= document.getElementById('panier_elem_nom_'+idprod).innerHTML;
-				
+
+				document.getElementById('qte'+idprod).value = elementQte;
 				elem.innerHTML = '<table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'+idprod+'">'+elementnom+'</td><td id="panier_elem_qte_'+idprod+'">x'+elementQte+'</td><td id="panier_elem_prix_'+idprod+'">'+elementPrix+'€</td><td onclick="suppElem('+idprod+');" style="color:red;cursor: pointer;" id="panier_elem_supp_'+idprod+'">X</td></tr></table>';
 			}
 			
 			document.getElementById('prix_tt_panier').innerHTML = Math.round(calTotal()*100)/100;
+			$( "#accordeon" ).accordion( "option", "active", 0 );
 		}
 		
 		
