@@ -13,9 +13,7 @@ if(isset($_SESSION['id']))
 	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_set_charset( 'utf8' );
-	
-<<<<<<< HEAD
-=======
+
 	$rq = mysql_query("SELECT * FROM menu ORDER BY position")or die('Erreur SQL !<br />'.mysql_error());
 	
 	echo'<div style="margin:auto;width:900px;margin-top:5%;">';
@@ -60,14 +58,9 @@ if(isset($_SESSION['id']))
 	
 <?php	
 	mysql_close();
->>>>>>> 68240230053167432b896091486b84708e210589
 }
 else
 {
 	echo '<h2 style="color:red">Access Forbidden !</h2>';
 }
-<<<<<<< HEAD
 ?>
-=======
-?>
->>>>>>> 68240230053167432b896091486b84708e210589
