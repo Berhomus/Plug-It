@@ -4,21 +4,7 @@
 
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
-<script type="text/javascript">
-	   $(function(){
-		
-			$('#accordeon').accordion(); // appel du plugin
-				
-			$('#accordeon').accordion({
-				event : 'click',
-				collapsible : true,
-				active : 1
-			});
-		
-		});
-		
-		window.onscroll = scroll;
-		
+<script type="text/javascript">	
 		function scroll () {
 			document.getElementById('accordeon').style.marginTop=50+window.pageYOffset+"px";	
 		}
@@ -168,13 +154,17 @@
 			 
 			return xhr;
 		}
-		</script>
-
+	</script>
 <?php
 	if(!isset($_GET['mode']))
 	{
 		$_GET['mode'] = 'view';
 	}
+	
+	
+	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_set_charset( 'utf8' );
 	
 	switch($_GET['mode'])
 	{	
@@ -187,9 +177,7 @@
 			
 			$nomcateg = $_GET['categ'];
 	
-			mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-			mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
-			mysql_set_charset( 'utf8' );
+			
 			
 			$rq = MySQL_Query("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = '$nomcateg'")or die('Erreur SQL !<br />'.mysql_error());
 			$rq = MySQL_fetch_array($rq);
@@ -222,7 +210,19 @@
 					</div>
 				</div>
 				
-				 <script>calTotal();</script>
+				 <script>
+					calTotal();
+					$(function(){
+						$('#accordeon').accordion(); // appel du plugin	
+						$('#accordeon').accordion({
+							event : 'click',
+							collapsible : true,
+							active : 1
+						});
+					});
+		
+					window.onscroll = scroll;
+				 </script>
 			<?php
 				
 				$i=1; //délimite les colonnes
@@ -290,8 +290,40 @@
 			}
 		break;
 		
-		case 'oneview' :
-			
+		case 'viewone' :
+		if(isset($_GET['id']))
+			{
+				$retour = mysql_query("SELECT count(id) as cpt FROM produit WHERE id='".$_GET["id"]."'")or die('Erreur SQL !<br />'.mysql_error());
+				$donnees = mysql_fetch_array($retour);
+				
+				if($donnees['cpt'] == 1)
+				{
+					//affichage 
+					$retour = mysql_query("SELECT * FROM produit WHERE id='".$_GET['id']."'") or die('Erreur SQL !<br />'.mysql_error());
+					$donnees = mysql_fetch_array($retour);
+					
+					echo '<div style="margin:auto;width:70%;">
+							<h2>'.$donnees['nom'].'</h2>
+							<hr/>
+							<img src="'.$donnees['images'].'" style="float:right;" width="280" height="170" />
+							'.nl2br($donnees['desc']);
+							
+					$j=mb_substr_count(nl2br($donnees['desc']),'<br />');
+
+					for($i=15-$j;$i>0;$i--)
+					{
+						echo '<br/>';
+					}
+					
+					
+					echo '</div>';
+					
+				}
+				else
+					echo '<p>Erreur</p>';
+			}
+			else
+				echo '<p>Erreur</p>';	
 		break;
 		
 		default :
