@@ -19,7 +19,7 @@ if(isset($_SESSION['id']))
 	
 	function popup()
     {
-    window.open('./include/admin/conseil.html','Pop-up','toolbar=0,location=0,directories=0,menuBar=0,resizable=0,scrollbars=yes,width=470,height=410,left=75,top=60');
+    window.open('./include/admin/conseil.html','Pop-up','toolbar=0,location=0,directories=0,menuBar=0,resizable=0,scrollbars=yes,width=470,height=430,left=75,top=60');
     }
 
 </script>
@@ -35,14 +35,18 @@ if(isset($_SESSION['id']))
 	mysql_set_charset( 'utf8' );
 	
 	$rq = mysql_query("SELECT * FROM menu ORDER BY position")or die('Erreur SQL !<br />'.mysql_error());
+	$i=1;
 	
+	echo '<form action="./traitement/trt_gest_meta.php" method="POST">';
 	echo '<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">';
 	while ($donnees = mysql_fetch_array($rq))
 	{
 		echo '<tr><td>La description pour <b>'.$donnees['nom'].'</b></td>';
-		echo '<td><textarea rows="4" cols="60" style="resize:none">'.$donnees['meta'].'</textarea></td></tr>';
+		echo '<td><textarea name="meta'.$i.'" rows="4" cols="60" style="resize:none">'.$donnees['meta'].'</textarea></td></tr>';
+		$i++;
 	}
-	echo '</table>';
+	echo '<tr><td><input type="submit" value="Valider"/></td></tr>';
+	echo '</table></form>';
 ?>
 	
 <?php
