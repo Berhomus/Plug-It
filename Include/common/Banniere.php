@@ -37,9 +37,9 @@ Name : Banniere.php => Plug-it
 				
 				echo '
 				<td onclick="location.href=\''.$ar['lien'].'\'"';
-					/*if($ar['interne'] and $_GET['n'] == $ar['position'])
+					if($ar['interne'] and $_GET['page'] == $ar['baseName'])
 						echo 'class="menu_selected"';
-					else*/
+					else
 						echo 'class="menu_unselected"';
 				echo '>'.$ar['nom'].'</td>';
 			}
