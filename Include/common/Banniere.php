@@ -27,14 +27,7 @@ Name : Banniere.php => Plug-it
 		while($ar=mysql_fetch_array($rq))
 		{
 			if($ar['active'] == true)
-			{
-				// echo '<div id="accordeon">';
-				// echo '<h3 onclick="location.href=\''.$ar['lien'].'\'">'.$ar['nom'].'</h3>';
-				// echo '';
-				// echo '';
-				// echo '';
-				// echo '';
-				
+			{				
 				echo '
 				<td onclick="location.href=\''.$ar['lien'].'\'"';
 					/*if($ar['interne'] and $_GET['n'] == $ar['position'])
@@ -42,6 +35,10 @@ Name : Banniere.php => Plug-it
 					else*/
 						echo 'class="menu_unselected"';
 				echo '>'.$ar['nom'].'</td>';
+				if($ar['baseName'] == 'boutique')
+				{
+					
+				}
 			}
 		}
 		
