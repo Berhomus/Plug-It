@@ -61,7 +61,7 @@ Name : accueil.php => Plug-it
 				</div>
 			</div>
 
-			<div style="margin-top:40px; margin-left:100px; margin-right:100px;">
+			<div style="margin-top:40px; margin-left:auto; margin-right:auto; width:1200px;">
 				<table class="table_accueil" border="0" cellspacing="10" cellpadding="10">
 					<tr>
 						<td>

@@ -14,8 +14,8 @@ Name : Banniere.php => Plug-it
 
 
 <div style="overflow:hidden;">
-	<a href="index.php?page=accueil"><img src="images/logotype_plug_it.png" style="position:absolute; float:left; bottom:25%; left:16%;"/></a>
-	<table style="position:absolute; float:right; left:32%" height="137px" class="menu" cellspacing="0">
+	<div style="margin-left:auto; width:950px; margin-right:auto"><a href="index.php?page=accueil"><img src="images/logotype_plug_it.png" style="position:absolute; float:left; bottom:25%; "/></a>
+	<table style="position:relative; float:right; margin-left:10px;" height="137px" class="menu" cellspacing="0">
 		<tr>
 		<?php
 		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
@@ -48,6 +48,6 @@ Name : Banniere.php => Plug-it
 		mysql_close();
 		?>
 		</tr>
-	</table>
+	</table></div>
 </div>
 

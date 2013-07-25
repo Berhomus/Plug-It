@@ -5,8 +5,8 @@ Name : Pied.php => Plug-it
 *********************************************************-->
 
 <!--<span style="position:absolute;top:40%;left:10%;">Plug-It &copy; 2013 <!-- AddThis Follow BEGIN</span> -->
-
-<table  style="position:absolute;top:40%;left:16%;">
+<div style="margin-left:auto; width:950px; margin-right:auto">
+<table style="position:absolute; top:40%;">
 <tr>
 	<td>
 	Plug-It &copy; 2013
@@ -24,7 +24,7 @@ Name : Pied.php => Plug-it
 	
 </tr>
 </table>
-<table style="position:absolute; right:13%;top:0px; height:40px" cellspacing="0">
+<table style="position:relative; float:right; top:0px; height:40px" cellspacing="0">
 	<tr>
 		<?php
 		if(isset($_SESSION['id']))
@@ -53,3 +53,4 @@ Name : Pied.php => Plug-it
 	</tr>
 
 </table>
+</div>
