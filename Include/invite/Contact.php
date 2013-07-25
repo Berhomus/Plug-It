@@ -4,11 +4,6 @@ Last Update : 12/07/2013
 Name : Contact.php => Plug-it
 *********************************************************-->
 
-	<head>
-		<title>Contact - Plug it</title>
-		<meta name="description" content="Contactez plug-it à Amiens pour tout renseignement sur nos solutions informatiques, de cloud computing, d'infogérance, d'hébergement de SI et de maintenance de réseaux" />
-	</head>
-
 <script type="text/javascript" src="js/fct_de_trt_txt.js"></script>
 
 <?php
