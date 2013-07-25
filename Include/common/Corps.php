@@ -30,50 +30,85 @@ Name : Corps.php => Plug-it
 		
 		?>" />
 	</head>
-	
+
 <?php	
-	switch ($_GET['page'])
-	{
-		case 'accueil':
-		INCLUDE("\include\invite\accueil.php");
-		break;
+
+	function checkUp($nom){
+		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
+		mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+		mysql_set_charset( 'utf8' );
 		
-		case 'services':
-		INCLUDE("\include\invite\services.php");
+		$rq = mysql_query("SELECT * FROM menu WHERE baseName = '$nom'");
+		$ar= mysql_fetch_array($rq);
+		
+		mysql_close();
+		
+		return $ar['active'];	
+	}
+
+	switch ($_GET['page'])
+	{	
+	
+		case 'accueil':
+		if(checkUp('accueil'))
+			INCLUDE("\include\invite\accueil.php");
+		else
+			echo '<h2>Page Inaccessible</h2>';
 		break;
 		
 		case 'solutions':
-		INCLUDE("\include\invite\solutions.php");
+		if(checkUp('solutions'))
+			INCLUDE("\include\invite\solutions.php");
+		else
+			echo '<h2>Page Inaccessible</h2>';
 		break;
 		
 		case 'references':
-		INCLUDE("include/invite/references.php");
+		if(checkUp('references'))
+			INCLUDE("include/invite/references.php");
+		else
+			echo '<h2>Page Inaccessible</h2>';
 		break;
 		
 		case 'contact':
-		INCLUDE("\include\invite\contact.php");
+		if(checkUp('contact'))
+			INCLUDE("\include\invite\contact.php");
+		else
+			echo '<h2>Page Inaccessible</h2>';
 		break;
 		
 		case 'support':
-		INCLUDE("\include\invite\support.php");
+		if(checkUp('support'))
+			INCLUDE("\include\invite\support.php");
+		else
+			echo '<h2>Page Inaccessible</h2>';
 		break;
 		
 		case 'reglement':
-		INCLUDE("/include/invite/reglement.php");
+		if(checkUp('reglement'))
+			INCLUDE("/include/invite/reglement.php");
+		else
+			echo '<h2>Page Inaccessible</h2>';
 		break;
 
-		case 'admin':
-		INCLUDE("\include\admin\admin.php");
-		break;
+		
 		
 		case 'boutique':
+		if(checkUp('boutique'))
 		INCLUDE("\include\invite\boutique.php");
+		break;
+		
+		
+		//autre
+		case 'services':
+		INCLUDE("\include\invite\services.php");
 		break;
 		
 		case 'paiement_final':
 		INCLUDE("\include\invite\paiement.php");
 		break;
 		
+		//api paiement 
 		case 'trt_paiement':
 		if(isset($_POST['DATA']))
 		{
@@ -81,6 +116,12 @@ Name : Corps.php => Plug-it
 		}
 		else
 			echo '<h2>Page Unreachable</h2>';
+		break;
+		
+		//admin
+		
+		case 'admin':
+		INCLUDE("\include\admin\admin.php");
 		break;
 		
 		case 'admin_solutions':
@@ -168,5 +209,5 @@ Name : Corps.php => Plug-it
 		echo '<h2>Page Inexistante</h2>';
 		break;
 	}
-			
+
 ?>
