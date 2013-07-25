@@ -66,15 +66,15 @@ else
 ?>
 <center>
 	<ul style="width:20%;margin:auto;">
-		<li class="menuverti" onclick="location.href='Index.php?page=admin_services'">Nouveau Service</li>
-		<li class="menuverti" onclick="location.href='Index.php?page=admin_solutions'">Nouvelle Solution</li>
-		<li class="menuverti" onclick="location.href='Index.php?page=admin_ref'">Nouvelle Référence</li>
-		<li class="menuverti" onclick="location.href='Index.php?page=admin_boutique'">Nouveau Produit</li>
-		<li class="menuverti" onclick="location.href='Index.php?page=gestionnaire_img'">Gestionnaire d'images</li>
-		<li class="menuverti" onclick="location.href='Index.php?page=mass_mailing'">E-Mail de Masse</li>
-		<li class="menuverti" onclick="location.href='Index.php?page=admin_menu'">Edition Menu</li>
-		<li class="menuverti" onclick="location.href='Index.php?page=admin_gest_menu'">Référencement</li>
-		<!--<li class="menuverti" onclick="location.href='Index.php?page=backup'">Gestionnaire de backup</li>-->
+		<li class="menuverti" onclick="location.href='index.php?page=admin_services'">Nouveau Service</li>
+		<li class="menuverti" onclick="location.href='index.php?page=admin_solutions'">Nouvelle Solution</li>
+		<li class="menuverti" onclick="location.href='index.php?page=admin_ref'">Nouvelle Référence</li>
+		<!--<li class="menuverti" onclick="location.href='index.php?page=admin_boutique'">Nouveau Produit</li>-->
+		<!--<li class="menuverti" onclick="location.href='index.php?page=gestionnaire_img'">Gestionnaire d'images</li>-->
+		<!--<li class="menuverti" onclick="location.href='index.php?page=mass_mailing'">E-Mail de Masse</li>-->
+		<!--<li class="menuverti" onclick="location.href='index.php?page=admin_menu'">Edition Menu</li>-->
+		<li class="menuverti" onclick="location.href='index.php?page=admin_gest_menu'">Référencement</li>
+		<!--<li class="menuverti" onclick="location.href='index.php?page=backup'">Gestionnaire de backup</li>-->
 	</ul>
 </center>
 <?php

@@ -30,8 +30,8 @@ if(isset($_SESSION['id']))
 
 <?php
 
-	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_set_charset( 'utf8' );
 	
 	$rq = mysql_query("SELECT * FROM menu ORDER BY position")or die('Erreur SQL !<br />'.mysql_error());

@@ -12,30 +12,11 @@ Name : Corps.php => Plug-it
 	}
 ?>	
 
-	<head>
-		<meta name="description" content="<?php
-		
-		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-		mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
-		mysql_set_charset( 'utf8' );
-		
-		$page=$_GET['page'];
-		
-		$rq = MySQL_Query("SELECT meta FROM menu WHERE baseName = '$page'")or die('Erreur SQL !<br />'.mysql_error());
-		$rq = MySQL_fetch_array($rq);
-		
-		echo $rq['meta'];
-		
-		MySQL_close()
-		
-		?>" />
-	</head>
-
 <?php	
 
 	function checkUp($nom){
-		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-		mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+		mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+		mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 		mysql_set_charset( 'utf8' );
 		
 		$rq = mysql_query("SELECT * FROM menu WHERE baseName = '$nom'");
@@ -51,14 +32,14 @@ Name : Corps.php => Plug-it
 	
 		case 'accueil':
 		if(checkUp('accueil'))
-			INCLUDE("\include\invite\accueil.php");
+			INCLUDE("include/invite/accueil.php");
 		else
 			echo '<h2>Page Inaccessible</h2>';
 		break;
 		
 		case 'solutions':
 		if(checkUp('solutions'))
-			INCLUDE("\include\invite\solutions.php");
+			INCLUDE("include/invite/solutions.php");
 		else
 			echo '<h2>Page Inaccessible</h2>';
 		break;
@@ -72,21 +53,21 @@ Name : Corps.php => Plug-it
 		
 		case 'contact':
 		if(checkUp('contact'))
-			INCLUDE("\include\invite\contact.php");
+			INCLUDE("include/invite/contact.php");
 		else
 			echo '<h2>Page Inaccessible</h2>';
 		break;
 		
 		case 'support':
 		if(checkUp('support'))
-			INCLUDE("\include\invite\support.php");
+			INCLUDE("include/invite/support.php");
 		else
 			echo '<h2>Page Inaccessible</h2>';
 		break;
 		
 		case 'reglement':
 		if(checkUp('reglement'))
-			INCLUDE("/include/invite/reglement.php");
+			INCLUDE("include/invite/reglement.php");
 		else
 			echo '<h2>Page Inaccessible</h2>';
 		break;
@@ -95,24 +76,24 @@ Name : Corps.php => Plug-it
 		
 		case 'boutique':
 		if(checkUp('boutique'))
-		INCLUDE("\include\invite\boutique.php");
+		INCLUDE("include/invite/boutique.php");
 		break;
 		
 		
 		//autre
 		case 'services':
-		INCLUDE("\include\invite\services.php");
+		INCLUDE("include/invite/services.php");
 		break;
 		
 		case 'paiement_final':
-		INCLUDE("\include\invite\paiement.php");
+		INCLUDE("include/invite/paiement.php");
 		break;
 		
 		//api paiement 
 		case 'trt_paiement':
 		if(isset($_POST['DATA']))
 		{
-			INCLUDE("/include/invite/trt_paiement.php");
+			INCLUDE("include/invite/trt_paiement.php");
 		}
 		else
 			echo '<h2>Page Unreachable</h2>';
@@ -121,13 +102,13 @@ Name : Corps.php => Plug-it
 		//admin
 		
 		case 'admin':
-		INCLUDE("\include\admin\admin.php");
+		INCLUDE("include/admin/admin.php");
 		break;
 		
 		case 'admin_solutions':
 		if(isset($_SESSION['id']))
 		{
-			INCLUDE("\include\admin\admin_solutions.php");
+			INCLUDE("include/admin/admin_solutions.php");
 		}
 		else
 			echo '<h2>Access Forbidden</h2>';
@@ -136,7 +117,7 @@ Name : Corps.php => Plug-it
 		case 'admin_boutique':
 		if(isset($_SESSION['id']))
 		{
-			INCLUDE("\include\admin\admin_boutique.php");
+			INCLUDE("include/admin/admin_boutique.php");
 		}
 		else
 			echo '<h2>Access Forbidden</h2>';
@@ -145,7 +126,7 @@ Name : Corps.php => Plug-it
 		case 'admin_menu':
 		if(isset($_SESSION['id']))
 		{
-			INCLUDE("\include\admin\admin_menu.php");
+			INCLUDE("include/admin/admin_menu.php");
 		}
 		else
 			echo '<h2>Access Forbidden</h2>';
@@ -154,7 +135,7 @@ Name : Corps.php => Plug-it
 		case 'admin_gest_menu':
 		if(isset($_SESSION['id']))
 		{
-			INCLUDE("\include\admin\admin_gest_menu.php");
+			INCLUDE("include/admin/admin_gest_menu.php");
 		}
 		else
 			echo '<h2>Access Forbidden</h2>';
@@ -163,7 +144,7 @@ Name : Corps.php => Plug-it
 		case 'admin_services':
 		if(isset($_SESSION['id']))
 		{
-			INCLUDE("\include\admin\admin_services.php");
+			INCLUDE("include/admin/admin_services.php");
 		}
 		else
 			echo '<h2>Access Forbidden</h2>';
@@ -172,7 +153,7 @@ Name : Corps.php => Plug-it
 		case 'admin_ref':
 		if(isset($_SESSION['id']))
 		{
-			INCLUDE("\include\admin\admin_ref.php");
+			INCLUDE("include/admin/admin_ref.php");
 		}
 		else
 			echo '<h2>Access Forbidden</h2>';

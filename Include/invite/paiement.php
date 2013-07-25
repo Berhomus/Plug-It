@@ -78,7 +78,7 @@ if(isset($_POST) and !empty($_POST))//si info client déjà connu => facture
 		</table>
 	
 <?php
-		$total = ((isset($_POST['type_paiement'])) ? $_SESSION['caddieTot']:str_replace('.',"",$_POST['montanttot']))*100;
+		$total = (isset($_POST['type_paiement'])) ? $_SESSION['caddieTot']:str_replace('.',"",$_POST['montanttot']);
 		include("include/webaffaires/call_request.php");
 	}
 	else

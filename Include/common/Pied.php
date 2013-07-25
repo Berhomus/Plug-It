@@ -15,7 +15,7 @@ Name : Pied.php => Plug-it
 	<td>
 	<div class="addthis_toolbox addthis_default_style">
 <a class="addthis_button_facebook_follow" addthis:userid="picardie.plugit"></a>
-<a class="addthis_button_linkedin_follow" addthis:userid="plugit" addthis:usertype="company"></a>
+<!--<a class="addthis_button_linkedin_follow" addthis:userid="plugit" addthis:usertype="company"></a>-->
 <a class="addthis_button_google_follow" addthis:userid="u/0/b/106356585896171032564/106356585896171032564/about"></a>
 </div>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-51e9453d6639bc8c"></script>

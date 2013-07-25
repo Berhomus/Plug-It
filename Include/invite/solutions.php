@@ -12,8 +12,8 @@ Name : solutions.php => Plug-it
 	}
 
 	
-	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_set_charset( 'utf8' );
 	
 	switch($_GET['mode'])
@@ -27,7 +27,7 @@ Name : solutions.php => Plug-it
 
 					if(isset($_SESSION['id']))
 					{
-						echo '<br/><div style="margin-left:415px;" class="menuverti" onclick="location.href=\'Index.php?page=admin_solutions\'">Ajouter une solution</div>';
+						echo '<br/><div style="margin-left:415px;" class="menuverti" onclick="location.href=\'index.php?page=admin_solutions\'">Ajouter une solution</div>';
 					}
 					
 					$i=1; //délimite les colonnes
@@ -41,7 +41,7 @@ Name : solutions.php => Plug-it
 								echo '<tr>';
 							
 							echo '<td>
-							<div class="blocksolution" onclick="location.href=\'Index.php?page=solutions&mode=viewone&id='.$donnees['id'].'\'">';
+							<div class="blocksolution" onclick="location.href=\'index.php?page=solutions&mode=viewone&id='.$donnees['id'].'\'">';
 							
 							if(isset($_SESSION['id']))
 							{
@@ -110,7 +110,7 @@ Name : solutions.php => Plug-it
 								echo '<tr>';
 							
 							echo '<td>
-							<div class="blocklink" onclick="location.href=\'Index.php?page=solutions&mode=viewone&id='.$donnees['id'].'\'">
+							<div class="blocklink" onclick="location.href=\'index.php?page=solutions&mode=viewone&id='.$donnees['id'].'\'">
 								<p style="text-align:center;position:relative;top:30%;">
 									<img src="images/fleche.png" style="vertical-align:middle;"/> <span style="font-size:13px;font-weight:bold;margin-left:5px;text-transform:uppercase;">'.$donnees['titre'].'</span>
 								</p>

@@ -10,6 +10,8 @@ Name : Index.php => Plug-it
 	include("function/disconnect_f.php");
 	
 	disconnect();
+	
+	
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +22,33 @@ Name : Index.php => Plug-it
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-
-		<title>Plug-it</title>
+		
+		<?php 
+			mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+			mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
+			mysql_set_charset( 'utf8' );
+			
+			if(!isset($_GET['page']))
+				$page = 'accueil';
+			else
+				$page=$_GET['page'];
+				
+			$rq = MySQL_Query("SELECT * FROM menu WHERE baseName = '$page'")or die('Erreur SQL !<br />'.mysql_error());
+			$rq = MySQL_fetch_array($rq);
+			
+			MySQL_close();
+		?>
+		
+		<title>Plug-it
+			<?php if(!empty($rq))
+				echo " - ".$rq['nom'];
+			?>
+		</title>
+		
+		<meta name="description" content="<?php
+			echo $rq['meta'];
+		?>" />
+		
 	
 		<link rel="stylesheet" href="css/iview.css" />
 		<link rel="stylesheet" href="css/skin 1/style.css" />
@@ -81,7 +108,7 @@ Name : Index.php => Plug-it
 	<body>
 		<div class="Banniere" id="head">
 			<?php
-				INCLUDE("include\common\banniere.php");
+				INCLUDE("include/common/banniere.php");
 			?>
 		</div>
 		
@@ -92,13 +119,13 @@ Name : Index.php => Plug-it
 		?>
 		>
 			<?php
-				INCLUDE("include\common\corps.php");
+				INCLUDE("include/common/corps.php");
 			?>
 		</div>
 		
 		<div class="Pied" id="footer">
 			<?php
-				INCLUDE("include\common\pied.php");
+				INCLUDE("include/common/pied.php");
 			?>
 		</div>
 	</body>

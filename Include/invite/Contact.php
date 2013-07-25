@@ -19,14 +19,14 @@ Name : Contact.php => Plug-it
 			
 			$message = $_POST['liste'] ." ". $_POST['nom'] ." ". $_POST['prenom'] ."\n".$societe."-".$_POST['courriel']."\n".$_POST['message'];
 			
-			 /*if(mail('you@yourdomain.fr', $objet,$message))
+			 if(mail('villain.benoit.dev@gmail.com', $objet,$message))
 			 {
 				$error_contact = 2;
 			 }
 			 else
 			 {
 				$error_contact = 3;
-			 } */
+			 }
 			
 			$error_contact = 2;
 		}

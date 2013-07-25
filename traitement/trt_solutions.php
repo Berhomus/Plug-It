@@ -11,8 +11,8 @@ Name : trt_solutions.php => Plug-it
 	include("../function/update_ordre.php");
 	include("../function/trt_image.php");
 	
-	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_set_charset( 'utf8' );
 
 	if(isset($_GET['mode']))

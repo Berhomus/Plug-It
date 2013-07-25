@@ -1,7 +1,7 @@
 <?php
 
-	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_set_charset( 'utf8' );
 	
 	if(isset($_POST)&& !empty($_POST))

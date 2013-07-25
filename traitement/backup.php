@@ -19,8 +19,8 @@ if(isset($_SESSION['id']))
 			<br/>
 			<center>
 				<ul style="width:20%;margin:auto;">
-					<li class="menuverti" onclick="location.href=\'Index.php?page=backup&sub=save\'">Sauvegarder</li>
-					<li class="menuverti" onclick="location.href=\'Index.php?page=backup&sub=load\'">Restaurer</li>
+					<li class="menuverti" onclick="location.href=\'index.php?page=backup&sub=save\'">Sauvegarder</li>
+					<li class="menuverti" onclick="location.href=\'index.php?page=backup&sub=load\'">Restaurer</li>
 				</ul>
 			</center>';
 		break;

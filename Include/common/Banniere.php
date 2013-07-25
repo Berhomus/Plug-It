@@ -18,8 +18,8 @@ Name : Banniere.php => Plug-it
 	<table style="position:relative; float:right; margin-left:10px;" height="137px" class="menu" cellspacing="0">
 		<tr>
 		<?php
-		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-		mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+		mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+		mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 		mysql_set_charset( 'utf8' );
 		
 		$rq = mysql_query("SELECT * FROM menu ORDER BY position")or die('Erreur SQL !<br />'.mysql_error());
