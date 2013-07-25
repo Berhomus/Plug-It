@@ -4,11 +4,6 @@ Last Update : 12/07/2013
 Name : support.php => Plug-it
 *********************************************************-->
 
-	<head>
-		<title>Support - Plug it</title>
-		<meta name="description" content="Un problème en informatique, plug-it propose à ses clients une assistance téléphonique afin de résoudre vos problèmes le plus rapidement et efficacement que possible." />
-	</head>
-
 <center>
 	<h2 class="titre">Téléchargez l'outil de prise en main à distance TeamViewer ci-dessous </h2>
 	

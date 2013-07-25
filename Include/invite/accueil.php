@@ -4,10 +4,6 @@ Last Update : 12/07/2013
 Name : accueil.php => Plug-it
 *********************************************************-->
 	
-	<head>
-		<meta name="description" content="" />
-	</head>
-	
 <?php
 	if(!isset($_GET['sub']))
 	{

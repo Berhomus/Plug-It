@@ -1,5 +1,4 @@
 
-
 <h2 class="titre">Boutique en ligne </h2>
 
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>

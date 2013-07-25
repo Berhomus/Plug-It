@@ -10,7 +10,29 @@ Name : Corps.php => Plug-it
 	{
 		$_GET['page'] = 'accueil';
 	}
-	
+?>	
+
+	<head>
+		<meta name="description" content="<?php
+		
+		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
+		mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+		mysql_set_charset( 'utf8' );
+		
+		$page=$_GET['page'];
+		
+		$rq = MySQL_Query("SELECT meta FROM menu WHERE baseName = '$page'")or die('Erreur SQL !<br />'.mysql_error());
+		$rq = MySQL_fetch_array($rq);
+		
+		echo $rq['meta'];
+		
+		MySQL_close()
+		
+		?>" />
+	</head>
+
+<?php	
+
 	function checkUp($nom){
 		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 		mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
@@ -23,8 +45,7 @@ Name : Corps.php => Plug-it
 		
 		return $ar['active'];	
 	}
-		
-	
+
 	switch ($_GET['page'])
 	{	
 	
