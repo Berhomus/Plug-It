@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 23 Juillet 2013 à 12:59
+-- Généré le: Jeu 25 Juillet 2013 à 08:26
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `nom` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `position` int(11) NOT NULL,
   `lien` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `meta` text COLLATE utf32_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci AUTO_INCREMENT=8 ;
 
@@ -82,14 +83,14 @@ CREATE TABLE IF NOT EXISTS `menu` (
 -- Contenu de la table `menu`
 --
 
-INSERT INTO `menu` (`id`, `interne`, `active`, `nom`, `position`, `lien`) VALUES
-(1, 1, 1, 'Accueil', 1, 'Index.php?page=accueil&sub=main'),
-(2, 1, 1, 'Solutions', 2, 'Index.php?page=solutions&mode=view'),
-(3, 1, 1, 'Références', 3, 'Index.php?page=references&mode=view'),
-(4, 1, 1, 'Contact', 4, 'Index.php?page=contact'),
-(5, 1, 1, 'Support', 5, 'Index.php?page=support'),
-(6, 1, 1, 'Paiement', 6, 'Index.php?page=reglement'),
-(7, 1, 1, 'Boutique', 6, 'Index.php?page=boutique');
+INSERT INTO `menu` (`id`, `interne`, `active`, `nom`, `position`, `lien`, `meta`) VALUES
+(1, 1, 1, 'Accueil', 1, 'Index.php?page=accueil&sub=main', 'Société de services en informatique spécialisée dans l’infogérance, l’hébergement de systèmes d’informations la mise en place de solutions de cloud computing et la maintenance de réseaux informatique.'),
+(2, 1, 1, 'Solutions', 2, 'Index.php?page=solutions&mode=view', 'Les solutions de plug-it sont : WanaDesk vous permet d’accéder à votre bureau virtuel depuis n’importe où* sur la planète !\r\n*connexion Internet requise. WanaDev vous propose une solution logicielle de gestion commerciale « en ligne » et entièrement sur-mesure... WanaTel vous offre la téléphonie HD, moderne, aux fonctionnalités étendues, en réduisant au maximum vos coûts ! WanaMail vous permet d’accéder à votre messagerie en tout lieu et de partager l’ensemble de vos fonctionnalités entre tous vos salariés ! WanaStore vous offre une sauvegarde automatique et sécurisée à 100 % de toutes vos données, en toute sérénité.. WanaBox vous permet de stocker tous vos documents sur l''ensemble de vos ordinateurs, tablettes et smartphones !'),
+(3, 1, 1, 'Références', 3, 'Index.php?page=references&mode=view', 'Les principaux clients de Plug-it, satisfait des solutions proposées et de la mise en place de nos services d''infogérance, cloud computing, maintenance réseaux ...'),
+(4, 1, 1, 'Contact', 4, 'Index.php?page=contact', 'Contactez plug-it à Amiens pour tout renseignement sur nos solutions informatiques, de cloud computing, d''infogérance, d''hébergement de SI et de maintenance de réseaux'),
+(5, 1, 1, 'Support', 5, 'Index.php?page=support', 'Un problème en informatique, plug-it propose à ses clients une assistance téléphonique afin de résoudre vos problèmes le plus rapidement et efficacement que possible.'),
+(6, 1, 1, 'Paiement', 6, 'Index.php?page=reglement', 'Vous êtes client de plug-it et vous souhaitez régler vos factures, cette page vous permet de payer en ligne en toute sécurité.'),
+(7, 1, 1, 'Boutique', 6, 'Index.php?page=boutique', 'Vous êtes client de plug-it et vous souhaitez régler vos factures, cette page vous permet de payer en ligne en toute sécurité.');
 
 -- --------------------------------------------------------
 
