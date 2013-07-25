@@ -14,10 +14,10 @@ Name : Banniere.php => Plug-it
 
 
 <div style="overflow:hidden;">
-	<a href="index.php?page=accueil"><img src="images/logotype_plug_it.png" style="position:absolute;bottom:25%;left:16%;"/></a>
-	<table style="position:absolute;right:13%;" height="137px" class="menu" cellspacing="0">
+	<div style="margin-left:auto; width:950px; margin-right:auto"><a href="index.php?page=accueil"><img src="images/logotype_plug_it.png" style="position:absolute; float:left; bottom:25%; "/></a>
+	<table style="position:relative; float:right; margin-left:10px;" height="137px" class="menu" cellspacing="0">
 		<tr>
-<?php
+		<?php
 		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
 		mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
 		mysql_set_charset( 'utf8' );
@@ -27,7 +27,14 @@ Name : Banniere.php => Plug-it
 		while($ar=mysql_fetch_array($rq))
 		{
 			if($ar['active'] == true)
-			{		
+			{
+				// echo '<div id="accordeon">';
+				// echo '<h3 onclick="location.href=\''.$ar['lien'].'\'">'.$ar['nom'].'</h3>';
+				// echo '';
+				// echo '';
+				// echo '';
+				// echo '';
+				
 				echo '
 				<td onclick="location.href=\''.$ar['lien'].'\'"';
 					/*if($ar['interne'] and $_GET['n'] == $ar['position'])
@@ -39,8 +46,8 @@ Name : Banniere.php => Plug-it
 		}
 		
 		mysql_close();
-?>
+		?>
 		</tr>
-	</table>
+	</table></div>
 </div>
 
