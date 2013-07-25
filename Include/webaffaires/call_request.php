@@ -22,7 +22,7 @@ if(isset($_POST) and !empty($_POST))
 	$TheCaddie[] =  $_POST['montanttot'];*/
 	
 
-	$parm="merchant_id=042161736600032";
+	$parm="merchant_id=014022286611111";
 	$parm="$parm merchant_country=fr";
 	$parm="$parm amount=".$total;
 	$parm="$parm currency_code=978";
@@ -33,7 +33,7 @@ if(isset($_POST) and !empty($_POST))
 	    //    -> Windows : $parm="$parm pathfile=c:/repertoire/pathfile";
 	    //    -> Unix    : $parm="$parm pathfile=/home/repertoire/pathfile";
 	    
-	$parm="$parm pathfile=c:/wamp/www/plug-it/include/webaffaires/param/pathfile";
+	$parm="$parm pathfile=/homez.527/plugit/www/include/webaffaires/param/pathfile";
 
 	//		Si aucun transaction_id n'est affecté, request en génère
 	//		un automatiquement à partir de heure/minutes/secondes
@@ -48,9 +48,9 @@ if(isset($_POST) and !empty($_POST))
 	// 		Les valeurs proposées ne sont que des exemples
 	// 		Les champs et leur utilisation sont expliqués dans le Dictionnaire des données
 	//
-	 		$parm="$parm normal_return_url=http://127.0.0.1/plug-it/index.php?page=trt_paiement";
-			$parm="$parm cancel_return_url=http://127.0.0.1/plug-it/index.php?page=trt_paiement";
-			$parm="$parm automatic_response_url=http://127.0.0.1/plug-it/include/webaffaires/call_autoresponse.php";
+	 		$parm="$parm normal_return_url=http://www.plug-it.com/index.php?page=trt_paiement";
+			$parm="$parm cancel_return_url=http://www.plug-it.com/index.php?page=trt_paiement";
+			$parm="$parm automatic_response_url=http://www.plug-it.com/include/webaffaires/call_autoresponse.php";
 			$parm="$parm language=fr";
 			$parm="$parm payment_means=CB,2,VISA,2,MASTERCARD,2";
 	//		$parm="$parm header_flag=no";
@@ -105,8 +105,7 @@ if(isset($_POST) and !empty($_POST))
 	// -> Unix    : $path_bin = "/home/repertoire/bin/request";
 	//
 
-	$path_bin = "c:/wamp/www/plug-it/include/webaffaires/bin/request.exe";
-
+	$path_bin = "/homez.527/plugit/www/include/webaffaires/bin/static/request";
 
 	//	Appel du binaire request
 	// La fonction escapeshellcmd() est incompatible avec certaines options avancées

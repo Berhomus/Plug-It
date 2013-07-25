@@ -12,8 +12,8 @@ Name : services.php => Plug-it
 	}
 
 	
-	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_set_charset( 'utf8' );
 	
 	switch($_GET['mode'])
@@ -25,7 +25,7 @@ Name : services.php => Plug-it
 				
 					if(isset($_SESSION['id']))
 					{
-						echo '<br/><div style="margin:auto;" class="menuverti" onclick="location.href=\'Index.php?page=admin_services\'">Ajouter un service</div>';
+						echo '<br/><div style="margin:auto;" class="menuverti" onclick="location.href=\'index.php?page=admin_services\'">Ajouter un service</div>';
 					}
 					
 					$retour = mysql_query('SELECT * FROM services ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
@@ -40,7 +40,7 @@ Name : services.php => Plug-it
 								echo '<tr>';
 							
 							echo '<td>
-							<div class="blockservice" onclick="location.href=\'Index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">';
+							<div class="blockservice" onclick="location.href=\'index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">';
 							
 							if(isset($_SESSION['id']))
 							{
@@ -108,7 +108,7 @@ Name : services.php => Plug-it
 								echo '<tr>';
 							
 							echo '<td>
-							<div class="blocklink" onclick="location.href=\'Index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">
+							<div class="blocklink" onclick="location.href=\'index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">
 								<p style="text-align:center;position:relative;top:30%;">
 									<img src="images/fleche.png" style="vertical-align:middle;"/> <span style="font-size:13px;font-weight:bold;margin-left:5px;text-transform:uppercase;">'.$donnees['subtitre'].'</span>
 								</p>

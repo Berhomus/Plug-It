@@ -23,7 +23,7 @@ if(isset($_POST['DATA']))
 			//    -> Windows : $pathfile="pathfile=c:/repertoire/pathfile"
 			//    -> Unix    : $pathfile="pathfile=/home/repertoire/pathfile"
 			
-		$pathfile="pathfile=c:/wamp/www/plug-it/include/webaffaires/param/pathfile";
+		$pathfile="pathfile=/homez.527/plugit/www/include/webaffaires/param/pathfile";
 
 		//Initialisation du chemin de l'executable response (à modifier)
 		//ex :
@@ -31,7 +31,7 @@ if(isset($_POST['DATA']))
 		//-> Unix    : $path_bin = "/home/repertoire/bin/response"
 		//
 
-		$path_bin = "c:/wamp/www/plug-it/include/webaffaires/bin/response.exe";
+		$path_bin = "/homez.527/plugit/www/include/webaffaires/bin/static/response";
 
 		// Appel du binaire response
 		$message = escapeshellcmd($message);
@@ -96,7 +96,7 @@ if(isset($_POST['DATA']))
 		//    -> Unix    : $logfile="/home/repertoire/log/logfile.txt";
 		//
 
-		$logfile="c:\\wamp\\www\\plug-it\\log_paiement.txt";
+		$logfile="/homez.527/plugit/www/log_paiement.txt";
 		$fp=fopen($logfile,'a');
 		
 		//  analyse du code retour
@@ -150,7 +150,7 @@ if(isset($_POST['DATA']))
 				$Msg.= "CERTIFICAT DE LA TRANSACTION   = $payment_certificate \n\n";
 				$Msg.= "------------------------------------------------------------\n\n";
 				
-				$Msg.= "http://www.Plug-it.fr\n\n";
+				$Msg.= "http://www.Plug-it.com\n";
 				
 				$Msg.= "Merci de votre confiance \n";
 				
@@ -160,8 +160,8 @@ if(isset($_POST['DATA']))
 				//mail('xxxxx@xxxxx.fr' , $Sujet, $Msg, 'From: shop@monsite.com');
 				
 				//ajout BDD
-				mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-				mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+				mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());
+				mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 				
 				mysql_query("INSERT INTO transaction VALUES ('','$order_id','$transaction_id','$customer_id','$customer_email','$amount','$payment_time')")or die("Erreur SQL");
 				

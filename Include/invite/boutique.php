@@ -190,8 +190,8 @@
 		$_GET['mode'] = 'view';
 	}
 
-	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_set_charset( 'utf8' );
 	
 	switch($_GET['mode'])
@@ -273,7 +273,7 @@
 					
 				if(isset($_SESSION['id']))
 				{
-					echo '<br/><div style="margin-left:415px;" class="menuverti" onclick="location.href=\'Index.php?page=admin_boutique\'">Ajouter un produit</div>';
+					echo '<br/><div style="margin-left:415px;" class="menuverti" onclick="location.href=\'index.php?page=admin_boutique\'">Ajouter un produit</div>';
 				}
 				
 				if(!empty($ar))
@@ -286,7 +286,7 @@
 							echo '<tr>';
 						
 						echo '<td>
-						<div class="blockproduit" onclick="location.href=\'Index.php?page=boutique&mode=viewone&id='.$ar['id'].'\'"> ';
+						<div class="blockproduit" onclick="location.href=\'index.php?page=boutique&mode=viewone&id='.$ar['id'].'\'"> ';
 						
 						if(isset($_SESSION['id']))
 						{

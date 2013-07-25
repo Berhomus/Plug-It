@@ -10,8 +10,8 @@ Name : references.php => Plug-it
 		$_GET['mode'] = 'view';
 	}
 
-	mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_set_charset( 'utf8' );
 	
 	switch($_GET['mode'])
@@ -26,7 +26,7 @@ Name : references.php => Plug-it
 				
 				if(isset($_SESSION['id']))
 				{
-					echo '<br/><div style="margin:auto;" class="menuverti" onclick="location.href=\'Index.php?page=admin_ref\'">Ajouter une r&eacutef&eacuterence</div>';
+					echo '<br/><div style="margin:auto;" class="menuverti" onclick="location.href=\'index.php?page=admin_ref\'">Ajouter une r&eacutef&eacuterence</div>';
 				}
 				
 					$i=1; //délimite les colonnes

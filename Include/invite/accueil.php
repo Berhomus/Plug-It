@@ -19,8 +19,8 @@ Name : accueil.php => Plug-it
 				<div id="iview">
 				<?php
 				
-					mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-					mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+					mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+					mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 					
 					$img = array('.png', '.gif', '.jpg', '.jpeg','.bmp','.avi','.mp4');
 					$video = array('.avi','.mp4');
@@ -92,8 +92,8 @@ Name : accueil.php => Plug-it
 						<td>
 						
 						<?php
-							mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-							mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+							mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+							mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 							mysql_set_charset( 'utf8' );
 							mysql_query("UPDATE services SET corps = replace(corps, '<br/>', '')");
 							$retour = mysql_query('SELECT * FROM services ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());

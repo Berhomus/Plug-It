@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 3.4.10.1
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 25 Juillet 2013 à 08:26
--- Version du serveur: 5.5.24-log
--- Version de PHP: 5.3.13
+-- Généré le : Jeu 25 Juillet 2013 à 09:35
+-- Version du serveur: 5.5.20
+-- Version de PHP: 5.3.10
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,14 +31,14 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `login` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `mdp_md5` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `admin`
 --
 
 INSERT INTO `admin` (`id`, `login`, `mdp_md5`) VALUES
-(1, 'moi', '70b783251225354e883a5bef3c011843');
+(2, 'plugit', 'b04942b84582fc7f84712a538b7b8829');
 
 -- --------------------------------------------------------
 
@@ -72,25 +72,26 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `interne` tinyint(1) NOT NULL,
   `active` tinyint(1) NOT NULL,
-  `nom` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `nom` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `baseName` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `position` int(11) NOT NULL,
-  `lien` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `meta` text COLLATE utf32_unicode_ci NOT NULL,
+  `lien` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `meta` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `menu`
 --
 
-INSERT INTO `menu` (`id`, `interne`, `active`, `nom`, `position`, `lien`, `meta`) VALUES
-(1, 1, 1, 'Accueil', 1, 'Index.php?page=accueil&sub=main', 'Société de services en informatique spécialisée dans l’infogérance, l’hébergement de systèmes d’informations la mise en place de solutions de cloud computing et la maintenance de réseaux informatique.'),
-(2, 1, 1, 'Solutions', 2, 'Index.php?page=solutions&mode=view', 'Les solutions de plug-it sont : WanaDesk vous permet d’accéder à votre bureau virtuel depuis n’importe où* sur la planète !\r\n*connexion Internet requise. WanaDev vous propose une solution logicielle de gestion commerciale « en ligne » et entièrement sur-mesure... WanaTel vous offre la téléphonie HD, moderne, aux fonctionnalités étendues, en réduisant au maximum vos coûts ! WanaMail vous permet d’accéder à votre messagerie en tout lieu et de partager l’ensemble de vos fonctionnalités entre tous vos salariés ! WanaStore vous offre une sauvegarde automatique et sécurisée à 100 % de toutes vos données, en toute sérénité.. WanaBox vous permet de stocker tous vos documents sur l''ensemble de vos ordinateurs, tablettes et smartphones !'),
-(3, 1, 1, 'Références', 3, 'Index.php?page=references&mode=view', 'Les principaux clients de Plug-it, satisfait des solutions proposées et de la mise en place de nos services d''infogérance, cloud computing, maintenance réseaux ...'),
-(4, 1, 1, 'Contact', 4, 'Index.php?page=contact', 'Contactez plug-it à Amiens pour tout renseignement sur nos solutions informatiques, de cloud computing, d''infogérance, d''hébergement de SI et de maintenance de réseaux'),
-(5, 1, 1, 'Support', 5, 'Index.php?page=support', 'Un problème en informatique, plug-it propose à ses clients une assistance téléphonique afin de résoudre vos problèmes le plus rapidement et efficacement que possible.'),
-(6, 1, 1, 'Paiement', 6, 'Index.php?page=reglement', 'Vous êtes client de plug-it et vous souhaitez régler vos factures, cette page vous permet de payer en ligne en toute sécurité.'),
-(7, 1, 1, 'Boutique', 6, 'Index.php?page=boutique', 'Vous êtes client de plug-it et vous souhaitez régler vos factures, cette page vous permet de payer en ligne en toute sécurité.');
+INSERT INTO `menu` (`id`, `interne`, `active`, `nom`, `baseName`, `position`, `lien`, `meta`) VALUES
+(1, 1, 1, 'Accueil', 'accueil', 1, 'Index.php?page=accueil&sub=main', 'Société de services en informatique spécialisée dans l’infogérance, l’hébergement de systèmes d’informations la mise en place de solutions de cloud computing et la maintenance de réseaux informatique.'),
+(2, 1, 1, 'Solutions', 'solutions', 2, 'Index.php?page=solutions&mode=view', 'Les solutions de plug-it sont : WanaDesk vous permet d’accéder à votre bureau virtuel depuis n’importe où* sur la planète !\r\n*connexion Internet requise. WanaDev vous propose une solution logicielle de gestion commerciale « en ligne » et entièrement sur-mesure... WanaTel vous offre la téléphonie HD, moderne, aux fonctionnalités étendues, en réduisant au maximum vos coûts ! WanaMail vous permet d’accéder à votre messagerie en tout lieu et de partager l’ensemble de vos fonctionnalités entre tous vos salariés ! WanaStore vous offre une sauvegarde automatique et sécurisée à 100 % de toutes vos données, en toute sérénité.. WanaBox vous permet de stocker tous vos documents sur l''ensemble de vos ordinateurs, tablettes et smartphones !'),
+(3, 1, 1, 'Références', 'references', 3, 'Index.php?page=references&mode=view', 'Les principaux clients de Plug-it, satisfait des solutions proposées et de la mise en place de nos services d''infogérance, cloud computing, maintenance réseaux ...'),
+(4, 1, 1, 'Contact', 'contact', 4, 'Index.php?page=contact', 'Contactez plug-it à Amiens pour tout renseignement sur nos solutions informatiques, de cloud computing, d''infogérance, d''hébergement de SI et de maintenance de réseaux'),
+(5, 1, 1, 'Support', 'support', 5, 'Index.php?page=support', 'Un problème en informatique, plug-it propose à ses clients une assistance téléphonique afin de résoudre vos problèmes le plus rapidement et efficacement que possible.'),
+(6, 1, 1, 'Paiement', 'reglement', 6, 'Index.php?page=reglement', 'Vous êtes client de plug-it et vous souhaitez régler vos factures, cette page vous permet de payer en ligne en toute sécurité.'),
+(7, 1, 0, 'Boutique', 'boutique', 6, 'Index.php?page=boutique', 'Vous êtes client de plug-it et vous souhaitez régler vos factures, cette page vous permet de payer en ligne en toute sécurité.');
 
 -- --------------------------------------------------------
 
@@ -109,14 +110,6 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `priorite` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
-
---
--- Contenu de la table `produit`
---
-
-INSERT INTO `produit` (`id`, `nom`, `images`, `desc`, `date`, `prix`, `categorie`, `priorite`) VALUES
-(1, 'Produit', 'images/ecoute_conseil.png', 'Ceci est un produit\r\nizerjfajf zudzaiohuf\r\nfhzeahef', '2013-07-22 13:21:56', 11.99, 'destokage', 4),
-(2, 'Produit', 'images/ecoute_conseil.png', 'Ceci est un produit\r\nizerjfajf zudzaiohuf\r\nfhzeahef', '2013-07-22 13:21:56', 11.99, 'destokage', 4);
 
 -- --------------------------------------------------------
 
@@ -211,9 +204,7 @@ INSERT INTO `solutions` (`id`, `titre`, `corps`, `image_car`, `image_sol`, `desc
 (4, 'WanaMail', '<p>\r\n<img style="margin-right:10px;" src="images/fleche.png"/><span class="titre">Messagerie collaborative</span>\r\n<b>\r\nMicrosoft Exchange Messagerie électronique, calendriers et contacts professionnels sur votre PC, téléphone ou sur Internet.\r\n</b>\r\n<b>Fonctionnalités :</b>\r\n- Les utilisateurs peuvent consulter leur courrier électronique, leur calendrier et leurs contacts de pratiquement n''importe où à l''aide de leurs ordinateur, navigateur ou téléphone.\r\n- Des boîtes aux lettres de 25 Go par utilisateur s''intègrent en toute simplicité à Outlook.\r\n- Des pièces jointes d''une taille maximale de 25 Mo peuvent être envoyées.\r\n- Accédez à des outils de gestion en ligne simples d''utilisation qui vous permettent d''administrer les autorisations des utilisateurs et les paramètres des services, et de configurer la messagerie électronique sur votre propre domaine.\r\n</p>\r\n<p>\r\n<img style="margin-right:10px;" src="images/fleche.png"/><span class="titre">Antispam</span>\r\n\r\n<b>Face aux techniques en constante évolution déployées pour pénétrer les défenses existantes des entreprises, les menaces e-mail ne se limitent plus aux simples messages indésirables.</b>\r\n\r\nNotre solution Anti-Spam combine les meilleures techniques classiques avec la technologie révolutionnaire de détection contextuelle afin \r\nd’éliminer le plus large éventail de menaces e-mail connues ou émergentes.\r\n</p>\r\n<p>\r\n<img style="margin-right:10px;" src="images/fleche.png"/><span class="titre">Emailing de masse</span>\r\n\r\nL’e-mail, est l’un des moyens de communications des plus utilisé et est devenu incontournable ces dernières années.\r\nL’e-mail est utilisé tous les jours de différentes façons, tel que l’envoi de courrier, l’envoi de courrier avec de gros fichiers, l’envoi de newsletter, l’envoi d’e-mails publicitaires ou bien encore l’e-mail d’alerte, etc.\r\n\r\n<b>Avec nos serveurs d''emailing, Nous vous permettons d''envoyer tous vos emailing depuis votre logiciel de messagerie (ex: Outlook, Thunderbird) et de suivre leurs résultats grâce à l''outil de tracking associé et ce jusqu''à 100 000 par jour avec une simple ligne ADSL.</b>\r\n\r\n</p>', 'images/slide_04.jpg', 'images/solutions_wanamail.jpg', 'vous permet d’accéder à votre messagerie en tout lieu et de partager l’ensemble de vos fonctionnalités entre tous vos salariés !', '2013-06-21 08:55:36', 9),
 (5, 'WanaStore', '<p>\r\n<img style="margin-right:10px;" src="images/fleche.png"/><span class="titre">Sauvegardez vos données stratégiques. Protéger les données qui garantissent la bonne marche de votre entreprise.</span>\r\n\r\nPlug-it propose une télé sauvegarde incrémentielle à l’octet via une simple ligne internet.\r\nAprès la sauvegarde initiale, Plug-it sauvegarde uniquement les morceaux de fichier nouveaux ou modifiés, économisant ainsi la bande passante et garantissant des sauvegardes ultérieures extrêmement rapides.\r\n</p>\r\n<p>\r\n<img style="margin-right:10px;" src="images/fleche.png"/><span class="titre">À partir de 1 Go, nombre de poste illimité et coût maitrisé</span>\r\n</p>\r\n', 'images/slide_05.jpg', 'images/solutions_wanastore.jpg', 'vous offre une sauvegarde automatique et sécurisée à 100 % de toutes vos données, en toute sérénité...', '2013-06-21 09:08:51', 9),
 (6, 'WanaBox', '<p>\r\n<img style="margin-right:10px;" src="images/fleche.png"/><span class="titre">Stocker l''ensemble de vos documents</span>\r\n\r\n- Disponible sur l''ensemble de vos ordinateurs.\r\n- Accessible sur toutes vos tablettes et smartphones.\r\n- Sauvegardes quotidiennes disponibles sur 45 jours.\r\n- Partagez vos données avec d''autres utilisateurs.\r\n- Travaillez en mode déconnecté sur vos documents.\r\n</p>\r\n<p>\r\n<img style="margin-right:10px;" src="images/fleche.png"/><span class="titre">Des tarifs très attractifs selon chaque utilisation</span>\r\n<b>\r\n- Stockage jusqu''à 20 Go : 4,90 € HT par mois.\r\n- Stockage de 20 Go à 49 Go : 6,90 € HT par mois.\r\n- Stockage de 49 Go à 100 Go : 14,90 € HT par mois.\r\n</b>\r\n</p>\r\n', 'images/slide_06.jpg', 'images/solutions_wanabox.jpg', 'vous permet de stocker tous vos documents sur l''ensemble de vos ordinateurs, tablettes et smartphones !', '2013-06-21 09:13:55', 9),
-(7, 'WanaShare', '<p>\r\n<img style="margin-right:10px;" src="images/fleche.png"/><span class="titre">WanaShare est une plateforme de gestion de l''information et de collaboration professionnelle basée sur le produit Microsoft© SharePoint 2010 qui vous aide à améliorer votre productivité et à gérer votre contenu, \r\nen utilisant un navigateur Internet.</span>\r\n\r\nLes fonctionnalités intégrées de WanaShare, optimisées par des technologies d''indexation et de \r\nrecherche, vous permettent de vous adapter rapidement à l''évolution de vos besoins métier.\r\nVous pouvez ainsi prendre des décisions fondées sur des données métier consolidées et déployer des \r\napplications métiers de façon rapide et sécurisée afin de renforcer la collaboration dans et hors de votre\r\nentreprise.\r\n</p>\r\n<p>\r\n<img style="margin-right:10px;" src="images/fleche.png"/><span class="titre">WanaShare, pour quels usages ? WanaShare vous permet d''accroître la productivité via un ensemble intégré de\r\nfonctionnalités innovantes. Parmi elles, on peut citer :</span>\r\n\r\n- Accessibilité.\r\n- Affichage d''informations.\r\n- Prise en main de WSS 3.0.\r\n- Conservation de plusieurs versions de fichiers et d''éléments.\r\n- Création de sites, de listes et de bibliothèques.\r\n- Formules et fonctions.\r\n- Gestion de sites et de paramètres.\r\n- Intégration du courrier électronique aux sites, listes et bibliothèques.\r\n- Organisation de réunions.\r\n- Partage de fichiers et de documents.\r\n- Partage d''informations.\r\n- Personnalisation de sites, de pages, de listes et de bibliothèques.\r\n- Utilisation des environnements internationaux.\r\n- Utilisation des flux de travail pour gérer les processus.\r\n</p>', 'images/slide_07.jpg', 'images/solutions_wanashare.jpg', 'vous permet de gérer l’information en collaboration professionnelle, en utilisant juste un navigateur Internet.', '2013-06-21 09:19:48', 9),
-(20, 'My solution', '\r\n					zqfsdfsdfsdfsqdfdsqfq<br>\r\n															', 'images/blackberry-940x387_make.png', 'images/about-img1_make.jpg', 'dfdfdfdsfshghgfhgfdfdgfdhfdghdhgdfh<br>fgfgfgdfg<br>dsfdsfsdfddgfhfghgfhdfhg', '2013-07-09 12:22:49', 6),
-(21, 'sedfdsfdf', 'sdfsdfsdfsdfs\r\n										', 'videos/vid.mp4', 'images/418de99fb23568afb7e361832ae89fba_make.jpg', 'sdfsdfsqfsqdsqd<br>sqdsqdsdsqdqzd<br>wswsdsqdqsd', '2013-07-17 14:44:04', 1);
+(7, 'WanaShare', '<p>\r\n<img style="margin-right:10px;" src="images/fleche.png"/><span class="titre">WanaShare est une plateforme de gestion de l''information et de collaboration professionnelle basée sur le produit Microsoft© SharePoint 2010 qui vous aide à améliorer votre productivité et à gérer votre contenu, \r\nen utilisant un navigateur Internet.</span>\r\n\r\nLes fonctionnalités intégrées de WanaShare, optimisées par des technologies d''indexation et de \r\nrecherche, vous permettent de vous adapter rapidement à l''évolution de vos besoins métier.\r\nVous pouvez ainsi prendre des décisions fondées sur des données métier consolidées et déployer des \r\napplications métiers de façon rapide et sécurisée afin de renforcer la collaboration dans et hors de votre\r\nentreprise.\r\n</p>\r\n<p>\r\n<img style="margin-right:10px;" src="images/fleche.png"/><span class="titre">WanaShare, pour quels usages ? WanaShare vous permet d''accroître la productivité via un ensemble intégré de\r\nfonctionnalités innovantes. Parmi elles, on peut citer :</span>\r\n\r\n- Accessibilité.\r\n- Affichage d''informations.\r\n- Prise en main de WSS 3.0.\r\n- Conservation de plusieurs versions de fichiers et d''éléments.\r\n- Création de sites, de listes et de bibliothèques.\r\n- Formules et fonctions.\r\n- Gestion de sites et de paramètres.\r\n- Intégration du courrier électronique aux sites, listes et bibliothèques.\r\n- Organisation de réunions.\r\n- Partage de fichiers et de documents.\r\n- Partage d''informations.\r\n- Personnalisation de sites, de pages, de listes et de bibliothèques.\r\n- Utilisation des environnements internationaux.\r\n- Utilisation des flux de travail pour gérer les processus.\r\n</p>', 'images/slide_07.jpg', 'images/solutions_wanashare.jpg', 'vous permet de gérer l’information en collaboration professionnelle, en utilisant juste un navigateur Internet.', '2013-06-21 09:19:48', 9);
 
 -- --------------------------------------------------------
 

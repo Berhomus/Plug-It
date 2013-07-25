@@ -23,8 +23,8 @@ if(isset($_SESSION['id']))
 	}
 	else if(isset($_GET['id']))
 	{
-		mysql_connect('localhost', 'root', '')or die('Erreur SQL !<br />'.mysql_error());
-		mysql_select_db ('plugit')or die('Erreur SQL !<br />'.mysql_error());
+		mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
+		mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
 		
 		$rq=mysql_query("SELECT COUNT(id) as cpt FROM produit WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
 		$array=mysql_fetch_array($rq);
