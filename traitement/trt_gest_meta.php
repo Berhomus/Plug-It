@@ -1,8 +1,7 @@
 <?php
 
-	mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox' '')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_set_charset( 'utf8' );
+	require_once('./connexionbddplugit.class.php');
+
 	
 	if(isset($_POST)&& !empty($_POST))
 	{
@@ -11,7 +10,7 @@
 		{
 			$meta = htmlspecialchars($meta);
 			$meta = mysql_real_escape_string($meta);
-			MySQL_Query("UPDATE menu SET meta='$meta' WHERE position='$i'")or die('Erreur SQL !<br />'.mysql_error());
+			connexionbddplugit::getInstance()->query("UPDATE menu SET meta='$meta' WHERE position='$i'");
 			$i++;
 		}
 	}
@@ -20,5 +19,5 @@
 	echo '<p style="color:green;">Les modifications ont bien été faite</p>';
 	echo '<a href="../index.php?page=admin_gest_menu"><--</a></center>';
 	
-	MySQL_Close();
+	
 ?>

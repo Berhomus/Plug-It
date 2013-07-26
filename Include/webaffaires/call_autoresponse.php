@@ -164,12 +164,19 @@ if(isset($_POST['DATA']))
 				mail('shop@plug-it.com' , $Sujet, $Msg, 'From: shop@plug-it.com');
 				
 				//ajout BDD
+<<<<<<< HEAD
 				mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());
 				mysql_select_db('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
 				
 				mysql_query("INSERT INTO transaction VALUES ('','$transaction_id','".$arrayCaddie[0]."','$customer_email','$amount','".$arrayCaddie[1]."','".$arrayCaddie[5]."','".$arrayCaddie[3]."','$payment_date',$bank_response_code)")or die("Erreur SQL");
+=======
+				mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')
+				mysql_select_db('plugit')
 				
-				mysql_close();
+				connexionbddplugit::getInstance()->query("INSERT INTO transaction VALUES ('','$order_id','$transaction_id','$customer_id','$customer_email','$amount','$payment_time')")or die("Erreur SQL");
+				
+>>>>>>> 72f30298165cd5eb110f1da64e11f894407a720f
+				
 			
 			}
 		

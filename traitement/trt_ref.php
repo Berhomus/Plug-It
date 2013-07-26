@@ -10,9 +10,13 @@ Name : trt_ref.php => Plug-it
 	include("../function/upload.php");
 	include("../function/update_ordre.php");
 	
+<<<<<<< HEAD
 	mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox' '')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_select_db ('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_set_charset( 'utf8' );
+=======
+	require_once('./connexionbddplugit.class.php');
+>>>>>>> 72f30298165cd5eb110f1da64e11f894407a720f
 
 	if(isset($_GET['mode']))
 	{
@@ -24,15 +28,15 @@ Name : trt_ref.php => Plug-it
 				{
 					$ordre = $_POST['ordre'];
 					
-					$rq=mysql_query("SELECT COUNT(id) as cpt FROM ref WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-					$array=mysql_fetch_array($rq);
+					$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM ref WHERE id='".$_GET['id']."'");
+					$array=$rq->fetch();
 					
 					if($array['cpt'])
 					{
-						$rq = mysql_query("SELECT ordre FROM ref WHERE id='".$_GET['id']."'")or die("fail ".$i. " => Erreur SQL !<br />".mysql_error());
-						$ar = mysql_fetch_array($rq);
+						$rq = connexionbddplugit::getInstance()->query("SELECT ordre FROM ref WHERE id='".$_GET['id']."'");
+						$ar = $rq->fetch();
 						update_ordre($ar['ordre'],0,-1,'ref');
-						mysql_query("DELETE FROM ref WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+						connexionbddplugit::getInstance()->query("DELETE FROM ref WHERE id='".$_GET['id']."'");
 						echo ('<h2 style="color:green;">Référence Supprimée !</h2>');
 					}
 					else
@@ -50,15 +54,15 @@ Name : trt_ref.php => Plug-it
 				echo ('<h2>Modification Référence</h2>');
 				if(isset($_GET['id']))
 				{
-					$rq=mysql_query("SELECT COUNT(id) as cpt FROM ref WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-					$array=mysql_fetch_array($rq);
+					$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM ref WHERE id='".$_GET['id']."'");
+					$array=$rq->fetch();
 
 					if($array['cpt'])
 					{
 						if(empty($_FILES['logo']['name']) or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','bmp'),'logo')) != '')
 						{
-							$rq=mysql_query("SELECT * FROM ref WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-							$array=mysql_fetch_array($rq);
+							$rq=connexionbddplugit::getInstance()->query("SELECT * FROM ref WHERE id='".$_GET['id']."'");
+							$array=$rq->fetch();
 							
 							$titre = (!empty($_POST['nomcli'])) ? $_POST['nomcli']:$array['titre'];
 							$soustitre = (!empty($_POST['soustitre'])) ? $_POST['soustitre']:$array['sous_titre'];
@@ -87,7 +91,7 @@ Name : trt_ref.php => Plug-it
 							if($ordre!=$array['ordre'])
 								update_ordre($array['ordre']-$pas,$ordre,$pas,'ref');
 							
-							mysql_query("UPDATE ref SET ordre='$ordre', image='$path', titre='$titre', sous_titre='$soustitre', lien='$lien' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+							connexionbddplugit::getInstance()->query("UPDATE ref SET ordre='$ordre', image='$path', titre='$titre', sous_titre='$soustitre', lien='$lien' WHERE id='".$_GET['id']."'");
 							echo ('<h2 style="color:green;">Référence Modifiée !</h2>');
 						}
 						else
@@ -132,7 +136,7 @@ Name : trt_ref.php => Plug-it
 						
 						update_ordre($ordre,0,1,'ref');
 						
-						mysql_query("INSERT INTO ref VALUES (Null,'$path','$titre','$lien','$soustitre',Null,'$ordre')")or die('Erreur SQL !<br />'.mysql_error());
+						connexionbddplugit::getInstance()->query("INSERT INTO ref VALUES (Null,'$path','$titre','$lien','$soustitre',Null,'$ordre')");
 						echo ('<h2 style="color:green;">Référence Créée !</h2>');
 					}
 					else
@@ -164,7 +168,7 @@ Name : trt_ref.php => Plug-it
 		echo ('<h2 style="color:red;">Mode Non spécifié !</h2>');
 	}
 	
-	mysql_close();
+	
 	
 	echo ('<center><a href="../index.php?page=references">Retour Référence</a></center>');
 ?>

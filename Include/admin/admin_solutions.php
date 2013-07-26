@@ -1,3 +1,4 @@
+
 <!--********************************************************
 Made by : AS Amiens - Bovin Antoine/Bensaid Borhane/Villain Benoit
 Last Update : 12/07/2013
@@ -80,31 +81,29 @@ function getXMLHttpRequest()
 if(isset($_SESSION['id']))
 {
 ?>
-<script type="text/javascript" src="js/fct_de_trt_txt.js"></script><?php	$id=0;	$nomsolu="";	$corps="";	$logosolu="";	$grandeimg="";	$desc="";
+<script type="text/javascript" src="js/fct_de_trt_txt.js"></script><?php	$id=0;	$nomsolu="";	$corps="";	$logosolu="";	$grandeimg="";	$desc="";
 	$desc_origin="";
-	$ordre=0;		if(isset($_POST) and !empty($_POST))	{		$id= (isset($_GET['id'])) ? $_GET['id']:0;		$nomsolu=$_POST['nomsolu'];		$desc=$_POST['desc'];		$corps=$_POST['corps'];
+	$ordre=0;		if(isset($_POST) and !empty($_POST))	{		$id= (isset($_GET['id'])) ? $_GET['id']:0;		$nomsolu=$_POST['nomsolu'];		$desc=$_POST['desc'];		$corps=$_POST['corps'];
 		$ordre=$_POST['ordre'];
-		$desc_origin=$_POST['desc'];	}	if(isset($_GET['id']))	{		mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());		mysql_select_db ('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());		mysql_set_charset( 'utf8' );
-				$rq=mysql_query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());		$array=mysql_fetch_array($rq);				if($array['cpt']==1)		{			$rq=mysql_query("SELECT * FROM solutions WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());			$array=mysql_fetch_array($rq);						$id=$array['id'];			$nomsolu=$array['titre'];			$corps=$array['corps'];			$logosolu=$array['image_sol'];			$desc=$array['description'];			$grandeimg=$array['image_car'];
+		$desc_origin=$_POST['desc'];	}	if(isset($_GET['id']))	{		require_once('./connexionbddplugit.class.php');
+				$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'");		$array=$rq->fetch();				if($array['cpt']==1)		{			$rq=connexionbddplugit::getInstance()->query("SELECT * FROM solutions WHERE id='".$_GET['id']."'");			$array=$rq->fetch();						$id=$array['id'];			$nomsolu=$array['titre'];			$corps=$array['corps'];			$logosolu=$array['image_sol'];			$desc=$array['description'];			$grandeimg=$array['image_car'];
 			$ordre=$array['ordre'];
-			$desc_origin=$array['description'];		}		else		{			echo '<center><font color=red>Erreur solutions introuvable</font></center><br/>';		}				mysql_close();	}		if($id!=0)	{		echo '<h2>Modification d\'une solution</h2>			<br/><center>Tout champ vide ne sera pas modifié</center>';		$require = "";		$type = "modif&id=".$id;	}	else	{		echo '<h2>Ajout d\'une solution</h2>';		$require = "required";		$type = "create";	}	?><form method="post" enctype="multipart/form-data" action="traitement/trt_solutions.php?mode=<?php echo $type; ?>" name="sol">	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">							<tr>				<td><label for="nomsolu"><b>Nom de la solution <span class="red">*</span></b><br/><small id="lim_nom">(Max 20 caractères)</small></label></td>				<td><input size="50" type="text" name="nomsolu" id="nomsolu" value="<?php echo $nomsolu; ?>" <?php echo $require; ?> onblur="textLimit(this, 20, lim_nom);"/></td>			</tr>						<tr>				<td><label for="logosolu"><b>Logo de la solution <span class="red">*</span></b><br/><small>(Max 100Ko et uniquement jpg, png, gif et bmp<br/>(Taille conseillée 280x170)</small></label></td>				<td><input size="50" type="file" name="logosolu" id="logosolu" value="<?php echo $logosolu; ?>" <?php echo $require; ?>/></td>			</tr>						<tr>				<td><label for="grandeimg" id="grdimg"><b>Contenu pour l'accueil <span class="red">*</span></b><br/><small>(Uniquement jpg, png, gif, bmp, avi et mp4)<br/>([Max 300Ko Image] Taille conseillée 940x387)</small></label></td>				<td><input size="50" type="file" name="grandeimg" id="grandeimg" value="<?php echo $grandeimg; ?>" <?php echo $require; ?> /></td>			</tr>
+			$desc_origin=$array['description'];		}		else		{			echo '<center><font color=red>Erreur solutions introuvable</font></center><br/>';		}					}		if($id!=0)	{		echo '<h2>Modification d\'une solution</h2>			<br/><center>Tout champ vide ne sera pas modifié</center>';		$require = "";		$type = "modif&id=".$id;	}	else	{		echo '<h2>Ajout d\'une solution</h2>';		$require = "required";		$type = "create";	}	?><form method="post" enctype="multipart/form-data" action="traitement/trt_solutions.php?mode=<?php echo $type; ?>" name="sol">	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">							<tr>				<td><label for="nomsolu"><b>Nom de la solution <span class="red">*</span></b><br/><small id="lim_nom">(Max 20 caractères)</small></label></td>				<td><input size="50" type="text" name="nomsolu" id="nomsolu" value="<?php echo $nomsolu; ?>" <?php echo $require; ?> onblur="textLimit(this, 20, lim_nom);"/></td>			</tr>						<tr>				<td><label for="logosolu"><b>Logo de la solution <span class="red">*</span></b><br/><small>(Max 100Ko et uniquement jpg, png, gif et bmp<br/>(Taille conseillée 280x170)</small></label></td>				<td><input size="50" type="file" name="logosolu" id="logosolu" value="<?php echo $logosolu; ?>" <?php echo $require; ?>/></td>			</tr>						<tr>				<td><label for="grandeimg" id="grdimg"><b>Contenu pour l'accueil <span class="red">*</span></b><br/><small>(Uniquement jpg, png, gif, bmp, avi et mp4)<br/>([Max 300Ko Image] Taille conseillée 940x387)</small></label></td>				<td><input size="50" type="file" name="grandeimg" id="grandeimg" value="<?php echo $grandeimg; ?>" <?php echo $require; ?> /></td>			</tr>
 			
 			<tr>
 				<td></td>
 				<td><div id="preview"></div></td>
-			</tr>						<tr>				<td><label for="description"><b>Résumé de la solution <span class="red">*</span></b><br/><small id="lim_resu">(Max 3 Lignes)</small></label></td>				<td><div style="height: 100px; width:400px; overflow:scroll; margin-top:20px;" id="description" contenteditable="true" <?php echo $require; ?> onblur="textLimit3(this, lim_resu);required(this,grdimg,grandeimg);document.getElementById('desc').value = this.innerHTML;"><?php echo nl2br($desc); ?></div></td>			</tr>
+			</tr>						<tr>				<td><label for="description"><b>Résumé de la solution <span class="red">*</span></b><br/><small id="lim_resu">(Max 3 Lignes)</small></label></td>				<td><div style="height: 100px; width:400px; overflow:scroll; margin-top:20px;" id="description" contenteditable="true" <?php echo $require; ?> onblur="textLimit3(this, lim_resu);required(this,grdimg,grandeimg);document.getElementById('desc').value = this.innerHTML;"><?php echo nl2br($desc); ?></div></td>			</tr>
 			
 			<tr>
 				<td><label for="ordre"><b>Position</b><br/><small>(1ere position par défaut)</small></label></td>
 				<td>
 					<select name="ordre" id="ordre">
 						<?php
-							mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());
-							mysql_select_db ('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
-							mysql_set_charset( 'utf8' );
+							require_once('./connexionbddplugit.class.php');
 							
-							$rq=mysql_query("SELECT COUNT(id) AS nombre FROM solutions");
-							$rq=mysql_fetch_array($rq);
+							$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) AS nombre FROM solutions");
+							$rq=$rq->fetch();
 							
 							$var=($type=='create') ? $rq['nombre']+1 : $rq['nombre'];
 							for($i=1;$i<=$var;$i++)
@@ -118,11 +117,11 @@ if(isset($_SESSION['id']))
 									echo '<option value="'.$i.'">'.$i.'</option>';
 								}
 							}
-							MySQL_Close();
+							
 						?>
 					</select>
 				</td>
-			</tr>						<tr>				<td colspan="2">					<div>						<p>							<input type="button" value="G" onclick="document.getElementById('ortf').focus(); document.execCommand('bold', false, '');" />
+			</tr>						<tr>				<td colspan="2">					<div>						<p>							<input type="button" value="G" onclick="document.getElementById('ortf').focus(); document.execCommand('bold', false, '');" />
 							<input type="button" value="I" onclick="document.getElementById('ortf').focus(); document.execCommand('italic', false, '');" />
 							<input type="button" value="S" onclick="document.getElementById('ortf').focus(); document.execCommand('underline', false, '');" />
 							<input type="button" value="Lien" onclick="document.getElementById('ortf').focus(); lien();" />
@@ -169,8 +168,8 @@ if(isset($_SESSION['id']))
 						echo nl2br($corps);
 					?>
 					</div>
-					<input type="hidden" value="" id="corps" name="corps" />					<input type="hidden" value="" id="desc" name="desc" />
-				</td>			</tr>						<tr>				<td style="text-align:right;"><input type="submit" name="envoyer" value="Envoyer" /></td>			</tr>			</table></form>	
+					<input type="hidden" value="" id="corps" name="corps" />					<input type="hidden" value="" id="desc" name="desc" />
+				</td>			</tr>						<tr>				<td style="text-align:right;"><input type="submit" name="envoyer" value="Envoyer" /></td>			</tr>			</table></form>	
 
 <script>
 //preview
@@ -262,3 +261,4 @@ fileInput.onchange = function() {
 		echo '<h2 style="color:red">Access Forbidden !</h2>';
 	}
 	?>
+>>>>>>> 72f30298165cd5eb110f1da64e11f894407a720f

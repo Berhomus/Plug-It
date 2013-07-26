@@ -10,9 +10,8 @@ Name : references.php => Plug-it
 		$_GET['mode'] = 'view';
 	}
 
-	mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_set_charset( 'utf8' );
+	require_once('./connexionbddplugit.class.php');
+
 	
 	switch($_GET['mode'])
 	{
@@ -21,7 +20,7 @@ Name : references.php => Plug-it
 			echo'<div style="margin:auto;width:900px;">
 				<h2>Ils nous font confiance</h2>';
 					
-				$retour = mysql_query("SELECT * FROM ref ORDER BY ordre") or die('Erreur SQL !<br />'.mysql_error());
+				$retour = connexionbddplugit::getInstance()->query("SELECT * FROM ref ORDER BY ordre");
 
 				
 				if(isset($_SESSION['id']))
@@ -33,7 +32,7 @@ Name : references.php => Plug-it
 					$j=1; //délimite les lignes
 					
 					echo '<table cellspacing="20" callpadding="0">';
-					while ($donnees = mysql_fetch_array($retour))
+					while ($donnees = $retour->fetch())
 						{
 						
 							if($i == 1)
@@ -71,4 +70,4 @@ Name : references.php => Plug-it
 		break;
 	}
 	
-	mysql_close();
+	

@@ -9,10 +9,7 @@ Name : trt_Produit.php => Plug-it
 	
 	include("../function/upload.php");
 	include("../function/trt_image.php");
-	
-	mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox' '')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_set_charset( 'utf8' );
+
 
 	if(isset($_GET['mode']))
 	{

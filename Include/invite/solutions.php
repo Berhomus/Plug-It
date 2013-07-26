@@ -12,9 +12,8 @@ Name : solutions.php => Plug-it
 	}
 
 	
-	mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_set_charset( 'utf8' );
+	require_once('./connexionbddplugit.class.php');
+
 	
 	switch($_GET['mode'])
 	{
@@ -23,7 +22,7 @@ Name : solutions.php => Plug-it
 			echo'<div style="margin:auto;width:1000px;">
 				<h2>Découvrez toutes nos solutions innovantes pour vous satisfaire</h2>';
 					
-					$retour = mysql_query('SELECT * FROM solutions ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
+					$retour = connexionbddplugit::getInstance()->query('SELECT * FROM solutions ORDER BY ordre');
 
 					if(isset($_SESSION['id']))
 					{
@@ -34,7 +33,7 @@ Name : solutions.php => Plug-it
 					$j=1; //délimite les lignes
 					
 					echo '<table cellspacing="20">';
-					while ($donnees = mysql_fetch_array($retour))
+					while ($donnees = $retour->fetch())
 						{
 						
 							if($i == 1)
@@ -71,14 +70,14 @@ Name : solutions.php => Plug-it
 		case 'viewone':
 			if(isset($_GET['id']))
 			{
-				$retour = mysql_query("SELECT count(id) as cpt FROM solutions WHERE id='".$_GET["id"]."'")or die('Erreur SQL !<br />'.mysql_error());
-				$donnees = mysql_fetch_array($retour);
+				$retour = connexionbddplugit::getInstance()->query("SELECT count(id) as cpt FROM solutions WHERE id='".$_GET["id"]."'");
+				$donnees = $retour->fetch();
 				
 				if($donnees['cpt'] == 1)
 				{
 					//affichage 
-					$retour = mysql_query("SELECT * FROM solutions WHERE id='".$_GET['id']."'") or die('Erreur SQL !<br />'.mysql_error());
-					$donnees = mysql_fetch_array($retour);
+					$retour = connexionbddplugit::getInstance()->query("SELECT * FROM solutions WHERE id='".$_GET['id']."'"); 
+					$donnees = $retour->fetch();
 					
 					echo '<div style="margin:auto;width:70%;">
 							<img src="'.$donnees['image_sol'].'" style="float:right;" width="280" height="170" />
@@ -96,14 +95,14 @@ Name : solutions.php => Plug-it
 						
 					
 					//affichage autres liens					
-					$retour = mysql_query("SELECT * FROM solutions WHERE id<>'".$_GET['id']."' ORDER BY ordre LIMIT 10") or die('Erreur SQL !<br />'.mysql_error());
+					$retour = connexionbddplugit::getInstance()->query("SELECT * FROM solutions WHERE id<>'".$_GET['id']."' ORDER BY ordre LIMIT 10"); 
 					
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					
 					echo'<div style="margin:auto;width:60%;margin-top:20px;">
 					<table cellspacing="10">';
-					while ($donnees = mysql_fetch_array($retour))
+					while ($donnees = $retour->fetch())
 						{
 						
 							if($i == 1)
@@ -139,4 +138,4 @@ Name : solutions.php => Plug-it
 		break;
 	}
 	
-	mysql_close();
+	

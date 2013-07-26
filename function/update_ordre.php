@@ -9,8 +9,8 @@ Name : update_ordre.php => Plug-it
 	{
 		if($fin==0)
 		{
-			$rq=MySQL_Query("SELECT COUNT(id) AS nbre FROM ".$bdd."");
-			$rq=MySQL_fetch_array($rq);
+			$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) AS nbre FROM ".$bdd."")
+			$rq=$rq->fetch();
 			$fin=$rq['nbre'];
 		}
 		
@@ -22,9 +22,9 @@ Name : update_ordre.php => Plug-it
 			for($i=$deb;$i<=$fin;$i=$i-$pas)
 			{
 				
-				$rq = mysql_query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'")or die("f1ail ".$i. " => Erreur SQL !<br />".mysql_error());
-				$ar = mysql_fetch_array($rq);
-				MySQL_Query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'") or die("failn ".$i. " => Erreur SQL !<br />".mysql_error());
+				$rq = connexionbddplugit::getInstance()->query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'")
+				$ar = $rq->fetch();
+				connexionbddplugit::getInstance()->query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'") 
 			}
 		}
 		else
@@ -34,9 +34,9 @@ Name : update_ordre.php => Plug-it
 			$deb=max($deb,$swap);
 			for($i=$deb;$i>=$fin;$i=$i-$pas)
 			{
-				$rq = mysql_query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'")or die("f2ail ".$i. " => Erreur SQL !<br />".mysql_error());
-				$ar = mysql_fetch_array($rq);
-				MySQL_Query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'") or die("fails ".$i. " => Erreur SQL !<br />".mysql_error());
+				$rq = connexionbddplugit::getInstance()->query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'")
+				$ar = $rq->fetch();
+				connexionbddplugit::getInstance()->query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'") 
 			}
 		}
 		

@@ -11,10 +11,8 @@ Name : trt_solutions.php => Plug-it
 	include("../function/update_ordre.php");
 	include("../function/trt_image.php");
 	
-	mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox' '')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db ('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_set_charset( 'utf8' );
-
+	require_once('./connexionbddplugit.class.php');
+	
 	if(isset($_GET['mode']))
 	{
 		switch($_GET['mode'])
@@ -23,15 +21,15 @@ Name : trt_solutions.php => Plug-it
 				echo ('<h2>Suppression Solution</h2>');
 				if(isset($_GET['id']))
 				{
-					$rq=mysql_query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-					$array=mysql_fetch_array($rq);
+					$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'");
+					$array=$rq->fetch();
 					
 					if($array['cpt'])
 					{
-						$rq = mysql_query("SELECT ordre FROM solutions WHERE id='".$_GET['id']."'")or die("fail ".$i. " => Erreur SQL !<br />".mysql_error());
-						$ar = mysql_fetch_array($rq);
+						$rq = connexionbddplugit::getInstance()->query("SELECT ordre FROM solutions WHERE id='".$_GET['id']."'");
+						$ar = $rq->fetch();
 						update_ordre($ar['ordre'],0,-1,'solutions');
-						mysql_query("DELETE FROM solutions WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+						connexionbddplugit::getInstance()->query("DELETE FROM solutions WHERE id='".$_GET['id']."'");
 						echo ('<h2 style="color:green;">Solution Supprimée !</h2>');
 					}
 					else
@@ -49,8 +47,8 @@ Name : trt_solutions.php => Plug-it
 				echo ('<h2>Modification Solution</h2>');
 				if(isset($_GET['id']))
 				{
-					$rq=mysql_query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-					$array=mysql_fetch_array($rq);
+					$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'");
+					$array=$rq->fetch();
 
 					if($array['cpt'])
 					{
@@ -59,8 +57,8 @@ Name : trt_solutions.php => Plug-it
 						
 							if(empty($_FILES['grandeimg']['name'])or ($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg','.bmp','.avi','.mp4'),'grandeimg')) != '')
 							{
-								$rq=mysql_query("SELECT * FROM solutions WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-								$array=mysql_fetch_array($rq);
+								$rq=connexionbddplugit::getInstance()->query("SELECT * FROM solutions WHERE id='".$_GET['id']."'");
+								$array=$rq->fetch();
 								
 								$titre = (!empty($_POST['nomsolu'])) ? $_POST['nomsolu']:$array['titre'];
 								$desc = (!empty($_POST['desc'])) ? $_POST['desc']:$array['description'];
@@ -87,7 +85,7 @@ Name : trt_solutions.php => Plug-it
 								if($ordre!=$array['ordre'])
 									update_ordre($array['ordre']-$pas,$ordre,$pas,'solutions');
 								
-								mysql_query("UPDATE solutions SET ordre='$ordre', image_sol='$path', image_car='$path2', titre='$titre', description='$desc', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+								connexionbddplugit::getInstance()->query("UPDATE solutions SET ordre='$ordre', image_sol='$path', image_car='$path2', titre='$titre', description='$desc', corps='$corps' WHERE id='".$_GET['id']."'");
 								echo ('<h2 style="color:green;">Solution Modifiée !</h2>');
 							}
 							else
@@ -150,7 +148,7 @@ Name : trt_solutions.php => Plug-it
 							$path2 = make_img($path2,$titre,$desc);
 							$path = make_limg($path);
 							
-							mysql_query("INSERT INTO solutions VALUES (Null,'$titre','$corps','$path2','$path','$desc',Null,'$ordre')")or die('Erreur SQL !<br />'.mysql_error());
+							connexionbddplugit::getInstance()->query("INSERT INTO solutions VALUES (Null,'$titre','$corps','$path2','$path','$desc',Null,'$ordre')");
 							echo ('<h2 style="color:green;">Solution Créée !</h2>');
 						}
 						else
@@ -193,7 +191,7 @@ Name : trt_solutions.php => Plug-it
 		echo ('<h2 style="color:red;">Mode Non spécifié !</h2>');
 	}
 	
-	mysql_close();
+	
 	
 	echo ('<center><a href="../index.php?page=solutions">Retour Solution</a></center>');
 ?>

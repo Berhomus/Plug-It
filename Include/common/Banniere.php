@@ -18,23 +18,15 @@ Name : Banniere.php => Plug-it
 	<table style="position:relative; float:right; margin-left:10px;" height="137px" class="menu" cellspacing="0">
 		<tr>
 		<?php
-		mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());
-		mysql_select_db ('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
-		mysql_set_charset( 'utf8' );
+		require_once('./connexionbddplugit.class.php');
+
 		
-		$rq = mysql_query("SELECT * FROM menu ORDER BY position")or die('Erreur SQL !<br />'.mysql_error());
+		$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu ORDER BY position");
 		
-		while($ar=mysql_fetch_array($rq))
+		while($ar=$rq->fetch())
 		{
 			if($ar['active'] == true)
-			{
-				// echo '<div id="accordeon">';
-				// echo '<h3 onclick="location.href=\''.$ar['lien'].'\'">'.$ar['nom'].'</h3>';
-				// echo '';
-				// echo '';
-				// echo '';
-				// echo '';
-				
+			{				
 				echo '
 				<td onclick="location.href=\''.$ar['lien'].'\'"';
 					if($ar['interne'] and $_GET['page'] == $ar['baseName'])
@@ -42,10 +34,14 @@ Name : Banniere.php => Plug-it
 					else
 						echo 'class="menu_unselected"';
 				echo '>'.$ar['nom'].'</td>';
+				if($ar['baseName'] == 'boutique')
+				{
+					
+				}
 			}
 		}
 		
-		mysql_close();
+		
 		?>
 		</tr>
 	</table></div>
