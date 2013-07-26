@@ -23,7 +23,7 @@ if(isset($_POST['DATA']))
 			//    -> Windows : $pathfile="pathfile=c:/repertoire/pathfile"
 			//    -> Unix    : $pathfile="pathfile=/home/repertoire/pathfile"
 			
-		$pathfile="pathfile=/homez.527/plugit/www/include/webaffaires/param/pathfile";
+		$pathfile="pathfile=C:/wamp/www/Plug-It/include/webaffaires/param/pathfile";
 
 		//Initialisation du chemin de l'executable response (à modifier)
 		//ex :
@@ -31,7 +31,7 @@ if(isset($_POST['DATA']))
 		//-> Unix    : $path_bin = "/home/repertoire/bin/response"
 		//
 
-		$path_bin = "/homez.527/plugit/www/include/webaffaires/bin/static/response";
+		$path_bin = "C:/wamp/www/Plug-It/include/webaffaires/bin/static/response";
 
 		// Appel du binaire response
 		$message = escapeshellcmd($message);
@@ -96,7 +96,7 @@ if(isset($_POST['DATA']))
 		//    -> Unix    : $logfile="/home/repertoire/log/logfile.txt";
 		//
 
-		$logfile="/homez.527/plugit/www/log_paiement.txt";
+		$logfile="C:/wamp/www/Plug-It/log_paiement.txt";
 		$fp=fopen($logfile,'a');
 		
 		//  analyse du code retour
@@ -164,20 +164,12 @@ if(isset($_POST['DATA']))
 				mail('shop@plug-it.com' , $Sujet, $Msg, 'From: shop@plug-it.com');
 				
 				//ajout BDD
-<<<<<<< HEAD
-				mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());
-				mysql_select_db('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
-				
-				mysql_query("INSERT INTO transaction VALUES ('','$transaction_id','".$arrayCaddie[0]."','$customer_email','$amount','".$arrayCaddie[1]."','".$arrayCaddie[5]."','".$arrayCaddie[3]."','$payment_date',$bank_response_code)")or die("Erreur SQL");
-=======
+
 				mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')
 				mysql_select_db('plugit')
 				
-				connexionbddplugit::getInstance()->query("INSERT INTO transaction VALUES ('','$order_id','$transaction_id','$customer_id','$customer_email','$amount','$payment_time')")or die("Erreur SQL");
-				
->>>>>>> 72f30298165cd5eb110f1da64e11f894407a720f
-				
-			
+				connexionbddplugit::getInstance()->query("INSERT INTO transaction VALUES ('','$transaction_id','".$arrayCaddie[0]."','$customer_email','$amount','".$arrayCaddie[1]."','".$arrayCaddie[5]."','".$arrayCaddie[3]."','$payment_date',$bank_response_code)")or die("Erreur SQL");
+
 			}
 		
 			fwrite( $fp, "#======================== Le : " . date("d/m/Y H:i:s") . " ====================#\n");

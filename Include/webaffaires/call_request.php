@@ -34,7 +34,7 @@ if(isset($_POST) and !empty($_POST))
 	    //    -> Windows : $parm="$parm pathfile=c:/repertoire/pathfile";
 	    //    -> Unix    : $parm="$parm pathfile=/home/repertoire/pathfile";
 	    
-	$parm="$parm pathfile=/homez.527/plugit/www/include/webaffaires/param/pathfile";
+	$parm="$parm pathfile=C:/wamp/www/Plug-It/include/webaffaires/param/pathfile";
 
 	//		Si aucun transaction_id n'est affecté, request en génère
 	//		un automatiquement à partir de heure/minutes/secondes
@@ -49,9 +49,9 @@ if(isset($_POST) and !empty($_POST))
 	// 		Les valeurs proposées ne sont que des exemples
 	// 		Les champs et leur utilisation sont expliqués dans le Dictionnaire des données
 	//
-	 		$parm="$parm normal_return_url=http://www.plug-it.com/index.php?page=trt_paiement";
-			$parm="$parm cancel_return_url=http://www.plug-it.com/index.php?page=trt_paiement";
-			$parm="$parm automatic_response_url=http://www.plug-it.com/include/webaffaires/call_autoresponse.php";
+	 		$parm="$parm normal_return_url=http://127.0.0.1/index.php?page=trt_paiement";
+			$parm="$parm cancel_return_url=http://127.0.0.1/index.php?page=trt_paiement";
+			$parm="$parm automatic_response_url=http://127.0.0.1/include/webaffaires/call_autoresponse.php";
 			$parm="$parm language=fr";
 			$parm="$parm payment_means=CB,2,VISA,2,MASTERCARD,2";
 	//		$parm="$parm header_flag=no";
@@ -106,7 +106,7 @@ if(isset($_POST) and !empty($_POST))
 	// -> Unix    : $path_bin = "/home/repertoire/bin/request";
 	//
 
-	$path_bin = "/homez.527/plugit/www/include/webaffaires/bin/static/request";
+	$path_bin = "C:/wamp/www/Plug-It/include/webaffaires/bin/request.exe";
 
 
 	//	Appel du binaire request
