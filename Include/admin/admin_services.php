@@ -6,12 +6,12 @@
 		$ordre=$_POST['ordre'];	}	else if(isset($_GET['id']))	{		require_once('./connexionbddplugit.class.php');
 		try{			$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM services WHERE id='".$_GET['id']."'");			$array=$rq->fetch();
 		} catch ( Exception $e ) {
-			echo "Une erreur est survenue : ".$e;
+			echo "Une erreur est survenue : ".$e->getMessage();
 		}		
 				if($array['cpt']==1)		{
 			try{				$rq=connexionbddplugit::getInstance()->query("SELECT * FROM services WHERE id='".$_GET['id']."'");				$array=$rq->fetch();
 			} catch ( Exception $e ) {
-			echo "Une erreur est survenue : ".$e;
+			echo "Une erreur est survenue : ".$e->getMessage();
 			}						$id=$array['id'];			$nomserv=$array['titre'];			$corps=$array['corps'];			$logoserv=$array['image'];			$soustitre=$array['subtitre'];
 			$ordre=$array['ordre'];		}		else		{			echo '<center><font color=red>Erreur référence introuvable</font></center><br/>';		}					}		if($id!=0)	{		echo '<h2>Modification d\'un service</h2>			<br/><center>Tout champ vide ne sera pas modifié</center>';		$require = "";		$type = "modif&id=".$id;	}	else	{		echo '<h2>Ajout d\'un service</h2>';		$require = "required";		$type = "create";	}	?><form method="post" enctype="multipart/form-data" action="traitement/trt_services.php?mode=<?php echo $type; ?>">	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">							<tr>				<td><label for="nomserv"><b>Nom du service <span class="red">*</span></b><br/><small id="lim_nom">(Max 70 caractères)</small></label></td>				<td><input size="50" type="text" name="nomserv" id="nomserv" value="<?php echo $nomserv; ?>" <?php echo $require; ?> onblur="textLimit(this,70, lim_nom);"/></td>			</tr>						<tr>				<td><label for="logoserv"><b>Logo du service <span class="red">*</span></b><br/><small>(Max 100Ko et uniquement jpg, png, gif et bmp)<br/>(Taille conseillée 280x157)</small></label></td>				<td><input size="50" type="file" name="logoserv" id="logoserv" value="<?php echo $logoserv; ?>" <?php echo $require; ?>/></td>			</tr>						<tr>				<td><label for="soustitre"><b>Sous-titre <span class="red">*</span></b><br/><small id="sous_titre">(Max 25 caractères)</small></label></td>				<td><input size="50" type="text" name="soustitre" id="soustitre" value="<?php echo $soustitre; ?>" <?php echo $require; ?> onblur="textLimit(this, 25, sous_titre);"/></td>			</tr>			
 			<tr>
@@ -25,7 +25,7 @@
 								$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) AS nombre FROM services");
 								$rq=$rq->fetch();
 							} catch ( Exception $e ) {
-								echo "Une erreur est survenue : ".$e;
+								echo "Une erreur est survenue : ".$e->getMessage();
 							}
 							
 							$var=($type=='create') ? $rq['nombre']+1 : $rq['nombre'];

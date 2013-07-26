@@ -13,7 +13,7 @@
 			try{
 				connexionbddplugit::getInstance()->query("UPDATE menu SET meta='$meta' WHERE position='$i'");
 			} catch ( Exception $e ) {
-				echo "Une erreur est survenue : ".$e;
+				echo "Une erreur est survenue : ".$e->getMessage();
 			}
 			$i++;
 		}

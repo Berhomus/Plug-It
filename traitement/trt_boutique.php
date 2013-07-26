@@ -23,7 +23,7 @@ Name : trt_Produit.php => Plug-it
 						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM produit WHERE id='".$_GET['id']."'");
 						$array=$rq->fetch();
 					} catch ( Exception $e ) {
-						echo "Une erreur est survenue : ".$e;
+						echo "Une erreur est survenue : ".$e->getMessage();
 					}
 					
 					if($array['cpt'])
@@ -32,13 +32,13 @@ Name : trt_Produit.php => Plug-it
 							$rq = connexionbddplugit::getInstance()->query("SELECT ordre FROM produit WHERE id='".$_GET['id']."'")or die("fail ".$i. " => Erreur SQL !<br />".mysql_error());
 							$ar = $rq->fetch();
 						} catch ( Exception $e ) {
-							echo "Une erreur est survenue : ".$e;
+							echo "Une erreur est survenue : ".$e->getMessage();
 						}
 
 						try{
 							connexionbddplugit::getInstance()->query("DELETE FROM produit WHERE id='".$_GET['id']."'");
 						} catch ( Exception $e ) {
-							echo "Une erreur est survenue : ".$e;
+							echo "Une erreur est survenue : ".$e->getMessage();
 						}
 						echo ('<h2 style="color:green;">Produit Supprimée !</h2>');
 					}
@@ -80,7 +80,7 @@ Name : trt_Produit.php => Plug-it
 								try{
 									connexionbddplugit::getInstance()->query("UPDATE produit SET priorite='$ordre', images='$path', nom='$titre', corps='$corps' WHERE id='".$_GET['id']."'");
 								} catch ( Exception $e ) {
-									echo "Une erreur est survenue : ".$e;
+									echo "Une erreur est survenue : ".$e->getMessage();
 								}
 								echo ('<h2 style="color:green;">Produit Modifiée !</h2>');
 							}
@@ -126,7 +126,7 @@ Name : trt_Produit.php => Plug-it
 							try{
 								connexionbddplugit::getInstance()->query("INSERT INTO produit VALUES (Null,'$titre','$path','$corps',Null,'$ordre')");
 							} catch ( Exception $e ) {
-								echo "Une erreur est survenue : ".$e;
+								echo "Une erreur est survenue : ".$e->getMessage();
 							}
 							echo ('<h2 style="color:green;">Produit Créée !</h2>');
 						}

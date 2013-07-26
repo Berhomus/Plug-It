@@ -25,7 +25,7 @@ Name : trt_solutions.php => Plug-it
 						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'");
 						$array=$rq->fetch();
 					} catch ( Exception $e ) {
-						echo "Une erreur est survenue : ".$e;
+						echo "Une erreur est survenue : ".$e->getMessage();
 					}
 			
 					if($array['cpt'])
@@ -34,13 +34,13 @@ Name : trt_solutions.php => Plug-it
 							$rq = connexionbddplugit::getInstance()->query("SELECT ordre FROM solutions WHERE id='".$_GET['id']."'");
 							$ar = $rq->fetch();
 						} catch ( Exception $e ) {
-							echo "Une erreur est survenue : ".$e;
+							echo "Une erreur est survenue : ".$e->getMessage();
 						}
 						update_ordre($ar['ordre'],0,-1,'solutions');
 						try{
 							connexionbddplugit::getInstance()->query("DELETE FROM solutions WHERE id='".$_GET['id']."'");
 						} catch ( Exception $e ) {
-							echo "Une erreur est survenue : ".$e;
+							echo "Une erreur est survenue : ".$e->getMessage();
 						}
 						echo ('<h2 style="color:green;">Solution Supprimée !</h2>');
 					}
@@ -63,7 +63,7 @@ Name : trt_solutions.php => Plug-it
 						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'");
 						$array=$rq->fetch();
 					} catch ( Exception $e ) {
-						echo "Une erreur est survenue : ".$e;
+						echo "Une erreur est survenue : ".$e->getMessage();
 					}
 
 					if($array['cpt'])
@@ -77,7 +77,7 @@ Name : trt_solutions.php => Plug-it
 									$rq=connexionbddplugit::getInstance()->query("SELECT * FROM solutions WHERE id='".$_GET['id']."'");
 									$array=$rq->fetch();
 								} catch ( Exception $e ) {
-									echo "Une erreur est survenue : ".$e;
+									echo "Une erreur est survenue : ".$e->getMessage();
 								}
 								
 								$titre = (!empty($_POST['nomsolu'])) ? $_POST['nomsolu']:$array['titre'];
@@ -108,7 +108,7 @@ Name : trt_solutions.php => Plug-it
 								try{
 									connexionbddplugit::getInstance()->query("UPDATE solutions SET ordre='$ordre', image_sol='$path', image_car='$path2', titre='$titre', description='$desc', corps='$corps' WHERE id='".$_GET['id']."'");
 								} catch ( Exception $e ) {
-									echo "Une erreur est survenue : ".$e;
+									echo "Une erreur est survenue : ".$e->getMessage();
 								}
 								echo ('<h2 style="color:green;">Solution Modifiée !</h2>');
 							}
@@ -175,7 +175,7 @@ Name : trt_solutions.php => Plug-it
 							try{
 								connexionbddplugit::getInstance()->query("INSERT INTO solutions VALUES (Null,'$titre','$corps','$path2','$path','$desc',Null,'$ordre')");
 							} catch ( Exception $e ) {
-								echo "Une erreur est survenue : ".$e;
+								echo "Une erreur est survenue : ".$e->getMessage();
 							}
 							echo ('<h2 style="color:green;">Solution Créée !</h2>');
 						}

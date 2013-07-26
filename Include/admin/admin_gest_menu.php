@@ -47,7 +47,7 @@ if(isset($_SESSION['id']))
 		echo '<tr><td><input type="submit" value="Valider"/></td></tr>';
 		echo '</table></form>';
 	} catch ( Exception $e ) {
-		echo "Une erreur est survenue : ".$e;
+		echo "Une erreur est survenue : ".$e->getMessage();
 	}
 ?>
 	

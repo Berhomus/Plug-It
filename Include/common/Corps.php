@@ -21,7 +21,7 @@ Name : Corps.php => Plug-it
 			$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu WHERE baseName = '$nom'");
 			$ar= $rq->fetch();
 		} catch ( Exception $e ) {
-			echo "Une erreur est survenue : ".$e;
+			echo "Une erreur est survenue : ".$e->getMessage();
 		}
 		
 		return $ar['active'];	

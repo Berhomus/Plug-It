@@ -7,6 +7,7 @@ function addpanier($id,$nom,$qte,$prix)
 	{
 		if(isset($_SESSION['caddie'][$id]))//article deja présent
 		{
+			$_SESSION['caddieTot'] -= $_SESSION['caddie'][$id]['prix']*$_SESSION['caddie'][$id]['qte'];
 			$_SESSION['caddie'][$id]['qte'] = $qte;
 		}
 		else//article nouveau

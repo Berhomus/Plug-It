@@ -1,46 +1,102 @@
 <script type="text/javascript" src="js/fct_de_trt_txt.js"></script>
+<script type="text/javascript" src="js/ajout_fact.js"></script>
+
+<script>
+	function getXMLHttpRequest() {
+		var xhr = null;
+		 
+		if (window.XMLHttpRequest || window.ActiveXObject) {
+			if (window.ActiveXObject) {
+				try {
+					xhr = new ActiveXObject("Msxml2.XMLHTTP");
+				} catch(e) {
+					xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			} else {
+				xhr = new XMLHttpRequest();
+			}
+		} else {
+			alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+			return null;
+		}
+		 
+		return xhr;
+	}
+
+	function addCategorie(field){
+		xhr = getXMLHttpRequest();
+		
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+				var success;
+				if(xhr.responseText == 'success')
+				{
+					var option = document.createElement('option');
+					option.setAttribute("value",document.getElementById("new_categorie").value);
+					option.setAttribute("selected","");
+					option.innerHTML=document.getElementById("new_categorie").value;
+					document.getElementById("categorie").appendChild(option);
+					document.getElementById("new_categorie").value = "";
+					success = '<small style="color:green;">Ajout Réussi !</small>';
+				}
+				else
+				{
+					success = '<small style="color:red;">Ajout Echoué !</small>';
+				}
+				document.getElementById("new_categ_td").innerHTML = '<label for="new_categorie"><b>Nouvelle Catégorie <span class="red">*</span></b><br/><small id="lim_new_categorie">(Max 50 caractères)</small><br/>'+success+'</label>';
+			}
+		};
+		
+		var categ = field.value;
+		xhr.open("POST", "include/admin/ajoutcateg.php", true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send("categ="+categ);
+	}
+</script>
 
 <?php
 if(isset($_SESSION['id']))
 {
+
 ?>
 
 <?php
 	$id=0;
-	$nomserv="";
+	$titre="";
 	$corps="";
-	$logoserv="";
-	$soustitre="";
+	$logoprod="";
+	$prix = 0.00;
 	$ordre=0;
+	$categorie = "";
+	
+	require_once('./connexionbddplugit.class.php');
 	
 	if(isset($_POST) and !empty($_POST))
 	{
 		$id= (isset($_GET['id'])) ? $_GET['id']:0;
 		$nomserv=$_POST['nomserv'];
-		$soustitre=$_POST['soustitre'];
+		$prix =$_POST['prix'];
 		$corps=$_POST['corps'];
 		$ordre=$_POST['ordre'];
+		$categorie = $_POST['categorie'];
 	}
 	else if(isset($_GET['id']))
-	{
-		mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());
-		mysql_select_db ('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
-		
-		$rq=mysql_query("SELECT COUNT(id) as cpt FROM produit WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-		$array=mysql_fetch_array($rq);
-		mysql_set_charset( 'utf8' );
+	{		
+		$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM produit WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+		$array=$rq->fetch();
 		
 		if($array['cpt']==1)
 		{
-			$rq=mysql_query("SELECT * FROM produit WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-			$array=mysql_fetch_array($rq);
+			$rq=connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+			$array=$rq->fetch();
 			
 			$id=$array['id'];
 			$nomserv=$array['titre'];
 			$corps=$array['corps'];
 			$logoserv=$array['image'];
-			$soustitre=$array['subtitre'];
+			$prix =$array['prix'];
 			$ordre=$array['ordre'];
+			$categorie = $array['categorie'];
 		}
 		else
 		{
@@ -66,11 +122,11 @@ if(isset($_SESSION['id']))
 	
 ?>
 
-<form method="post" enctype="multipart/form-data" action="traitement/trt_boutique.php?mode=<?php echo $type; ?>">
+<form method="post" action="traitement/trt_boutique.php?mode=<?php echo $type; ?>">
 	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">				
 			<tr>
-				<td><label for="titre"><b>Nom du produit <span class="red">*</span></b><br/><small id="lim_nom">(Max 70 caractères)</small></label></td>
-				<td><input size="50" type="text" name="titre" id="titre" value="<?php echo $titre; ?>" <?php echo $require; ?> onblur="textLimit(this,70, lim_nom);"/></td>
+				<td><label for="titre"><b>Nom du produit <span class="red">*</span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label></td>
+				<td><input size="40" type="text" name="titre" id="titre" value="<?php echo $titre; ?>" <?php echo $require; ?> onblur="textLimit(this,50, lim_nom);"/></td>
 			</tr>
 			
 			<tr>
@@ -83,9 +139,11 @@ if(isset($_SESSION['id']))
 				<td>
 					<select name="ordre" id="ordre">
 						<?php
+							$selected ="";
 							for($i=1;$i<=5;$i++)
 							{
-								echo '<option value="'.$i.'">'.$i.'</option>';
+								$selected = ($ordre==$i) ? "selected":"";
+								echo '<option value="'.$i.'" '.$selected.'>'.$i.'</option>';
 							}
 
 						?>
@@ -94,13 +152,32 @@ if(isset($_SESSION['id']))
 			</tr>
 			
 			<tr>
-				<td><label for="nomserv"><b>Prix du produit <span class="red">*</span></b><br/><small id="lim_nom">(Chiffre en €)</small></label></td>
-				<td><input size="50" type="text" name="nomserv" id="nomserv" value="<?php echo $nomserv; ?>" <?php echo $require; ?> onblur="textLimit(this,70, lim_nom);"/></td>
+				<td><label for="prix" id="prix_label"><b>Prix du produit <span class="red">*</span></b><br/><small id="lim_prix">(Chiffre en €)</small></label></td>
+				<td><input size="10" style="text-align:right;" type="text" name="prix" id="$prix" value="<?php echo $prix; ?>" <?php echo $require; ?> onblur="isNumber(this, lim_prix);"/>€</td>
 			</tr>
 			
 			<tr>
-				<td><label for="nomserv"><b>Catégorie du produit <span class="red">*</span></b><br/><small id="lim_nom">(Chiffre en €)</small></label></td>
-				<td><input size="50" type="text" name="nomserv" id="nomserv" value="<?php echo $nomserv; ?>" <?php echo $require; ?> onblur="textLimit(this,70, lim_nom);"/></td>
+				<td><label for="categorie"><b>Catégorie du produit <span class="red">*</span></b><br/></label></td>
+				<td>
+					<select name="categorie" id="categorie">
+							<?php
+								$rq = connexionbddplugit::getInstance()->query("SELECT nom FROM categorie");
+								$selected ="";
+								while($ar = $rq->fetch())
+								{
+									$selected = ($ar['nom']==$categorie) ? "selected":"";
+									echo '<option value="'.$ar['nom'].'" '.$selected.'>'.$ar['nom'].'</option>';
+								}
+
+							?>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<td id="new_categ_td"><label for="new_categorie"><b>Nouvelle Catégorie <span class="red">*</span></b><br/><small id="lim_new_categorie">(Max 50 caractères)</small></label></td>
+				<td>
+				<input size="30" type="text" name="new_categorie" id="new_categorie"  onblur="textLimit(this,50, lim_new_categorie);"/><input type="button" value="Ajouter" onclick="addCategorie(new_categorie);" /></td>
 			</tr>
 			
 			<tr>

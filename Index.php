@@ -35,7 +35,7 @@ Name : Index.php => Plug-it
 				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu WHERE baseName = '$page'");
 				$rq = $rq->fetch();
 			}catch(Exception $e){
-				echo "Une erreur est survenue : ".$e->getMessage();
+				echo "Une erreur est survenue : ".$e->getMessage()->getMessage();
 			}
 		?>
 		

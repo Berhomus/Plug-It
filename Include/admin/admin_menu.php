@@ -36,7 +36,7 @@ if(isset($_SESSION['id']))
 		</table>
 		</div>';
 		} catch ( Exception $e ) {
-			echo "Une erreur est survenue : ".$e;
+			echo "Une erreur est survenue : ".$e->getMessage();
 		}
 ?>	
 

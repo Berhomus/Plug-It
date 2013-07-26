@@ -13,7 +13,7 @@ Name : update_ordre.php => Plug-it
 				$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) AS nbre FROM ".$bdd."");
 				$rq=$rq->fetch();
 			} catch ( Exception $e ) {
-			echo "Une erreur est survenue : ".$e;
+			echo "Une erreur est survenue : ".$e->getMessage();
 			}
 			$fin=$rq['nbre'];
 		}
@@ -29,12 +29,12 @@ Name : update_ordre.php => Plug-it
 					$rq = connexionbddplugit::getInstance()->query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'");
 					$ar = $rq->fetch();
 				} catch ( Exception $e ) {
-					echo "Une erreur est survenue : ".$e;
+					echo "Une erreur est survenue : ".$e->getMessage();
 				}
 				try{	
 				connexionbddplugit::getInstance()->query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'");
 				} catch ( Exception $e ) {
-					echo "Une erreur est survenue : ".$e;
+					echo "Une erreur est survenue : ".$e->getMessage();
 				}
 			}
 		}
@@ -49,13 +49,13 @@ Name : update_ordre.php => Plug-it
 					$rq = connexionbddplugit::getInstance()->query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'");
 					$ar = $rq->fetch();
 				} catch ( Exception $e ) {
-					echo "Une erreur est survenue : ".$e;
+					echo "Une erreur est survenue : ".$e->getMessage();
 				}
 				
 				try{
 					connexionbddplugit::getInstance()->query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'");
 				} catch ( Exception $e ) {
-					echo "Une erreur est survenue : ".$e;
+					echo "Une erreur est survenue : ".$e->getMessage();
 				}
 			}
 		}

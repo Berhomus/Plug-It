@@ -65,7 +65,7 @@ Name : references.php => Plug-it
 						echo '</table>
 					</div>';
 				} catch ( Exception $e ) {
-					echo "Une erreur est survenue : ".$e;
+					echo "Une erreur est survenue : ".$e->getMessage();
 				}	
 		break;
 			

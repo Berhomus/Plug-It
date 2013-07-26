@@ -42,7 +42,7 @@ Name : Banniere.php => Plug-it
 				}
 			}
 		} catch ( Exception $e ) {
-			echo "Une erreur est survenue : ".$e;
+			echo "Une erreur est survenue : ".$e->getMessage();
 		}
 		
 		?>

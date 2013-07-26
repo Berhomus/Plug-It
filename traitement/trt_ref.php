@@ -25,7 +25,7 @@ Name : trt_ref.php => Plug-it
 						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM ref WHERE id='".$_GET['id']."'");
 						$array=$rq->fetch();
 					} catch ( Exception $e ) {
-						echo "Une erreur est survenue : ".$e;
+						echo "Une erreur est survenue : ".$e->getMessage();
 					}
 					
 					if($array['cpt'])
@@ -34,14 +34,14 @@ Name : trt_ref.php => Plug-it
 							$rq = connexionbddplugit::getInstance()->query("SELECT ordre FROM ref WHERE id='".$_GET['id']."'");
 							$ar = $rq->fetch();
 						} catch ( Exception $e ) {
-							echo "Une erreur est survenue : ".$e;
+							echo "Une erreur est survenue : ".$e->getMessage();
 						}	
 							
 						update_ordre($ar['ordre'],0,-1,'ref');
 						try{
 							connexionbddplugit::getInstance()->query("DELETE FROM ref WHERE id='".$_GET['id']."'");
 						} catch ( Exception $e ) {
-							echo "Une erreur est survenue : ".$e;
+							echo "Une erreur est survenue : ".$e->getMessage();
 						}
 						echo ('<h2 style="color:green;">Référence Supprimée !</h2>');
 					}
@@ -64,7 +64,7 @@ Name : trt_ref.php => Plug-it
 						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM ref WHERE id='".$_GET['id']."'");
 						$array=$rq->fetch();
 					} catch ( Exception $e ) {
-						echo "Une erreur est survenue : ".$e;
+						echo "Une erreur est survenue : ".$e->getMessage();
 					}
 
 					if($array['cpt'])
@@ -75,7 +75,7 @@ Name : trt_ref.php => Plug-it
 								$rq=connexionbddplugit::getInstance()->query("SELECT * FROM ref WHERE id='".$_GET['id']."'");
 								$array=$rq->fetch();
 							} catch ( Exception $e ) {
-								echo "Une erreur est survenue : ".$e;
+								echo "Une erreur est survenue : ".$e->getMessage();
 							}
 							
 							$titre = (!empty($_POST['nomcli'])) ? $_POST['nomcli']:$array['titre'];
@@ -108,7 +108,7 @@ Name : trt_ref.php => Plug-it
 							try{
 								connexionbddplugit::getInstance()->query("UPDATE ref SET ordre='$ordre', image='$path', titre='$titre', sous_titre='$soustitre', lien='$lien' WHERE id='".$_GET['id']."'");
 							} catch ( Exception $e ) {
-								echo "Une erreur est survenue : ".$e;
+								echo "Une erreur est survenue : ".$e->getMessage();
 							}	
 							echo ('<h2 style="color:green;">Référence Modifiée !</h2>');
 						}
@@ -156,7 +156,7 @@ Name : trt_ref.php => Plug-it
 						try{
 							connexionbddplugit::getInstance()->query("INSERT INTO ref VALUES (Null,'$path','$titre','$lien','$soustitre',Null,'$ordre')");
 						} catch ( Exception $e ) {
-							echo "Une erreur est survenue : ".$e;
+							echo "Une erreur est survenue : ".$e->getMessage();
 						}
 						echo ('<h2 style="color:green;">Référence Créée !</h2>');
 					}

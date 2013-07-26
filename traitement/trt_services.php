@@ -25,7 +25,7 @@ Name : trt_services.php => Plug-it
 						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM services WHERE id='".$_GET['id']."'");
 						$array=$rq->fetch();
 					} catch ( Exception $e ) {
-						echo "Une erreur est survenue : ".$e;
+						echo "Une erreur est survenue : ".$e->getMessage();
 					}
 					
 					if($array['cpt'])
@@ -34,14 +34,14 @@ Name : trt_services.php => Plug-it
 							$rq = connexionbddplugit::getInstance()->query("SELECT ordre FROM services WHERE id='".$_GET['id']."'");
 							$ar = $rq->fetch();
 						} catch ( Exception $e ) {
-							echo "Une erreur est survenue : ".$e;
+							echo "Une erreur est survenue : ".$e->getMessage();
 						}
 						
 						update_ordre($ar['ordre'],0,-1,'services');
 						try{
 							connexionbddplugit::getInstance()->query("DELETE FROM services WHERE id='".$_GET['id']."'");
 						} catch ( Exception $e ) {
-							echo "Une erreur est survenue : ".$e;
+							echo "Une erreur est survenue : ".$e->getMessage();
 						}
 						echo ('<h2 style="color:green;">Service Supprimé !</h2>');
 					}
@@ -64,7 +64,7 @@ Name : trt_services.php => Plug-it
 						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM services WHERE id='".$_GET['id']."'");
 						$array=$rq->fetch();
 					} catch ( Exception $e ) {
-						echo "Une erreur est survenue : ".$e;
+						echo "Une erreur est survenue : ".$e->getMessage();
 					}
 
 					if($array['cpt'])
@@ -75,7 +75,7 @@ Name : trt_services.php => Plug-it
 								$rq=connexionbddplugit::getInstance()->query("SELECT * FROM services WHERE id='".$_GET['id']."'");
 								$array=$rq->fetch();
 							} catch ( Exception $e ) {
-								echo "Une erreur est survenue : ".$e;
+								echo "Une erreur est survenue : ".$e->getMessage();
 							}
 							
 							$titre = (!empty($_POST['nomserv'])) ? $_POST['nomserv']:$array['titre'];
@@ -106,7 +106,7 @@ Name : trt_services.php => Plug-it
 							try{
 								connexionbddplugit::getInstance()->query("UPDATE services SET ordre='$ordre', image='$path', titre='$titre', subtitre='$soustitre', corps='$corps' WHERE id='".$_GET['id']."'");
 							} catch ( Exception $e ) {
-								echo "Une erreur est survenue : ".$e;
+								echo "Une erreur est survenue : ".$e->getMessage();
 							}
 							echo ('<h2 style="color:green;">Service Modifié !</h2>');
 						}
@@ -153,7 +153,7 @@ Name : trt_services.php => Plug-it
 						try{
 							connexionbddplugit::getInstance()->query("INSERT INTO services VALUES (Null,'$titre','$corps','$path','$soustitre',Null,'$ordre')");
 						} catch ( Exception $e ) {
-							echo "Une erreur est survenue : ".$e;
+							echo "Une erreur est survenue : ".$e->getMessage();
 						}
 						echo ('<h2 style="color:green;">Service Créé !</h2>');
 					}

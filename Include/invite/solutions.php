@@ -65,7 +65,7 @@ Name : solutions.php => Plug-it
 							}
 						echo '</table>';
 					} catch ( Exception $e ) {
-						echo "Une erreur est survenue : ".$e;
+						echo "Une erreur est survenue : ".$e->getMessage();
 					}
 		break;
 			
@@ -76,7 +76,7 @@ Name : solutions.php => Plug-it
 					$retour = connexionbddplugit::getInstance()->query("SELECT count(id) as cpt FROM solutions WHERE id='".$_GET["id"]."'");
 					$donnees = $retour->fetch();
 				} catch ( Exception $e ) {
-					echo "Une erreur est survenue : ".$e;
+					echo "Une erreur est survenue : ".$e->getMessage();
 				}
 				
 				if($donnees['cpt'] == 1)
@@ -86,7 +86,7 @@ Name : solutions.php => Plug-it
 						$retour = connexionbddplugit::getInstance()->query("SELECT * FROM solutions WHERE id='".$_GET['id']."'"); 
 						$donnees = $retour->fetch();
 					} catch ( Exception $e ) {
-						echo "Une erreur est survenue : ".$e;
+						echo "Une erreur est survenue : ".$e->getMessage();
 					}
 					
 					echo '<div style="margin:auto;width:70%;">
@@ -137,7 +137,7 @@ Name : solutions.php => Plug-it
 						echo '</table>
 						</div>';
 					} catch ( Exception $e ) {
-						echo "Une erreur est survenue : ".$e;
+						echo "Une erreur est survenue : ".$e->getMessage();
 					}
 				}
 				else
