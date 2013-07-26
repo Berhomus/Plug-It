@@ -1,5 +1,7 @@
 <?php
-
+function make_img_prod($path){
+	return $path;
+}
 
 //incrustage slider
 

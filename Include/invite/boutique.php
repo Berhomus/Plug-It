@@ -203,34 +203,27 @@
 			}
 			
 			$nomcateg = $_GET['categ'];
-<<<<<<< HEAD
-	
-			
+
 			try{
 				$rq = connexionbddplugit::getInstance()->query("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = '$nomcateg'");
 				$rq = $rq->fetch();
 			} catch ( Exception $e ) {
 				echo "Une erreur est survenue : ".$e->getMessage();
 			}
-=======
-			
-			$rq = connexionbddplugit::getInstance()->query("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = '$nomcateg'");
-			$rq = $rq->fetch();
->>>>>>> 017dc9eb868a64b5783a049c3c64afd5008fbab5
-			
+
 			if($rq['nombre'] >= 1)
 			{
-			try{
-				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
-				$ar=$rq->fetch();
-<<<<<<< HEAD
-			} catch ( Exception $e ) {
-				echo "Une erreur est survenue : ".$e->getMessage();
-			}
-=======
+				try{
+					$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
+					$ar=$rq->fetch();
+				} catch ( Exception $e ) 
+				{
+					echo "Une erreur est survenue : ".$e->getMessage();
+				}
+
 			
 				echo '<h4>'.strtoupper($_GET['categ']).'</h4>'
->>>>>>> 017dc9eb868a64b5783a049c3c64afd5008fbab5
+
 			?>
 				
 				
@@ -294,19 +287,14 @@
 				
 				if(!empty($ar))
 				{
-					try{
-					$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
-					echo '<table cellspacing="20">';
-					while($ar=$rq->fetch())
+					try
 					{
-						if($i == 1)
-							echo '<tr>';
+						$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
 						
-						echo '<td>
-						<div class="blockproduit" onclick="location.href=\'index.php?page=boutique&mode=viewone&id='.$ar['id'].'\'"> ';
-						
-						if(isset($_SESSION['id']))
+						echo '<table cellspacing="20">';
+						while($ar=$rq->fetch())
 						{
+							
 							if($i == 1)
 								echo '<tr>';
 							
@@ -343,15 +331,17 @@
 							}
 						}
 						echo '</table>';
+						
+					} 
+					catch ( Exception $e ) {
+						echo "Une erreur est survenue : ".$e->getMessage();
 					}
-					else
-					{
-						echo '<h2>Aucun produit existant</h2>';
-					}
-					echo '</div>';
-				} catch ( Exception $e ) {
-					echo "Une erreur est survenue : ".$e->getMessage();
 				}
+				else
+				{
+					echo '<h2>Aucun produit existant</h2>';
+				}
+				echo '</div>';
 			}
 			else
 			{

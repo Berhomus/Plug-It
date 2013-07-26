@@ -10,7 +10,8 @@ Name : trt_Produit.php => Plug-it
 	include("../function/upload.php");
 	include("../function/trt_image.php");
 
-
+	require_once('../connexionbddplugit.class.php');
+	
 	if(isset($_GET['mode']))
 	{
 		switch($_GET['mode'])
@@ -62,14 +63,16 @@ Name : trt_Produit.php => Plug-it
 
 					if($array['cpt'])
 					{
-						if(empty($_FILES['logosolu']['name'])or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logosolu')) != '')
+						if(empty($_FILES['logoprod']['name'])or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logosolu')) != '')
 						{
 								$rq=connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE id='".$_GET['id']."'");
 								$array=$rq->fetch();
 								
-								$titre = (!empty($_POST['nomsolu'])) ? $_POST['nomsolu']:$array['titre'];
+								$prix = $_POST['prix'];
+								$categorie = $_POST['categorie'];
+								$titre = (!empty($_POST['titre'])) ? $_POST['titre']:$array['nom'];
 								$corps = (!empty($_POST['corps'])) ? $_POST['corps']:$array['corps'];
-								$path = (isset($path)) ? make_limg($path):$array['image_sol'];
+								$path = (isset($path)) ? make_img_prod($path):$array['images'];
 								$ordre = $_POST['ordre'];
 								
 								$titre = htmlspecialchars($titre);
@@ -78,7 +81,7 @@ Name : trt_Produit.php => Plug-it
 								$corps = mysql_real_escape_string($corps);							
 								
 								try{
-									connexionbddplugit::getInstance()->query("UPDATE produit SET priorite='$ordre', images='$path', nom='$titre', corps='$corps' WHERE id='".$_GET['id']."'");
+									connexionbddplugit::getInstance()->query("UPDATE produit SET priorite='$ordre', categorie='$categorie', prix='$prix',priorite='$ordre', images='$path', nom='$titre', desc='$corps' WHERE id='".$_GET['id']."'");
 								} catch ( Exception $e ) {
 									echo "Une erreur est survenue : ".$e->getMessage();
 								}
@@ -89,9 +92,11 @@ Name : trt_Produit.php => Plug-it
 							?>
 								
 									<form method="POST" action="../index.php?page=admin_boutique&id=<?php echo $_GET['id']?>">
-										<input type="hidden" name="nomsolu" value="<?php echo htmlspecialchars($_POST['nomsolu']);?>"/>
+										<input type="hidden" name="nom" value="<?php echo htmlspecialchars($_POST['titre']);?>"/>
 										<input type="hidden" name="corps" value="<?php echo htmlspecialchars($_POST['corps']);?>"/>
 										<input type="hidden" name="ordre" value="<?php echo $_POST['ordre'];?>"/>
+										<input type="hidden" name="categorie" value="<?php echo $_POST['categorie'];?>"/>
+										<input type="hidden" name="prix" value="<?php echo $_POST['prix'];?>"/>
 										<input type="submit" value="Retour Formulaire"/>
 									</form>
 							<?php
@@ -115,16 +120,17 @@ Name : trt_Produit.php => Plug-it
 					
 					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logoprod')) != '')
 					{
-							$titre = htmlspecialchars($_POST['nomsolu']);
-
+							$titre = htmlspecialchars($_POST['titre']);
+							$prix = $_POST['prix'];
+							$categorie = $_POST['categorie'];
 							
 							$titre = mysql_real_escape_string($titre);
 							$corps = mysql_real_escape_string($_POST['corps']);
 							$ordre = $_POST['ordre'];
 							
-							$path = make_limg($path);
+							//$path = make_img_prod($path);
 							try{
-								connexionbddplugit::getInstance()->query("INSERT INTO produit VALUES (Null,'$titre','$path','$corps',Null,'$ordre')");
+								connexionbddplugit::getInstance()->query("INSERT INTO produit VALUES (Null,'$titre','$path','$corps',Null,'$prix','$categorie','$ordre')");
 							} catch ( Exception $e ) {
 								echo "Une erreur est survenue : ".$e->getMessage();
 							}
@@ -134,9 +140,11 @@ Name : trt_Produit.php => Plug-it
 						{
 							?>
 								<form method="POST" action="../index.php?page=admin_boutique">
-									<input type="hidden" name="nomsolu" value="<?php echo htmlspecialchars($_POST['nomsolu']);?>"/>
+									<input type="hidden" name="nomsolu" value="<?php echo htmlspecialchars($_POST['titre']);?>"/>
 									<input type="hidden" name="corps" value="<?php echo htmlspecialchars($_POST['corps']);?>"/>
 									<input type="hidden" name="ordre" value="<?php echo $_POST['ordre'];?>"/>
+									<input type="hidden" name="categorie" value="<?php echo $_POST['categorie'];?>"/>
+									<input type="hidden" name="prix" value="<?php echo $_POST['prix'];?>"/>
 									<input type="submit" value="Retour Formulaire"/>
 								</form>
 							<?php
@@ -157,8 +165,6 @@ Name : trt_Produit.php => Plug-it
 	{
 		echo ('<h2 style="color:red;">Mode Non spécifié !</h2>');
 	}
-	
-	mysql_close();
 	
 	echo ('<center><a href="../index.php?page=boutique">Retour Produit</a></center>');
 ?>
