@@ -1,5 +1,4 @@
-
-<h2 class="titre">Boutique en ligne </h2>
+<h2>Boutique en Ligne</h2>
 
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
@@ -175,7 +174,7 @@
 						elementNo = parseInt(elementID.replace(elementPattern, '$1'));
 						if(!isNaN(elementNo))
 						{
-							suppElem(elementNo)
+							suppElem(elementNo);
 						}
 					}
 				  }
@@ -191,7 +190,6 @@
 	}
 
 	require_once('./connexionbddplugit.class.php');
-
 	
 	switch($_GET['mode'])
 	{	
@@ -199,12 +197,12 @@
 		
 			if(!isset($_GET['categ']))
 			{
-				$_GET['categ'] = 'destokage';
+				$rq = connexionbddplugit::getInstance()->query("SELECT nom FROM categorie");
+				$rq = $rq->fetch();
+				$_GET['categ'] = $rq['nom'];
 			}
 			
 			$nomcateg = $_GET['categ'];
-	
-			
 			
 			$rq = connexionbddplugit::getInstance()->query("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = '$nomcateg'");
 			$rq = $rq->fetch();
@@ -215,8 +213,10 @@
 				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
 				$ar=$rq->fetch();
 			
+				echo '<h4>'.strtoupper($_GET['categ']).'</h4>'
 			?>
-			
+				
+				
 				<div id="accordeon"> <!-- Bloc principal, sur lequel nous appellerons le plugin PANIER-->
 					<h3><img src="./images/e_commerce_caddie.gif" style="width:20px; height:20px; vertical-align:-18%;"/>Panier</h3>
 					<div id="contenu">
@@ -279,7 +279,7 @@
 				{
 				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
 					echo '<table cellspacing="20">';
-					while($ar=MySQL_fetch_array($rq))
+					while($ar=$rq->fetch())
 					{
 						if($i == 1)
 							echo '<tr>';
