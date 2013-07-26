@@ -25,31 +25,38 @@ Name : accueil.php => Plug-it
 					$img = array('.png', '.gif', '.jpg', '.jpeg','.bmp','.avi','.mp4');
 					$video = array('.avi','.mp4');
 					
-					$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as nombreslides FROM solutions"); 
-					$array = $rq->fetch();
+					try{
+						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as nombreslides FROM solutions"); 
+						$array = $rq->fetch();
+					} catch ( Exception $e ) {
+						echo "Une erreur est survenue : ".$e;
+					}	
 					$max= max(10,$array['nombreslides']);
 					
-					$rq=connexionbddplugit::getInstance()->query("SELECT * FROM solutions ORDER by date DESC LIMIT ".$max."");
-					
-					
-					$effet = array('slice-top-fade,slice-right-fade','zigzag-drop-top,zigzag-drop-bottom','strip-right-fade,strip-left-fade','');
-					$i=0;
-					
-					while($array=$rq->fetch())
-					{	
-						$ext = strtolower(strrchr($array['image_car'], '.')); 
-						if(in_array($ext,$video))
-							echo '<div data-iview:image="images/slide_08.jpg" data-iview:type="video" data-iview:transition="'.$effet[$i].'">
-								<iframe src="http://127.0.0.1/plug-it/include/invite/viewvid.php?vid=../../'.$array['image_car'].'" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-								<div class="iview-caption caption1" data-x="80" data-y="200">'.$array['titre'].'</sup></div>
-								<div class="iview-caption" data-x="80" data-y="275" data-transition="wipeRight">'.$array['description'].'</div>
-								</div>';
-						else
-							echo '<div data-iview:image="'.$array['image_car'].'" data-iview:transition="'.$effet[$i].'"></div>';
+					try{
+						$rq=connexionbddplugit::getInstance()->query("SELECT * FROM solutions ORDER by date DESC LIMIT ".$max."");
+										
+						$effet = array('slice-top-fade,slice-right-fade','zigzag-drop-top,zigzag-drop-bottom','strip-right-fade,strip-left-fade','');
+						$i=0;
 						
-						$i++;
-						if($i > 3)
-							$i =0;
+						while($array=$rq->fetch())
+						{	
+							$ext = strtolower(strrchr($array['image_car'], '.')); 
+							if(in_array($ext,$video))
+								echo '<div data-iview:image="images/slide_08.jpg" data-iview:type="video" data-iview:transition="'.$effet[$i].'">
+									<iframe src="http://127.0.0.1/plug-it/include/invite/viewvid.php?vid=../../'.$array['image_car'].'" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+									<div class="iview-caption caption1" data-x="80" data-y="200">'.$array['titre'].'</sup></div>
+									<div class="iview-caption" data-x="80" data-y="275" data-transition="wipeRight">'.$array['description'].'</div>
+									</div>';
+							else
+								echo '<div data-iview:image="'.$array['image_car'].'" data-iview:transition="'.$effet[$i].'"></div>';
+							
+							$i++;
+							if($i > 3)
+								$i =0;
+						}
+					} catch ( Exception $e ) {
+						echo "Une erreur est survenue : ".$e;
 					}
 				?>
 				

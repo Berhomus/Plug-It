@@ -9,8 +9,12 @@ Name : update_ordre.php => Plug-it
 	{
 		if($fin==0)
 		{
-			$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) AS nbre FROM ".$bdd."")
-			$rq=$rq->fetch();
+			try{
+				$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) AS nbre FROM ".$bdd."");
+				$rq=$rq->fetch();
+			} catch ( Exception $e ) {
+			echo "Une erreur est survenue : ".$e;
+			}
 			$fin=$rq['nbre'];
 		}
 		
@@ -21,10 +25,17 @@ Name : update_ordre.php => Plug-it
 			$deb=min($deb,$swap);
 			for($i=$deb;$i<=$fin;$i=$i-$pas)
 			{
-				
-				$rq = connexionbddplugit::getInstance()->query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'")
-				$ar = $rq->fetch();
-				connexionbddplugit::getInstance()->query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'") 
+				try{
+					$rq = connexionbddplugit::getInstance()->query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'");
+					$ar = $rq->fetch();
+				} catch ( Exception $e ) {
+					echo "Une erreur est survenue : ".$e;
+				}
+				try{	
+				connexionbddplugit::getInstance()->query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'");
+				} catch ( Exception $e ) {
+					echo "Une erreur est survenue : ".$e;
+				}
 			}
 		}
 		else
@@ -34,9 +45,18 @@ Name : update_ordre.php => Plug-it
 			$deb=max($deb,$swap);
 			for($i=$deb;$i>=$fin;$i=$i-$pas)
 			{
-				$rq = connexionbddplugit::getInstance()->query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'")
-				$ar = $rq->fetch();
-				connexionbddplugit::getInstance()->query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'") 
+				try{
+					$rq = connexionbddplugit::getInstance()->query("SELECT id FROM ".$bdd." WHERE ordre='".$i."'");
+					$ar = $rq->fetch();
+				} catch ( Exception $e ) {
+					echo "Une erreur est survenue : ".$e;
+				}
+				
+				try{
+					connexionbddplugit::getInstance()->query("UPDATE ".$bdd." SET ordre='".($i+$pas)."' WHERE id='".$ar['id']."'");
+				} catch ( Exception $e ) {
+					echo "Une erreur est survenue : ".$e;
+				}
 			}
 		}
 		

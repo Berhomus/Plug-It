@@ -205,16 +205,21 @@
 			$nomcateg = $_GET['categ'];
 	
 			
-			
-			$rq = connexionbddplugit::getInstance()->query("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = '$nomcateg'");
-			$rq = $rq->fetch();
+			try{
+				$rq = connexionbddplugit::getInstance()->query("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = '$nomcateg'");
+				$rq = $rq->fetch();
+			} catch ( Exception $e ) {
+				echo "Une erreur est survenue : ".$e;
+			}
 			
 			if($rq['nombre'] >= 1)
 			{
-			
+			try{
 				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
 				$ar=$rq->fetch();
-			
+			} catch ( Exception $e ) {
+				echo "Une erreur est survenue : ".$e;
+			}
 			?>
 			
 				<div id="accordeon"> <!-- Bloc principal, sur lequel nous appellerons le plugin PANIER-->
@@ -277,52 +282,56 @@
 				
 				if(!empty($ar))
 				{
-				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
-					echo '<table cellspacing="20">';
-					while($ar=MySQL_fetch_array($rq))
-					{
-						if($i == 1)
-							echo '<tr>';
-						
-						echo '<td>
-						<div class="blockproduit" onclick="location.href=\'index.php?page=boutique&mode=viewone&id='.$ar['id'].'\'"> ';
-						
-						if(isset($_SESSION['id']))
+				try{
+					$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
+						echo '<table cellspacing="20">';
+						while($ar=$rq->fetch())
 						{
+							if($i == 1)
+								echo '<tr>';
+							
+							echo '<td>
+							<div class="blockproduit" onclick="location.href=\'index.php?page=boutique&mode=viewone&id='.$ar['id'].'\'"> ';
+							
+							if(isset($_SESSION['id']))
+							{
+								echo'
+								<span style="margin-left:10%;"><a class="bt" href="index.php?page=admin_boutique&mode=modifier&id='.$ar['id'].'">Modifier</a> - 
+								<a class="bt" href="traitement/trt_boutique.php?mode=delete&id='.$ar['id'].'">Supprimer</a></span>';
+							}
 							echo'
-							<span style="margin-left:10%;"><a class="bt" href="index.php?page=admin_boutique&mode=modifier&id='.$ar['id'].'">Modifier</a> - 
-							<a class="bt" href="traitement/trt_boutique.php?mode=delete&id='.$ar['id'].'">Supprimer</a></span>';
+								<img src="'.$ar['images'].'" style="margin-left:5%;width:90%;" width="280" height="170"/>
+							</div><span id="'.$ar['id'].'" class="boutprod" style="float:left;" onclick="ajoutpanier('.$ar['id'].');">Ajouter au panier </span><span class="boutprod2" style="float:left;"><select name="qte'.$ar['id'].'" id="qte'.$ar['id'].'">';
+							for($k=1;$k<=10;$k++)
+							{
+								echo '<option value='.$k.'>'.$k.'</option>';
+							}
+							echo '</span>';
+							
+							echo '<input type="hidden" id="name'.$ar['id'].'" value="'.$ar['nom'].'"/>
+							<input type="hidden" id="qte_h'.$ar['id'].'" value="0"/>
+							<input type="hidden" id="prix'.$ar['id'].'" value="'.$ar['prix'].'"/>';
+							
+							echo '</td>';
+							
+							$i++;
+							if($i > 2)
+							{
+								$i=1;
+								$j++;
+								echo '</tr>';
+							}
 						}
-						echo'
-							<img src="'.$ar['images'].'" style="margin-left:5%;width:90%;" width="280" height="170"/>
-						</div><span id="'.$ar['id'].'" class="boutprod" style="float:left;" onclick="ajoutpanier('.$ar['id'].');">Ajouter au panier </span><span class="boutprod2" style="float:left;"><select name="qte'.$ar['id'].'" id="qte'.$ar['id'].'">';
-						for($k=1;$k<=10;$k++)
-						{
-							echo '<option value='.$k.'>'.$k.'</option>';
-						}
-						echo '</span>';
-						
-						echo '<input type="hidden" id="name'.$ar['id'].'" value="'.$ar['nom'].'"/>
-						<input type="hidden" id="qte_h'.$ar['id'].'" value="0"/>
-						<input type="hidden" id="prix'.$ar['id'].'" value="'.$ar['prix'].'"/>';
-						
-						echo '</td>';
-						
-						$i++;
-						if($i > 2)
-						{
-							$i=1;
-							$j++;
-							echo '</tr>';
-						}
+						echo '</table>';
 					}
-					echo '</table>';
+					else
+					{
+						echo '<h2>Aucun produit existant</h2>';
+					}
+					echo '</div>';
+				} catch ( Exception $e ) {
+					echo "Une erreur est survenue : ".$e;
 				}
-				else
-				{
-					echo '<h2>Aucun produit existant</h2>';
-				}
-				echo '</div>';
 			}
 			else
 			{
@@ -333,15 +342,22 @@
 		case 'viewone' :
 		if(isset($_GET['id']))
 			{
-				$retour = connexionbddplugit::getInstance()->query("SELECT count(id) as cpt FROM produit WHERE id='".$_GET["id"]."'");
-				$donnees = $retour->fetch();
-				
+				try{
+					$retour = connexionbddplugit::getInstance()->query("SELECT count(id) as cpt FROM produit WHERE id='".$_GET["id"]."'");
+					$donnees = $retour->fetch();
+				} catch ( Exception $e ) {
+					echo "Une erreur est survenue : ".$e;
+				}
 				if($donnees['cpt'] == 1)
 				{
-					//affichage 
-					$retour = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE id='".$_GET['id']."'") ;
-					$donnees = $retour->fetch();
-					
+					//affichage
+					try{
+						$retour = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE id='".$_GET['id']."'") ;
+						$donnees = $retour->fetch();
+					} catch ( Exception $e ) {
+						echo "Une erreur est survenue : ".$e;
+					}
+			
 					echo '<div style="margin:auto;width:70%;">
 							<h2>'.$donnees['nom'].'</h2>
 							<hr/>

@@ -10,7 +10,11 @@
 		{
 			$meta = htmlspecialchars($meta);
 			$meta = mysql_real_escape_string($meta);
-			connexionbddplugit::getInstance()->query("UPDATE menu SET meta='$meta' WHERE position='$i'");
+			try{
+				connexionbddplugit::getInstance()->query("UPDATE menu SET meta='$meta' WHERE position='$i'");
+			} catch ( Exception $e ) {
+				echo "Une erreur est survenue : ".$e;
+			}
 			$i++;
 		}
 	}

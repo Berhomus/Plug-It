@@ -20,27 +20,30 @@ Name : Banniere.php => Plug-it
 		<?php
 		require_once('./connexionbddplugit.class.php');
 
-		
-		$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu ORDER BY position");
-		
-		while($ar=$rq->fetch())
+		try
 		{
-			if($ar['active'] == true)
-			{				
-				echo '
-				<td onclick="location.href=\''.$ar['lien'].'\'"';
-					if($ar['interne'] and $_GET['page'] == $ar['baseName'])
-						echo 'class="menu_selected"';
-					else
-						echo 'class="menu_unselected"';
-				echo '>'.$ar['nom'].'</td>';
-				if($ar['baseName'] == 'boutique')
-				{
-					
+			$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu ORDER BY position");
+				
+			while($ar=$rq->fetch())
+			{
+				if($ar['active'] == true)
+				{				
+					echo '
+					<td onclick="location.href=\''.$ar['lien'].'\'"';
+						if($ar['interne'] and $_GET['page'] == $ar['baseName'])
+							echo 'class="menu_selected"';
+						else
+							echo 'class="menu_unselected"';
+					echo '>'.$ar['nom'].'</td>';
+					if($ar['baseName'] == 'boutique')
+					{
+						
+					}
 				}
 			}
+		} catch ( Exception $e ) {
+			echo "Une erreur est survenue : ".$e;
 		}
-		
 		
 		?>
 		</tr>

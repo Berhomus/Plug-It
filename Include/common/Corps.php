@@ -17,9 +17,12 @@ Name : Corps.php => Plug-it
 	function checkUp($nom){
 		require_once('./connexionbddplugit.class.php');
 
-		
-		$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu WHERE baseName = '$nom'");
-		$ar= $rq->fetch();
+		try{
+			$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu WHERE baseName = '$nom'");
+			$ar= $rq->fetch();
+		} catch ( Exception $e ) {
+			echo "Une erreur est survenue : ".$e;
+		}
 		
 		return $ar['active'];	
 	}

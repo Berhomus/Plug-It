@@ -32,20 +32,23 @@ if(isset($_SESSION['id']))
 
 	require_once('./connexionbddplugit.class.php');
 
-	
-	$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu ORDER BY position");
-	$i=1;
-	
-	echo '<form action="./traitement/trt_gest_meta.php" method="POST">';
-	echo '<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">';
-	while ($donnees = $rq->fetch())
-	{
-		echo '<tr><td>La description pour <b>'.$donnees['nom'].'</b></td>';
-		echo '<td><textarea name="meta'.$i.'" rows="4" cols="60" style="resize:none">'.$donnees['meta'].'</textarea></td></tr>';
-		$i++;
+	try{
+		$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu ORDER BY position");
+		$i=1;
+		
+		echo '<form action="./traitement/trt_gest_meta.php" method="POST">';
+		echo '<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">';
+		while ($donnees = $rq->fetch())
+		{
+			echo '<tr><td>La description pour <b>'.$donnees['nom'].'</b></td>';
+			echo '<td><textarea name="meta'.$i.'" rows="4" cols="60" style="resize:none">'.$donnees['meta'].'</textarea></td></tr>';
+			$i++;
+		}
+		echo '<tr><td><input type="submit" value="Valider"/></td></tr>';
+		echo '</table></form>';
+	} catch ( Exception $e ) {
+		echo "Une erreur est survenue : ".$e;
 	}
-	echo '<tr><td><input type="submit" value="Valider"/></td></tr>';
-	echo '</table></form>';
 ?>
 	
 <?php

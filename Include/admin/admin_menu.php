@@ -12,29 +12,32 @@ if(isset($_SESSION['id']))
 	
 	require_once('./connexionbddplugit.class.php');
 
-
-	$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu ORDER BY position");
+	try{
+		$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu ORDER BY position");
 	
-	echo'<div style="margin:auto;width:900px;margin-top:5%;">';
+		echo'<div style="margin:auto;width:900px;margin-top:5%;">';
 
-	$i=1; //délimite les colonnes
-	
-	echo '<table cellspacing="20" cellpadding="20" class="menu">';
-	echo '<tr>';
-	while ($donnees = mysql_fetch_array($rq))
-		{
-			echo '<td class="menu_change" id="zonedrop">
-			<div class="block_ma" id="zonedrag'.$i.'">';				
+		$i=1; //délimite les colonnes
+		
+		echo '<table cellspacing="20" cellpadding="20" class="menu">';
+		echo '<tr>';
+		while ($donnees = $rq->fetch())
+			{
+				echo '<td class="menu_change" id="zonedrop">
+				<div class="block_ma" id="zonedrag'.$i.'">';				
+					
+				echo'	
+					<p style="font-size:18px;">'.$donnees['nom'].'</p>	
+				</div></td>';
 				
-			echo'	
-				<p style="font-size:18px;">'.$donnees['nom'].'</p>	
-			</div></td>';
-			
-			$i++;
+				$i++;
+			}
+		echo '</tr>
+		</table>
+		</div>';
+		} catch ( Exception $e ) {
+			echo "Une erreur est survenue : ".$e;
 		}
-	echo '</tr>
-	</table>
-	</div>';
 ?>	
 
 	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>

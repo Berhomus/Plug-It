@@ -26,57 +26,69 @@ Name : services.php => Plug-it
 						echo '<br/><div style="margin:auto;" class="menuverti" onclick="location.href=\'index.php?page=admin_services\'">Ajouter un service</div>';
 					}
 					
-					$retour = connexionbddplugit::getInstance()->query('SELECT * FROM services ORDER BY ordre');
-					$i=1; //délimite les colonnes
-					$j=1; //délimite les lignes
-					
-					echo '<table cellspacing="20">';
-					while ($donnees = $retour->fetch())
-						{
+					try{
+						$retour = connexionbddplugit::getInstance()->query('SELECT * FROM services ORDER BY ordre');
+						$i=1; //délimite les colonnes
+						$j=1; //délimite les lignes
 						
-							if($i == 1)
-								echo '<tr>';
-							
-							echo '<td>
-							<div class="blockservice" onclick="location.href=\'index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">';
-							
-							if(isset($_SESSION['id']))
+						echo '<table cellspacing="20">';
+						while ($donnees = $retour->fetch())
 							{
-								echo'
-								<span style="margin-left:10%;"><a class="bt" href="index.php?page=admin_services&mode=modifier&id='.$donnees['id'].'">Modifier</a> - 
-								<a class="bt" href="traitement/trt_services.php?mode=delete&id='.$donnees['id'].'">Supprimer</a></span>';
-							}
-								
-								
-							echo'	
-								<img src="'.$donnees['image'].'"  width="280" height="157" style="margin-left:5%;width:90%;"/><br/>
-								<h3 style="font-size:18px;">'.$donnees['titre'].'</h3>
-								
-							</div></td>';
 							
-							$i++;
-							if($i > 3)
-							{
-								$i=1;
-								$j++;
-								echo '</tr>';
+								if($i == 1)
+									echo '<tr>';
+								
+								echo '<td>
+								<div class="blockservice" onclick="location.href=\'index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">';
+								
+								if(isset($_SESSION['id']))
+								{
+									echo'
+									<span style="margin-left:10%;"><a class="bt" href="index.php?page=admin_services&mode=modifier&id='.$donnees['id'].'">Modifier</a> - 
+									<a class="bt" href="traitement/trt_services.php?mode=delete&id='.$donnees['id'].'">Supprimer</a></span>';
+								}
+									
+									
+								echo'	
+									<img src="'.$donnees['image'].'"  width="280" height="157" style="margin-left:5%;width:90%;"/><br/>
+									<h3 style="font-size:18px;">'.$donnees['titre'].'</h3>
+									
+								</div></td>';
+								
+								$i++;
+								if($i > 3)
+								{
+									$i=1;
+									$j++;
+									echo '</tr>';
+								}
 							}
-						}
-					echo '</table>
-				</div>';
+						echo '</table>';
+					} catch ( Exception $e ) {
+						echo "Une erreur est survenue : ".$e;
+					}
+				echo '</div>';
 		break;
 			
 		case 'viewone':
 			if(isset($_GET['id']))//verif existence id
 			{
-				$retour = connexionbddplugit::getInstance()->query("SELECT count(id) as cpt FROM services WHERE id='".$_GET["id"]."'");
-				$donnees = $retour->fetch();
+				try{
+					$retour = connexionbddplugit::getInstance()->query("SELECT count(id) as cpt FROM services WHERE id='".$_GET["id"]."'");
+					$donnees = $retour->fetch();
+				} catch ( Exception $e ) {
+					echo "Une erreur est survenue : ".$e;
+				}
 				
 				if($donnees['cpt'] == 1)
 				{
 					//affichage 
-					$retour = connexionbddplugit::getInstance()->query("SELECT * FROM services WHERE id='".$_GET['id']."'"); 
-					$donnees = $retour->fetch();
+					try{
+						$retour = connexionbddplugit::getInstance()->query("SELECT * FROM services WHERE id='".$_GET['id']."'"); 
+						$donnees = $retour->fetch();
+					} catch ( Exception $e ) {
+						echo "Une erreur est survenue : ".$e;
+					}
 					
 					echo '<div style="margin:auto;width:70%;">
 						<table>
@@ -92,37 +104,39 @@ Name : services.php => Plug-it
 						
 					
 					//affichage autres liens					
-					$retour = connexionbddplugit::getInstance()->query("SELECT * FROM services WHERE id<>'".$_GET['id']."' ORDER BY ordre LIMIT 10");
+					try{
+						$retour = connexionbddplugit::getInstance()->query("SELECT * FROM services WHERE id<>'".$_GET['id']."' ORDER BY ordre LIMIT 10");
 					
-					$i=1; //délimite les colonnes
-					$j=1; //délimite les lignes
-					
-					echo'<div style="margin:auto;width:70%;margin-top:20px;">
-					<table cellspacing="10">';
-					while ($donnees = $retour->fetch())
-						{
+						$i=1; //délimite les colonnes
+						$j=1; //délimite les lignes
 						
-							if($i == 1)
-								echo '<tr>';
-							
-							echo '<td>
-							<div class="blocklink" onclick="location.href=\'index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">
-								<p style="text-align:center;position:relative;top:30%;">
-									<img src="images/fleche.png" style="vertical-align:middle;"/> <span style="font-size:13px;font-weight:bold;margin-left:5px;text-transform:uppercase;">'.$donnees['subtitre'].'</span>
-								</p>
-							</div></td>';
-							
-							$i++;
-							if($i > 5)
+						echo'<div style="margin:auto;width:70%;margin-top:20px;">
+						<table cellspacing="10">';
+						while ($donnees = $retour->fetch())
 							{
-								$i=1;
-								$j++;
-								echo '</tr>';
+							
+								if($i == 1)
+									echo '<tr>';
+								
+								echo '<td>
+								<div class="blocklink" onclick="location.href=\'index.php?page=services&mode=viewone&id='.$donnees['id'].'\'">
+									<p style="text-align:center;position:relative;top:30%;">
+										<img src="images/fleche.png" style="vertical-align:middle;"/> <span style="font-size:13px;font-weight:bold;margin-left:5px;text-transform:uppercase;">'.$donnees['subtitre'].'</span>
+									</p>
+								</div></td>';
+								
+								$i++;
+								if($i > 4)
+								{
+									$i=1;
+									$j++;
+									echo '</tr>';
+								}
 							}
-						}
-					echo '</table>
-				</div>';
-					
+						echo '</table></div>';
+					} catch ( Exception $e ) {
+						echo "Une erreur est survenue : ".$e;
+					}
 				}
 				else
 					echo '<p>Erreur</p>';

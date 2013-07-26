@@ -62,11 +62,8 @@ Name : Index.css => Plug-it
 .Corps
 	{
 	position:relative;
-	margin-left:0%;
-	width:100%;
 	min-height:550px;
 	background-color:#FEFEFE;
-	min-width: 1350px;
 	}
 	
 	
@@ -240,8 +237,8 @@ Name : Index.css => Plug-it
 /*##########SOLUTIONS#########*/
 .blocksolution
 {
-	width:300px;
-	height: 320px;
+	width:285px;
+	height: 280px;
 	background-color:#e0e0e0;
 	cursor: pointer;
 	padding:10px;
@@ -256,8 +253,8 @@ Name : Index.css => Plug-it
 /*##########SERVICES#########*/
 .blockservice
 {
-	width:300px;
-	height: 250px;
+	width:285px;
+	height: 280px;
 	background-color:#e0e0e0;
 	cursor: pointer;
 }
@@ -294,8 +291,8 @@ Name : Index.css => Plug-it
 
 .blockproduit
 {
-	width:300px;
-	height: 200px;
+	width:285px;
+	height: 280px;
 	background-color:#e0e0e0;
 	cursor: pointer;
 	padding-top:15px;

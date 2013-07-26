@@ -20,16 +20,25 @@ function connect()
 		
 		
 		$login = $_POST["login"];
-		$rq = connexionbddplugit::getInstance()->query("SELECT COUNT(login) AS cpt FROM admin WHERE login ='$login'");//selection données
-		$array = $rq->fetch();
+		try{
+			$rq = connexionbddplugit::getInstance()->query("SELECT COUNT(login) AS cpt FROM admin WHERE login ='$login'");//selection données
+			$array = $rq->fetch();
+		} catch ( Exception $e ) {
+			echo "Une erreur est survenue : ".$e;
+		}
+			
 		if($array['cpt'] == 0) 
 		{
 			return -1;//pas de pseudo
 		}
 		else
 		{
-			$rq = connexionbddplugit::getInstance()->query("SELECT * FROM admin WHERE login ='$login'");
-			$array = $rq->fetch();
+			try{
+				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM admin WHERE login ='$login'");
+				$array = $rq->fetch();
+			} catch ( Exception $e ) {
+				echo "Une erreur est survenue : ".$e;
+			}
 			if(MD5($_POST['pass']) == $array['mdp_md5'])//verification password
 			{
 				$_SESSION['id'] = $array['id'];

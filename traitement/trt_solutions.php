@@ -21,15 +21,27 @@ Name : trt_solutions.php => Plug-it
 				echo ('<h2>Suppression Solution</h2>');
 				if(isset($_GET['id']))
 				{
-					$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'");
-					$array=$rq->fetch();
-					
+					try{
+						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'");
+						$array=$rq->fetch();
+					} catch ( Exception $e ) {
+						echo "Une erreur est survenue : ".$e;
+					}
+			
 					if($array['cpt'])
 					{
-						$rq = connexionbddplugit::getInstance()->query("SELECT ordre FROM solutions WHERE id='".$_GET['id']."'");
-						$ar = $rq->fetch();
+						try{
+							$rq = connexionbddplugit::getInstance()->query("SELECT ordre FROM solutions WHERE id='".$_GET['id']."'");
+							$ar = $rq->fetch();
+						} catch ( Exception $e ) {
+							echo "Une erreur est survenue : ".$e;
+						}
 						update_ordre($ar['ordre'],0,-1,'solutions');
-						connexionbddplugit::getInstance()->query("DELETE FROM solutions WHERE id='".$_GET['id']."'");
+						try{
+							connexionbddplugit::getInstance()->query("DELETE FROM solutions WHERE id='".$_GET['id']."'");
+						} catch ( Exception $e ) {
+							echo "Une erreur est survenue : ".$e;
+						}
 						echo ('<h2 style="color:green;">Solution Supprimée !</h2>');
 					}
 					else
@@ -47,8 +59,12 @@ Name : trt_solutions.php => Plug-it
 				echo ('<h2>Modification Solution</h2>');
 				if(isset($_GET['id']))
 				{
-					$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'");
-					$array=$rq->fetch();
+					try{
+						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'");
+						$array=$rq->fetch();
+					} catch ( Exception $e ) {
+						echo "Une erreur est survenue : ".$e;
+					}
 
 					if($array['cpt'])
 					{
@@ -57,8 +73,12 @@ Name : trt_solutions.php => Plug-it
 						
 							if(empty($_FILES['grandeimg']['name'])or ($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg','.bmp','.avi','.mp4'),'grandeimg')) != '')
 							{
-								$rq=connexionbddplugit::getInstance()->query("SELECT * FROM solutions WHERE id='".$_GET['id']."'");
-								$array=$rq->fetch();
+								try{
+									$rq=connexionbddplugit::getInstance()->query("SELECT * FROM solutions WHERE id='".$_GET['id']."'");
+									$array=$rq->fetch();
+								} catch ( Exception $e ) {
+									echo "Une erreur est survenue : ".$e;
+								}
 								
 								$titre = (!empty($_POST['nomsolu'])) ? $_POST['nomsolu']:$array['titre'];
 								$desc = (!empty($_POST['desc'])) ? $_POST['desc']:$array['description'];
@@ -85,7 +105,11 @@ Name : trt_solutions.php => Plug-it
 								if($ordre!=$array['ordre'])
 									update_ordre($array['ordre']-$pas,$ordre,$pas,'solutions');
 								
-								connexionbddplugit::getInstance()->query("UPDATE solutions SET ordre='$ordre', image_sol='$path', image_car='$path2', titre='$titre', description='$desc', corps='$corps' WHERE id='".$_GET['id']."'");
+								try{
+									connexionbddplugit::getInstance()->query("UPDATE solutions SET ordre='$ordre', image_sol='$path', image_car='$path2', titre='$titre', description='$desc', corps='$corps' WHERE id='".$_GET['id']."'");
+								} catch ( Exception $e ) {
+									echo "Une erreur est survenue : ".$e;
+								}
 								echo ('<h2 style="color:green;">Solution Modifiée !</h2>');
 							}
 							else
@@ -148,7 +172,11 @@ Name : trt_solutions.php => Plug-it
 							$path2 = make_img($path2,$titre,$desc);
 							$path = make_limg($path);
 							
-							connexionbddplugit::getInstance()->query("INSERT INTO solutions VALUES (Null,'$titre','$corps','$path2','$path','$desc',Null,'$ordre')");
+							try{
+								connexionbddplugit::getInstance()->query("INSERT INTO solutions VALUES (Null,'$titre','$corps','$path2','$path','$desc',Null,'$ordre')");
+							} catch ( Exception $e ) {
+								echo "Une erreur est survenue : ".$e;
+							}
 							echo ('<h2 style="color:green;">Solution Créée !</h2>');
 						}
 						else

@@ -19,15 +19,27 @@ Name : trt_Produit.php => Plug-it
 				echo ('<h2>Suppression Produit</h2>');
 				if(isset($_GET['id']))
 				{
-					$rq=mysql_query("SELECT COUNT(id) as cpt FROM produit WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-					$array=mysql_fetch_array($rq);
+					try{
+						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM produit WHERE id='".$_GET['id']."'");
+						$array=$rq->fetch();
+					} catch ( Exception $e ) {
+						echo "Une erreur est survenue : ".$e;
+					}
 					
 					if($array['cpt'])
 					{
-						$rq = mysql_query("SELECT ordre FROM produit WHERE id='".$_GET['id']."'")or die("fail ".$i. " => Erreur SQL !<br />".mysql_error());
-						$ar = mysql_fetch_array($rq);
+						try{
+							$rq = connexionbddplugit::getInstance()->query("SELECT ordre FROM produit WHERE id='".$_GET['id']."'")or die("fail ".$i. " => Erreur SQL !<br />".mysql_error());
+							$ar = $rq->fetch();
+						} catch ( Exception $e ) {
+							echo "Une erreur est survenue : ".$e;
+						}
 
-						mysql_query("DELETE FROM produit WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+						try{
+							connexionbddplugit::getInstance()->query("DELETE FROM produit WHERE id='".$_GET['id']."'");
+						} catch ( Exception $e ) {
+							echo "Une erreur est survenue : ".$e;
+						}
 						echo ('<h2 style="color:green;">Produit Supprimée !</h2>');
 					}
 					else
@@ -45,15 +57,15 @@ Name : trt_Produit.php => Plug-it
 				echo ('<h2>Modification Produit</h2>');
 				if(isset($_GET['id']))
 				{
-					$rq=mysql_query("SELECT COUNT(id) as cpt FROM produit WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-					$array=mysql_fetch_array($rq);
+					$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM produit WHERE id='".$_GET['id']."'");
+					$array=$rq->fetch();
 
 					if($array['cpt'])
 					{
 						if(empty($_FILES['logosolu']['name'])or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logosolu')) != '')
 						{
-								$rq=mysql_query("SELECT * FROM produit WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
-								$array=mysql_fetch_array($rq);
+								$rq=connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE id='".$_GET['id']."'");
+								$array=$rq->fetch();
 								
 								$titre = (!empty($_POST['nomsolu'])) ? $_POST['nomsolu']:$array['titre'];
 								$corps = (!empty($_POST['corps'])) ? $_POST['corps']:$array['corps'];
@@ -65,7 +77,11 @@ Name : trt_Produit.php => Plug-it
 								$titre = mysql_real_escape_string($titre);
 								$corps = mysql_real_escape_string($corps);							
 								
-								mysql_query("UPDATE produit SET priorite='$ordre', images='$path', nom='$titre', corps='$corps' WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+								try{
+									connexionbddplugit::getInstance()->query("UPDATE produit SET priorite='$ordre', images='$path', nom='$titre', corps='$corps' WHERE id='".$_GET['id']."'");
+								} catch ( Exception $e ) {
+									echo "Une erreur est survenue : ".$e;
+								}
 								echo ('<h2 style="color:green;">Produit Modifiée !</h2>');
 							}
 							else
@@ -107,8 +123,11 @@ Name : trt_Produit.php => Plug-it
 							$ordre = $_POST['ordre'];
 							
 							$path = make_limg($path);
-							
-							mysql_query("INSERT INTO produit VALUES (Null,'$titre','$path','$corps',Null,'$ordre')")or die('Erreur SQL !<br />'.mysql_error());
+							try{
+								connexionbddplugit::getInstance()->query("INSERT INTO produit VALUES (Null,'$titre','$path','$corps',Null,'$ordre')");
+							} catch ( Exception $e ) {
+								echo "Une erreur est survenue : ".$e;
+							}
 							echo ('<h2 style="color:green;">Produit Créée !</h2>');
 						}
 						else
