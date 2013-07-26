@@ -9,8 +9,8 @@ function connect()
 {	
 	if(isset($_POST['login']) and isset($_POST['pass']))
 	{
-		$connexion = mysql_connect('localhost', 'root','') OR die('Erreur de connexion');
-		mysql_select_db('plugit') OR die('Sélection de la base impossible'); 
+		$connexion = mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox') OR die('Erreur de connexion');
+		mysql_select_db('plugitrhino') OR die('Sélection de la base impossible'); 
 		mysql_set_charset( 'utf8' );
 		
 		$_POST['login'] = htmlspecialchars($_POST['login']);

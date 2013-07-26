@@ -1,4 +1,4 @@
-<!--********************************************************
+﻿<!--********************************************************
 Made by : AS Amiens - Bovin Antoine/Bensaid Borhane/Villain Benoit
 Last Update : 12/07/2013
 Name : Contact.php => Plug-it
@@ -19,7 +19,7 @@ Name : Contact.php => Plug-it
 			
 			$message = $_POST['liste'] ." ". $_POST['nom'] ." ". $_POST['prenom'] ."\n".$societe."-".$_POST['courriel']."\n".$_POST['message'];
 			
-			 if(mail('villain.benoit.dev@gmail.com', $objet,$message))
+			 if(mail('contact@plug-it.com', $objet,$message))
 			 {
 				$error_contact = 2;
 			 }
@@ -27,7 +27,7 @@ Name : Contact.php => Plug-it
 			 {
 				$error_contact = 3;
 			 }
-			
+		
 			$error_contact = 2;
 		}
 		else

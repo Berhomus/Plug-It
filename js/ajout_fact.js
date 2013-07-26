@@ -31,7 +31,7 @@ var nbr_fac = 0;
 		  
 		  var td4 = document.createElement('td')
 		  var Input_date = document.createElement('input');
-		  Input_date.setAttribute('type', 'date');
+		  Input_date.setAttribute('type', 'text');
 		  Input_date.setAttribute('name', 'date' + ID);
 		  Input_date.setAttribute('id', 'date' + ID);
 		  Input_date.setAttribute('onblur', 'verif(this, lim_date'+ID+');');

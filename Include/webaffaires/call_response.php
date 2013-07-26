@@ -94,6 +94,7 @@ if(isset($_POST['DATA']))
 	$threed_ls_code = $tableau[43];
 	$threed_relegation_code = $tableau[44];
 
+	$arrayCaddie = unserialize(base64_decode($caddie));
 
 	//  analyse du code retour
 

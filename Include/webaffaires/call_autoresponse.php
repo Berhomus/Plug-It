@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 -------------------------------------------------------------
  Topic	 : Exemple PHP traitement de l'autoréponse de paiement
  Version : P617
@@ -119,6 +119,8 @@ if(isset($_POST['DATA']))
 		// OK, Sauvegarde des champs de la réponse
 
 			if($bank_response_code == "00"){
+				
+				$arrayCaddie = unserialize(base64_decode($caddie));
 
 				//Date (ymd) / Heure (His) de paiement en français
 				$DatePay = substr($payment_date, 6, 2) . "/" . substr($payment_date, 4, 2) . "/"
@@ -149,21 +151,23 @@ if(isset($_POST['DATA']))
 				$Msg.= "AUTORISATION                   = $authorisation_id \n";
 				$Msg.= "CERTIFICAT DE LA TRANSACTION   = $payment_certificate \n\n";
 				$Msg.= "------------------------------------------------------------\n\n";
-				
+				$Msg.= "Nom = ".$arrayCaddie[0]."\n\n";
+				$Msg.= "Commande = ".$arrayCaddie[5]."\n\n";
+
 				$Msg.= "http://www.Plug-it.com\n";
 				
 				$Msg.= "Merci de votre confiance \n";
 				
-				//mail($customer_email , $Sujet, $Msg, 'From: shop@monsite.com');
+				mail($customer_email , $Sujet, $Msg, 'From: shop@plug-it.com');
 				
 				//On en profite pour s'envoyer également le reçu
-				//mail('xxxxx@xxxxx.fr' , $Sujet, $Msg, 'From: shop@monsite.com');
+				mail('shop@plug-it.com' , $Sujet, $Msg, 'From: shop@plug-it.com');
 				
 				//ajout BDD
 				mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());
-				mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
+				mysql_select_db('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
 				
-				mysql_query("INSERT INTO transaction VALUES ('','$order_id','$transaction_id','$customer_id','$customer_email','$amount','$payment_time')")or die("Erreur SQL");
+				mysql_query("INSERT INTO transaction VALUES ('','$transaction_id','".$arrayCaddie[0]."','$customer_email','$amount','".$arrayCaddie[1]."','".$arrayCaddie[5]."','".$arrayCaddie[3]."','$payment_date',$bank_response_code)")or die("Erreur SQL");
 				
 				mysql_close();
 			

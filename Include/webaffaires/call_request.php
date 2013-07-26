@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 -------------------------------------------------------------
  Version : P617
 
@@ -12,21 +12,22 @@
 if(isset($_POST) and !empty($_POST))	
 {	
 
-	/*$TheCaddie = array();
+	$TheCaddie = array();
 
 	$TheCaddie[] =  $_POST['nom'];
 	$TheCaddie[] =  $_POST['societe'];
 	$TheCaddie[] =  $_POST['courriel'];
 	$TheCaddie[] =  $_POST['commentaire'];
 
-	$TheCaddie[] =  $_POST['montanttot'];*/
-	
+	$TheCaddie[] =  $_POST['montanttot'];
+	$TheCaddie[] =  $commande;
 
-	$parm="merchant_id=014022286611111";
+	$xCaddie = base64_encode(serialize($TheCaddie));
+
+	$parm="merchant_id=042161736600032";
 	$parm="$parm merchant_country=fr";
 	$parm="$parm amount=".$total;
 	$parm="$parm currency_code=978";
-
 
 	// Initialisation du chemin du fichier pathfile (à modifier)
 	    //   ex :
@@ -61,16 +62,16 @@ if(isset($_POST) and !empty($_POST))
 	//		$parm="$parm block_order=";
 	//		$parm="$parm textcolor=";
 	//		$parm="$parm receipt_complement=";
-	//		$parm="$parm caddie=mon_caddie";
+			$parm="$parm caddie=".$xCaddie;
 	//		$parm="$parm customer_id=";
-	//		$parm="$parm customer_email=";
+			$parm="$parm customer_email=".$TheCaddie[2];
 	//		$parm="$parm customer_ip_address=";
 	//		$parm="$parm data=";
 	//		$parm="$parm return_context=";
 	//		$parm="$parm target=";
 	//		$parm="$parm order_id=";
 	//		$parm="$parm customer_title=";
-	//		$parm="$parm customer_name=";
+			$parm="$parm customer_name=".$TheCaddie[0];
 	//		$parm="$parm customer_firstname=";
 	//		$parm="$parm customer_birthdate=";
 	//		$parm="$parm customer_phone=";
@@ -106,6 +107,7 @@ if(isset($_POST) and !empty($_POST))
 	//
 
 	$path_bin = "/homez.527/plugit/www/include/webaffaires/bin/static/request";
+
 
 	//	Appel du binaire request
 	// La fonction escapeshellcmd() est incompatible avec certaines options avancées

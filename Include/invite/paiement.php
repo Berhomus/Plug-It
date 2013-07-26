@@ -1,4 +1,4 @@
-
+﻿
 <h2>Paiement en Ligne</h2>
 <script type="text/javascript" src="js/fct_de_trt_txt.js"></script>
 
@@ -28,6 +28,7 @@ if(isset($_POST) and !empty($_POST))//si info client déjà connu => facture
 			
 			
 			<?php
+				$commande = '';
 				if(isset($_POST['type_paiement']))
 				{
 					echo '<tr>	
@@ -37,6 +38,7 @@ if(isset($_POST) and !empty($_POST))//si info client déjà connu => facture
 							<td><b>Prix Unitaire</b></td>
 						</tr>';
 					foreach($_SESSION['caddie'] as $article)
+					{
 						echo '
 						<tr>	
 							<td>'.$article['id'].'</td>
@@ -44,7 +46,10 @@ if(isset($_POST) and !empty($_POST))//si info client déjà connu => facture
 							<td>x'.$article['qte'].'</td>
 							<td>'.$article['prix'].'€</td>
 						</tr>
-					';
+						';
+						$commande .= $article['id'].' : '.$article['nom'].' x.'.$article['qte'].' => '.$article['prix'].'€
+';
+					}
 				}
 				else
 				{
@@ -55,13 +60,17 @@ if(isset($_POST) and !empty($_POST))//si info client déjà connu => facture
 						</tr>';
 						
 					for($i=1;$i<=$_POST['nbr_fac'];$i++)
-					echo '
-						<tr>	
-							<td>'.$_POST['num'.$i].'</td>
-							<td>'.$_POST['date'.$i].'</td>
-							<td>'.$_POST['montant'.$i].'€</td>
-						</tr>
-					';
+					{
+						echo '
+							<tr>	
+								<td>'.$_POST['num'.$i].'</td>
+								<td>'.$_POST['date'.$i].'</td>
+								<td>'.$_POST['montant'.$i].'€</td>
+							</tr>
+						';
+						$commande .= $_POST['num'.$i].' : '.$_POST['date'.$i].' => '.$_POST['montant'.$i].'€
+';
+					}
 				}
 			?>
 			<tr>

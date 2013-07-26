@@ -12,8 +12,8 @@ Name : services.php => Plug-it
 	}
 
 	
-	mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());
+	mysql_select_db ('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
 	mysql_set_charset( 'utf8' );
 	
 	switch($_GET['mode'])
