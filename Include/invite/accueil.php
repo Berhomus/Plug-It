@@ -92,18 +92,10 @@ Name : accueil.php => Plug-it
 						<td>
 						
 						<?php
-<<<<<<< HEAD
-							mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());
-							mysql_select_db ('plugitrhino')or die('Erreur SQL !<br />'.mysql_error());
-							mysql_set_charset( 'utf8' );
-							mysql_query("UPDATE services SET corps = replace(corps, '<br/>', '')");
-							$retour = mysql_query('SELECT * FROM services ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
-=======
 							require_once('./connexionbddplugit.class.php');
 							
 							connexionbddplugit::getInstance()->query("UPDATE services SET corps = replace(corps, '<br/>', '')");
 							$retour = connexionbddplugit::getInstance()->query('SELECT * FROM services ORDER BY ordre');
->>>>>>> 72f30298165cd5eb110f1da64e11f894407a720f
 							echo '<table style="margin-left:auto; margin-right:auto; width:80%;">';
 							while ($donnees = $retour->fetch())
 							{
