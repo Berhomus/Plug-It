@@ -24,19 +24,19 @@ Name : Index.php => Plug-it
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 		
 		<?php 
-			mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
-			mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
-			mysql_set_charset( 'utf8' );
+			require_once('./connexionbddplugit.class.php');
 			
 			if(!isset($_GET['page']))
 				$page = 'accueil';
 			else
 				$page=$_GET['page'];
-				
-			$rq = MySQL_Query("SELECT * FROM menu WHERE baseName = '$page'")or die('Erreur SQL !<br />'.mysql_error());
-			$rq = MySQL_fetch_array($rq);
 			
-			MySQL_close();
+			try{
+				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu WHERE baseName = '$page'");
+				$rq = $rq->fetch();
+			}catch(Exception $e){
+				echo "Une erreur est survenue : ".$e->getMessage();
+			}
 		?>
 		
 		<title>Plug-it

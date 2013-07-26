@@ -10,11 +10,9 @@ if(isset($_SESSION['id']))
 {
 	echo '<h2>Edition Menu</h2>';
 	
-	mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_set_charset( 'utf8' );
+	require_once('./connexionbddplugit.class.php');
 
-	$rq = mysql_query("SELECT * FROM menu ORDER BY position")or die('Erreur SQL !<br />'.mysql_error());
+	$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu ORDER BY position");
 	
 	echo'<div style="margin:auto;width:900px;margin-top:5%;">';
 
@@ -57,7 +55,7 @@ if(isset($_SESSION['id']))
 	</script>
 	
 <?php	
-	mysql_close();
+	
 }
 else
 {

@@ -2,22 +2,20 @@
 
 <?phpif(isset($_SESSION['id'])){?><?php	$id=0;	$nomserv="";	$corps="";	$logoserv="";	$soustitre="";
 	$ordre=0;		if(isset($_POST) and !empty($_POST))	{		$id= (isset($_GET['id'])) ? $_GET['id']:0;		$nomserv=$_POST['nomserv'];		$soustitre=$_POST['soustitre'];		$corps=$_POST['corps'];
-		$ordre=$_POST['ordre'];	}	else if(isset($_GET['id']))	{		mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());		mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());		mysql_set_charset( 'utf8' );
-				$rq=mysql_query("SELECT COUNT(id) as cpt FROM services WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());		$array=mysql_fetch_array($rq);		
-				if($array['cpt']==1)		{			$rq=mysql_query("SELECT * FROM services WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());			$array=mysql_fetch_array($rq);						$id=$array['id'];			$nomserv=$array['titre'];			$corps=$array['corps'];			$logoserv=$array['image'];			$soustitre=$array['subtitre'];
-			$ordre=$array['ordre'];		}		else		{			echo '<center><font color=red>Erreur référence introuvable</font></center><br/>';		}				mysql_close();	}		if($id!=0)	{		echo '<h2>Modification d\'un service</h2>			<br/><center>Tout champ vide ne sera pas modifié</center>';		$require = "";		$type = "modif&id=".$id;	}	else	{		echo '<h2>Ajout d\'un service</h2>';		$require = "required";		$type = "create";	}	?><form method="post" enctype="multipart/form-data" action="traitement/trt_services.php?mode=<?php echo $type; ?>">	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">							<tr>				<td><label for="nomserv"><b>Nom du service <span class="red">*</span></b><br/><small id="lim_nom">(Max 70 caractères)</small></label></td>				<td><input size="50" type="text" name="nomserv" id="nomserv" value="<?php echo $nomserv; ?>" <?php echo $require; ?> onblur="textLimit(this,70, lim_nom);"/></td>			</tr>						<tr>				<td><label for="logoserv"><b>Logo du service <span class="red">*</span></b><br/><small>(Max 100Ko et uniquement jpg, png, gif et bmp)<br/>(Taille conseillée 280x157)</small></label></td>				<td><input size="50" type="file" name="logoserv" id="logoserv" value="<?php echo $logoserv; ?>" <?php echo $require; ?>/></td>			</tr>						<tr>				<td><label for="soustitre"><b>Sous-titre <span class="red">*</span></b><br/><small id="sous_titre">(Max 25 caractères)</small></label></td>				<td><input size="50" type="text" name="soustitre" id="soustitre" value="<?php echo $soustitre; ?>" <?php echo $require; ?> onblur="textLimit(this, 25, sous_titre);"/></td>			</tr>			
+		$ordre=$_POST['ordre'];	}	else if(isset($_GET['id']))	{		require_once('./connexionbddplugit.class.php');
+				$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM services WHERE id='".$_GET['id']."'");		$array=$rq->fetch();		
+				if($array['cpt']==1)		{			$rq=connexionbddplugit::getInstance()->query("SELECT * FROM services WHERE id='".$_GET['id']."'");			$array=$rq->fetch();						$id=$array['id'];			$nomserv=$array['titre'];			$corps=$array['corps'];			$logoserv=$array['image'];			$soustitre=$array['subtitre'];
+			$ordre=$array['ordre'];		}		else		{			echo '<center><font color=red>Erreur référence introuvable</font></center><br/>';		}					}		if($id!=0)	{		echo '<h2>Modification d\'un service</h2>			<br/><center>Tout champ vide ne sera pas modifié</center>';		$require = "";		$type = "modif&id=".$id;	}	else	{		echo '<h2>Ajout d\'un service</h2>';		$require = "required";		$type = "create";	}	?><form method="post" enctype="multipart/form-data" action="traitement/trt_services.php?mode=<?php echo $type; ?>">	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">							<tr>				<td><label for="nomserv"><b>Nom du service <span class="red">*</span></b><br/><small id="lim_nom">(Max 70 caractères)</small></label></td>				<td><input size="50" type="text" name="nomserv" id="nomserv" value="<?php echo $nomserv; ?>" <?php echo $require; ?> onblur="textLimit(this,70, lim_nom);"/></td>			</tr>						<tr>				<td><label for="logoserv"><b>Logo du service <span class="red">*</span></b><br/><small>(Max 100Ko et uniquement jpg, png, gif et bmp)<br/>(Taille conseillée 280x157)</small></label></td>				<td><input size="50" type="file" name="logoserv" id="logoserv" value="<?php echo $logoserv; ?>" <?php echo $require; ?>/></td>			</tr>						<tr>				<td><label for="soustitre"><b>Sous-titre <span class="red">*</span></b><br/><small id="sous_titre">(Max 25 caractères)</small></label></td>				<td><input size="50" type="text" name="soustitre" id="soustitre" value="<?php echo $soustitre; ?>" <?php echo $require; ?> onblur="textLimit(this, 25, sous_titre);"/></td>			</tr>			
 			<tr>
 				<td><label for="ordre"><b>Position</b><br/><small>(1ere position par défaut)</small></label></td>
 				<td>
 					<select name="ordre" id="ordre">
 						<?php
 						
-							mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
-							mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
-							mysql_set_charset( 'utf8' );
+							require_once('./connexionbddplugit.class.php');
 							
-							$rq=mysql_query("SELECT COUNT(id) AS nombre FROM services");
-							$rq=mysql_fetch_array($rq);
+							$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) AS nombre FROM services");
+							$rq=$rq->fetch();
 							
 							$var=($type=='create') ? $rq['nombre']+1 : $rq['nombre'];
 							for($i=1;$i<=$var;$i++)
@@ -31,7 +29,7 @@
 									echo '<option value="'.$i.'">'.$i.'</option>';
 								}
 							}
-							mySQL_close();
+							
 						?>
 					</select>
 				</td>

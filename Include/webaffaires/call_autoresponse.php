@@ -160,12 +160,12 @@ if(isset($_POST['DATA']))
 				//mail('xxxxx@xxxxx.fr' , $Sujet, $Msg, 'From: shop@monsite.com');
 				
 				//ajout BDD
-				mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')or die('Erreur SQL !<br />'.mysql_error());
-				mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
+				mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')
+				mysql_select_db('plugit')
 				
-				mysql_query("INSERT INTO transaction VALUES ('','$order_id','$transaction_id','$customer_id','$customer_email','$amount','$payment_time')")or die("Erreur SQL");
+				connexionbddplugit::getInstance()->query("INSERT INTO transaction VALUES ('','$order_id','$transaction_id','$customer_id','$customer_email','$amount','$payment_time')")or die("Erreur SQL");
 				
-				mysql_close();
+				
 			
 			}
 		

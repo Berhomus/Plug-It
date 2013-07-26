@@ -190,9 +190,7 @@
 		$_GET['mode'] = 'view';
 	}
 
-	mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_set_charset( 'utf8' );
+	require_once('./connexionbddplugit.class.php');
 	
 	switch($_GET['mode'])
 	{	
@@ -207,14 +205,14 @@
 	
 			
 			
-			$rq = MySQL_Query("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = '$nomcateg'")or die('Erreur SQL !<br />'.mysql_error());
-			$rq = MySQL_fetch_array($rq);
+			$rq = connexionbddplugit::getInstance()->query("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = '$nomcateg'");
+			$rq = $rq->fetch();
 			
 			if($rq['nombre'] >= 1)
 			{
 			
-				$rq = MySQL_Query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC")or die('Erreur SQL !<br />'.mysql_error());
-				$ar=MySQL_fetch_array($rq);
+				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
+				$ar=$rq->fetch();
 			
 			?>
 			
@@ -278,7 +276,7 @@
 				
 				if(!empty($ar))
 				{
-				$rq = MySQL_Query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC")or die('Erreur SQL !<br />'.mysql_error());
+				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
 					echo '<table cellspacing="20">';
 					while($ar=MySQL_fetch_array($rq))
 					{
@@ -334,14 +332,14 @@
 		case 'viewone' :
 		if(isset($_GET['id']))
 			{
-				$retour = mysql_query("SELECT count(id) as cpt FROM produit WHERE id='".$_GET["id"]."'")or die('Erreur SQL !<br />'.mysql_error());
-				$donnees = mysql_fetch_array($retour);
+				$retour = connexionbddplugit::getInstance()->query("SELECT count(id) as cpt FROM produit WHERE id='".$_GET["id"]."'");
+				$donnees = $retour->fetch();
 				
 				if($donnees['cpt'] == 1)
 				{
 					//affichage 
-					$retour = mysql_query("SELECT * FROM produit WHERE id='".$_GET['id']."'") or die('Erreur SQL !<br />'.mysql_error());
-					$donnees = mysql_fetch_array($retour);
+					$retour = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE id='".$_GET['id']."'") ;
+					$donnees = $retour->fetch();
 					
 					echo '<div style="margin:auto;width:70%;">
 							<h2>'.$donnees['nom'].'</h2>

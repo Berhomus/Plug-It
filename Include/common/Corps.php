@@ -15,21 +15,16 @@ Name : Corps.php => Plug-it
 <?php	
 
 	function checkUp($nom){
-		mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
-		mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
-		mysql_set_charset( 'utf8' );
+		require_once('./connexionbddplugit.class.php');
 		
-		$rq = mysql_query("SELECT * FROM menu WHERE baseName = '$nom'");
-		$ar= mysql_fetch_array($rq);
-		
-		mysql_close();
+		$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu WHERE baseName = '$nom'");
+		$ar= $rq->fetch();
 		
 		return $ar['active'];	
 	}
 
 	switch ($_GET['page'])
 	{	
-	
 		case 'accueil':
 		if(checkUp('accueil'))
 			INCLUDE("include/invite/accueil.php");

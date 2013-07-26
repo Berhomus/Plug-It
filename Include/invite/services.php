@@ -12,9 +12,7 @@ Name : services.php => Plug-it
 	}
 
 	
-	mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_set_charset( 'utf8' );
+	require_once('./connexionbddplugit.class.php');
 	
 	switch($_GET['mode'])
 	{
@@ -28,12 +26,12 @@ Name : services.php => Plug-it
 						echo '<br/><div style="margin:auto;" class="menuverti" onclick="location.href=\'index.php?page=admin_services\'">Ajouter un service</div>';
 					}
 					
-					$retour = mysql_query('SELECT * FROM services ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
+					$retour = connexionbddplugit::getInstance()->query('SELECT * FROM services ORDER BY ordre');
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					
 					echo '<table cellspacing="20">';
-					while ($donnees = mysql_fetch_array($retour))
+					while ($donnees = $retour->fetch())
 						{
 						
 							if($i == 1)
@@ -71,14 +69,14 @@ Name : services.php => Plug-it
 		case 'viewone':
 			if(isset($_GET['id']))//verif existence id
 			{
-				$retour = mysql_query("SELECT count(id) as cpt FROM services WHERE id='".$_GET["id"]."'")or die('Erreur SQL !<br />'.mysql_error());
-				$donnees = mysql_fetch_array($retour);
+				$retour = connexionbddplugit::getInstance()->query("SELECT count(id) as cpt FROM services WHERE id='".$_GET["id"]."'");
+				$donnees = $retour->fetch();
 				
 				if($donnees['cpt'] == 1)
 				{
 					//affichage 
-					$retour = mysql_query("SELECT * FROM services WHERE id='".$_GET['id']."'") or die('Erreur SQL !<br />'.mysql_error());
-					$donnees = mysql_fetch_array($retour);
+					$retour = connexionbddplugit::getInstance()->query("SELECT * FROM services WHERE id='".$_GET['id']."'"); 
+					$donnees = $retour->fetch();
 					
 					echo '<div style="margin:auto;width:70%;">
 						<table>
@@ -94,14 +92,14 @@ Name : services.php => Plug-it
 						
 					
 					//affichage autres liens					
-					$retour = mysql_query("SELECT * FROM services WHERE id<>'".$_GET['id']."' ORDER BY ordre LIMIT 10")or die('Erreur SQL !<br />'.mysql_error());
+					$retour = connexionbddplugit::getInstance()->query("SELECT * FROM services WHERE id<>'".$_GET['id']."' ORDER BY ordre LIMIT 10");
 					
 					$i=1; //délimite les colonnes
 					$j=1; //délimite les lignes
 					
 					echo'<div style="margin:auto;width:70%;margin-top:20px;">
 					<table cellspacing="10">';
-					while ($donnees = mysql_fetch_array($retour))
+					while ($donnees = $retour->fetch())
 						{
 						
 							if($i == 1)
@@ -137,4 +135,4 @@ Name : services.php => Plug-it
 		break;
 	}
 	
-	mysql_close();
+	

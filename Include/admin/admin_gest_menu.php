@@ -30,16 +30,14 @@ if(isset($_SESSION['id']))
 
 <?php
 
-	mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
-	mysql_set_charset( 'utf8' );
+	require_once('./connexionbddplugit.class.php');
 	
-	$rq = mysql_query("SELECT * FROM menu ORDER BY position")or die('Erreur SQL !<br />'.mysql_error());
+	$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu ORDER BY position");
 	$i=1;
 	
 	echo '<form action="./traitement/trt_gest_meta.php" method="POST">';
 	echo '<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">';
-	while ($donnees = mysql_fetch_array($rq))
+	while ($donnees = $rq->fetch())
 	{
 		echo '<tr><td>La description pour <b>'.$donnees['nom'].'</b></td>';
 		echo '<td><textarea name="meta'.$i.'" rows="4" cols="60" style="resize:none">'.$donnees['meta'].'</textarea></td></tr>';

@@ -19,23 +19,22 @@ Name : accueil.php => Plug-it
 				<div id="iview">
 				<?php
 				
-					mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
-					mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
+					require_once('./connexionbddplugit.class.php');
 					
 					$img = array('.png', '.gif', '.jpg', '.jpeg','.bmp','.avi','.mp4');
 					$video = array('.avi','.mp4');
 					
-					$rq=mysql_query("SELECT COUNT(id) as nombreslides FROM solutions")or die('Erreur SQL !<br />'.mysql_error());
-					$array = mysql_fetch_array($rq);
+					$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as nombreslides FROM solutions"); 
+					$array = $rq->fetch();
 					$max= max(10,$array['nombreslides']);
 					
-					$rq=mysql_query("SELECT * FROM solutions ORDER by date DESC LIMIT ".$max."")or die('Erreur SQL !<br />'.mysql_error());
+					$rq=connexionbddplugit::getInstance()->query("SELECT * FROM solutions ORDER by date DESC LIMIT ".$max."");
 					
 					
 					$effet = array('slice-top-fade,slice-right-fade','zigzag-drop-top,zigzag-drop-bottom','strip-right-fade,strip-left-fade','');
 					$i=0;
 					
-					while($array=mysql_fetch_array($rq))
+					while($array=$rq->fetch())
 					{	
 						$ext = strtolower(strrchr($array['image_car'], '.')); 
 						if(in_array($ext,$video))
@@ -92,20 +91,19 @@ Name : accueil.php => Plug-it
 						<td>
 						
 						<?php
-							mysql_connect('localhost', 'root','')or die('Erreur SQL !<br />'.mysql_error());
-							mysql_select_db('plugit')or die('Erreur SQL !<br />'.mysql_error());
-							mysql_set_charset( 'utf8' );
-							mysql_query("UPDATE services SET corps = replace(corps, '<br/>', '')");
-							$retour = mysql_query('SELECT * FROM services ORDER BY ordre') or die('Erreur SQL !<br />'.mysql_error());
+							require_once('./connexionbddplugit.class.php');
+							
+							connexionbddplugit::getInstance()->query("UPDATE services SET corps = replace(corps, '<br/>', '')");
+							$retour = connexionbddplugit::getInstance()->query('SELECT * FROM services ORDER BY ordre');
 							echo '<table style="margin-left:auto; margin-right:auto; width:80%;">';
-							while ($donnees = mysql_fetch_array($retour))
+							while ($donnees = $retour->fetch())
 							{
 								echo'<tr>
 									<td><img style="margin-right:10px;" src="images/fleche.png" /><a class="mail" href="index.php?page=services&mode=viewone&id='.$donnees['id'].'">'.$donnees['subtitre'].'</a></td>
 								</tr>';
 							}
 							echo '</table>';
-							mysql_close();
+							
 						?>
 							
 						</td>
