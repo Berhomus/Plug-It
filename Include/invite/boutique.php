@@ -298,15 +298,20 @@
 							if($i == 1)
 								echo '<tr>';
 								
+								echo '<td>
+								<div class="blockproduit" onclick="location.href=\'index.php?page=boutique&mode=viewone&id='.$ar['id'].'\'"> '; 
+								
 								if(isset($_SESSION['id']))
 								{
 									echo'
 									<span style="margin-left:10%;"><a class="bt" href="index.php?page=admin_boutique&mode=modifier&id='.$ar['id'].'">Modifier</a> - 
 									<a class="bt" href="traitement/trt_boutique.php?mode=delete&id='.$ar['id'].'">Supprimer</a></span>';
 								}
+								
 								echo'
 									<img src="'.$ar['images'].'" style="margin-left:5%;width:90%;" width="280" height="170"/>
 								</div><span id="'.$ar['id'].'" class="boutprod" style="float:left;" onclick="ajoutpanier('.$ar['id'].');">Ajouter au panier </span><span class="boutprod2" style="float:left;"><select name="qte'.$ar['id'].'" id="qte'.$ar['id'].'">';
+								
 								for($k=1;$k<=10;$k++)
 								{
 									echo '<option value='.$k.'>'.$k.'</option>';
