@@ -282,7 +282,7 @@
 					
 				if(isset($_SESSION['id']))
 				{
-					echo '<br/><div style="margin-left:415px;" class="menuverti" onclick="location.href=\'index.php?page=admin_boutique\'">Ajouter un produit</div>';
+					echo '<br/><div style="margin-left:auto; margin-right:auto;" class="menuverti" onclick="location.href=\'index.php?page=admin_boutique\'">Ajouter un produit</div>';
 				}
 				
 				if(!empty($ar))
@@ -342,7 +342,7 @@
 				}
 				else
 				{
-					echo '<span style="margin-left:300px;margin-top:50px;">Aucun produit existant</span>';
+					echo '<br/><span style="font-weight:bold; font-size:20px; width:300px; margin:auto;">Aucun produit existant</span>';
 				}
 				echo '</div>';
 			}
