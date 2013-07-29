@@ -210,17 +210,19 @@
 			} catch ( Exception $e ) {
 				echo "Une erreur est survenue : ".$e->getMessage();
 			}
-			
+
 			if($rq['nombre'] >= 1)
 			{
-			try{
-				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
-				$ar=$rq->fetch();
-			} catch ( Exception $e ) {
-				echo "Une erreur est survenue : ".$e->getMessage();
-			}
+				try{
+					$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
+					$ar=$rq->fetch();
+				} catch ( Exception $e ) 
+				{
+					echo "Une erreur est survenue : ".$e->getMessage();
+				}
+
 			
-			echo '<h4>'.strtoupper($_GET['categ']).'</h4>'
+				echo '<h4>'.strtoupper($_GET['categ']).'</h4>'
 
 			?>
 				
@@ -288,22 +290,13 @@
 					try
 					{
 						$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
+
 						echo '<table cellspacing="20">';
 						while($ar=$rq->fetch())
 						{
+							
 							if($i == 1)
 								echo '<tr>';
-							
-							echo '<td>
-							<div class="blockproduit" onclick="location.href=\'index.php?page=boutique&mode=viewone&id='.$ar['id'].'\'"> ';
-							
-							if(isset($_SESSION['id']))
-							{
-								if($i == 1)
-									echo '<tr>';
-								
-								echo '<td>
-								<div class="blockproduit" onclick="location.href=\'index.php?page=boutique&mode=viewone&id='.$ar['id'].'\'"> ';
 								
 								if(isset($_SESSION['id']))
 								{
@@ -334,21 +327,24 @@
 									echo '</tr>';
 								}
 						}
-								echo '</table>';
-					}
-					else
-					{
-						echo '<h2>Aucun produit existant</h2>';
-					}
-					echo '</div>';
-					} catch ( Exception $e ) {
+
+						echo '</table>';
+						
+					} 
+					catch ( Exception $e ) {
 						echo "Une erreur est survenue : ".$e->getMessage();
 					}
 				}
 				else
 				{
-					echo '<h1>Catégorie Inexistante</h1>';
+					echo '<h2>Aucun produit existant</h2>';
 				}
+				echo '</div>';
+			}
+			else
+			{
+				echo '<h1>Catégorie Inexistante</h1>';
+			}
 		break;
 		
 		case 'viewone' :

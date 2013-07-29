@@ -74,7 +74,7 @@ if(isset($_SESSION['id']))
 	if(isset($_POST) and !empty($_POST))
 	{
 		$id= (isset($_GET['id'])) ? $_GET['id']:0;
-		$nomserv=$_POST['nomserv'];
+		$titre=$_POST['nom'];
 		$prix =$_POST['prix'];
 		$corps=$_POST['corps'];
 		$ordre=$_POST['ordre'];
@@ -91,19 +91,17 @@ if(isset($_SESSION['id']))
 			$array=$rq->fetch();
 			
 			$id=$array['id'];
-			$nomserv=$array['titre'];
-			$corps=$array['corps'];
-			$logoserv=$array['image'];
+			$titre=$array['nom'];
+			$corps=$array['desc'];
+			$logoprod=$array['images'];
 			$prix =$array['prix'];
-			$ordre=$array['ordre'];
+			$ordre=$array['priorite'];
 			$categorie = $array['categorie'];
 		}
 		else
 		{
 			echo '<center><font color=red>Erreur référence introuvable</font></center><br/>';
 		}
-		
-		mysql_close();
 	}
 	
 	if($id!=0)
@@ -122,7 +120,7 @@ if(isset($_SESSION['id']))
 	
 ?>
 
-<form method="post" action="traitement/trt_boutique.php?mode=<?php echo $type; ?>">
+<form method="post" enctype="multipart/form-data" action="traitement/trt_boutique.php?mode=<?php echo $type; ?>">
 	<table border="0" cellspacing="20" cellpadding="5" style="margin:auto;">				
 			<tr>
 				<td><label for="titre"><b>Nom du produit <span class="red">*</span></b><br/><small id="lim_nom">(Max 50 caractères)</small></label></td>

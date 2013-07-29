@@ -292,7 +292,7 @@ Name : Index.css => Plug-it
 .blockproduit
 {
 	width:285px;
-	height: 280px;
+	height: 230px;
 	background-color:#e0e0e0;
 	cursor: pointer;
 	padding-top:15px;
@@ -414,7 +414,6 @@ Name : Index.css => Plug-it
 		background-color:#f9bd1a;
 		width:250px;
 		float:right;
-		margin-right:14%;
 	}
 	
 	#accordeon h3
