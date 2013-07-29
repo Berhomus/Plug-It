@@ -291,7 +291,7 @@ Name : Index.css => Plug-it
 
 .blockproduit
 {
-	width:330px;
+	width:300px;
 	height: 230px;
 	background-color:#e0e0e0;
 	cursor: pointer;
@@ -306,7 +306,7 @@ Name : Index.css => Plug-it
 .boutprod
 	{
 	display:block;
-	width:206px;
+	width:205px;
 	height:19px;
 	background-color:#333333;
 	color:white;
@@ -327,7 +327,7 @@ Name : Index.css => Plug-it
 .boutprod2
 	{
 	display:block;
-	width:66px;
+	width:70px;
 	height:19px;
 	background-color:#333333;
 	color:white;

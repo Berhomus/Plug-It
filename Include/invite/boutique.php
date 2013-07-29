@@ -342,7 +342,7 @@
 				}
 				else
 				{
-					echo '<h2>Aucun produit existant</h2>';
+					echo '<span style="margin-left:300px;margin-top:50px;">Aucun produit existant</span>';
 				}
 				echo '</div>';
 			}
