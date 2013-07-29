@@ -29,7 +29,7 @@ Name : accueil.php => Plug-it
 						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as nombreslides FROM solutions"); 
 						$array = $rq->fetch();
 					} catch ( Exception $e ) {
-						echo "Une erreur est survenue : ".$e;
+						echo "Une erreur est survenue : ".$e->getMessage;
 					}	
 					$max= max(10,$array['nombreslides']);
 					
@@ -56,7 +56,7 @@ Name : accueil.php => Plug-it
 								$i =0;
 						}
 					} catch ( Exception $e ) {
-						echo "Une erreur est survenue : ".$e;
+						echo "Une erreur est survenue : ".$e->getMessage;
 					}
 				?>
 				

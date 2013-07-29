@@ -203,34 +203,25 @@
 			}
 			
 			$nomcateg = $_GET['categ'];
-<<<<<<< HEAD
-	
-			
+
 			try{
 				$rq = connexionbddplugit::getInstance()->query("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = '$nomcateg'");
 				$rq = $rq->fetch();
 			} catch ( Exception $e ) {
 				echo "Une erreur est survenue : ".$e->getMessage();
 			}
-=======
-			
-			$rq = connexionbddplugit::getInstance()->query("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = '$nomcateg'");
-			$rq = $rq->fetch();
->>>>>>> 017dc9eb868a64b5783a049c3c64afd5008fbab5
 			
 			if($rq['nombre'] >= 1)
 			{
 			try{
 				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
 				$ar=$rq->fetch();
-<<<<<<< HEAD
 			} catch ( Exception $e ) {
 				echo "Une erreur est survenue : ".$e->getMessage();
 			}
-=======
 			
-				echo '<h4>'.strtoupper($_GET['categ']).'</h4>'
->>>>>>> 017dc9eb868a64b5783a049c3c64afd5008fbab5
+			echo '<h4>'.strtoupper($_GET['categ']).'</h4>'
+
 			?>
 				
 				
@@ -294,18 +285,11 @@
 				
 				if(!empty($ar))
 				{
-					try{
-					$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
-					echo '<table cellspacing="20">';
-					while($ar=$rq->fetch())
+					try
 					{
-						if($i == 1)
-							echo '<tr>';
-						
-						echo '<td>
-						<div class="blockproduit" onclick="location.href=\'index.php?page=boutique&mode=viewone&id='.$ar['id'].'\'"> ';
-						
-						if(isset($_SESSION['id']))
+						$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
+						echo '<table cellspacing="20">';
+						while($ar=$rq->fetch())
 						{
 							if($i == 1)
 								echo '<tr>';
@@ -315,48 +299,56 @@
 							
 							if(isset($_SESSION['id']))
 							{
+								if($i == 1)
+									echo '<tr>';
+								
+								echo '<td>
+								<div class="blockproduit" onclick="location.href=\'index.php?page=boutique&mode=viewone&id='.$ar['id'].'\'"> ';
+								
+								if(isset($_SESSION['id']))
+								{
+									echo'
+									<span style="margin-left:10%;"><a class="bt" href="index.php?page=admin_boutique&mode=modifier&id='.$ar['id'].'">Modifier</a> - 
+									<a class="bt" href="traitement/trt_boutique.php?mode=delete&id='.$ar['id'].'">Supprimer</a></span>';
+								}
 								echo'
-								<span style="margin-left:10%;"><a class="bt" href="index.php?page=admin_boutique&mode=modifier&id='.$ar['id'].'">Modifier</a> - 
-								<a class="bt" href="traitement/trt_boutique.php?mode=delete&id='.$ar['id'].'">Supprimer</a></span>';
-							}
-							echo'
-								<img src="'.$ar['images'].'" style="margin-left:5%;width:90%;" width="280" height="170"/>
-							</div><span id="'.$ar['id'].'" class="boutprod" style="float:left;" onclick="ajoutpanier('.$ar['id'].');">Ajouter au panier </span><span class="boutprod2" style="float:left;"><select name="qte'.$ar['id'].'" id="qte'.$ar['id'].'">';
-							for($k=1;$k<=10;$k++)
-							{
-								echo '<option value='.$k.'>'.$k.'</option>';
-							}
-							echo '</span>';
-							
-							echo '<input type="hidden" id="name'.$ar['id'].'" value="'.$ar['nom'].'"/>
-							<input type="hidden" id="qte_h'.$ar['id'].'" value="0"/>
-							<input type="hidden" id="prix'.$ar['id'].'" value="'.$ar['prix'].'"/>';
-							
-							echo '</td>';
-							
-							$i++;
-							if($i > 2)
-							{
-								$i=1;
-								$j++;
-								echo '</tr>';
-							}
+									<img src="'.$ar['images'].'" style="margin-left:5%;width:90%;" width="280" height="170"/>
+								</div><span id="'.$ar['id'].'" class="boutprod" style="float:left;" onclick="ajoutpanier('.$ar['id'].');">Ajouter au panier </span><span class="boutprod2" style="float:left;"><select name="qte'.$ar['id'].'" id="qte'.$ar['id'].'">';
+								for($k=1;$k<=10;$k++)
+								{
+									echo '<option value='.$k.'>'.$k.'</option>';
+								}
+								echo '</span>';
+								
+								echo '<input type="hidden" id="name'.$ar['id'].'" value="'.$ar['nom'].'"/>
+								<input type="hidden" id="qte_h'.$ar['id'].'" value="0"/>
+								<input type="hidden" id="prix'.$ar['id'].'" value="'.$ar['prix'].'"/>';
+								
+								echo '</td>';
+								
+								$i++;
+								if($i > 2)
+								{
+									$i=1;
+									$j++;
+									echo '</tr>';
+								}
 						}
-						echo '</table>';
+								echo '</table>';
 					}
 					else
 					{
 						echo '<h2>Aucun produit existant</h2>';
 					}
 					echo '</div>';
-				} catch ( Exception $e ) {
-					echo "Une erreur est survenue : ".$e->getMessage();
+					} catch ( Exception $e ) {
+						echo "Une erreur est survenue : ".$e->getMessage();
+					}
 				}
-			}
-			else
-			{
-				echo '<h1>Catégorie Inexistante</h1>';
-			}
+				else
+				{
+					echo '<h1>Catégorie Inexistante</h1>';
+				}
 		break;
 		
 		case 'viewone' :

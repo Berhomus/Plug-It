@@ -344,6 +344,45 @@ Name : Index.css => Plug-it
 	 color:black;
 	 border-color:#696969 #DCDCDC #DCDCDC #696969;
 	}
+/*##########MENU DEROULANT###########*/	
+
+#menuder
+	{
+		border-radius:5px;
+		background-color:#f9bd1a;
+		width:250px;
+		float:right;
+		margin-right:14%;
+	}
+	
+	#menuder h3
+	{
+		border-radius:5px;
+		font-size:10pt;
+		background-color:#333333;
+		color: white;
+		width:250px;
+		text-align: center;
+	}
+	#menuder div p a
+	{
+		text-decoration: none;
+		color:black;
+	}
+	#menuder div p a:visited
+	{
+		text-decoration: none;
+		color:black;
+	}
+	#menuder div p a:hover
+	{
+		text-decoration: none;
+		color:white;
+	}
+	#menuder div p
+	{
+		text-align: center;
+	}
 
 /*##########MENU ACCORDEON###########*/	
 

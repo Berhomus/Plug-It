@@ -164,9 +164,6 @@ if(isset($_POST['DATA']))
 				mail('shop@plug-it.com' , $Sujet, $Msg, 'From: shop@plug-it.com');
 				
 				//ajout BDD
-
-				mysql_connect('mysql51-64.perso', 'plugitrhino','42cy0Dox')
-				mysql_select_db('plugit')
 				
 				connexionbddplugit::getInstance()->query("INSERT INTO transaction VALUES ('','$transaction_id','".$arrayCaddie[0]."','$customer_email','$amount','".$arrayCaddie[1]."','".$arrayCaddie[5]."','".$arrayCaddie[3]."','$payment_date',$bank_response_code)")or die("Erreur SQL");
 
