@@ -10,7 +10,7 @@ Name : trt_ref.php => Plug-it
 	include("../function/upload.php");
 	include("../function/update_ordre.php");
 	
-	require_once('./connexionbddplugit.class.php');
+	require_once('../connexionbddplugit.class.php');
 
 	if(isset($_GET['mode']))
 	{
@@ -89,9 +89,9 @@ Name : trt_ref.php => Plug-it
 							$soustitre = htmlspecialchars($soustitre);
 							$lien = htmlspecialchars($lien);
 							
-							$titre = mysql_real_escape_string($titre);
-							$soustitre = mysql_real_escape_string($soustitre);
-							$lien = mysql_real_escape_string($lien);
+							$titre = connexionbddplugit::getInstance()->quote($titre);
+							$soustitre = connexionbddplugit::getInstance()->quote($soustitre);
+							$lien = connexionbddplugit::getInstance()->quote($lien);
 							
 							if($ordre>$array['ordre'])
 							{
@@ -147,9 +147,9 @@ Name : trt_ref.php => Plug-it
 						$soustitre = htmlspecialchars($_POST['soustitre']);
 						$lien = htmlspecialchars($_POST['lien']);
 						
-						$titre = mysql_real_escape_string($titre);
-						$soustitre = mysql_real_escape_string($soustitre);
-						$lien = mysql_real_escape_string($lien);
+						$titre = connexionbddplugit::getInstance()->quote($titre);
+						$soustitre = connexionbddplugit::getInstance()->quote($soustitre);
+						$lien = connexionbddplugit::getInstance()->quote($lien);
 						$ordre = $_POST['ordre'];
 						
 						update_ordre($ordre,0,1,'ref');

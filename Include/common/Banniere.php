@@ -19,7 +19,7 @@ function display_menu(id,pos){
 	 menu.style.display = "block";
 	 menu.style.position = "absolute";
 	 var w = document.body.clientWidth;
-	 var taille = (w-950)/2+(7-pos)*100;
+	 var taille = (w-950+window.pageXOffset)/2+(7-pos)*100;
 	 menu.style.right=taille+"px";
 	 document.getElementById("menu_"+id).className = "menu_unselected_hover";
 }

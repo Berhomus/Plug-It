@@ -70,8 +70,8 @@ Name : trt_Produit.php => Plug-it
 								
 								$titre = htmlspecialchars($titre);
 								
-								$titre = mysql_real_escape_string($titre);
-								$corps = mysql_real_escape_string($corps);							
+								$titre = connexionbddplugit::getInstance()->quote($titre);
+								$corps = connexionbddplugit::getInstance()->quote($corps);							
 								
 								try{
 									connexionbddplugit::getInstance()->query("UPDATE produit SET priorite='$ordre', categorie='$categorie', prix='$prix', images='$path', nom='$titre', description='$corps' WHERE id='".$_GET['id']."'");
@@ -117,8 +117,8 @@ Name : trt_Produit.php => Plug-it
 							$prix = $_POST['prix'];
 							$categorie = $_POST['categorie'];
 							
-							$titre = mysql_real_escape_string($titre);
-							$corps = mysql_real_escape_string($_POST['corps']);
+							$titre = connexionbddplugit::getInstance()->quote($titre);
+							$corps = connexionbddplugit::getInstance()->quote($_POST['corps']);
 							$ordre = $_POST['ordre'];
 							
 							//$path = make_img_prod($path);

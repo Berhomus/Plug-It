@@ -61,6 +61,8 @@ if(isset($_SESSION['id']))
 ?>
 
 <?php
+	require_once('./connexionbddplugit.class.php');
+
 	$id=0;
 	$titre="";
 	$corps="";
@@ -68,8 +70,7 @@ if(isset($_SESSION['id']))
 	$prix = 0.00;
 	$ordre=0;
 	$categorie = "";
-	
-	require_once('./connexionbddplugit.class.php');
+	$tva = ((connexionbddplugit::getInstance()->query("SELECT valeur FROM tva WHERE id='1'"))->fetch())['valeur'];
 	
 	if(isset($_POST) and !empty($_POST))
 	{
@@ -82,12 +83,12 @@ if(isset($_SESSION['id']))
 	}
 	else if(isset($_GET['id']))
 	{		
-		$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM produit WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+		$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM produit WHERE id='".$_GET['id']."'");
 		$array=$rq->fetch();
 		
 		if($array['cpt']==1)
 		{
-			$rq=connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE id='".$_GET['id']."'")or die('Erreur SQL !<br />'.mysql_error());
+			$rq=connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE id='".$_GET['id']."'");
 			$array=$rq->fetch();
 			
 			$id=$array['id'];
@@ -151,7 +152,13 @@ if(isset($_SESSION['id']))
 			
 			<tr>
 				<td><label for="prix" id="prix_label"><b>Prix du produit <span class="red">*</span></b><br/><small id="lim_prix">(Chiffre en €)</small></label></td>
-				<td><input size="10" style="text-align:right;" type="text" name="prix" id="$prix" value="<?php echo $prix; ?>" <?php echo $require; ?> onblur="isNumber(this, lim_prix);"/>€</td>
+				<td><input size="10" style="text-align:right;" type="text" name="prix" id="prix" value="<?php echo $prix; ?>" <?php echo $require; ?> onblur="isNumber(this, lim_prix);"/>€</td>
+			</tr>
+			
+			<tr>
+				<td><label for="tva" id="tva_label"><b>TVA <span class="red">*</span></b><br/><small id="lim_prix">(Chiffre en %)</small></label></td>
+				<td>
+				</td>
 			</tr>
 			
 			<tr>
