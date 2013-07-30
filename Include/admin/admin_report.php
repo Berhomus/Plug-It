@@ -6,6 +6,7 @@ if(isset($_SESSION['id']))
 	<script type="text/javascript" src="js/ajout_fact.js"></script>
 	
 <?php
+	echo '<h2 style="margin-bot:10px;">Bug Report</h2>';
 	if(isset($_POST) and !empty($_POST))
 	{
 		require_once('./connexionbddplugit.class.php');
@@ -14,12 +15,14 @@ if(isset($_SESSION['id']))
 		try{
 			$rq = $bdd->prepare("INSERT INTO bugreport VALUES (Null,?,?,?,?,Null,0)");
 			$rq->execute(array($_POST['titre'],$_POST['sug'],$_POST['bug'],$_POST['ordre']));
-			$message = $_POST['bug'];
-			$message .= 'prio: '.$_POST['ordre'];
-			$message .= 'sug: '.$_POST['sug'];
-			$message .= 'sujet: '.$_POST['bug'];
+			$message = $_POST['bug'].'\n';
+			$message .= 'prio: '.$_POST['ordre'].'\n';
+			$message .= 'sug: '.$_POST['sug'].'\n';
 			$message .= 'date: '. date("d/m/Y");
-			mail('benoit.villain.dev@gmail.com', "bug site report : ".$_POST['titre'],$message)
+			if(mail('villain.benoit.dev@gmail.com', "bug site report : ".$_POST['titre'],$message))
+				echo '<center>Mail Envoyé !</center>';
+			else
+				echo '<center>Echec Envoie Mail !</center>';
 		}catch(Exception $e){
 			echo $e->getMessage();
 		}
