@@ -80,7 +80,7 @@ Name : Contact.php => Plug-it
 				
 				<tr>
 					<td><label for="message"><b>Message <span class="red">*</span></b></label></td>
-					<td><textarea name="message" id="message" rows="15" cols="40" style="resize:none" required></textarea></td>
+					<td><textarea name="message" id="message" rows="15" cols="40" style="resize:none;" required></textarea></td>
 				</tr>
 				
 				<tr>
