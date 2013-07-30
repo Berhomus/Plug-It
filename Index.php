@@ -32,7 +32,9 @@ Name : Index.php => Plug-it
 				$page=$_GET['page'];
 			
 			try{
-				$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu WHERE baseName = '$page'");
+				$bdd = connexionbddplugit::getInstance();
+				$rq = $bdd->prepare("SELECT * FROM menu WHERE baseName = ?");
+				$rq->execute(array($page));
 				$rq = $rq->fetch();
 			}catch(Exception $e){
 				echo "Une erreur est survenue : ".$e->getMessage();

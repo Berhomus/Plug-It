@@ -48,7 +48,9 @@ function undisplay_menu(id){
 				{ 
 					echo '<td onclick="location.href=\''.$ar['lien'].'\'"';
 					
-					$rq2 = connexionbddplugit::getInstance()->query("SELECT count(id) as nbr FROM sousmenu WHERE menu='".$ar['id']."'");
+					$bdd = connexionbddplugit::getInstance();
+					$rq2 = $bdd->prepare("SELECT count(id) as nbr FROM sousmenu WHERE menu=?");
+					$rq2->execute(array($ar['id']));
 				
 					$ar2=$rq2->fetch();
 					if($ar2['nbr'] > 0)
@@ -78,12 +80,16 @@ $rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu ORDER BY posi
 				
 		while($ar=$rq->fetch())
 		{
-			$rq2 = connexionbddplugit::getInstance()->query("SELECT count(id) as nbr FROM sousmenu WHERE menu='".$ar['id']."'");
+			$bdd = connexionbddplugit::getInstance();
+			$rq2 = $bdd->prepare("SELECT count(id) as nbr FROM sousmenu WHERE menu=?");
+			$rq2->execute(array($ar['id']));
 					
 				$ar2=$rq2->fetch();
 				if($ar2['nbr'] > 0)
 				{
-					$rq2 = connexionbddplugit::getInstance()->query("SELECT * FROM sousmenu WHERE menu='".$ar['id']."' ORDER BY position");
+					$bdd = connexionbddplugit::getInstance();
+					$rq2 = $bdd->prepare("SELECT * FROM sousmenu WHERE menu=? ORDER BY position");
+					$rq2->execute(array($ar['id']));
 					
 					echo '<div onmouseover="display_menu('.$ar['id'].','.$ar['position'].')" onmouseout="undisplay_menu('.$ar['id'].')" style="display:none;" id="menu_der_'.$ar['id'].'">
 							<ul class="sousmenu">';

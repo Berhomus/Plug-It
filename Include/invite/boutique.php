@@ -255,7 +255,9 @@
 			$nomcateg = $_GET['categ'];
 
 			try{
-				$rq = connexionbddplugit::getInstance()->query("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = '$nomcateg'");
+				$bdd = connexionbddplugit::getInstance();
+				$rq = $bdd->prepare("SELECT COUNT(nom) AS nombre FROM categorie WHERE nom = ?");
+				$rq->execute(array($nomcateg));
 				$rq = $rq->fetch();
 			} catch ( Exception $e ) {
 				echo "Une erreur est survenue : ".$e->getMessage();
@@ -264,7 +266,9 @@
 			if($rq['nombre'] >= 1)
 			{
 				try{
-					$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
+					$bdd = connexionbddplugit::getInstance();
+					$rq = $bdd->prepare("SELECT * FROM produit WHERE categorie = ? ORDER BY priorite DESC");
+					$rq->execute(array($nomcateg));
 					$ar=$rq->fetch();
 				} catch ( Exception $e ) 
 				{
@@ -294,7 +298,9 @@
 				{
 					try
 					{
-						$rq = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE categorie = '$nomcateg' ORDER BY priorite DESC");
+						$bdd = connexionbddplugit::getInstance();
+						$rq = $bdd->prepare("SELECT * FROM produit WHERE categorie = ? ORDER BY priorite DESC");
+						$rq->execute(array($nomcateg));
 
 						echo '<table cellspacing="20">';
 						while($ar=$rq->fetch())
@@ -363,7 +369,9 @@
 		if(isset($_GET['id']))
 			{
 				try{
-					$retour = connexionbddplugit::getInstance()->query("SELECT count(id) as cpt FROM produit WHERE id='".$_GET["id"]."'");
+					$bdd = connexionbddplugit::getInstance();
+					$retour = $bdd->prepare("SELECT count(id) as cpt FROM produit WHERE id=?");
+					$retour->execute(array($_GET['id']));
 					$donnees = $retour->fetch();
 				} catch ( Exception $e ) {
 					echo "Une erreur est survenue : ".$e->getMessage();
@@ -372,7 +380,9 @@
 				{
 					//affichage
 					try{
-						$retour = connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE id='".$_GET['id']."'") ;
+						$bdd = connexionbddplugit::getInstance();
+						$retour = $bdd->prepare("SELECT * FROM produit WHERE id=?");
+						$retour->execute(array($_GET['id']));
 						$donnees = $retour->fetch();
 					} catch ( Exception $e ) {
 						echo "Une erreur est survenue : ".$e->getMessage();
