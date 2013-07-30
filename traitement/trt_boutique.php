@@ -12,6 +12,8 @@ Name : trt_Produit.php => Plug-it
 
 	require_once('../connexionbddplugit.class.php');
 	
+	$bdd = connexionbddplugit::getInstance();
+	
 	if(isset($_GET['mode']))
 	{
 		switch($_GET['mode'])
@@ -21,7 +23,8 @@ Name : trt_Produit.php => Plug-it
 				if(isset($_GET['id']))
 				{
 					try{
-						$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM produit WHERE id='".$_GET['id']."'");
+						$rq=$bdd->prepare("SELECT COUNT(id) as cpt FROM produit WHERE id=?");
+						$rq->execute(array($_GET['id']));
 						$array=$rq->fetch();
 					} catch ( Exception $e ) {
 						echo "Une erreur est survenue : ".$e->getMessage();
@@ -30,7 +33,8 @@ Name : trt_Produit.php => Plug-it
 					if($array['cpt'])
 					{
 						try{
-							connexionbddplugit::getInstance()->query("DELETE FROM produit WHERE id='".$_GET['id']."'");
+							$rq=$bdd->prepare("DELETE FROM produit WHERE id=?");
+							$rq->execute(array($_GET['id']));
 						} catch ( Exception $e ) {
 							echo "Une erreur est survenue : ".$e->getMessage();
 						}
@@ -51,7 +55,8 @@ Name : trt_Produit.php => Plug-it
 				echo ('<h2>Modification Produit</h2>');
 				if(isset($_GET['id']))
 				{
-					$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM produit WHERE id='".$_GET['id']."'");
+					$rq=$bdd->prepare("SELECT COUNT(id) as cpt FROM produit WHERE id=?");
+					$rq->execute(array($_GET['id']));
 					$array=$rq->fetch();
 
 					if($array['cpt'])
@@ -60,21 +65,16 @@ Name : trt_Produit.php => Plug-it
 						{
 								$rq=connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE id='".$_GET['id']."'");
 								$array=$rq->fetch();
-								
-								$prix = (!empty($_POST['prix'])) ? $_POST['prix']:$array['prix'];
+								$prix = (!empty($_POST['prix'])) ? round($_POST['prix']*100)/100:$array['prix'];
 								$categorie = $_POST['categorie'];
 								$titre = (!empty($_POST['titre'])) ? $_POST['titre']:$array['nom'];
 								$corps = (!empty($_POST['corps'])) ? $_POST['corps']:$array['description'];
 								$path = (isset($path)) ? make_img_prod($path):$array['images'];
-								$ordre = $_POST['ordre'];
-								
-								$titre = htmlspecialchars($titre);
-								
-								$titre = connexionbddplugit::getInstance()->quote($titre);
-								$corps = connexionbddplugit::getInstance()->quote($corps);							
+								$ordre = $_POST['ordre'];					
 								
 								try{
-									connexionbddplugit::getInstance()->query("UPDATE produit SET priorite='$ordre', categorie='$categorie', prix='$prix', images='$path', nom='$titre', description='$corps' WHERE id='".$_GET['id']."'");
+									$rq=$bdd->prepare("UPDATE produit SET priorite=?, categorie=?, prix=?, images=?, nom=?, description=? WHERE id=?");
+									$rq->execute(array($ordre,$categorie,$prix,$path,$titre,$corps,$_GET['id']));
 								} catch ( Exception $e ) {
 									echo "Une erreur est survenue : ".$e->getMessage();
 								}
@@ -113,17 +113,17 @@ Name : trt_Produit.php => Plug-it
 					
 					if(($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logoprod')) != '')
 					{
-							$titre = htmlspecialchars($_POST['titre']);
-							$prix = $_POST['prix'];
+							$titre = $_POST['titre'];
+							$prix = round($_POST['prix']*100)/100;
 							$categorie = $_POST['categorie'];
-							
-							$titre = connexionbddplugit::getInstance()->quote($titre);
-							$corps = connexionbddplugit::getInstance()->quote($_POST['corps']);
+		
+							$corps = $_POST['corps'];
 							$ordre = $_POST['ordre'];
 							
 							//$path = make_img_prod($path);
 							try{
-								connexionbddplugit::getInstance()->query("INSERT INTO produit VALUES (Null,'$titre','$path','$corps',Null,'$prix','$categorie','$ordre')");
+								$rq=$bdd->prepare("INSERT INTO produit VALUES (Null,?,?,?,Null,?,?,?)");
+								$rq->execute(array($titre,$path,$corps,$prix,$categorie,$ordre));
 							} catch ( Exception $e ) {
 								echo "Une erreur est survenue : ".$e->getMessage();
 							}

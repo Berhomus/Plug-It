@@ -315,7 +315,7 @@
 								
 								echo'
 									<img src="'.$ar['images'].'" style="margin-left:5%;width:90%;" width="280" height="170"/>
-									<p style="margin-top:10px;text-transform:uppercase;font-weight:bold;font-size:13px;"><span style="margin-left:18px;float:left;">'.substr($ar['nom'],0,50).'</span><span style="margin-right:18px;float:right;">'.$ar['prix'].'€</span></p>
+									<p style="margin-top:10px;text-transform:uppercase;font-weight:bold;font-size:13px;"><span style="margin-left:18px;float:left;">'.substr($ar['nom'],0,50).'</span><span style="margin-right:18px;float:right;">'.(round($ar['prix']*100)/100).'€</span></p>
 								</div>
 								<span id="'.$ar['id'].'" class="boutprod" style="float:left;" onclick="ajoutpanier('.$ar['id'].');">Ajouter au panier </span><span class="boutprod2" style="float:left;"><select name="qte'.$ar['id'].'" id="qte'.$ar['id'].'">';
 								
