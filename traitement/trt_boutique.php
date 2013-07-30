@@ -56,15 +56,15 @@ Name : trt_Produit.php => Plug-it
 
 					if($array['cpt'])
 					{
-						if(empty($_FILES['logoprod']['name'])or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logosolu')) != '')
+						if(empty($_FILES['logoprod']['name'])or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logoprod')) != '')
 						{
 								$rq=connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE id='".$_GET['id']."'");
 								$array=$rq->fetch();
 								
-								$prix = $_POST['prix'];
+								$prix = (!empty($_POST['prix'])) ? $_POST['prix']:$array['prix'];
 								$categorie = $_POST['categorie'];
 								$titre = (!empty($_POST['titre'])) ? $_POST['titre']:$array['nom'];
-								$corps = (!empty($_POST['corps'])) ? $_POST['corps']:$array['desc'];
+								$corps = (!empty($_POST['corps'])) ? $_POST['corps']:$array['description'];
 								$path = (isset($path)) ? make_img_prod($path):$array['images'];
 								$ordre = $_POST['ordre'];
 								
@@ -74,7 +74,7 @@ Name : trt_Produit.php => Plug-it
 								$corps = mysql_real_escape_string($corps);							
 								
 								try{
-									connexionbddplugit::getInstance()->query("UPDATE produit SET priorite='$ordre', categorie='$categorie', prix='$prix', images='$path', nom='$titre', desc='$corps' WHERE id='".$_GET['id']."'");
+									connexionbddplugit::getInstance()->query("UPDATE produit SET priorite='$ordre', categorie='$categorie', prix='$prix', images='$path', nom='$titre', description='$corps' WHERE id='".$_GET['id']."'");
 								} catch ( Exception $e ) {
 									echo "Une erreur est survenue : ".$e->getMessage();
 								}
