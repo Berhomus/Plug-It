@@ -165,7 +165,6 @@ Name : Corps.php => Plug-it
 		case 'admin_ref':
 		if(isset($_SESSION['id']))
 		{
-			echo 'lol';
 			INCLUDE("include/admin/admin_ref.php");
 		}
 		else

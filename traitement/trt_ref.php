@@ -3,7 +3,7 @@ Made by : AS Amiens - Bovin Antoine/Bensaid Borhane/Villain Benoit
 Last Update : 12/07/2013
 Name : trt_ref.php => Plug-it
 *********************************************************-->
-
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <div style="margin:auto;width:80%;">
 <?php
 	
@@ -43,7 +43,7 @@ Name : trt_ref.php => Plug-it
 							
 						update_ordre($ar['ordre'],0,-1,'ref');
 						try{
-							$bdd->prepare("DELETE FROM ref WHERE id=?");
+							$rq = $bdd->prepare("DELETE FROM ref WHERE id=?");
 							$rq->execute(array($_GET['id']));
 						} catch ( Exception $e ) {
 							echo "Une erreur est survenue : ".$e->getMessage();
@@ -150,7 +150,7 @@ Name : trt_ref.php => Plug-it
 						update_ordre($ordre,0,1,'ref');
 						try{
 							$rq = $bdd->prepare("INSERT INTO ref VALUES (Null,?,?,?,?,Null,?)");
-							$rq->execute(array($path,$titre,$lien,$soustitre,$ordre]));
+							$rq->execute(array($path,$titre,$lien,$soustitre,$ordre));
 						} catch ( Exception $e ) {
 							echo "Une erreur est survenue : ".$e->getMessage();
 						}

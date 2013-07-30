@@ -3,7 +3,7 @@ Made by : AS Amiens - Bovin Antoine/Bensaid Borhane/Villain Benoit
 Last Update : 12/07/2013
 Name : trt_solutions.php => Plug-it
 *********************************************************-->
-
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <div style="margin:auto;width:400px;">
 <?php
 	
