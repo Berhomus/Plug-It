@@ -115,6 +115,15 @@ Name : Corps.php => Plug-it
 			echo '<h2>Access Forbidden</h2>';
 		break;
 		
+		case 'admin_report':
+		if(isset($_SESSION['id']))
+		{
+			INCLUDE("include/admin/admin_report.php");
+		}
+		else
+			echo '<h2>Access Forbidden</h2>';
+		break;
+		
 		case 'admin_boutique':
 		if(isset($_SESSION['id']))
 		{
@@ -154,6 +163,7 @@ Name : Corps.php => Plug-it
 		case 'admin_ref':
 		if(isset($_SESSION['id']))
 		{
+			echo 'lol';
 			INCLUDE("include/admin/admin_ref.php");
 		}
 		else
