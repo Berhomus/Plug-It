@@ -81,17 +81,20 @@ function getXMLHttpRequest()
 if(isset($_SESSION['id']))
 {
 	require_once('./connexionbddplugit.class.php');
+	$bdd = connexionbddplugit::getInstance();
 ?>
 <script type="text/javascript" src="js/fct_de_trt_txt.js"></script><?php	$id=0;	$nomsolu="";	$corps="";	$logosolu="";	$grandeimg="";	$desc="";
 	$desc_origin="";
 	$ordre=0;		if(isset($_POST) and !empty($_POST))	{		$id= (isset($_GET['id'])) ? $_GET['id']:0;		$nomsolu=$_POST['nomsolu'];		$desc=$_POST['desc'];		$corps=$_POST['corps'];
 		$ordre=$_POST['ordre'];
 		$desc_origin=$_POST['desc'];	}	else if(isset($_GET['id']))	{
-		try{			$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM solutions WHERE id='".$_GET['id']."'");			$array=$rq->fetch();
+		try{			$rq=$bdd->prepare("SELECT COUNT(id) as cpt FROM solutions WHERE id=?");
+			$rq->execute(array($_GET['id']));			$array=$rq->fetch();
 		} catch ( Exception $e ) {
 			echo "Une erreur est survenue : ".$e->getMessage();
 		}				if($array['cpt']==1)		{
-		try{			$rq=connexionbddplugit::getInstance()->query("SELECT * FROM solutions WHERE id='".$_GET['id']."'");			$array=$rq->fetch();
+		try{			$rq=$bdd->prepare("SELECT * FROM solutions WHERE id=?");
+			$rq->execute(array($_GET['id']));			$array=$rq->fetch();
 		} catch ( Exception $e ) {
 			echo "Une erreur est survenue : ".$e->getMessage();
 		}						$id=$array['id'];			$nomsolu=$array['titre'];			$corps=$array['corps'];			$logosolu=$array['image_sol'];			$desc=$array['description'];			$grandeimg=$array['image_car'];

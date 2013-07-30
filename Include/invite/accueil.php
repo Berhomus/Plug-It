@@ -137,7 +137,7 @@ Name : accueil.php => Plug-it
 	
 		case 'sol':
 ?>
-			<div style="margin-left:auto; margin-right:auto; width:80%;">	
+			<div style="margin-left:auto; margin-right:auto; width:95%;">	
 				<img src="images/solutions_dediees.png" style="float:left;"/>
 
 				<div style="float:left; margin-left:20px;">
@@ -155,7 +155,8 @@ Name : accueil.php => Plug-it
 							commerciale, des logiciels de comptabilité, etc.
 							<br/>
 							<br/>
-							Le travail coopératif n'est pas en reste avec notre offre Wanashare où nous mettons en œuvre Microsoft© Sharepoint 2010.
+							Le travail coopératif n'est pas en reste avec notre offre Wanashare<br/>
+							où nous mettons en œuvre Microsoft© Sharepoint 2010.
 					</p>
 				</div>
 			</div>
@@ -165,7 +166,7 @@ Name : accueil.php => Plug-it
 		
 		case 'conseil':
 ?>
-			<div style="margin-left:auto; margin-right:auto; width:80%;">	
+			<div style="margin-left:auto; margin-right:auto; width:95%;">	
 				<img src="images/ecoute_conseil.png" style="float:left;"/>
 
 				<div style="float:left; margin-left:20px;">

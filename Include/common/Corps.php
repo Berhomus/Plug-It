@@ -18,7 +18,9 @@ Name : Corps.php => Plug-it
 		require_once('./connexionbddplugit.class.php');
 
 		try{
-			$rq = connexionbddplugit::getInstance()->query("SELECT * FROM menu WHERE baseName = '$nom'");
+			$bdd = connexionbddplugit::getInstance();
+			$rq = $bdd->prepare("SELECT * FROM menu WHERE baseName = ?");
+			$rq->execute(array($nom));
 			$ar= $rq->fetch();
 		} catch ( Exception $e ) {
 			echo "Une erreur est survenue : ".$e->getMessage();

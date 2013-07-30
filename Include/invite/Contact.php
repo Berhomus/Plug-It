@@ -37,7 +37,7 @@ Name : Contact.php => Plug-it
 
 <div style="overflow:hidden;">
 
-<div style="width:60%;float:left;">
+<div style="width:62%;float:left;">
 
 <h2 class="titre">Contactez-nous</h2>
 
