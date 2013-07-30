@@ -207,7 +207,7 @@
 				{
 					foreach($_SESSION['caddie'] as $article)
 					{
-						echo '<div id="panier_elem_'.$article['id'].'"><table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'.$article['id'].'">'.$article['nom'].'</td><td style="float:left; margin-left:30px;" id="panier_elem_qte_'.$article['id'].'">x'.$article['qte'].'</td><td style="float:right; margin-right:15px;" id="panier_elem_prix_'.$article['id'].'">'.$article['prix'].'€</td><td onclick="suppElem('.$article['id'].');" style="color:red;cursor: pointer;" id="panier_elem_supp_'.$article['id'].'">X</td></tr></table></div>';
+						echo '<div id="panier_elem_'.$article['id'].'"><table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'.$article['id'].'">'.$article['nom'].'</td><td style="float:left; margin-left:30px;" id="panier_elem_qte_'.$article['id'].'">x'.$article['qte'].'</td><td style="float:right; margin-right:15px;" id="panier_elem_prix_'.$article['id'].'">'.(round($article['prix']*100)/100).'€</td><td onclick="suppElem('.$article['id'].');" style="color:red;cursor: pointer;" id="panier_elem_supp_'.$article['id'].'">X</td></tr></table></div>';
 					}
 				}	
 				
@@ -333,7 +333,7 @@
 								
 								echo '<input type="hidden" id="name'.$ar['id'].'" value="'.$ar['nom'].'"/>
 								<input type="hidden" id="qte_h'.$ar['id'].'" value="0"/>
-								<input type="hidden" id="prix'.$ar['id'].'" value="'.$ar['prix'].'"/>';
+								<input type="hidden" id="prix'.$ar['id'].'" value="'.(round($ar['prix']*100)/100).'"/>';
 								
 								echo '</td>';
 								

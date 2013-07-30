@@ -11,7 +11,7 @@ Name : trt_solutions.php => Plug-it
 	include("../function/update_ordre.php");
 	include("../function/trt_image.php");
 	
-	require_once('./connexionbddplugit.class.php');
+	require_once('../connexionbddplugit.class.php');
 	
 	$bdd = connexionbddplugit::getInstance();
 	
@@ -77,10 +77,10 @@ Name : trt_solutions.php => Plug-it
 						if(empty($_FILES['logosolu']['name'])or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logosolu')) != '')
 						{
 						
-							if(empty($_FILES['grandeimg']['name'])or ($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg','.bmp','.avi','.mp4'),'grandeimg')) != '')
+							if(empty($_FILES['grandeimg']['name'])or ($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'grandeimg')) != '')
 							{
 								try{
-									$rq=$bdd->prepare("SELECT * FROM solutions WHERE id='".$_GET['id']."'");
+									$rq=$bdd->prepare("SELECT * FROM solutions WHERE id=?");
 									$rq->execute(array($_GET['id']));
 									$array=$rq->fetch();
 								} catch ( Exception $e ) {
@@ -163,7 +163,9 @@ Name : trt_solutions.php => Plug-it
 						if(($path2 = upload('../images/',300*1024,array('.png', '.gif', '.jpg', '.jpeg','.bmp','.avi','.mp4'),'grandeimg')) != '')
 						{
 							$ordre = $_POST['ordre'];
-							
+							$titre = $_POST['nomsolu'];
+							$corps = $_POST['corps'];
+							$desc = $_POST['desc'];
 							update_ordre($ordre,0,1,'solutions');
 							$path2 = make_img($path2,$titre,$desc);
 							$path = make_limg($path);

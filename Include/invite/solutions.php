@@ -35,7 +35,7 @@ Name : solutions.php => Plug-it
 						$j=1; //délimite les lignes
 						
 						echo '<table cellspacing="20">';
-						while ($donnees = $retour->fetch())
+						while ($donnees = $rq->fetch())
 							{
 							
 								if($i == 1)
