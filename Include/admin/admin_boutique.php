@@ -63,6 +63,8 @@ if(isset($_SESSION['id']))
 <?php
 	require_once('./connexionbddplugit.class.php');
 
+	$bdd = connexionbddplugit::getInstance();
+	
 	$id=0;
 	$titre="";
 	$corps="";
@@ -70,7 +72,11 @@ if(isset($_SESSION['id']))
 	$prix = 0.00;
 	$ordre=0;
 	$categorie = "";
-	$tva = ((connexionbddplugit::getInstance()->query("SELECT valeur FROM tva WHERE id='1'"))->fetch())['valeur'];
+	
+	$rq = $bdd->prepare("SELECT valeur FROM tva WHERE id='1'");
+	$rq->execute();
+	$ar = $rq->fetch();
+	$tva = $ar['valeur'];
 	
 	if(isset($_POST) and !empty($_POST))
 	{
@@ -93,7 +99,7 @@ if(isset($_SESSION['id']))
 			
 			$id=$array['id'];
 			$titre=$array['nom'];
-			$corps=$array['desc'];
+			$corps=$array['description'];
 			$logoprod=$array['images'];
 			$prix =$array['prix'];
 			$ordre=$array['priorite'];
