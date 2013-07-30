@@ -1,8 +1,9 @@
 
 <!--********************************************************Made by : AS Amiens - Bovin Antoine/Bensaid Borhane/Villain BenoitLast Update : 12/07/2013Name : admin_ref.php => Plug-it*********************************************************-->
 <script type="text/javascript" src="js/fct_de_trt_txt.js"></script>
-<?phpif(isset($_SESSION['id'])){
-
+<?php
+if(isset($_SESSION['id'])){
+			
 	require_once('./connexionbddplugit.class.php');
 		$id=0;	$nomcli="";	$soustitre="";	$lien="";	$img="";	$ordre=0;		if(isset($_POST) and !empty($_POST))	{		$id= (isset($_GET['id'])) ? $_GET['id']:0;		$nomcli=$_POST['nomcli'];		$soustitre=$_POST['soustitre'];		$lien=$_POST['lien'];		$ordre=$_POST['ordre'];	}	else if(isset($_GET['id']))	{				
 		try{			$rq=connexionbddplugit::getInstance()->query("SELECT COUNT(id) as cpt FROM ref WHERE id='".$_GET['id']."'");			$array=$rq->fetch();
