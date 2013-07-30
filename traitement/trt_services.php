@@ -10,7 +10,7 @@ Name : trt_services.php => Plug-it
 	include("../function/upload.php");
 	include("../function/update_ordre.php");
 	
-	require_once('./connexionbddplugit.class.php');
+	require_once('../connexionbddplugit.class.php');
 
 
 	if(isset($_GET['mode']))
@@ -87,9 +87,9 @@ Name : trt_services.php => Plug-it
 							$titre = htmlspecialchars($titre);
 							$soustitre = htmlspecialchars($soustitre);
 							
-							$titre = mysql_real_escape_string($titre);
-							$soustitre = mysql_real_escape_string($soustitre);
-							$corps = mysql_real_escape_string($corps);
+							$titre = connexionbddplugit::getInstance()->quote($titre);
+							$soustitre = connexionbddplugit::getInstance()->quote($soustitre);
+							$corps = connexionbddplugit::getInstance()->quote($corps);
 							
 
 							if($ordre>$array['ordre'])
@@ -144,9 +144,9 @@ Name : trt_services.php => Plug-it
 						$titre = htmlspecialchars($_POST['nomserv']);
 						$soustitre = htmlspecialchars($_POST['soustitre']);
 						
-						$titre = mysql_real_escape_string($titre);
-						$soustitre = mysql_real_escape_string($soustitre);
-						$corps = mysql_real_escape_string($_POST['corps']);
+						$titre = connexionbddplugit::getInstance()->quote($titre);
+						$soustitre = connexionbddplugit::getInstance()->quote($soustitre);
+						$corps = connexionbddplugit::getInstance()->quote($_POST['corps']);
 						$ordre = $_POST['ordre'];
 						
 						update_ordre($ordre,0,1,'services');

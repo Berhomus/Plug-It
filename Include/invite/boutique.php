@@ -194,7 +194,57 @@
 	switch($_GET['mode'])
 	{	
 		case 'view' :
+		?>
 		
+		<div id="accordeon"> <!-- Bloc principal, sur lequel nous appellerons le plugin PANIER-->
+			<h3><img src="./images/e_commerce_caddie.gif" style="width:20px; height:20px; vertical-align:-18%;"/>Panier</h3>
+			<div id="contenu">
+				<div id="top_panier"><table style="width:100%"><tr><td colspan="2">Nom</td><td style="float:left; margin-left:60px;">Qté</td><td style="float:right; margin-right:30px;">Prix Unitaire</td></tr></table></div>
+				<div id="div_panier"><hr/></div>
+				<?php
+				
+				if(isset($_SESSION['caddie']))
+				{
+					foreach($_SESSION['caddie'] as $article)
+					{
+						echo '<div id="panier_elem_'.$article['id'].'"><table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'.$article['id'].'">'.$article['nom'].'</td><td style="float:left; margin-left:30px;" id="panier_elem_qte_'.$article['id'].'">x'.$article['qte'].'</td><td style="float:right; margin-right:15px;" id="panier_elem_prix_'.$article['id'].'">'.$article['prix'].'€</td><td onclick="suppElem('.$article['id'].');" style="color:red;cursor: pointer;" id="panier_elem_supp_'.$article['id'].'">X</td></tr></table></div>';
+					}
+				}	
+				
+				?>
+				<div id="foot_panier"><span style="float:left; margin-left:5px;">Montant total : 
+					<span id="prix_tt_panier">
+						<?php
+							echo (isset($_SESSION['caddieTot'])) ? $_SESSION['caddieTot']:'0.00';		
+						?>
+						</span>
+					€</span>
+					
+					<div style="float:right; margin-right:5px;">
+						<span class="bt" onclick="viderPanier();" style="cursor:pointer;">Vider</span>
+						-
+						<a class="bt" href="index.php?page=paiement_final">Payer</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		 <script>
+			//calTotal();
+			$(function(){
+				$('#accordeon').accordion(); // appel du plugin	
+				$('#accordeon').accordion({
+					event : 'click',
+					collapsible : true,
+					active : 1
+				});
+			});
+
+			window.onscroll = scroll;
+		 </script>
+		
+		
+		<?php
 			if(!isset($_GET['categ']))
 			{
 				$rq = connexionbddplugit::getInstance()->query("SELECT nom FROM categorie");
@@ -227,52 +277,7 @@
 			?>
 				
 				
-				<div id="accordeon"> <!-- Bloc principal, sur lequel nous appellerons le plugin PANIER-->
-					<h3><img src="./images/e_commerce_caddie.gif" style="width:20px; height:20px; vertical-align:-18%;"/>Panier</h3>
-					<div id="contenu">
-						<div id="top_panier"><table style="width:100%"><tr><td colspan="2">Nom</td><td style="float:left; margin-left:60px;">Qté</td><td style="float:right; margin-right:30px;">Prix Unitaire</td></tr></table></div>
-						<div id="div_panier"><hr/></div>
-						<?php
-						
-						if(isset($_SESSION['caddie']))
-						{
-							foreach($_SESSION['caddie'] as $article)
-							{
-								echo '<div id="panier_elem_'.$article['id'].'"><table style="width:100%"><tr><td colspan="2" id="panier_elem_nom_'.$article['id'].'">'.$article['nom'].'</td><td style="float:left; margin-left:30px;" id="panier_elem_qte_'.$article['id'].'">x'.$article['qte'].'</td><td style="float:right; margin-right:15px;" id="panier_elem_prix_'.$article['id'].'">'.$article['prix'].'€</td><td onclick="suppElem('.$article['id'].');" style="color:red;cursor: pointer;" id="panier_elem_supp_'.$article['id'].'">X</td></tr></table></div>';
-							}
-						}	
-						
-						?>
-						<div id="foot_panier"><span style="float:left; margin-left:5px;">Montant total : 
-							<span id="prix_tt_panier">
-								<?php
-									echo (isset($_SESSION['caddieTot'])) ? $_SESSION['caddieTot']:'0.00';		
-								?>
-								</span>
-							€</span>
-							
-							<div style="float:right; margin-right:5px;">
-								<span class="bt" onclick="viderPanier();" style="cursor:pointer;">Vider</span>
-								-
-								<a class="bt" href="index.php?page=paiement_final">Payer</a>
-							</div>
-						</div>
-					</div>
-				</div>
 				
-				 <script>
-					//calTotal();
-					$(function(){
-						$('#accordeon').accordion(); // appel du plugin	
-						$('#accordeon').accordion({
-							event : 'click',
-							collapsible : true,
-							active : 1
-						});
-					});
-		
-					window.onscroll = scroll;
-				 </script>
 			<?php
 				
 				$i=1; //délimite les colonnes
@@ -310,7 +315,9 @@
 								
 								echo'
 									<img src="'.$ar['images'].'" style="margin-left:5%;width:90%;" width="280" height="170"/>
-								</div><span id="'.$ar['id'].'" class="boutprod" style="float:left;" onclick="ajoutpanier('.$ar['id'].');">Ajouter au panier </span><span class="boutprod2" style="float:left;"><select name="qte'.$ar['id'].'" id="qte'.$ar['id'].'">';
+									<p style="margin-top:10px;text-transform:uppercase;font-weight:bold;font-size:13px;"><span style="margin-left:18px;float:left;">'.substr($ar['nom'],0,50).'</span><span style="margin-right:18px;float:right;">'.$ar['prix'].'€</span></p>
+								</div>
+								<span id="'.$ar['id'].'" class="boutprod" style="float:left;" onclick="ajoutpanier('.$ar['id'].');">Ajouter au panier </span><span class="boutprod2" style="float:left;"><select name="qte'.$ar['id'].'" id="qte'.$ar['id'].'">';
 								
 								for($k=1;$k<=10;$k++)
 								{
@@ -375,9 +382,9 @@
 							<h2>'.$donnees['nom'].'</h2>
 							<hr/>
 							<img src="'.$donnees['images'].'" style="float:right;" width="280" height="170" />
-							'.nl2br($donnees['desc']);
+							'.nl2br($donnees['description']);
 							
-					$j=mb_substr_count(nl2br($donnees['desc']),'<br />');
+					$j=mb_substr_count(nl2br($donnees['description']),'<br />');
 
 					for($i=15-$j;$i>0;$i--)
 					{

@@ -69,7 +69,7 @@ else
 		<li class="menuverti" onclick="location.href='index.php?page=admin_services'">Nouveau Service</li>
 		<li class="menuverti" onclick="location.href='index.php?page=admin_solutions'">Nouvelle Solution</li>
 		<li class="menuverti" onclick="location.href='index.php?page=admin_ref'">Nouvelle Référence</li>
-		<!--<li class="menuverti" onclick="location.href='index.php?page=admin_boutique'">Nouveau Produit</li>-->
+		<li class="menuverti" onclick="location.href='index.php?page=admin_boutique'">Nouveau Produit</li>
 		<!--<li class="menuverti" onclick="location.href='index.php?page=gestionnaire_img'">Gestionnaire d'images</li>-->
 		<!--<li class="menuverti" onclick="location.href='index.php?page=mass_mailing'">E-Mail de Masse</li>-->
 		<!--<li class="menuverti" onclick="location.href='index.php?page=admin_menu'">Edition Menu</li>-->

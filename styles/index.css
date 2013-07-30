@@ -12,6 +12,7 @@ Name : Index.css => Plug-it
     position: relative;
 	background-color:#333333;
 	min-width: 1350px;
+	z-index:101;
 	}
 	
 .menu td
@@ -49,12 +50,51 @@ Name : Index.css => Plug-it
 	border-color:#696969 #DCDCDC #DCDCDC #696969;
 	color:white;
 }
+
+.menu_unselected_hover
+{
+	background-color:#3e3e3e;
+	border-color:#696969 #DCDCDC #DCDCDC #696969;
+	color:white;
+}
+
+
 	/**je laisse ?**/
 .menu td:active
 {
 	background-color:#D3D3D3;
 	border-color:#696969 #DCDCDC #DCDCDC #696969;
 	color:white;
+}
+
+.sousmenu
+{
+	position:absolute;
+	top:137px;
+	list-style-type: none;
+	width:100px;
+	text-align:center;
+	cursor: pointer;
+	font-weight:bold; 
+	text-transform:uppercase;
+	font-size: 12px;
+	background-color:#333333;
+	border-radius:0 0 10px 10px;
+}
+
+.sousmenu_elem
+{
+	height:30px;
+	padding-top:15px;
+	border-radius:0 0 10px 10px;
+}
+
+.sousmenu_elem:hover
+{
+	height:40px;
+	background-color:#3e3e3e;
+	color:white;
+	border-radius:0 0 10px 10px;
 }
 
 /*#########CORPS#########*/
@@ -291,11 +331,12 @@ Name : Index.css => Plug-it
 
 .blockproduit
 {
-	width:330px;
-	height: 230px;
+	width:300px;
+	height: 250px;
 	background-color:#e0e0e0;
 	cursor: pointer;
 	padding-top:15px;
+	overflow:auto;
 }
 
 .blockproduit:hover
@@ -306,7 +347,7 @@ Name : Index.css => Plug-it
 .boutprod
 	{
 	display:block;
-	width:206px;
+	width:205px;
 	height:19px;
 	background-color:#333333;
 	color:white;
@@ -327,7 +368,7 @@ Name : Index.css => Plug-it
 .boutprod2
 	{
 	display:block;
-	width:66px;
+	width:70px;
 	height:19px;
 	background-color:#333333;
 	color:white;

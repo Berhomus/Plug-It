@@ -89,9 +89,9 @@ Name : trt_solutions.php => Plug-it
 								
 								$titre = htmlspecialchars($titre);
 								
-								$titre = mysql_real_escape_string($titre);
-								$desc = mysql_real_escape_string($desc);
-								$corps = mysql_real_escape_string($corps);							
+								$titre = connexionbddplugit::getInstance()->quote($titre);
+								$desc = connexionbddplugit::getInstance()->quote($desc);
+								$corps = connexionbddplugit::getInstance()->quote($corps);							
 								
 								if($ordre>$array['ordre'])
 								{
@@ -163,9 +163,9 @@ Name : trt_solutions.php => Plug-it
 							$titre = htmlspecialchars($_POST['nomsolu']);
 
 							
-							$titre = mysql_real_escape_string($titre);
-							$desc = mysql_real_escape_string($_POST['desc']);
-							$corps = mysql_real_escape_string($_POST['corps']);
+							$titre = connexionbddplugit::getInstance()->quote($titre);
+							$desc = connexionbddplugit::getInstance()->quote($_POST['desc']);
+							$corps = connexionbddplugit::getInstance()->quote($_POST['corps']);
 							$ordre = $_POST['ordre'];
 							
 							update_ordre($ordre,0,1,'solutions');

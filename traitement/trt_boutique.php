@@ -30,13 +30,6 @@ Name : trt_Produit.php => Plug-it
 					if($array['cpt'])
 					{
 						try{
-							$rq = connexionbddplugit::getInstance()->query("SELECT ordre FROM produit WHERE id='".$_GET['id']."'")or die("fail ".$i. " => Erreur SQL !<br />".mysql_error());
-							$ar = $rq->fetch();
-						} catch ( Exception $e ) {
-							echo "Une erreur est survenue : ".$e->getMessage();
-						}
-
-						try{
 							connexionbddplugit::getInstance()->query("DELETE FROM produit WHERE id='".$_GET['id']."'");
 						} catch ( Exception $e ) {
 							echo "Une erreur est survenue : ".$e->getMessage();
@@ -63,25 +56,25 @@ Name : trt_Produit.php => Plug-it
 
 					if($array['cpt'])
 					{
-						if(empty($_FILES['logoprod']['name'])or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logosolu')) != '')
+						if(empty($_FILES['logoprod']['name'])or ($path = upload('../images/',100000,array('.png', '.gif', '.jpg', '.jpeg','.bmp'),'logoprod')) != '')
 						{
 								$rq=connexionbddplugit::getInstance()->query("SELECT * FROM produit WHERE id='".$_GET['id']."'");
 								$array=$rq->fetch();
 								
-								$prix = $_POST['prix'];
+								$prix = (!empty($_POST['prix'])) ? $_POST['prix']:$array['prix'];
 								$categorie = $_POST['categorie'];
 								$titre = (!empty($_POST['titre'])) ? $_POST['titre']:$array['nom'];
-								$corps = (!empty($_POST['corps'])) ? $_POST['corps']:$array['corps'];
+								$corps = (!empty($_POST['corps'])) ? $_POST['corps']:$array['description'];
 								$path = (isset($path)) ? make_img_prod($path):$array['images'];
 								$ordre = $_POST['ordre'];
 								
 								$titre = htmlspecialchars($titre);
 								
-								$titre = mysql_real_escape_string($titre);
-								$corps = mysql_real_escape_string($corps);							
+								$titre = connexionbddplugit::getInstance()->quote($titre);
+								$corps = connexionbddplugit::getInstance()->quote($corps);							
 								
 								try{
-									connexionbddplugit::getInstance()->query("UPDATE produit SET priorite='$ordre', categorie='$categorie', prix='$prix',priorite='$ordre', images='$path', nom='$titre', desc='$corps' WHERE id='".$_GET['id']."'");
+									connexionbddplugit::getInstance()->query("UPDATE produit SET priorite='$ordre', categorie='$categorie', prix='$prix', images='$path', nom='$titre', description='$corps' WHERE id='".$_GET['id']."'");
 								} catch ( Exception $e ) {
 									echo "Une erreur est survenue : ".$e->getMessage();
 								}
@@ -124,8 +117,8 @@ Name : trt_Produit.php => Plug-it
 							$prix = $_POST['prix'];
 							$categorie = $_POST['categorie'];
 							
-							$titre = mysql_real_escape_string($titre);
-							$corps = mysql_real_escape_string($_POST['corps']);
+							$titre = connexionbddplugit::getInstance()->quote($titre);
+							$corps = connexionbddplugit::getInstance()->quote($_POST['corps']);
 							$ordre = $_POST['ordre'];
 							
 							//$path = make_img_prod($path);
