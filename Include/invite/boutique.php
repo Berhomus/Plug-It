@@ -245,11 +245,14 @@
 		
 		
 		<?php
+		
+		// !!! down les majuscules
 			if(!isset($_GET['categ']))
 			{
 				$rq = connexionbddplugit::getInstance()->query("SELECT nom FROM categorie");
 				$rq = $rq->fetch();
-				$_GET['categ'] = $rq['nom'];
+				if(!empty($rq['nom']))
+					$_GET['categ'] = $rq['nom'];
 			}
 			
 			$nomcateg = $_GET['categ'];
@@ -276,7 +279,7 @@
 				}
 
 			
-				echo '<h4>'.strtoupper($_GET['categ']).'</h4>'
+				echo '<h4 style="margin-left:20px;text-decoration:underline;font-size:15px;">'.strtoupper($_GET['categ']).'</h4>'
 
 			?>
 				

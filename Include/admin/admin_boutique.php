@@ -41,6 +41,7 @@
 				}
 				else
 				{
+					document.getElementById("lol").innerHTML =xhr.responseText;
 					success = '<small style="color:red;">Ajout Echoué !</small>';
 				}
 				document.getElementById("new_categ_td").innerHTML = '<label for="new_categorie"><b>Nouvelle Catégorie <span class="red">*</span></b><br/><small id="lim_new_categorie">(Max 50 caractères)</small><br/>'+success+'</label>';
@@ -53,7 +54,7 @@
 		xhr.send("categ="+categ);
 	}
 </script>
-
+<div id="lol"></div>
 <?php
 if(isset($_SESSION['id']))
 {

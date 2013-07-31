@@ -102,6 +102,18 @@ Name : Index.php => Plug-it
 		<script src="js/iview.js"></script>
 		
 		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-42827063-1', 'plug-it.com');
+		  ga('send', 'pageview');
+
+		</script>
+		
+		<script>
+		
 			$(document).ready(function(){
 				$('#iview').iView({
 					pauseTime: 3000,
@@ -110,6 +122,7 @@ Name : Index.php => Plug-it
 					tooltipY: -15
 				});
 			});
+			
 		</script>
 		
 		

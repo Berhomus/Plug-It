@@ -9,6 +9,7 @@ if(isset($_POST) and !empty($_POST))//si info client déjà connu => facture
 	{
 		$_POST['societe'] = (!empty($_POST['societe'])) ? $_POST['societe']:"/";
 		$_POST['commentaire'] = (!empty($_POST['commentaire'])) ? $_POST['commentaire']:"/";
+		$_POST['montanttot'] = (isset($_POST['type_paiement'])) ? $_SESSION['caddieTot']:$_POST['montanttot'];
 		
 	?>		
 		<h2 class="titre">Récapitulatif</h2>
@@ -76,7 +77,7 @@ if(isset($_POST) and !empty($_POST))//si info client déjà connu => facture
 			<tr>
 				<td><b>Montant Total</b></td>
 				<td></td>
-				<td><?php echo (isset($_POST['type_paiement'])) ? $_SESSION['caddieTot']:$_POST['montanttot']; ?>€</td>
+				<td><?php echo $_POST['montanttot']; ?>€</td>
 			</tr>
 			
 			<tr>	
